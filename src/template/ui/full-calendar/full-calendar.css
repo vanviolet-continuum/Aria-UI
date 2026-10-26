@@ -1,0 +1,103 @@
+.ui-fullcalendar {
+  --fc-classic-background: var(--surface);
+  --fc-classic-foreground: var(--text);
+  --fc-classic-border: var(--border);
+  --fc-classic-strong-border: var(--muted);
+  --fc-classic-muted-foreground: var(--muted);
+  --fc-classic-faint-foreground: var(--muted);
+  --fc-classic-faint: var(--surface-subtle);
+  --fc-classic-muted: var(--surface-hover);
+  --fc-classic-strong: var(--primary-soft);
+  --fc-classic-primary: var(--primary);
+  --fc-classic-primary-foreground: var(--on-primary);
+  --fc-classic-now: var(--error);
+  --fc-classic-background-event: var(--success);
+  --fc-classic-highlight: color-mix(in srgb, var(--primary) 20%, transparent);
+  --fc-classic-button-outline: var(--focus-shadow);
+  --fc-classic-button: var(--surface);
+  --fc-classic-button-border: var(--border);
+  --fc-classic-button-strong: var(--primary-soft);
+  --fc-classic-button-strong-border: var(--border);
+  --fc-classic-button-foreground: var(--text-secondary);
+  --fc-classic-event: var(--primary-soft);
+  --fc-classic-event-contrast: var(--primary);
+  --fc-classic-today: color-mix(in srgb, var(--primary) 4%, var(--surface));
+  border: 1px solid var(--border);
+  border-radius: calc(10px * var(--radius-scale));
+  padding: calc(21px * var(--space-scale));
+  background: var(--surface);
+  min-width: 0;
+}
+/* v7 renders accessible roles; styling avoids private generated class names. */
+.ui-fullcalendar > div {
+  font-family: inherit;
+  font-size: calc(12px * var(--font-scale));
+}
+.ui-fullcalendar [role='heading'] {
+  font-size: calc(18px * var(--font-scale));
+  font-weight: 550;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+.ui-fullcalendar button {
+  font-family: inherit;
+  font-size: calc(11px * var(--font-scale));
+  cursor: pointer;
+}
+.ui-fullcalendar button:disabled {
+  cursor: default;
+}
+.ui-fullcalendar [role='columnheader'] {
+  font-size: calc(10px * var(--font-scale));
+  font-weight: 450;
+  color: var(--muted);
+}
+.ui-fullcalendar [role='tab'][aria-selected='true'] {
+  color: var(--primary);
+}
+.ui-fullcalendar [role='list'] button,
+.ui-fullcalendar [role='cell'] li button {
+  font-size: calc(10px * var(--font-scale));
+}
+.calendar-event--care {
+  --fc-classic-event: color-mix(in srgb, var(--success) 12%, var(--surface));
+  --fc-classic-event-contrast: var(--success);
+}
+.calendar-event--stock {
+  --fc-classic-event: color-mix(in srgb, var(--warning) 12%, var(--surface));
+  --fc-classic-event-contrast: var(--warning);
+}
+.calendar-event--personal {
+  --fc-classic-event: color-mix(in srgb, var(--violet) 12%, var(--surface));
+  --fc-classic-event-contrast: var(--violet);
+}
+.calendar-initial-loading {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(15px * var(--space-scale));
+  color: var(--muted);
+  font-size: calc(12px * var(--font-scale));
+}
+@media (max-width: 650px) {
+  .ui-fullcalendar {
+    padding: calc(13px * var(--space-scale)) calc(9px * var(--space-scale));
+  }
+  .ui-fullcalendar > div > div:first-child {
+    flex-wrap: wrap;
+    gap: calc(12px * var(--space-scale));
+  }
+  .ui-fullcalendar > div > div:first-child > div:has(> [role='heading']) {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+  }
+  .ui-fullcalendar [role='heading'] {
+    font-size: calc(16px * var(--font-scale));
+  }
+  .ui-fullcalendar [role='cell'] li button {
+    font-size: calc(8px * var(--font-scale));
+  }
+}

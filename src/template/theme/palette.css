@@ -1,0 +1,39 @@
+/* Theme palette fallback. Live settings are applied through apply-theme.ts. */
+:root {
+  --primary: #4655e8;
+  --secondary: #75829a;
+  --success: #2e7d32;
+  --warning: #d97706;
+  --error: #d32f2f;
+  --info: #4655e8;
+  --violet: #9975c3;
+  --mint: #28b9af;
+  --surface: #ffffff;
+  --surface-subtle: #f8f9fc;
+  --surface-hover: #f1f3fa;
+  --text: #202634;
+  --text-secondary: #575757;
+  --muted: #595959;
+  --border: #edeef2;
+  --border-strong: #d7dce8;
+  --shadow-color: #14213e;
+}
+html[data-theme='dark'] {
+  --primary: #8a96ff;
+  --secondary: #a7b4cd;
+  --success: #73c4a5;
+  --warning: #ddba70;
+  --error: #ed8da2;
+  --info: #81badb;
+  --violet: #bca0e7;
+  --mint: #69cfc4;
+  --surface: #171b25;
+  --surface-subtle: #1c2130;
+  --surface-hover: #252c3d;
+  --text: #e2e8f4;
+  --text-secondary: #adb8d0;
+  --muted: #8391ad;
+  --border: #2c3447;
+  --border-strong: #46516a;
+  --shadow-color: #000000;
+}

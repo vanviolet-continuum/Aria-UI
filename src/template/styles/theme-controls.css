@@ -1,0 +1,27 @@
+.button--default {
+  height: var(--button-height);
+  padding: 0 calc(15px * var(--space-scale));
+  font-size: calc((var(--control-font-size) - 1px) * var(--font-scale));
+}
+.ui-input-wrap--default {
+  min-height: var(--control-height);
+}
+.ui-input-wrap--default .ui-input {
+  height: calc(var(--control-height) - 2px);
+  font-size: calc(var(--control-font-size) * var(--font-scale));
+}
+.combobox-trigger,
+.picker-trigger {
+  height: var(--control-height);
+  font-size: calc(var(--control-font-size) * var(--font-scale));
+}
+.ui-input-wrap--invalid,
+.ui-textarea[aria-invalid='true'],
+.combobox-trigger[aria-invalid='true'] {
+  border-color: var(--error);
+}
+.ui-textarea,
+.ui-input,
+.combobox-trigger {
+  color: var(--text);
+}

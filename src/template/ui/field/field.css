@@ -1,0 +1,55 @@
+.ui-field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8px * var(--space-scale));
+  min-width: 0;
+}
+
+.ui-field > label {
+  font-size: calc(12px * var(--font-scale));
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.ui-field > label > span {
+  color: var(--error);
+}
+
+.ui-field-hint,
+.ui-field-error {
+  font-size: calc(11px * var(--font-scale));
+  line-height: 1.6;
+}
+
+.ui-field-hint {
+  color: var(--muted);
+}
+
+.ui-field-error {
+  color: var(--error);
+}
+
+.form-section {
+  padding: 0 0 calc(25px * var(--space-scale));
+}
+
+.form-section + .form-section {
+  padding-top: calc(25px * var(--space-scale));
+  border-top: 1px solid var(--border);
+}
+
+.form-section-title {
+  margin-bottom: calc(20px * var(--space-scale));
+}
+
+.form-section-title h3 {
+  font-size: calc(13px * var(--font-scale));
+  font-weight: 550;
+}
+
+.form-section-title p {
+  font-size: calc(11px * var(--font-scale));
+  line-height: 1.7;
+  color: var(--muted);
+  margin-top: calc(4px * var(--space-scale));
+}

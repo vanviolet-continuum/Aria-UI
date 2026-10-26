@@ -1,0 +1,97 @@
+[data-sonner-toaster] {
+  font-family: var(--font-family);
+  z-index: 300;
+}
+.workspace-toaster[data-sonner-toaster][data-sonner-theme] {
+  --normal-bg: var(--surface);
+  --normal-bg-hover: var(--surface-hover);
+  --normal-text: var(--text);
+  --normal-border: var(--border);
+}
+.workspace-toast {
+  --toast-accent: var(--primary);
+  display: flex;
+  align-items: flex-start;
+  gap: calc(12px * var(--space-scale));
+  width: min(var(--width), calc(100vw - 32px));
+  padding: calc(17px * var(--space-scale)) calc(38px * var(--space-scale))
+    calc(17px * var(--space-scale)) calc(16px * var(--space-scale));
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--toast-accent);
+  border-radius: calc(12px * var(--radius-scale));
+  background: var(--surface);
+  color: var(--text);
+  box-shadow:
+    0 10px 38px color-mix(in srgb, var(--shadow-color) 13%, transparent),
+    0 2px 6px color-mix(in srgb, var(--shadow-color) 4%, transparent);
+}
+.workspace-toast.toast--success {
+  --toast-accent: var(--success);
+}
+.workspace-toast.toast--warning {
+  --toast-accent: var(--warning);
+}
+.workspace-toast.toast--error {
+  --toast-accent: var(--error);
+}
+.workspace-toast.toast--info {
+  --toast-accent: var(--info);
+}
+.toast-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 31px;
+  height: 31px;
+  color: var(--toast-accent);
+  background: color-mix(in srgb, var(--toast-accent) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--toast-accent) 18%, var(--border));
+  border-radius: calc(9px * var(--radius-scale));
+}
+.toast-content {
+  flex: 1;
+  min-width: 0;
+  padding-top: 1px;
+}
+.toast-title {
+  font-size: calc(12px * var(--font-scale));
+  font-weight: 600;
+  line-height: 1.5;
+}
+.toast-description {
+  font-size: calc(11px * var(--font-scale));
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+.toast-close {
+  position: absolute;
+  right: 9px;
+  top: 9px;
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border: 1px solid transparent;
+  border-radius: calc(6px * var(--radius-scale));
+  background: transparent;
+  color: var(--muted);
+}
+.toast-close:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+.toast-action,
+.toast-cancel {
+  border-radius: calc(6px * var(--radius-scale));
+  font-size: calc(10px * var(--font-scale));
+  padding: 6px 9px;
+  align-self: center;
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.toast-cancel {
+  color: var(--text-secondary);
+  background: var(--surface-subtle);
+}

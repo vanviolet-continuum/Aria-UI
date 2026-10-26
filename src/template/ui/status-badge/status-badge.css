@@ -1,0 +1,51 @@
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4px * var(--space-scale));
+  font-size: calc(8.5px * var(--font-scale));
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.03px;
+  white-space: nowrap;
+  border-radius: calc(20px * var(--radius-scale));
+  padding: calc(5px * var(--space-scale)) calc(7px * var(--space-scale));
+  color: var(--muted);
+  background: var(--surface-subtle);
+  font-weight: 500;
+}
+
+.status-badge > span {
+  display: none;
+}
+
+.status-badge--complete,
+.status-badge--in-stock,
+.status-badge--active,
+.status-badge--available,
+.status-badge--paid,
+.status-badge--operational,
+.status-badge--confirmed,
+.status-badge--completed {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.status-badge--partial,
+.status-badge--scheduled {
+  color: var(--violet);
+  background: var(--primary-soft);
+}
+
+.status-badge--low-stock,
+.status-badge--maintenance,
+.status-badge--on-leave {
+  color: var(--warning);
+  background: var(--warning-soft);
+}
+
+.status-badge--out-of-stock,
+.status-badge--cancelled,
+.status-badge--refunded {
+  color: var(--error);
+  background: var(--error-soft);
+}

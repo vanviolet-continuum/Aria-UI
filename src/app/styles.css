@@ -1,0 +1,15 @@
+@import '../template/styles.css';
+.starter-home {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.starter-home .page-intro {
+  padding-top: 10px;
+}
+.starter-welcome {
+  margin-top: calc(30px * var(--space-scale));
+  padding: calc(60px * var(--space-scale)) calc(20px * var(--space-scale));
+  border: 1px solid var(--border);
+  border-radius: calc(12px * var(--radius-scale));
+  background: var(--surface);
+}

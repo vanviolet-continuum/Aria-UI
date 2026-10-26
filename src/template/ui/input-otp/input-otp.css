@@ -1,0 +1,66 @@
+.input-otp {
+  display: flex;
+  align-items: center;
+  gap: calc(8px * var(--space-scale));
+  position: relative;
+  width: fit-content;
+}
+.input-otp-native {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  font-size: calc(16px * var(--font-scale));
+}
+.otp-cell {
+  display: grid;
+  place-items: center;
+  height: 49px;
+  width: 41px;
+  border: 1px solid var(--border);
+  border-radius: calc(8px * var(--radius-scale));
+  color: var(--text);
+  font-size: calc(19px * var(--font-scale));
+  font-weight: 500;
+  cursor: text;
+  background: var(--surface);
+}
+.otp-cell--separated {
+  margin-left: calc(9px * var(--space-scale));
+}
+.input-otp:focus-within .otp-cell--active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--focus-shadow);
+}
+.input-otp:focus-within .otp-cell--active > i {
+  width: 1.5px;
+  height: 22px;
+  background: var(--primary);
+  animation: otp-caret 1s step-end infinite;
+}
+.input-otp--invalid .otp-cell {
+  border-color: var(--error);
+}
+.input-otp--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+@keyframes otp-caret {
+  50% {
+    opacity: 0;
+  }
+}
+@media (max-width: 650px) {
+  .otp-cell {
+    height: 46px;
+    width: 35px;
+  }
+  .input-otp {
+    gap: calc(6px * var(--space-scale));
+  }
+  .otp-cell--separated {
+    margin-left: calc(5px * var(--space-scale));
+  }
+}

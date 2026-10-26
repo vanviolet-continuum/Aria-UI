@@ -1,0 +1,50 @@
+html:has(.app-shell),
+body:has(.app-shell) {
+  height: 100%;
+  overflow: clip;
+}
+.app-shell {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  display: flex;
+  background: var(--surface);
+  isolation: isolate;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.main-shell {
+  flex: 1;
+  min-width: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+#main-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: clip;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+}
+body:has(
+    .drawer[data-state='open'],
+    .confirm-dialog[data-state='open'],
+    .mutation-overlay[data-state='open']
+  )
+  #main-content {
+  overflow-y: hidden;
+}
+
+.app-shell--collapsed {
+  --layout-sidebar-width: 68px;
+}
+#main-content:focus-visible {
+  outline: none;
+  box-shadow: none;
+}

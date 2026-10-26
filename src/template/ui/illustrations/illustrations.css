@@ -1,0 +1,107 @@
+.ui-illustration {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto calc(14px * var(--space-scale));
+}
+.empty-state > .ui-illustration {
+  width: 210px;
+}
+.empty-state > div:not(.state-actions) {
+  background: none;
+}
+.empty-state h3 {
+  font-size: calc(16px * var(--font-scale));
+  font-weight: 550;
+  color: var(--text);
+}
+.empty-state p {
+  max-width: 370px;
+  margin: calc(8px * var(--space-scale)) auto calc(20px * var(--space-scale));
+  font-size: calc(12px * var(--font-scale));
+  line-height: 1.8;
+  color: var(--muted);
+}
+.state-eyebrow {
+  display: block;
+  font-size: calc(9px * var(--font-scale));
+  letter-spacing: 1.2px;
+  color: var(--primary);
+  margin-bottom: calc(10px * var(--space-scale));
+}
+.state-actions {
+  justify-content: center;
+}
+.state-custom-icon {
+  display: grid;
+  place-items: center;
+  height: 54px;
+  width: 54px;
+  border-radius: calc(14px * var(--radius-scale));
+  margin: 0 auto calc(15px * var(--space-scale));
+  background: var(--primary-soft) !important;
+  color: var(--primary);
+}
+.revenue-panel .panel-heading > :last-child {
+  width: 130px;
+}
+.not-found-state {
+  padding: calc(65px * var(--space-scale)) calc(20px * var(--space-scale));
+}
+.not-found-state > .ui-illustration {
+  width: 285px;
+}
+.loading-illustration {
+  display: block;
+  overflow: visible;
+  flex-shrink: 0;
+}
+.loader-orbit {
+  transform-origin: 60px 60px;
+  animation: orbit 16s linear infinite;
+}
+.loader-float {
+  animation: loader-float 2.4s ease-in-out infinite;
+}
+.loader-dot {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: loader-pulse 1.6s ease-in-out infinite;
+}
+.loader-dot--two {
+  animation-delay: 0.35s;
+}
+.loader-dot--three {
+  animation-delay: 0.7s;
+}
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader-float {
+  0%,
+  100% {
+    transform: translateY(3px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+@keyframes loader-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loading-illustration * {
+    animation: none !important;
+  }
+}

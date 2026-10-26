@@ -1,0 +1,183 @@
+.kit-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 310px;
+  padding: calc(32px * var(--space-scale)) calc(8px * var(--space-scale))
+    calc(33px * var(--space-scale)) 0;
+  gap: calc(35px * var(--space-scale));
+}
+
+.kit-hero .ui-badge {
+  font-size: calc(8px * var(--font-scale));
+  letter-spacing: 1.1px;
+  gap: calc(6px * var(--space-scale));
+  padding: calc(6px * var(--space-scale)) calc(8px * var(--space-scale));
+  border-radius: calc(4px * var(--radius-scale));
+}
+
+.kit-hero h2 {
+  font-size: calc(43px * var(--font-scale));
+  line-height: 1.2;
+  font-weight: 550;
+  color: var(--text);
+  letter-spacing: -1.9px;
+  margin: calc(17px * var(--space-scale)) 0 calc(13px * var(--space-scale));
+}
+
+.kit-hero h2 > span {
+  color: var(--primary);
+}
+
+.kit-hero p {
+  color: var(--muted);
+  font-size: calc(12px * var(--font-scale));
+  line-height: 1.9;
+}
+
+.kit-features {
+  display: flex;
+  gap: calc(19px * var(--space-scale));
+  margin-top: calc(22px * var(--space-scale));
+  color: var(--muted);
+}
+
+.kit-features > span {
+  display: flex;
+  align-items: center;
+  gap: calc(6px * var(--space-scale));
+  font-size: calc(9px * var(--font-scale));
+}
+
+.kit-hero-art {
+  position: relative;
+  width: 320px;
+  height: 240px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--primary-soft) 50.2%, transparent),
+    color-mix(in srgb, var(--surface) 0%, transparent) 70%
+  );
+}
+
+.kit-main-block {
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  background: linear-gradient(145deg, var(--primary-soft), var(--primary-soft));
+  border: 1px solid var(--border);
+  border-radius: calc(21px * var(--radius-scale));
+  box-shadow:
+    0 15px 35px color-mix(in srgb, var(--shadow-color) 6.27%, transparent),
+    inset 0 2px 3px color-mix(in srgb, var(--surface) 85%, transparent);
+  color: var(--primary);
+  transform: rotate(-7deg);
+  z-index: 1;
+}
+
+.kit-orbit {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border: 1px dashed var(--border);
+  border-radius: 50%;
+}
+
+.kit-orbit--two {
+  width: 237px;
+  height: 237px;
+  opacity: 0.6;
+}
+
+.kit-floating-card {
+  position: absolute;
+  border-radius: calc(9px * var(--radius-scale));
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92.16%, transparent);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--shadow-color) 3.53%, transparent);
+  padding: calc(13px * var(--space-scale));
+  z-index: 2;
+}
+
+.kit-floating-card--one {
+  width: 97px;
+  height: 62px;
+  left: 17px;
+  top: 28px;
+  transform: rotate(-8deg);
+  display: flex;
+  flex-direction: column;
+  gap: calc(6px * var(--space-scale));
+}
+
+.kit-floating-card--one > span {
+  height: 4px;
+  border-radius: calc(2px * var(--radius-scale));
+  background: var(--primary-soft);
+  width: 100%;
+}
+
+.kit-floating-card--one > span:nth-child(2) {
+  width: 70%;
+}
+
+.kit-floating-card--one > span:nth-child(3) {
+  background: var(--success-soft);
+  width: 44%;
+}
+
+.kit-floating-card--two {
+  width: 98px;
+  height: 38px;
+  right: 4px;
+  bottom: 44px;
+  transform: rotate(8deg);
+  display: flex;
+  align-items: center;
+  gap: calc(8px * var(--space-scale));
+  padding: calc(10px * var(--space-scale));
+}
+
+.kit-floating-card--two > i {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--success-soft);
+}
+
+.kit-floating-card--two > span {
+  width: 45px;
+  height: 4px;
+  border-radius: calc(2px * var(--radius-scale));
+  background: var(--primary-soft);
+}
+
+.kit-spark {
+  position: absolute;
+  color: var(--primary);
+  font-size: calc(23px * var(--font-scale));
+  font-weight: 300;
+}
+
+.kit-spark--one {
+  top: 25px;
+  right: 35px;
+}
+
+.kit-spark--two {
+  left: 37px;
+  bottom: 31px;
+  color: var(--muted);
+}
+
+.kit-art-label {
+  position: absolute;
+  bottom: -4px;
+  font-size: calc(8px * var(--font-scale));
+  color: var(--muted);
+  letter-spacing: 0.2px;
+}

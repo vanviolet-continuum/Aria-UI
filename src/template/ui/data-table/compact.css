@@ -1,0 +1,5 @@
+.app-shell--compact .data-table td {
+  height: 46px;
+  padding-top: calc(5px * var(--space-scale));
+  padding-bottom: calc(5px * var(--space-scale));
+}

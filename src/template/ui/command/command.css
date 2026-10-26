@@ -1,0 +1,193 @@
+.command-drawer .drawer-body {
+  padding: 0;
+}
+.command-drawer .drawer-body > :last-child {
+  margin-bottom: 0;
+}
+.ui-command {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(9px * var(--radius-scale));
+  overflow: hidden;
+}
+.command-drawer .ui-command {
+  border: 0;
+  border-radius: 0;
+}
+.command-search {
+  display: flex;
+  align-items: center;
+  gap: calc(12px * var(--space-scale));
+  height: 61px;
+  padding: 0 calc(20px * var(--space-scale));
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+.command-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: calc(13px * var(--font-scale));
+  height: 100%;
+}
+.ui-command kbd {
+  font-family: inherit;
+  border: 1px solid var(--border);
+  background: var(--primary-soft);
+  border-radius: calc(4px * var(--radius-scale));
+  padding: calc(2px * var(--space-scale)) calc(4px * var(--space-scale));
+  color: var(--muted);
+  font-size: calc(9px * var(--font-scale));
+}
+.command-list {
+  padding: calc(8px * var(--space-scale));
+  max-height: 420px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.command-drawer .command-list {
+  max-height: calc(100dvh - 290px);
+}
+.command-group {
+  color: var(--muted);
+  font-size: calc(9px * var(--font-scale));
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  padding: calc(13px * var(--space-scale)) calc(10px * var(--space-scale))
+    calc(8px * var(--space-scale));
+}
+.command-item {
+  display: flex;
+  align-items: center;
+  gap: calc(12px * var(--space-scale));
+  width: 100%;
+  text-align: left;
+  padding: calc(11px * var(--space-scale)) calc(12px * var(--space-scale));
+  border-radius: calc(7px * var(--radius-scale));
+  color: var(--text-secondary);
+  font-size: calc(12px * var(--font-scale));
+}
+.command-item--active {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.command-item[data-selected='true'] {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.command-item {
+  cursor: pointer;
+}
+.command-item[data-disabled='true'] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.command-item:disabled {
+  opacity: 0.4;
+}
+.command-item-icon {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border-radius: calc(7px * var(--radius-scale));
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 50.2%, transparent);
+  color: var(--muted);
+}
+.command-item > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+.command-item small {
+  display: block;
+  font-size: calc(10px * var(--font-scale));
+  color: var(--muted);
+  margin-top: calc(3px * var(--space-scale));
+}
+.command-item > svg {
+  margin-left: auto;
+  color: var(--muted);
+}
+.command-footer {
+  display: flex;
+  gap: calc(15px * var(--space-scale));
+  padding: calc(13px * var(--space-scale)) calc(18px * var(--space-scale));
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: calc(9px * var(--font-scale));
+}
+.command-footer > span {
+  display: flex;
+  align-items: center;
+  gap: calc(4px * var(--space-scale));
+}
+.command-empty {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  gap: calc(10px * var(--space-scale));
+}
+.command-empty strong {
+  font-size: calc(12px * var(--font-scale));
+  color: var(--muted);
+  font-weight: 500;
+}
+.command-empty span {
+  font-size: calc(10px * var(--font-scale));
+}
+.command-trigger {
+  cursor: pointer;
+  border-radius: calc(6px * var(--radius-scale));
+  width: 260px;
+  height: 35px;
+  padding: 0 calc(11px * var(--space-scale));
+  font-size: calc(10px * var(--font-scale));
+  gap: calc(9px * var(--space-scale));
+  background: var(--primary-soft);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+}
+.command-trigger > span {
+  flex: 1;
+  text-align: left;
+}
+.command-trigger > kbd {
+  font-family: inherit;
+  font-size: calc(8px * var(--font-scale));
+  padding: calc(2px * var(--space-scale)) calc(4px * var(--space-scale));
+  border: 1px solid var(--border);
+  border-radius: calc(4px * var(--radius-scale));
+  color: var(--muted);
+  background: var(--surface);
+}
+.command-trigger:hover {
+  border-color: var(--border);
+  background: var(--primary-soft);
+}
+@media (max-width: 1050px) {
+  .command-trigger {
+    width: 220px;
+  }
+}
+@media (max-width: 650px) {
+  .command-trigger {
+    width: 29px;
+    padding: 0;
+    height: 29px;
+    justify-content: center;
+    border: 0;
+    background: none;
+  }
+  .command-trigger > span,
+  .command-trigger > kbd {
+    display: none;
+  }
+}

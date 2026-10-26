@@ -1,0 +1,51 @@
+import type { ColorMode, ThemePalette } from './types'
+
+// Raw colors live in the theme layer. Components consume semantic CSS tokens.
+export const basePalettes: Record<ColorMode, ThemePalette> = {
+  light: {
+    primary: '#4655e8',
+    secondary: '#75829a',
+    success: '#2e7d32',
+    warning: '#d97706',
+    error: '#d32f2f',
+    info: '#4655e8',
+    violet: '#9975c3',
+    mint: '#28b9af',
+    surface: '#ffffff',
+    surfaceSubtle: '#f8f9fc',
+    surfaceHover: '#f1f3fa',
+    text: '#202634',
+    textSecondary: '#575757',
+    muted: '#595959',
+    border: '#edeef2',
+    borderStrong: '#d7dce8',
+    shadow: '#14213e',
+  },
+  dark: {
+    primary: '#8a96ff',
+    secondary: '#a7b4cd',
+    success: '#73c4a5',
+    warning: '#ddba70',
+    error: '#ed8da2',
+    info: '#81badb',
+    violet: '#bca0e7',
+    mint: '#69cfc4',
+    surface: '#171b25',
+    surfaceSubtle: '#1c2130',
+    surfaceHover: '#252c3d',
+    text: '#e2e8f4',
+    textSecondary: '#adb8d0',
+    muted: '#8391ad',
+    border: '#2c3447',
+    borderStrong: '#46516a',
+    shadow: '#000000',
+  },
+}
+export const themeFonts = {
+  hanken: "'Hanken Grotesk Variable', 'Segoe UI', sans-serif",
+  inter: "'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif",
+  system: "'Segoe UI', system-ui, sans-serif",
+  humanist: "'Trebuchet MS', 'Segoe UI', sans-serif",
+  serif: "Georgia, 'Times New Roman', serif",
+  mono: "'Cascadia Code', Consolas, monospace",
+} as const

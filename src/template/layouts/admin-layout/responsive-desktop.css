@@ -1,0 +1,31 @@
+@media (min-width: 1500px) {
+  .app-shell {
+    min-height: 100dvh;
+  }
+  .topbar {
+    padding-right: calc(32px * var(--space-scale));
+  }
+  .header-actions {
+    gap: calc(20px * var(--space-scale));
+  }
+}
+
+@media (max-width: 1220px) {
+  .app-shell {
+    width: 100%;
+    margin: 0;
+    min-height: 100dvh;
+  }
+  .header-actions {
+    gap: calc(12px * var(--space-scale));
+  }
+  .topbar {
+    padding: 0 calc(22px * var(--space-scale));
+  }
+}
+
+@media (max-width: 1050px) {
+  .header-actions {
+    gap: calc(13px * var(--space-scale));
+  }
+}

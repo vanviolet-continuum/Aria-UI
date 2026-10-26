@@ -1,0 +1,18 @@
+.standard-page {
+  padding: calc(31px * var(--space-scale)) calc(26px * var(--space-scale))
+    calc(28px * var(--space-scale));
+}
+
+.page-intro h2 {
+  font-size: calc(24px * var(--font-scale));
+  line-height: 1.4;
+  font-weight: 550;
+  letter-spacing: -0.8px;
+  margin-top: calc(7px * var(--space-scale));
+}
+
+.page-intro > p {
+  color: var(--muted);
+  font-size: calc(11px * var(--font-scale));
+  margin-top: calc(7px * var(--space-scale));
+}

@@ -1,0 +1,98 @@
+@media (max-width: 850px) {
+  .app-shell {
+    --header-height: 66px;
+    width: 100%;
+    min-height: 100dvh;
+    margin: 0;
+    border-radius: 0;
+    border: 0;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width) !important;
+    border-radius: 0;
+    transform: translateX(-101%);
+    overflow-y: auto;
+    transition: transform 0.2s ease-out;
+    z-index: 60;
+  }
+  .sidebar--open {
+    transform: translateX(0);
+  }
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: color-mix(in srgb, var(--surface-inverse) 33.33%, transparent);
+    backdrop-filter: blur(2px);
+    z-index: 59;
+    display: block !important;
+  }
+  .sidebar-collapse {
+    display: none !important;
+  }
+  .sidebar-mobile-close {
+    display: grid !important;
+    position: absolute !important;
+    right: 8px;
+    top: 18px;
+  }
+  .mobile-menu {
+    display: grid !important;
+  }
+  .topbar {
+    border-radius: 0;
+    padding: 0 calc(20px * var(--space-scale));
+  }
+  .page-title h1 {
+    font-size: calc(19px * var(--font-scale));
+  }
+  .header-actions {
+    gap: calc(15px * var(--space-scale));
+  }
+  .sidebar--collapsed .brand {
+    justify-content: start;
+    padding: 0 calc(23px * var(--space-scale));
+  }
+  .sidebar--collapsed .brand > span,
+  .sidebar--collapsed .sidebar-workspace-details,
+  .sidebar--collapsed .sidebar-workspace > svg,
+  .sidebar--collapsed .nav-link > span,
+  .sidebar--collapsed .nav-group-label {
+    display: block;
+  }
+  .sidebar--collapsed .sidebar-workspace {
+    justify-content: start;
+    padding: calc(10px * var(--space-scale)) calc(9px * var(--space-scale));
+    margin: calc(3px * var(--space-scale)) calc(12px * var(--space-scale))
+      calc(15px * var(--space-scale));
+  }
+  .sidebar--collapsed .nav-link {
+    justify-content: start;
+    padding: calc(8px * var(--space-scale)) calc(10px * var(--space-scale));
+  }
+}
+
+@media (max-width: 650px) {
+  .app-shell {
+    --header-height: 64px;
+  }
+  body {
+    font-size: calc(12px * var(--font-scale));
+  }
+  .topbar {
+    padding: 0 calc(14px * var(--space-scale));
+    gap: calc(8px * var(--space-scale));
+  }
+  .header-actions {
+    gap: calc(10px * var(--space-scale));
+  }
+  .page-title {
+    gap: calc(6px * var(--space-scale));
+  }
+  .page-title h1 {
+    font-size: calc(18px * var(--font-scale));
+  }
+}

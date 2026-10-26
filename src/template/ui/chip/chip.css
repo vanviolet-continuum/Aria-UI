@@ -1,0 +1,19 @@
+.ui-chip {
+  border-radius: calc(20px * var(--radius-scale));
+  padding: calc(6px * var(--space-scale)) calc(7px * var(--space-scale))
+    calc(6px * var(--space-scale)) calc(10px * var(--space-scale));
+}
+
+.ui-chip button {
+  display: inline-grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  padding: 0;
+  color: inherit;
+}
+
+.ui-chip button:hover {
+  background: color-mix(in srgb, var(--surface-inverse) 3.14%, transparent);
+}

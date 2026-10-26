@@ -1,0 +1,60 @@
+.ui-tree {
+  border: 1px solid var(--border);
+  border-radius: calc(8px * var(--radius-scale));
+  padding: calc(7px * var(--space-scale));
+  background: var(--surface);
+  max-height: 390px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.tree-row {
+  display: flex;
+  align-items: center;
+  gap: calc(8px * var(--space-scale));
+  height: 36px;
+  border-radius: calc(5px * var(--radius-scale));
+  padding-right: calc(9px * var(--space-scale));
+  cursor: pointer;
+  font-size: calc(11px * var(--font-scale));
+  color: var(--text-secondary);
+}
+.tree-row:hover {
+  background: var(--surface-hover);
+}
+.tree-row--selected {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.tree-row--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.tree-toggle {
+  width: 15px;
+  height: 24px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+.tree-toggle svg {
+  transition: transform 0.15s;
+}
+.tree-chevron--open {
+  transform: rotate(90deg);
+}
+.tree-folder-icon {
+  color: var(--warning);
+}
+.tree-file-icon {
+  color: var(--muted);
+}
+.tree-row > small {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: calc(9px * var(--font-scale));
+  background: var(--surface-subtle);
+  padding: 0 calc(5px * var(--space-scale));
+  border-radius: calc(4px * var(--radius-scale));
+}

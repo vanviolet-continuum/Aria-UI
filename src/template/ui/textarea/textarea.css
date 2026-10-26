@@ -1,0 +1,24 @@
+.ui-textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 100px;
+  padding: calc(11px * var(--space-scale)) calc(12px * var(--space-scale));
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(7px * var(--radius-scale));
+  line-height: 1.8;
+  font-size: calc(12px * var(--font-scale));
+}
+
+.ui-textarea:focus {
+  border-color: var(--border);
+}
+
+.ui-textarea[aria-invalid='true'] {
+  border-color: var(--border);
+}
+
+.ui-textarea:disabled {
+  background: var(--surface-subtle);
+  opacity: 0.65;
+}

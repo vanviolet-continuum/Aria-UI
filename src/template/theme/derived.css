@@ -1,0 +1,55 @@
+:root {
+  --font-family: 'Hanken Grotesk Variable', 'Segoe UI', sans-serif;
+  --font-mono: 'Cascadia Code', Consolas, monospace;
+  --font-scale: 1;
+  --space-scale: 1;
+  --radius-scale: 1;
+  --control-height: 40px;
+  --button-height: 37px;
+  --control-font-size: 12px;
+  --sidebar-width: 232px;
+  --header-height: 70px;
+  --document-surface: #ffffff;
+  --document-text: #171b25;
+  --table-density: 1;
+  --on-primary: #fff;
+  --on-secondary: #fff;
+  --on-success: #fff;
+  --on-warning: #fff;
+  --on-error: #fff;
+  --on-info: #fff;
+  --on-violet: #fff;
+  --on-mint: #fff;
+}
+:root,
+html[data-theme] {
+  --primary-hover: color-mix(in srgb, var(--primary) 86%, var(--text));
+  --primary-soft: color-mix(in srgb, var(--primary) 9%, var(--surface));
+  --table-row-hover: color-mix(in srgb, var(--primary) 2.5%, var(--surface));
+  --table-row-selected: color-mix(in srgb, var(--primary) 5%, var(--surface));
+  --table-pin-shadow: color-mix(in srgb, var(--shadow-color) 9%, transparent);
+  --table-pin-border: color-mix(in srgb, var(--border-strong) 60%, transparent);
+  --secondary-hover: color-mix(in srgb, var(--secondary) 86%, var(--text));
+  --secondary-soft: color-mix(in srgb, var(--secondary) 9%, var(--surface));
+  --success-hover: color-mix(in srgb, var(--success) 86%, var(--text));
+  --success-soft: color-mix(in srgb, var(--success) 10%, var(--surface));
+  --warning-hover: color-mix(in srgb, var(--warning) 86%, var(--text));
+  --warning-soft: color-mix(in srgb, var(--warning) 10%, var(--surface));
+  --error-hover: color-mix(in srgb, var(--error) 86%, var(--text));
+  --error-soft: color-mix(in srgb, var(--error) 10%, var(--surface));
+  --info-hover: color-mix(in srgb, var(--info) 86%, var(--text));
+  --info-soft: color-mix(in srgb, var(--info) 10%, var(--surface));
+  --violet-soft: color-mix(in srgb, var(--violet) 10%, var(--surface));
+  --mint-soft: color-mix(in srgb, var(--mint) 10%, var(--surface));
+  --amber: var(--warning);
+  --rose: var(--error);
+  --surface-inverse: var(--text);
+  --overlay: color-mix(in srgb, var(--shadow-color) 35%, transparent);
+  --focus-shadow: color-mix(in srgb, var(--primary) 12%, transparent);
+  --illustration-primary: color-mix(in srgb, var(--primary) 60%, var(--muted));
+  --illustration-accent: color-mix(in srgb, var(--success) 65%, var(--surface));
+  --illustration-line: color-mix(in srgb, var(--primary) 16%, var(--border));
+  --illustration-tint: var(--primary-soft);
+  --illustration-wash: var(--surface-subtle);
+  --illustration-surface: var(--surface);
+}

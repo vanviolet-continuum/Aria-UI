@@ -1,0 +1,62 @@
+.table-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(8px * var(--space-scale));
+}
+.table-filter-popover {
+  width: min(360px, calc(100vw - 24px));
+  padding: 0;
+  overflow: hidden;
+}
+.table-filter-popover .command-search {
+  padding: 12px 14px;
+}
+.table-filter-popover .command-search input {
+  font-size: calc(12px * var(--font-scale));
+}
+.table-filter-popover .command-item {
+  gap: 10px;
+}
+.table-filter-popover .command-item > small {
+  color: var(--muted);
+  margin-left: auto;
+  font-size: 10px;
+}
+.table-filter-popover .command-footer button {
+  color: var(--primary);
+}
+.filter-count {
+  display: grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: var(--primary);
+  background: var(--primary-soft);
+  font-size: 10px;
+}
+.filter-check {
+  width: 17px;
+  height: 17px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+}
+.filter-check--active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+.table-filter-calendar {
+  display: grid;
+  padding: 12px;
+  gap: 12px;
+}
+.table-filter-calendar > strong {
+  padding-inline: 10px;
+}
+.table-filter-calendar > .button {
+  justify-self: start;
+}

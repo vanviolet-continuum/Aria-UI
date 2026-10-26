@@ -1,0 +1,98 @@
+.settings-section-label {
+  display: flex;
+  align-items: center;
+  gap: calc(8px * var(--space-scale));
+  color: var(--muted);
+  font-size: calc(10px * var(--font-scale));
+  margin-bottom: calc(19px * var(--space-scale));
+}
+
+.toggle-field {
+  display: flex;
+  align-items: center;
+  gap: calc(12px * var(--space-scale));
+  justify-content: space-between;
+  padding: calc(17px * var(--space-scale)) 0;
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.toggle-field > span {
+  display: flex;
+  gap: calc(10px * var(--space-scale));
+  align-items: center;
+}
+
+.toggle-field > span > svg {
+  color: var(--muted);
+}
+
+.toggle-field strong {
+  display: block;
+  font-size: calc(11px * var(--font-scale));
+  font-weight: 500;
+}
+
+.toggle-field small {
+  display: block;
+  color: var(--muted);
+  font-size: calc(9px * var(--font-scale));
+  margin-top: calc(3px * var(--space-scale));
+}
+
+.help-articles {
+  display: flex;
+  flex-direction: column;
+  gap: calc(22px * var(--space-scale));
+}
+
+.help-articles article {
+  display: flex;
+  gap: calc(12px * var(--space-scale));
+}
+
+.help-articles article > span {
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: calc(6px * var(--radius-scale));
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: calc(9px * var(--font-scale));
+}
+
+.help-articles h3 {
+  font-size: calc(12px * var(--font-scale));
+  font-weight: 550;
+  margin: calc(2px * var(--space-scale)) 0 calc(5px * var(--space-scale));
+}
+
+.help-articles p {
+  font-size: calc(11px * var(--font-scale));
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.profile-card {
+  text-align: center;
+  padding: calc(15px * var(--space-scale)) 0 calc(20px * var(--space-scale));
+}
+
+.avatar--large {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto calc(14px * var(--space-scale));
+}
+
+.profile-card h3 {
+  font-size: calc(17px * var(--font-scale));
+  font-weight: 550;
+}
+
+.profile-card p {
+  color: var(--muted);
+  margin: calc(5px * var(--space-scale)) 0 calc(14px * var(--space-scale));
+  font-size: calc(11px * var(--font-scale));
+}

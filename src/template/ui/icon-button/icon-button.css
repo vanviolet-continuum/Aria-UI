@@ -1,0 +1,21 @@
+.ui-icon-button {
+  padding: 0 !important;
+  height: 36px;
+  width: 36px;
+  flex-shrink: 0;
+}
+.ui-icon-button[data-icon-size='sm'] {
+  height: 29px;
+  width: 29px;
+}
+.ui-icon-button[data-icon-size='lg'] {
+  height: 43px;
+  width: 43px;
+}
+.ui-icon-button[data-icon-size='default'] {
+  height: calc(var(--button-height) - 1px);
+  width: calc(var(--button-height) - 1px);
+}
+.ui-icon-button[data-shape='circle'] {
+  border-radius: 50%;
+}

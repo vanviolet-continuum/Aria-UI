@@ -1,0 +1,6 @@
+export { EmptyIllustration } from './empty-illustration'
+export { SearchIllustration } from './search-illustration'
+export { NotFoundIllustration } from './not-found-illustration'
+export { UploadIllustration } from './upload-illustration'
+export { LoadingIllustration } from './loading-illustration'
+export type { IllustrationProps } from './frame'

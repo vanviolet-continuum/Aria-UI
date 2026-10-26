@@ -1,0 +1,86 @@
+.button {
+  --btn-main: var(--primary);
+  --btn-hover: var(--primary-hover);
+  --btn-soft: var(--primary-soft);
+  --btn-contrast: var(--on-primary);
+  border-radius: calc(7px * var(--radius-scale));
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.button[data-color='secondary'] {
+  --btn-main: var(--secondary);
+  --btn-hover: var(--secondary-hover);
+  --btn-soft: var(--secondary-soft);
+  --btn-contrast: var(--on-secondary);
+}
+.button[data-color='success'] {
+  --btn-main: var(--success);
+  --btn-hover: var(--success-hover);
+  --btn-soft: var(--success-soft);
+  --btn-contrast: var(--on-success);
+}
+.button[data-color='warning'] {
+  --btn-main: var(--warning);
+  --btn-hover: var(--warning-hover);
+  --btn-soft: var(--warning-soft);
+  --btn-contrast: var(--on-warning);
+}
+.button[data-color='error'] {
+  --btn-main: var(--error);
+  --btn-hover: var(--error-hover);
+  --btn-soft: var(--error-soft);
+  --btn-contrast: var(--on-error);
+}
+.button[data-color='info'] {
+  --btn-main: var(--info);
+  --btn-hover: var(--info-hover);
+  --btn-soft: var(--info-soft);
+  --btn-contrast: var(--on-info);
+}
+.button[data-variant='contained'] {
+  background: var(--btn-main);
+  border-color: var(--btn-main);
+  color: var(--btn-contrast);
+  box-shadow: 0 2px 4px color-mix(in srgb, var(--btn-main) 14%, transparent);
+}
+.button[data-variant='contained']:hover:not(:disabled) {
+  background: var(--btn-hover);
+  border-color: var(--btn-hover);
+}
+.button[data-variant='outlined'] {
+  color: var(--btn-main);
+  background: var(--surface);
+  border-color: color-mix(in srgb, var(--btn-main) 24%, var(--border));
+  box-shadow: none;
+}
+.button[data-variant='outlined']:hover:not(:disabled) {
+  background: var(--btn-soft);
+  border-color: color-mix(in srgb, var(--btn-main) 45%, var(--border));
+}
+.button[data-variant='soft'] {
+  color: var(--btn-main);
+  background: var(--btn-soft);
+  border-color: transparent;
+  box-shadow: none;
+}
+.button[data-variant='soft']:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--btn-main) 17%, var(--surface));
+}
+.button[data-variant='text'] {
+  color: var(--btn-main);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.button[data-variant='text']:hover:not(:disabled) {
+  background: var(--btn-soft);
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}

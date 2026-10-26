@@ -1,0 +1,16 @@
+/* All color values are defined in src/theme. Components use the same tokens in both modes. */
+body,
+.app-shell,
+.main-shell {
+  background: var(--surface);
+  color: var(--text);
+}
+input,
+textarea {
+  color: var(--text);
+}
+@media (max-width: 650px) {
+  .header-actions {
+    gap: calc(6px * var(--space-scale));
+  }
+}

@@ -1,0 +1,107 @@
+.ui-data-table--pinned {
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.ui-table-container {
+  container-type: inline-size;
+}
+.ui-table-viewport {
+  position: relative;
+}
+.table-pin-shade {
+  position: absolute;
+  top: 0;
+  bottom: var(--table-scrollbar-height, 0px);
+  width: 12px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.table-pin-shade--left {
+  background: linear-gradient(to right, var(--table-pin-shadow), transparent);
+  border-left: 1px solid var(--table-pin-border);
+}
+.table-pin-shade--right {
+  background: linear-gradient(to left, var(--table-pin-shadow), transparent);
+  border-right: 1px solid var(--table-pin-border);
+}
+[data-scroll-left='true'] > .table-pin-shade--left,
+[data-scroll-right='true'] > .table-pin-shade--right {
+  opacity: 1;
+}
+@container (max-width: 600px) {
+  .table-pin-shade {
+    display: none;
+  }
+  .ui-data-table [data-pin],
+  .ui-data-table .table-selection-pinned {
+    position: static !important;
+    box-shadow: none !important;
+  }
+}
+.ui-data-table--pinned td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ui-data-table [data-pin],
+.ui-data-table .table-selection-pinned {
+  z-index: 1;
+  background: var(--table-row-background, var(--surface));
+}
+.ui-data-table th[data-pin],
+.ui-data-table th.table-selection-pinned {
+  z-index: 2;
+  background: var(--primary-soft);
+}
+.ui-data-table .table-selection-pinned {
+  position: sticky;
+  left: 0;
+  width: 44px;
+}
+.table-column-menu {
+  width: min(330px, calc(100vw - 24px));
+  padding: 10px;
+}
+.column-menu-heading {
+  display: grid;
+  gap: 5px;
+  padding: 8px 8px 14px;
+}
+.column-menu-heading small {
+  color: var(--muted);
+}
+.column-menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 8px;
+  border-radius: calc(6px * var(--radius-scale));
+}
+.column-menu-row:hover {
+  background: var(--surface-hover);
+}
+.column-menu-row label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: calc(12px * var(--font-scale));
+  cursor: pointer;
+  flex: 1;
+}
+.column-menu-row > span {
+  display: flex;
+  gap: 2px;
+}
+.column-menu-row .ui-icon-button {
+  gap: 2px;
+}
+.column-menu-row .pin-right {
+  transform: rotate(90deg);
+}
+.column-hidden-count {
+  font-size: 0.8em;
+  color: var(--muted);
+}

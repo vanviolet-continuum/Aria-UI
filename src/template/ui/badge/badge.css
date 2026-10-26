@@ -1,0 +1,76 @@
+.ui-badge {
+  --badge-color: var(--muted);
+  --badge-bg: var(--surface-subtle);
+  --badge-border: var(--surface-hover);
+  --badge-contrast: var(--on-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(6px * var(--space-scale));
+  font-size: calc(10px * var(--font-scale));
+  line-height: 1;
+  font-weight: 500;
+  padding: calc(6px * var(--space-scale)) calc(8px * var(--space-scale));
+  border-radius: calc(5px * var(--radius-scale));
+  color: var(--badge-color);
+  background: var(--badge-bg);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.ui-badge--primary {
+  --badge-color: var(--primary);
+  --badge-bg: var(--primary-soft);
+  --badge-border: var(--primary-soft);
+  --badge-contrast: var(--on-primary);
+}
+
+.ui-badge--success {
+  --badge-color: var(--success);
+  --badge-bg: var(--success-soft);
+  --badge-border: var(--success-soft);
+  --badge-contrast: var(--on-success);
+}
+
+.ui-badge--warning {
+  --badge-color: var(--warning);
+  --badge-bg: var(--warning-soft);
+  --badge-border: var(--warning-soft);
+  --badge-contrast: var(--on-warning);
+}
+
+.ui-badge--danger {
+  --badge-color: var(--error);
+  --badge-bg: var(--error-soft);
+  --badge-border: var(--error-soft);
+  --badge-contrast: var(--on-error);
+}
+
+.ui-badge--violet {
+  --badge-color: var(--violet);
+  --badge-bg: var(--violet-soft);
+  --badge-border: var(--violet-soft);
+  --badge-contrast: var(--on-violet);
+}
+
+.ui-badge--outline {
+  background: var(--surface);
+  border-color: color-mix(in srgb, var(--badge-color) 28%, var(--border));
+}
+
+.ui-badge--solid {
+  background: var(--badge-color);
+  color: var(--badge-contrast);
+}
+
+.ui-badge--sm {
+  font-size: calc(9px * var(--font-scale));
+  padding: calc(4px * var(--space-scale)) calc(6px * var(--space-scale));
+}
+
+.ui-badge > i {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}

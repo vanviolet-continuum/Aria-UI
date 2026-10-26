@@ -1,0 +1,11 @@
+@import './palette.css';
+@import './derived.css';
+:root {
+  font-family: var(--font-family);
+  color: var(--text);
+  background: var(--surface);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

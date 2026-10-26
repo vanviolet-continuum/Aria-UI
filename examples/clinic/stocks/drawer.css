@@ -1,0 +1,18 @@
+.drawer .order-lines {
+  max-height: none;
+}
+.drawer .order-line {
+  grid-template-columns: minmax(0, 1fr) 65px 85px 24px;
+}
+.drawer .order-line .field {
+  font-size: calc(10px * var(--font-scale));
+  margin-bottom: calc(14px * var(--space-scale));
+}
+.drawer .field-hint {
+  font-size: calc(11px * var(--font-scale));
+}
+@media (max-width: 650px) {
+  .drawer .order-line {
+    grid-template-columns: minmax(0, 1fr) 55px 24px;
+  }
+}

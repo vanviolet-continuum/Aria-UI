@@ -1,0 +1,32 @@
+.switch {
+  appearance: none;
+  width: 31px;
+  height: 18px;
+  padding: 3px;
+  border: 0;
+  border-radius: calc(20px * var(--radius-scale));
+  background: var(--surface-hover);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  margin: 0;
+}
+
+.switch::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--surface);
+  display: block;
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--shadow-color) 13.33%, transparent);
+  transition: transform 0.2s;
+}
+
+.switch:checked {
+  background: var(--primary);
+}
+
+.switch:checked::after {
+  transform: translateX(13px);
+}

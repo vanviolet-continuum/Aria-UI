@@ -1,0 +1,39 @@
+.topbar {
+  flex-shrink: 0;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: 0 calc(28px * var(--space-scale));
+  gap: calc(18px * var(--space-scale));
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.page-title {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: calc(10px * var(--space-scale));
+}
+
+.page-title h1 {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: calc(19px * var(--font-scale));
+  font-weight: 550;
+  letter-spacing: -0.65px;
+  white-space: nowrap;
+}
+
+.header-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: calc(16px * var(--space-scale));
+}

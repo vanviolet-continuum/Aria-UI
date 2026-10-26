@@ -1,0 +1,6 @@
+node_modules
+dist
+dist-examples
+.npm-cache
+.qa
+package-lock.json

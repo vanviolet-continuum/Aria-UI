@@ -1,0 +1,104 @@
+.confirm-backdrop,
+.mutation-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  backdrop-filter: blur(4px);
+  animation: fade-in 0.18s ease;
+}
+.confirm-backdrop {
+  z-index: 130;
+}
+.confirm-dialog {
+  position: fixed;
+  z-index: 131;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(430px, calc(100vw - 32px));
+  border-radius: calc(16px * var(--radius-scale));
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 30px 100px color-mix(in srgb, var(--shadow-color) 18.82%, transparent);
+  padding: calc(30px * var(--space-scale));
+  text-align: center;
+  animation: confirmation-enter 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.confirm-dialog-icon {
+  display: grid;
+  place-items: center;
+  height: 59px;
+  width: 59px;
+  border-radius: calc(17px * var(--radius-scale));
+  margin: 0 auto calc(20px * var(--space-scale));
+  background: var(--error-soft);
+  color: var(--error);
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--error-soft) 40%, transparent);
+}
+.confirm-dialog h2 {
+  font-size: calc(21px * var(--font-scale));
+  font-weight: 550;
+  letter-spacing: -0.6px;
+  color: var(--text);
+}
+.confirm-dialog p {
+  font-size: calc(12px * var(--font-scale));
+  line-height: 1.8;
+  color: var(--muted);
+  margin: calc(10px * var(--space-scale)) 0 calc(25px * var(--space-scale));
+}
+.confirm-dialog-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(10px * var(--space-scale));
+}
+.confirm-dialog-actions .button {
+  height: 40px;
+  font-size: calc(12px * var(--font-scale));
+}
+.mutation-backdrop {
+  z-index: 200;
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+.mutation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 201;
+  display: grid;
+  place-items: center;
+  outline: none;
+}
+.mutation-overlay .loading-overlay-card {
+  padding: calc(30px * var(--space-scale)) calc(42px * var(--space-scale));
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(18px * var(--radius-scale));
+  box-shadow: 0 15px 55px color-mix(in srgb, var(--shadow-color) 7.06%, transparent);
+}
+.loading-overlay-card {
+  color: var(--muted);
+  text-align: center;
+}
+.loading-overlay-card strong {
+  font-size: calc(13px * var(--font-scale));
+  color: var(--text);
+  margin-top: calc(10px * var(--space-scale));
+}
+.loading-overlay-card small {
+  font-size: calc(11px * var(--font-scale));
+  color: var(--muted);
+  margin-top: calc(6px * var(--space-scale));
+}
+.loading-overlay {
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+}
+@keyframes confirmation-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -47%) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

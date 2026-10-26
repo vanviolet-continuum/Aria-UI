@@ -1,0 +1,27 @@
+.empty-state {
+  padding: calc(48px * var(--space-scale)) calc(20px * var(--space-scale));
+  text-align: center;
+}
+.empty-state h3 {
+  font-size: calc(16px * var(--font-scale));
+  font-weight: 550;
+  color: var(--text);
+}
+.empty-state p {
+  color: var(--muted);
+  font-size: calc(12px * var(--font-scale));
+  line-height: 1.8;
+  max-width: 370px;
+  margin: calc(8px * var(--space-scale)) auto calc(20px * var(--space-scale));
+}
+.empty-state .state-actions {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10px * var(--space-scale));
+  margin: calc(20px * var(--space-scale)) auto 0;
+  background: none;
+}

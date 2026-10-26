@@ -1,0 +1,53 @@
+.popover {
+  width: 285px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(10px * var(--radius-scale));
+  box-shadow: 0 10px 40px color-mix(in srgb, var(--shadow-color) 8.63%, transparent);
+  padding: calc(17px * var(--space-scale));
+  z-index: 90;
+  animation: popover-in 0.15s ease-out;
+  max-width: calc(100vw - 24px);
+}
+
+.popover-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(10px * var(--space-scale));
+  margin-bottom: calc(14px * var(--space-scale));
+}
+
+.popover-heading > strong {
+  font-size: calc(12px * var(--font-scale));
+  font-weight: 600;
+}
+
+.popover-eyebrow {
+  font-size: calc(9px * var(--font-scale));
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: calc(4px * var(--space-scale)) calc(8px * var(--space-scale))
+    calc(7px * var(--space-scale));
+}
+
+.popover-heading > .muted {
+  font-size: calc(9px * var(--font-scale));
+}
+
+.popover p {
+  font-size: calc(11px * var(--font-scale));
+  color: var(--muted);
+}
+
+.popover-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(6px * var(--space-scale));
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: calc(9px * var(--font-scale));
+  padding: calc(13px * var(--space-scale));
+}

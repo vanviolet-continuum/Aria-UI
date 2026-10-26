@@ -1,0 +1,57 @@
+.dropdown-menu {
+  z-index: 100;
+  min-width: 185px;
+  border: 1px solid var(--border);
+  border-radius: calc(8px * var(--radius-scale));
+  background: var(--surface);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--shadow-color) 7.84%, transparent);
+  padding: calc(5px * var(--space-scale));
+  animation: popover-in 0.15s ease-out;
+}
+
+.dropdown-menu [role='menuitem'] {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: calc(9px * var(--space-scale));
+  padding: calc(9px * var(--space-scale)) calc(10px * var(--space-scale));
+  outline: none;
+  font-size: calc(11px * var(--font-scale));
+  border-radius: calc(4px * var(--radius-scale));
+  color: var(--text-secondary);
+}
+
+.dropdown-menu [role='menuitem'][data-highlighted] {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.dropdown-menu [role='separator'] {
+  height: 1px;
+  background: var(--surface-subtle);
+  margin: calc(4px * var(--space-scale)) calc(2px * var(--space-scale));
+}
+
+.dropdown-menu .dropdown-danger {
+  color: var(--error);
+}
+
+.dropdown-menu .dropdown-danger[data-highlighted] {
+  background: var(--error-soft);
+  color: var(--error);
+}
+
+.dropdown-label {
+  padding: calc(8px * var(--space-scale)) calc(10px * var(--space-scale));
+  color: var(--muted);
+  font-size: calc(9px * var(--font-scale));
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.dropdown-footnote {
+  display: block;
+  font-size: calc(9px * var(--font-scale));
+  color: var(--muted);
+  padding: calc(8px * var(--space-scale)) calc(10px * var(--space-scale));
+}

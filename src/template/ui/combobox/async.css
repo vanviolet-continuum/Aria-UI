@@ -1,0 +1,83 @@
+.combobox-popover {
+  min-width: max(130px, var(--radix-popover-trigger-width));
+  background: var(--surface);
+  border-color: var(--border);
+}
+.combobox-options {
+  max-height: 280px;
+  padding: calc(4px * var(--space-scale));
+}
+.combobox-option {
+  height: 52px;
+  padding: calc(8px * var(--space-scale)) calc(10px * var(--space-scale));
+}
+.combobox-option > span {
+  min-width: 0;
+}
+.combobox-option small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 310px;
+}
+.combobox-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  gap: calc(7px * var(--space-scale));
+  color: var(--muted);
+  font-size: calc(11px * var(--font-scale));
+  padding: calc(12px * var(--space-scale));
+}
+.combobox-status .ui-illustration {
+  width: 125px;
+  margin-bottom: 0;
+}
+.combobox-more {
+  min-height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(6px * var(--space-scale));
+  font-size: calc(9px * var(--font-scale));
+  color: var(--muted);
+}
+.combobox-error {
+  padding: calc(15px * var(--space-scale)) calc(10px * var(--space-scale));
+  text-align: center;
+  color: var(--error);
+  font-size: calc(11px * var(--font-scale));
+}
+.combobox-error > button {
+  color: var(--primary);
+  font-size: calc(11px * var(--font-scale));
+  display: block;
+  margin: calc(8px * var(--space-scale)) auto 0;
+}
+.combobox-trigger > .combobox-trigger-icons {
+  display: flex;
+  align-items: center;
+  gap: calc(5px * var(--space-scale));
+  flex-shrink: 0;
+  color: var(--muted);
+}
+.combobox-trigger[aria-busy='true'] {
+  cursor: progress;
+}
+.calendar-month-select .combobox-trigger {
+  height: 29px;
+  border-color: transparent;
+  font-size: calc(11px * var(--font-scale));
+  padding: 0 calc(6px * var(--space-scale));
+  gap: calc(5px * var(--space-scale));
+}
+.page-size-select .combobox-trigger {
+  height: 28px;
+  font-size: calc(10px * var(--font-scale));
+  padding: 0 calc(6px * var(--space-scale));
+}
+.page-size-select .combobox-trigger-icons > svg {
+  width: 11px;
+}

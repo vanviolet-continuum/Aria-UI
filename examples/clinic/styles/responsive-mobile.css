@@ -1,0 +1,180 @@
+@media (max-width: 650px) {
+  .stock-summary {
+    flex-direction: column;
+    align-items: stretch;
+    padding: calc(25px * var(--space-scale)) calc(20px * var(--space-scale))
+      calc(23px * var(--space-scale));
+    gap: calc(24px * var(--space-scale));
+  }
+  .asset-summary {
+    border-right: 0;
+    padding-right: 0;
+    gap: calc(13px * var(--space-scale));
+  }
+  .asset-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .asset-value {
+    font-size: calc(29px * var(--font-scale));
+    margin-top: calc(5px * var(--space-scale));
+  }
+  .asset-summary .eyebrow {
+    font-size: calc(9px * var(--font-scale));
+  }
+  .asset-caption {
+    font-size: calc(9px * var(--font-scale));
+  }
+  .stock-distribution {
+    min-width: 0;
+    width: 100%;
+  }
+  .stock-count .live-label {
+    display: flex;
+  }
+  .stock-count > span {
+    font-size: calc(9px * var(--font-scale));
+  }
+  .distribution-legend > span,
+  .distribution-legend strong {
+    font-size: calc(9px * var(--font-scale));
+  }
+  .distribution-bar {
+    height: 7px;
+  }
+  .stocks-tabs-row {
+    padding: 0 calc(20px * var(--space-scale));
+  }
+  .tabs {
+    gap: calc(29px * var(--space-scale));
+  }
+  .tab {
+    font-size: calc(12px * var(--font-scale));
+    height: 46px;
+  }
+  .stock-content {
+    padding: 0 calc(15px * var(--space-scale));
+  }
+  .stock-content .table-scroll {
+    margin-right: calc(-15px * var(--space-scale));
+    padding-right: calc(15px * var(--space-scale));
+  }
+  .order-table {
+    min-width: 830px;
+  }
+  .workspace-footer {
+    margin: 0 calc(16px * var(--space-scale));
+    font-size: calc(7px * var(--font-scale));
+  }
+  .workspace-footer > span:last-child {
+    display: none;
+  }
+  .standard-page {
+    padding: calc(26px * var(--space-scale)) calc(18px * var(--space-scale));
+  }
+  .page-intro h2,
+  .dashboard-welcome h2 {
+    font-size: calc(22px * var(--font-scale));
+    max-width: 300px;
+  }
+  .page-intro > p,
+  .dashboard-welcome p {
+    font-size: calc(10px * var(--font-scale));
+    line-height: 1.7;
+  }
+  .dashboard-welcome {
+    flex-direction: column;
+    gap: calc(14px * var(--space-scale));
+  }
+  .dashboard-welcome > .button {
+    margin-top: 0;
+  }
+  .dashboard-stats {
+    margin: calc(23px * var(--space-scale)) 0 calc(17px * var(--space-scale));
+    gap: calc(12px * var(--space-scale));
+  }
+  .dashboard-stat {
+    padding: calc(14px * var(--space-scale));
+  }
+  .dashboard-stat > strong {
+    font-size: calc(26px * var(--font-scale));
+  }
+  .dashboard-stat > div > span:first-child {
+    font-size: calc(10px * var(--font-scale));
+  }
+  .dashboard-stat .stat-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .dashboard-grid {
+    gap: calc(18px * var(--space-scale));
+    margin-bottom: calc(18px * var(--space-scale));
+  }
+  .revenue-chart {
+    height: 215px;
+    padding-left: calc(9px * var(--space-scale));
+    padding-right: calc(8px * var(--space-scale));
+  }
+  .attention-list strong {
+    font-size: calc(11px * var(--font-scale));
+  }
+  .attention-list small {
+    font-size: calc(9px * var(--font-scale));
+  }
+  .attention-list > a {
+    padding: calc(14px * var(--space-scale)) 0;
+  }
+  .directory-panel .toolbar-actions {
+    flex-wrap: wrap;
+    gap: calc(8px * var(--space-scale));
+  }
+  .directory-panel .toolbar-actions > .button--primary {
+    margin-left: auto;
+  }
+  .support-hero {
+    padding: calc(8px * var(--space-scale)) 0 calc(27px * var(--space-scale));
+  }
+  .support-hero h2 {
+    font-size: calc(25px * var(--font-scale));
+  }
+  .support-hero p {
+    font-size: calc(10px * var(--font-scale));
+  }
+  .support-cards {
+    grid-template-columns: 1fr;
+    gap: calc(11px * var(--space-scale));
+    margin-bottom: calc(28px * var(--space-scale));
+  }
+  .support-cards > a,
+  .support-cards > button {
+    position: relative;
+    padding: calc(18px * var(--space-scale)) calc(18px * var(--space-scale))
+      calc(18px * var(--space-scale)) calc(57px * var(--space-scale));
+  }
+  .support-cards svg {
+    position: absolute;
+    left: 19px;
+    top: 21px;
+  }
+  .support-cards h3 {
+    margin: 0 0 calc(4px * var(--space-scale));
+  }
+  .support-cards > a > span,
+  .support-cards > button > span {
+    margin-top: calc(11px * var(--space-scale));
+  }
+  .faq-section > h3 {
+    font-size: calc(15px * var(--font-scale));
+  }
+  .dashboard-note {
+    font-size: calc(8px * var(--font-scale));
+  }
+  .dashboard-note .button {
+    font-size: calc(8px * var(--font-scale));
+    padding: 0;
+  }
+  .report-chart {
+    height: 270px;
+    padding: calc(5px * var(--space-scale));
+  }
+}

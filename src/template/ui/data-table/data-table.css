@@ -1,0 +1,180 @@
+.ui-table-container {
+  min-width: 0;
+}
+.ui-data-table {
+  font-size: calc(12px * var(--font-scale));
+}
+.ui-data-table th {
+  font-size: calc(10px * var(--font-scale));
+  height: 43px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.ui-data-table td {
+  height: calc(65px * var(--table-density));
+  color: var(--text-secondary);
+  font-size: calc(12px * var(--font-scale));
+  padding: calc(12px * var(--space-scale) * var(--table-density)) calc(12px * var(--space-scale));
+}
+.ui-data-table th:first-child,
+.ui-data-table td:first-child {
+  padding-left: calc(14px * var(--space-scale));
+}
+.ui-data-table .checkbox-cell {
+  width: 35px;
+  padding-left: calc(10px * var(--space-scale));
+  padding-right: calc(10px * var(--space-scale));
+}
+.ui-table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(16px * var(--space-scale));
+  min-height: 68px;
+  color: var(--muted);
+  font-size: calc(10px * var(--font-scale));
+}
+.pagination-summary strong {
+  font-weight: 500;
+  color: var(--muted);
+}
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: calc(16px * var(--space-scale));
+}
+.pagination-controls > nav {
+  display: flex;
+  gap: calc(5px * var(--space-scale));
+}
+.pagination-controls > nav > button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  border-radius: calc(5px * var(--radius-scale));
+  padding: 0;
+  background: var(--surface);
+}
+.pagination-controls > nav > button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.pagination-controls > nav > button:hover:not(:disabled) {
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-color: var(--border);
+}
+.page-size-select {
+  display: flex;
+  align-items: center;
+  gap: calc(8px * var(--space-scale));
+  font-size: calc(10px * var(--font-scale));
+  color: var(--muted);
+}
+.page-size-select select {
+  border: 1px solid var(--border);
+  border-radius: calc(5px * var(--radius-scale));
+  height: 28px;
+  padding: 0 calc(4px * var(--space-scale));
+  background: var(--surface);
+  color: var(--muted);
+  font-size: calc(10px * var(--font-scale));
+  cursor: pointer;
+}
+.pagination-current {
+  color: var(--muted);
+  white-space: nowrap;
+}
+.ui-data-table .table-sort {
+  font-size: calc(10px * var(--font-scale));
+  white-space: nowrap;
+}
+.ui-data-table .directory-name strong {
+  font-size: calc(12px * var(--font-scale));
+}
+.ui-data-table .directory-name small {
+  font-size: calc(10px * var(--font-scale));
+}
+.stock-order-data {
+  min-width: 950px;
+}
+.stock-inventory-data {
+  min-width: 930px;
+}
+.stock-inventory-data .product-name strong {
+  font-size: calc(12px * var(--font-scale));
+}
+.stock-inventory-data .product-name small {
+  font-size: calc(10px * var(--font-scale));
+}
+.inventory-table-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(15px * var(--space-scale));
+  padding: 0 0 calc(10px * var(--space-scale));
+  color: var(--muted);
+  font-size: calc(10px * var(--font-scale));
+}
+.stock-order-data .order-name {
+  font-size: calc(12px * var(--font-scale));
+}
+.stock-order-data .cell-subtitle {
+  font-size: calc(10px * var(--font-scale));
+}
+.stock-order-data .vendor-cell,
+.stock-order-data .date-cell {
+  font-size: calc(11px * var(--font-scale));
+}
+.stock-order-data .received-cell {
+  min-width: 110px;
+}
+.stock-order-data .receive-button {
+  height: 32px;
+  font-size: calc(10px * var(--font-scale));
+}
+.stock-order-data .receive-button:disabled {
+  font-size: calc(9px * var(--font-scale));
+}
+.stock-order-data .email-pending {
+  opacity: 0.5;
+}
+.stock-order-data .status-badge {
+  font-size: calc(8.5px * var(--font-scale));
+}
+.directory-panel .toolbar-actions > .ui-select-wrap {
+  width: 135px;
+}
+.directory-panel .toolbar-actions > .ui-select-wrap select {
+  height: 33px;
+  font-size: calc(11px * var(--font-scale));
+}
+.directory-panel .ui-data-table {
+  min-width: 740px;
+}
+@media (max-width: 650px) {
+  .ui-table-pagination {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(14px * var(--space-scale));
+    padding: calc(18px * var(--space-scale)) 0;
+  }
+  .pagination-controls {
+    width: 100%;
+    justify-content: space-between;
+    gap: calc(10px * var(--space-scale));
+  }
+  .pagination-current {
+    margin-left: auto;
+  }
+  .page-size-select {
+    font-size: calc(9px * var(--font-scale));
+  }
+  .pagination-controls > nav > button {
+    width: 29px;
+    height: 29px;
+  }
+}
