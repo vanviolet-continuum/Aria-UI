@@ -1,6 +1,9 @@
 import type { ComponentType } from 'react'
 import { decorationCatalog } from './decoration-catalog'
 import { sceneCatalog } from './scene-catalog'
+import { collectionCatalog } from './collection-catalog'
+import { educationCatalog } from './education-catalog'
+import { stillLifeCatalog } from './still-life-catalog'
 import {
   DocumentsIllustration,
   FolderIllustration,
@@ -43,6 +46,16 @@ import {
 } from '../../template/ui/illustrations'
 
 export type IllustrationCategory =
+  | 'nature'
+  | 'travel'
+  | 'food'
+  | 'health'
+  | 'technology'
+  | 'finance'
+  | 'business'
+  | 'creative'
+  | 'science'
+  | 'lifestyle'
   | 'people'
   | 'education'
   | 'objects'
@@ -66,6 +79,16 @@ export interface IllustrationEntry {
 
 export const illustrationCategories: { id: 'all' | IllustrationCategory; label: string }[] = [
   { id: 'all', label: 'All illustrations' },
+  { id: 'nature', label: 'Nature' },
+  { id: 'travel', label: 'Travel' },
+  { id: 'food', label: 'Food & drink' },
+  { id: 'health', label: 'Health & wellness' },
+  { id: 'technology', label: 'Technology' },
+  { id: 'finance', label: 'Finance' },
+  { id: 'business', label: 'Business' },
+  { id: 'creative', label: 'Creative & arts' },
+  { id: 'science', label: 'Science' },
+  { id: 'lifestyle', label: 'Everyday life' },
   { id: 'people', label: 'People' },
   { id: 'education', label: 'Education' },
   { id: 'objects', label: 'Objects' },
@@ -80,6 +103,9 @@ export const illustrationCategories: { id: 'all' | IllustrationCategory; label: 
 ]
 
 export const illustrationCatalog: IllustrationEntry[] = [
+  ...stillLifeCatalog,
+  ...educationCatalog,
+  ...collectionCatalog,
   ...sceneCatalog,
   ...decorationCatalog,
   {

@@ -245,7 +245,7 @@ const columns: ColumnDef<User>[] = [
 
 ## Feedback
 
-Koleksi **75 ilustrasi SVG** tersedia di menu `/illustrations`, lengkap dengan kategori, pencarian, salin komponen, dan unduhan SVG. Lihat [panduan ilustrasi](illustrations/README.md) untuk daftar komponen dan props ukuran, judul aksesibel, serta tone warna.
+Koleksi **295 ilustrasi SVG** tersedia di menu `/illustrations`, lengkap dengan kategori, pencarian, salin komponen, dan unduhan SVG. Lihat [panduan ilustrasi](illustrations/README.md) untuk daftar komponen dan props ukuran, judul aksesibel, serta tone warna.
 
 ```tsx
 // Sekali pada root aplikasi.

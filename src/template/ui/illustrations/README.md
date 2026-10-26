@@ -1,6 +1,6 @@
 # SVG Illustration
 
-Koleksi berisi **75 ilustrasi SVG** reusable. Galeri di `/illustrations` menyediakan pencarian, kategori, pilihan warna dan ukuran preview, salin kode React, salin SVG, serta unduhan SVG. Katalog `/components?component=illustrations` memakai koleksi yang sama.
+Koleksi berisi **295 ilustrasi SVG** reusable. Galeri di `/illustrations` menyediakan pencarian, kategori, pilihan warna dan ukuran preview, salin kode React, salin SVG, serta unduhan SVG. Katalog `/components?component=illustrations` memakai koleksi yang sama.
 
 ```tsx
 import { SuccessIllustration, DocumentsIllustration } from '@/template/ui/illustrations'
@@ -27,7 +27,7 @@ Warna berasal dari token `--illustration-*` sehingga mengikuti tema terang, gela
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Status & feedback | `EmptyIllustration`, `SearchIllustration`, `NotFoundIllustration`, `LoadingIllustration`, `SuccessIllustration`, `ErrorIllustration`, `OfflineIllustration`, `MaintenanceIllustration`, `InfoIllustration`, `HelpIllustration`           |
 | People            | `PersonIllustration`, `CollaborationIllustration`, `PresentationIllustration`, `ReadingIllustration`, `SupportAgentIllustration`, `AchievementIllustration`                                                                              |
-| Education         | `OpenBookIllustration`, `BookshelfIllustration`, `NotebookIllustration`, `GraduationIllustration`, `LearningIllustration`, `GuideIllustration`, `CertificateIllustration`                                                                |
+| Education         | `OpenBookIllustration`, `BookshelfIllustration`, `NotebookIllustration`, `GraduationIllustration`, `LearningIllustration`, `GuideIllustration`, `CertificateIllustration`, serta [100 komponen Education](education/README.md)           |
 | Objects           | `LaptopIllustration`, `CoffeeIllustration`, `CameraIllustration`, `GiftIllustration`                                                                                                                                                     |
 | Workspace         | `WelcomeIllustration`, `TeamIllustration`, `AnalyticsIllustration`, `CalendarIllustration`, `SettingsIllustration`, `TimeIllustration`, `TasksIllustration`, `CreativityIllustration`, `LocationIllustration`, `CelebrationIllustration` |
 | Files             | `UploadIllustration`, `DocumentsIllustration`, `FolderIllustration`, `DownloadIllustration`, `CloudSyncIllustration`                                                                                                                     |
@@ -37,6 +37,18 @@ Warna berasal dari token `--illustration-*` sehingga mengikuti tema terang, gela
 | Infrastructure    | `ServerIllustration`, `DatabaseIllustration`                                                                                                                                                                                             |
 
 File SVG dari galeri adalah snapshot statis dengan warna tema yang sedang digunakan, tanpa ketergantungan pada CSS aplikasi. Untuk animasi loading dan perubahan tema secara langsung, gunakan komponen React bersama stylesheet kit.
+
+## 20 ilustrasi benda dan botani
+
+Tambahan 20 SVG berfokus pada **benda, perabot, dan tanaman tanpa figur manusia**, dengan susunan yang lapang dan garis konsisten. Cari di kategori Objects, Everyday life, atau Nature. Lihat [daftar komponen benda dan botani](still-life/README.md) untuk nama komponen serta contoh pemakaian.
+
+## 100 ilustrasi Education
+
+Kategori **Education** kini berisi **107 SVG**, termasuk 100 ilustrasi baru tentang mata pelajaran, alat sekolah, membaca dan menulis, kelas, belajar online, sains, seni dan keterampilan, kampus, kebiasaan belajar, serta pencapaian akademik. Buka `/illustrations?category=education` atau lihat [daftar 100 komponen Education](education/README.md). Seluruhnya mengikuti props yang sama dan bisa diimpor dari entry point ilustrasi maupun `@/template/ui/illustrations/education`.
+
+## 100 ilustrasi tematik
+
+Tambahan 100 SVG terbagi ke dalam **Nature, Travel, Food & drink, Health & wellness, Technology, Finance, Business, Creative & arts, Science, dan Everyday life**, masing-masing 10 ilustrasi. Lihat [daftar 100 komponen](collections/README.md) untuk nama komponen dan tautan kategori galeri. Semua mengikuti props dan token tema yang sama, serta diekspor melalui entry point ilustrasi.
 
 ## People, Education, dan Objects
 
