@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react'
 import { decorationCatalog } from './decoration-catalog'
+import { sceneCatalog } from './scene-catalog'
 import {
   DocumentsIllustration,
   FolderIllustration,
@@ -42,6 +43,9 @@ import {
 } from '../../template/ui/illustrations'
 
 export type IllustrationCategory =
+  | 'people'
+  | 'education'
+  | 'objects'
   | 'states'
   | 'workspace'
   | 'files'
@@ -62,6 +66,9 @@ export interface IllustrationEntry {
 
 export const illustrationCategories: { id: 'all' | IllustrationCategory; label: string }[] = [
   { id: 'all', label: 'All illustrations' },
+  { id: 'people', label: 'People' },
+  { id: 'education', label: 'Education' },
+  { id: 'objects', label: 'Objects' },
   { id: 'decoration', label: 'Decoration' },
   { id: 'states', label: 'States & feedback' },
   { id: 'workspace', label: 'Workspace' },
@@ -73,6 +80,7 @@ export const illustrationCategories: { id: 'all' | IllustrationCategory; label: 
 ]
 
 export const illustrationCatalog: IllustrationEntry[] = [
+  ...sceneCatalog,
   ...decorationCatalog,
   {
     id: 'documents',

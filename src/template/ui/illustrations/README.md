@@ -1,6 +1,6 @@
 # SVG Illustration
 
-Koleksi berisi **55 ilustrasi SVG** reusable. Galeri di `/illustrations` menyediakan pencarian, kategori, pilihan warna dan ukuran preview, salin kode React, salin SVG, serta unduhan SVG. Katalog `/components?component=illustrations` memakai koleksi yang sama.
+Koleksi berisi **75 ilustrasi SVG** reusable. Galeri di `/illustrations` menyediakan pencarian, kategori, pilihan warna dan ukuran preview, salin kode React, salin SVG, serta unduhan SVG. Katalog `/components?component=illustrations` memakai koleksi yang sama.
 
 ```tsx
 import { SuccessIllustration, DocumentsIllustration } from '@/template/ui/illustrations'
@@ -25,15 +25,30 @@ Warna berasal dari token `--illustration-*` sehingga mengikuti tema terang, gela
 
 | Kategori          | Komponen                                                                                                                                                                                                                                 |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Status & feedback | `EmptyIllustration`, `SearchIllustration`, `NotFoundIllustration`, `LoadingIllustration`, `SuccessIllustration`, `ErrorIllustration`, `OfflineIllustration`, `MaintenanceIllustration`                                                   |
+| Status & feedback | `EmptyIllustration`, `SearchIllustration`, `NotFoundIllustration`, `LoadingIllustration`, `SuccessIllustration`, `ErrorIllustration`, `OfflineIllustration`, `MaintenanceIllustration`, `InfoIllustration`, `HelpIllustration`           |
+| People            | `PersonIllustration`, `CollaborationIllustration`, `PresentationIllustration`, `ReadingIllustration`, `SupportAgentIllustration`, `AchievementIllustration`                                                                              |
+| Education         | `OpenBookIllustration`, `BookshelfIllustration`, `NotebookIllustration`, `GraduationIllustration`, `LearningIllustration`, `GuideIllustration`, `CertificateIllustration`                                                                |
+| Objects           | `LaptopIllustration`, `CoffeeIllustration`, `CameraIllustration`, `GiftIllustration`                                                                                                                                                     |
 | Workspace         | `WelcomeIllustration`, `TeamIllustration`, `AnalyticsIllustration`, `CalendarIllustration`, `SettingsIllustration`, `TimeIllustration`, `TasksIllustration`, `CreativityIllustration`, `LocationIllustration`, `CelebrationIllustration` |
 | Files             | `UploadIllustration`, `DocumentsIllustration`, `FolderIllustration`, `DownloadIllustration`, `CloudSyncIllustration`                                                                                                                     |
-| Communication     | `NotificationsIllustration`, `MessagesIllustration`, `InboxIllustration`, `EmailSentIllustration`                                                                                                                                        |
+| Communication     | `NotificationsIllustration`, `MessagesIllustration`, `InboxIllustration`, `EmailSentIllustration`, `AnnouncementIllustration`                                                                                                            |
 | Security          | `AccessDeniedIllustration`, `SecureIllustration`                                                                                                                                                                                         |
 | Commerce          | `PaymentIllustration`, `InvoiceIllustration`, `ShoppingCartIllustration`, `DeliveryIllustration`                                                                                                                                         |
 | Infrastructure    | `ServerIllustration`, `DatabaseIllustration`                                                                                                                                                                                             |
 
 File SVG dari galeri adalah snapshot statis dengan warna tema yang sedang digunakan, tanpa ketergantungan pada CSS aplikasi. Untuk animasi loading dan perubahan tema secara langsung, gunakan komponen React bersama stylesheet kit.
+
+## People, Education, dan Objects
+
+20 ilustrasi karakter, pendidikan, objek, serta informasi melengkapi koleksi. Buka kategori People, Education, Objects, States & feedback, atau Communication di galeri. Komponen baru juga dapat diimpor dari `@/template/ui/illustrations/scenes`.
+
+```tsx
+import { PersonIllustration, OpenBookIllustration, InfoIllustration } from '@/template/ui/illustrations'
+
+<PersonIllustration size={220} title="Selamat datang" />
+<OpenBookIllustration size={220} tone="violet" title="Pusat pembelajaran" />
+<InfoIllustration size={180} tone="info" title="Informasi tambahan" />
+```
 
 ## Decoration untuk login dan hero
 
@@ -62,7 +77,6 @@ Grup **Decoration** berisi 20 dekorasi abstrak untuk latar login, onboarding, he
 
 ```tsx
 import { AuroraDecoration, BotanicalDecoration } from '@/template/ui/illustrations'
-
 ;<div style={{ position: 'relative', overflow: 'hidden' }}>
   <AuroraDecoration
     size="100%"
