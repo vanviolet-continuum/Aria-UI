@@ -1,12 +1,13 @@
 .popover {
   width: 285px;
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(10px * var(--radius-scale));
-  box-shadow: 0 10px 40px color-mix(in srgb, var(--shadow-color) 8.63%, transparent);
+  box-shadow: 0 10px 40px
+    color-mix(in srgb, var(--shadow-color) calc(8.63% * var(--shadow-strength, 1)), transparent);
   padding: calc(17px * var(--space-scale));
   z-index: 90;
-  animation: popover-in 0.15s ease-out;
+  animation: popover-in calc(0.15s * var(--motion-scale, 1)) ease-out;
   max-width: calc(100vw - 24px);
 }
 
@@ -46,7 +47,7 @@
   align-items: center;
   justify-content: center;
   gap: calc(6px * var(--space-scale));
-  border-top: 1px solid var(--border);
+  border-top: var(--border-width, 1px) solid var(--border);
   color: var(--muted);
   font-size: calc(9px * var(--font-scale));
   padding: calc(13px * var(--space-scale));

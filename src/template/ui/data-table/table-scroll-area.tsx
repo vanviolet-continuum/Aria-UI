@@ -4,18 +4,20 @@ import { useScrollEdges } from './use-scroll-edges'
 
 export function TableScrollArea({
   label,
+  layoutKey,
   leftWidth,
   rightWidth,
   children,
 }: {
   label: string
+  layoutKey?: string
   leftWidth: number
   rightWidth: number
   children: ReactNode
 }) {
   const { t: tr, text: localize } = useI18n()
 
-  const { viewport, scroller } = useScrollEdges()
+  const { viewport, scroller } = useScrollEdges(layoutKey)
   return (
     <div ref={viewport} className="ui-table-viewport">
       <div
@@ -31,14 +33,14 @@ export function TableScrollArea({
         <span
           aria-hidden="true"
           className="table-pin-shade table-pin-shade--left"
-          style={{ left: leftWidth }}
+          style={{ left: `var(--table-pinned-left-width, ${leftWidth}px)` }}
         />
       )}
       {rightWidth > 0 && (
         <span
           aria-hidden="true"
           className="table-pin-shade table-pin-shade--right"
-          style={{ right: rightWidth }}
+          style={{ right: `var(--table-pinned-right-width, ${rightWidth}px)` }}
         />
       )}
     </div>

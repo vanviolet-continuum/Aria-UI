@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--border-width, 1px) solid var(--border);
   padding: 0 calc(28px * var(--space-scale));
   gap: calc(18px * var(--space-scale));
   background: var(--surface);

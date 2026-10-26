@@ -3,6 +3,8 @@ import { useTheme } from '../theme-provider'
 import { resolvePalette } from '../apply-theme'
 import type { ThemePalette } from '../types'
 import { ThemeColorField } from './theme-color-field'
+import { Button } from '../../ui'
+import { RotateCcw } from 'lucide-react'
 
 const colorFields: { key: keyof ThemePalette; label: string }[] = [
   { key: 'primary', label: 'Primary' },
@@ -31,7 +33,7 @@ export function ThemeColors() {
   return (
     <section className="theme-section">
       <div className="theme-section-heading">
-        <span>{tr('03 / Your colors')}</span>
+        <span>{tr('04 / Your colors')}</span>
         <h3>{tr('A palette with purpose.')}</h3>
         <p>
           {tr('Editing the') + ' '}
@@ -41,6 +43,20 @@ export function ThemeColors() {
               'palette. Switch appearance to customize the other mode. Hover, soft, contrast, and SVG colors follow automatically.',
             )}
         </p>
+      </div>
+      <div className="theme-palette-toolbar">
+        <span>
+          {tr('Editing palette')}:{' '}
+          <strong>{tr(resolvedTheme === 'dark' ? 'Dark' : 'Light')}</strong>
+        </span>
+        <Button
+          variant="text"
+          size="sm"
+          onClick={() => updateConfig({ colors: { ...config.colors, [resolvedTheme]: {} } })}
+        >
+          <RotateCcw size={12} />
+          {tr('Reset these colors')}
+        </Button>
       </div>
       <div className="theme-color-grid">
         {colorFields.map(({ key, label }) => (

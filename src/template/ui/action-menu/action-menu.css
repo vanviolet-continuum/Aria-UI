@@ -1,12 +1,13 @@
 .dropdown-menu {
   z-index: 100;
   min-width: 185px;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(8px * var(--radius-scale));
   background: var(--surface);
-  box-shadow: 0 8px 30px color-mix(in srgb, var(--shadow-color) 7.84%, transparent);
+  box-shadow: 0 8px 30px
+    color-mix(in srgb, var(--shadow-color) calc(7.84% * var(--shadow-strength, 1)), transparent);
   padding: calc(5px * var(--space-scale));
-  animation: popover-in 0.15s ease-out;
+  animation: popover-in calc(0.15s * var(--motion-scale, 1)) ease-out;
 }
 
 .dropdown-menu [role='menuitem'] {

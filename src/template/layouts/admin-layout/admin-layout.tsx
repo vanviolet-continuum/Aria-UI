@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useMediaQuery } from '../../hooks/use-media-query'
 import { Sidebar, type SidebarProps } from '../sidebar'
 import { AdminHeader } from '../header'
+import { useOptionalTheme } from '../../theme/theme-provider'
 
 export interface AdminLayoutProps extends Pick<
   SidebarProps,
@@ -30,9 +31,12 @@ export function AdminLayout({
   const { text: localize } = useI18n()
 
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [collapsed, setCollapsed] = useState(false)
+  const theme = useOptionalTheme()
+  const [localCollapsed, setLocalCollapsed] = useState(false)
   const main = useRef<HTMLElement>(null)
   const isMobile = useMediaQuery('(max-width: 850px)')
+  const preferredCollapsed = theme?.config.sidebarCollapsed ?? localCollapsed
+  const collapsed = preferredCollapsed && !isMobile
   const close = useCallback(() => setMobileOpen(false), [])
   useEffect(() => {
     setMobileOpen(false)
@@ -50,7 +54,11 @@ export function AdminLayout({
         mobileOpen={mobileOpen}
         collapsed={collapsed}
         onClose={close}
-        onCollapse={() => setCollapsed((previous) => !previous)}
+        onCollapse={() =>
+          theme
+            ? theme.updateConfig({ sidebarCollapsed: !preferredCollapsed })
+            : setLocalCollapsed((previous) => !previous)
+        }
         onNavigate={onNavigate}
       />
       <div className="main-shell" inert={mobileOpen && isMobile ? true : undefined}>

@@ -1,6 +1,8 @@
 import { basePalettes, themeFonts } from './palettes'
 import { themePresets } from './presets'
 import type { ColorMode, ThemeConfig } from './types'
+import { normalizeThemeConfig } from './config'
+import { controlMetrics } from './control-metrics'
 
 export function resolvePalette(config: ThemeConfig, mode: ColorMode) {
   const preset = themePresets.find((item) => item.id === config.preset) ?? themePresets[0]
@@ -23,6 +25,7 @@ export function contrastColor(hex: string) {
   return ratioDark >= ratioLight ? dark : '#ffffff'
 }
 export function themeVariables(config: ThemeConfig, mode: ColorMode) {
+  const settings = normalizeThemeConfig(config)
   const palette = resolvePalette(config, mode)
   const colors = Object.fromEntries(
     Object.entries(palette).map(([key, color]) => [
@@ -41,7 +44,7 @@ export function themeVariables(config: ThemeConfig, mode: ColorMode) {
     'mint',
   ] as const)
     colors[`--on-${key}`] = contrastColor(palette[key])
-  const size = { sm: [33, 33, 11], md: [37, 40, 12], lg: [44, 46, 13] }[config.controlSize]
+  const size = controlMetrics(settings)
   return {
     ...colors,
     '--font-family': themeFonts[config.font],
@@ -49,9 +52,17 @@ export function themeVariables(config: ThemeConfig, mode: ColorMode) {
     '--space-scale': String(config.spaceScale),
     '--radius-scale': String(config.radius / 8),
     '--sidebar-width': `${config.sidebarWidth}px`,
-    '--control-height': `${size[1]}px`,
-    '--button-height': `${size[0]}px`,
-    '--control-font-size': `${size[2]}px`,
+    '--control-height': `${size.controlHeight}px`,
+    '--button-height': `${size.buttonHeight}px`,
+    '--control-font-size': `${size.fontSize}px`,
+    '--option-height': `${size.optionHeight}px`,
+    '--option-rich-height': `${size.richOptionHeight}px`,
+    '--checkbox-size': `${size.checkboxSize}px`,
+    '--switch-height': `${size.switchHeight}px`,
+    '--header-height': `${settings.headerHeight}px`,
+    '--border-width': `${settings.borderWidth}px`,
+    '--shadow-strength': String(settings.shadowStrength),
+    '--motion-scale': String(settings.motionScale),
     '--table-density': config.density === 'compact' ? '.7' : '1',
   }
 }
@@ -59,6 +70,7 @@ export function applyTheme(config: ThemeConfig, mode: ColorMode) {
   const root = document.documentElement
   root.dataset.theme = mode
   root.dataset.density = config.density
+  root.dataset.motion = config.motion ?? 'system'
   root.style.colorScheme = mode
   for (const [key, value] of Object.entries(themeVariables(config, mode)))
     root.style.setProperty(key, value)

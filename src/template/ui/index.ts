@@ -52,7 +52,13 @@ export { Chip } from './chip/chip'
 export { Tabs, type TabItem } from './tabs/tabs'
 export { Drawer, DrawerFooter, type DrawerProps } from './drawer/drawer'
 export { ConfirmDrawer } from './confirm-drawer/confirm-drawer'
-export { Popover } from './popover/popover'
+export {
+  Popover,
+  PopoverContent,
+  type PopoverProps,
+  type PopoverContentProps,
+} from './popover/popover'
+export * from './menu'
 export { ActionMenu, type ActionMenuItem } from './action-menu/action-menu'
 export { Command, type CommandItem, type CommandProps } from './command/command'
 export { CommandMenu, Cmdk, type CommandMenuProps } from './command/command-menu'

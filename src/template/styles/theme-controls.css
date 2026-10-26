@@ -7,13 +7,54 @@
   min-height: var(--control-height);
 }
 .ui-input-wrap--default .ui-input {
-  height: calc(var(--control-height) - 2px);
+  height: calc(var(--control-height) - var(--border-width) * 2);
   font-size: calc(var(--control-font-size) * var(--font-scale));
 }
-.combobox-trigger,
+.combobox-trigger:not(.combobox-trigger--sm),
 .picker-trigger {
   height: var(--control-height);
   font-size: calc(var(--control-font-size) * var(--font-scale));
+}
+.combobox-trigger--sm {
+  height: 32px;
+  font-size: calc(11px * var(--font-scale));
+}
+.ui-textarea {
+  font-size: calc(var(--control-font-size) * var(--font-scale));
+  min-height: calc(var(--control-height) * 2.5);
+}
+.search-input {
+  height: var(--control-height);
+}
+.search-input input {
+  font-size: calc((var(--control-font-size) - 1px) * var(--font-scale));
+}
+.checkbox {
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  border-width: max(1px, var(--border-width));
+}
+.switch {
+  height: var(--switch-height);
+  width: calc(var(--switch-height) * 1.8);
+  padding: 3px;
+}
+.switch::after {
+  width: calc(var(--switch-height) - 6px);
+  height: calc(var(--switch-height) - 6px);
+}
+.switch:checked::after {
+  transform: translateX(calc(var(--switch-height) * 0.8));
+}
+.otp-cell {
+  height: calc(var(--control-height) + 9px);
+  width: calc(var(--control-height) + 1px);
+}
+.input-otp {
+  max-width: 100%;
+}
+.otp-cell {
+  min-width: 0;
 }
 .ui-input-wrap--invalid,
 .ui-textarea[aria-invalid='true'],

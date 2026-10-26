@@ -1,6 +1,6 @@
 import { useI18n } from '../../i18n/use-i18n'
 import clsx from 'clsx'
-import { useMemo, type ReactNode } from 'react'
+import { useMemo, useState, type ReactNode } from 'react'
 import { EmptyState } from '../empty-state/empty-state'
 import { TablePagination } from './table-pagination'
 import { TableHead } from './table-head'
@@ -22,6 +22,8 @@ export interface DataTableProps<T> {
   columns: ColumnDef<T>[]
   columnVisibility?: ColumnVisibility
   columnPinning?: ColumnPinning
+  onColumnPinningChange?: (pinning: ColumnPinning) => void
+  pinable?: boolean
   getRowId: (row: T) => string
   selection?: RowSelection
   defaultSort?: SortState
@@ -43,6 +45,8 @@ export function DataTable<T>({
   columns,
   columnVisibility,
   columnPinning,
+  onColumnPinningChange,
+  pinable = false,
   getRowId,
   selection,
   defaultSort,
@@ -60,6 +64,19 @@ export function DataTable<T>({
   'aria-label': label = 'Data table',
 }: DataTableProps<T>) {
   const { text: localize } = useI18n()
+  const [internalPinning, setInternalPinning] = useState<ColumnPinning>({ left: [], right: [] })
+  const supportsPinning = pinable || columns.some((column) => column.pinable)
+  const pinning = columnPinning ?? (supportsPinning ? internalPinning : undefined)
+  const changePin = (id: string, side: 'left' | 'right' | 'none') => {
+    const current = pinning ?? { left: [], right: [] }
+    const next: ColumnPinning = {
+      left: current.left.filter((value) => value !== id),
+      right: current.right.filter((value) => value !== id),
+    }
+    if (side !== 'none') next[side].push(id)
+    if (columnPinning === undefined) setInternalPinning(next)
+    onColumnPinningChange?.(next)
+  }
 
   const table = useDataTable({
     data: server ? [] : data,
@@ -70,12 +87,24 @@ export function DataTable<T>({
   })
   const rows = server ? data : pagination ? table.rows : table.allRows
   const layout = useMemo(
-    () => getColumnLayout(columns, columnVisibility, columnPinning, !!selection),
-    [columns, columnVisibility, columnPinning, !!selection],
+    () => getColumnLayout(columns, columnVisibility, pinning, !!selection),
+    [columns, columnVisibility, pinning, !!selection],
   )
-  const minWidth = columnPinning
+  const minWidth = pinning
     ? layout.reduce((sum, item) => sum + Number(item.style.width), selection ? 44 : 0)
     : undefined
+  // One column absorbs spare space; every table still fills its container.
+  const flexibleColumn = layout.find((item) => !item.pin)?.column.id ?? layout[0]?.column.id
+  const renderedLayout = layout.map((item, index) => ({
+    ...item,
+    style: {
+      ...item.style,
+      ...(pinning && item.column.id === flexibleColumn ? { width: undefined } : {}),
+      ...(item.pin
+        ? { [item.pin]: `var(--table-pin-offset-${index}, ${item.style[item.pin]}px)` }
+        : {}),
+    },
+  }))
   const ids = rows.map(getRowId)
   const selected = selection?.selectedIds ?? []
   const allSelected = !!ids.length && ids.every((id) => selected.includes(id))
@@ -87,12 +116,14 @@ export function DataTable<T>({
     <div className="ui-table-container" aria-busy={loading}>
       <TableScrollArea
         label={localize(label)}
+        layoutKey={
+          layout
+            .map((item) => `${item.column.id}:${item.pin ?? ''}:${item.style.width}`)
+            .join('|') + Number(!!selection)
+        }
         leftWidth={layout
           .filter((item) => item.pin === 'left')
-          .reduce(
-            (sum, item) => sum + Number(item.style.width),
-            columnPinning && selection ? 44 : 0,
-          )}
+          .reduce((sum, item) => sum + Number(item.style.width), pinning && selection ? 44 : 0)}
         rightWidth={layout
           .filter((item) => item.pin === 'right')
           .reduce((sum, item) => sum + Number(item.style.width), 0)}
@@ -101,22 +132,24 @@ export function DataTable<T>({
           aria-label={localize(label)}
           className={clsx(
             'data-table ui-data-table',
-            columnPinning && 'ui-data-table--pinned',
+            pinning && 'ui-data-table--pinned',
             className,
           )}
-          style={{ minWidth, width: minWidth }}
+          style={{ minWidth, width: '100%' }}
         >
-          {columnPinning && (
+          {pinning && (
             <colgroup>
               {selection && <col style={{ width: 44 }} />}
-              {layout.map(({ column, style }) => (
+              {renderedLayout.map(({ column, style }) => (
                 <col key={column.id} style={{ width: style.width }} />
               ))}
             </colgroup>
           )}
           <TableHead
-            layout={layout}
-            pinSelection={!!columnPinning}
+            layout={renderedLayout}
+            pinSelection={!!pinning}
+            pinable={pinable}
+            onPin={columnPinning === undefined || onColumnPinningChange ? changePin : undefined}
             selection={selection}
             allSelected={allSelected}
             someSelected={ids.some((id) => selected.includes(id))}
@@ -127,8 +160,8 @@ export function DataTable<T>({
           />
           <TableBody
             rows={rows}
-            layout={layout}
-            pinSelection={!!columnPinning}
+            layout={renderedLayout}
+            pinSelection={!!pinning}
             getRowId={getRowId}
             selection={selection}
             loading={loading}

@@ -1,12 +1,25 @@
 import { useI18n } from '../../i18n/use-i18n'
 import { ArrowUpRight, Check, Mail, Plus, Sparkles } from 'lucide-react'
-import { Badge, Button, Checkbox, Field, Input, EmptyIllustration, toast } from '../../ui'
+import { useState } from 'react'
+import {
+  Badge,
+  Button,
+  Checkbox,
+  Combobox,
+  DatePicker,
+  Field,
+  Input,
+  EmptyIllustration,
+  toast,
+} from '../../ui'
 import { useTheme } from '../theme-provider'
 
 export function ThemePreview() {
   const { t: tr } = useI18n()
 
-  const { config } = useTheme()
+  const { config, storageStatus } = useTheme()
+  const [priority, setPriority] = useState('normal')
+  const [date, setDate] = useState<string>()
   return (
     <aside className="theme-preview">
       <div className="theme-preview-heading">
@@ -14,8 +27,8 @@ export function ThemePreview() {
           <Sparkles size={14} />
           {' ' + tr('LIVE PREVIEW')}
         </span>
-        <Badge variant="success" dot>
-          {tr('All changes saved')}
+        <Badge variant={storageStatus === 'saved' ? 'success' : 'warning'} dot>
+          {tr(storageStatus === 'saved' ? 'All changes saved' : 'Session only')}
         </Badge>
       </div>
       <div className="theme-preview-body">
@@ -30,6 +43,27 @@ export function ThemePreview() {
         >
           <Input placeholder={tr('Something worth making')} />
         </Field>
+        <div className="theme-preview-controls">
+          <Field label={tr('Priority')}>
+            <Combobox
+              searchable={false}
+              value={priority}
+              onChange={setPriority}
+              options={[
+                { value: 'normal', label: 'Normal priority' },
+                { value: 'high', label: 'High priority' },
+              ]}
+            />
+          </Field>
+          <Field label={tr('Target date')}>
+            <DatePicker value={date} onChange={setDate} />
+          </Field>
+        </div>
+        {storageStatus === 'unavailable' && (
+          <p className="theme-storage-note">
+            {tr('Browser storage is unavailable. Export your theme to keep these settings.')}
+          </p>
+        )}
         <div className="theme-preview-buttons">
           <Button
             variant="contained"
@@ -69,6 +103,14 @@ export function ThemePreview() {
           <span>{tr('One palette. Every little detail.')}</span>
         </div>
         <div className="theme-preview-metrics">
+          <div>
+            <span>{tr('BORDER')}</span>
+            <strong>{config.borderWidth}px</strong>
+          </div>
+          <div>
+            <span>{tr('SHADOW')}</span>
+            <strong>{Math.round(config.shadowStrength * 100)}%</strong>
+          </div>
           <div>
             <span>{tr('DEFAULT SIZE')}</span>
             <strong>

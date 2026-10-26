@@ -47,3 +47,5 @@
 @import './parallel-stepper/parallel-stepper.css';
 @import './pdf-viewer/pdf-viewer.css';
 @import './detail/detail.css';
+@import './menu/menu.css';
+@import '../theme/effects.css';

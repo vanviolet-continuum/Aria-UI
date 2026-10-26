@@ -10,7 +10,7 @@ export function Toaster({
 }: ComponentProps<typeof Sonner>) {
   return (
     <Sonner
-      position="bottom-right"
+      position="bottom-center"
       closeButton
       gap={12}
       visibleToasts={4}

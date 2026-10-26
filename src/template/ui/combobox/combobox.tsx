@@ -1,3 +1,4 @@
+import { PopoverContent } from '../popover/popover'
 import { useI18n } from '../../i18n/use-i18n'
 import * as Popover from '@radix-ui/react-popover'
 import { ChevronsUpDown } from 'lucide-react'
@@ -36,6 +37,8 @@ export function Combobox({
   emptyMessage = 'No options found.',
   disabled,
   clearable,
+  searchable = true,
+  size = 'md',
   id,
   name,
   className,
@@ -48,6 +51,7 @@ export function Combobox({
   const [active, setActive] = useState(0)
   const listId = useId()
   const searchRef = useRef<HTMLInputElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const labels = useRef(new Map<string, ComboboxOption>())
   const async = useAsyncOptions(open, query, loadOptions, debounceMs, cacheKey)
   const remote = !!loadOptions || !!onSearchChange
@@ -101,7 +105,7 @@ export function Combobox({
           type="button"
           id={id}
           disabled={disabled}
-          className={clsx('combobox-trigger', className)}
+          className={clsx('combobox-trigger', `combobox-trigger--${size}`, className)}
           aria-haspopup="listbox"
           aria-expanded={open}
           aria-controls={open ? listId : undefined}
@@ -117,30 +121,38 @@ export function Combobox({
         </button>
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Content
+        <PopoverContent
+          ref={contentRef}
+          size="auto"
+          variant="form"
+          scrollArea="content"
           className="combobox-popover"
+          data-searchable={searchable}
           align="start"
           sideOffset={6}
           onOpenAutoFocus={(event) => {
             event.preventDefault()
-            searchRef.current?.focus()
+            if (searchable) searchRef.current?.focus()
+            else contentRef.current?.querySelector<HTMLElement>('[role="listbox"]')?.focus()
           }}
         >
-          <ComboboxSearch
-            ref={searchRef}
-            query={query}
-            onQuery={(next) => {
-              setQuery(next)
-              setActive(0)
-              onSearchChange?.(next)
-            }}
-            listId={listId}
-            active={active}
-            onActive={setActive}
-            options={filtered}
-            onChoose={choose}
-            placeholder={localize(searchPlaceholder)}
-          />
+          {searchable && (
+            <ComboboxSearch
+              ref={searchRef}
+              query={query}
+              onQuery={(next) => {
+                setQuery(next)
+                setActive(0)
+                onSearchChange?.(next)
+              }}
+              listId={listId}
+              active={active}
+              onActive={setActive}
+              options={filtered}
+              onChoose={choose}
+              placeholder={localize(searchPlaceholder)}
+            />
+          )}
           <ComboboxOptions
             options={filtered}
             selected={value}
@@ -155,8 +167,9 @@ export function Combobox({
             error={localize(loadOptions ? async.error : null)}
             onRetry={async.retry}
             emptyMessage={localize(emptyMessage)}
+            focusable={!searchable}
           />
-        </Popover.Content>
+        </PopoverContent>
       </Popover.Portal>
     </Popover.Root>
   )

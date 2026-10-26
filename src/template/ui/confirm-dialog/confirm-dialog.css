@@ -4,7 +4,7 @@
   inset: 0;
   background: var(--overlay);
   backdrop-filter: blur(4px);
-  animation: fade-in 0.18s ease;
+  animation: fade-in calc(0.18s * var(--motion-scale, 1)) ease;
 }
 .confirm-backdrop {
   z-index: 130;
@@ -17,12 +17,13 @@
   transform: translate(-50%, -50%);
   width: min(430px, calc(100vw - 32px));
   border-radius: calc(16px * var(--radius-scale));
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   background: var(--surface);
-  box-shadow: 0 30px 100px color-mix(in srgb, var(--shadow-color) 18.82%, transparent);
+  box-shadow: 0 30px 100px
+    color-mix(in srgb, var(--shadow-color) calc(18.82% * var(--shadow-strength, 1)), transparent);
   padding: calc(30px * var(--space-scale));
   text-align: center;
-  animation: confirmation-enter 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: confirmation-enter calc(0.2s * var(--motion-scale, 1)) cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .confirm-dialog-icon {
   display: grid;
@@ -71,9 +72,10 @@
 .mutation-overlay .loading-overlay-card {
   padding: calc(30px * var(--space-scale)) calc(42px * var(--space-scale));
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(18px * var(--radius-scale));
-  box-shadow: 0 15px 55px color-mix(in srgb, var(--shadow-color) 7.06%, transparent);
+  box-shadow: 0 15px 55px
+    color-mix(in srgb, var(--shadow-color) calc(7.06% * var(--shadow-strength, 1)), transparent);
 }
 .loading-overlay-card {
   color: var(--muted);

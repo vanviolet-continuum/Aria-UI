@@ -1,5 +1,5 @@
 .ui-spinner {
-  animation: loading-spin 0.8s linear infinite;
+  animation: loading-spin calc(0.8s * var(--motion-scale, 1)) linear infinite;
   flex-shrink: 0;
 }
 
@@ -13,7 +13,7 @@
     var(--surface-subtle) 70%
   );
   background-size: 200% 100%;
-  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  animation: skeleton-shimmer calc(1.5s * var(--motion-scale, 1)) ease-in-out infinite;
   min-height: 12px;
 }
 

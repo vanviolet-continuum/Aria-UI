@@ -33,6 +33,9 @@ export interface ComboboxProps {
   emptyMessage?: string
   disabled?: boolean
   clearable?: boolean
+  /** Hide search for short, simple option lists, such as page sizes. */
+  searchable?: boolean
+  size?: 'sm' | 'md'
   id?: string
   name?: string
   className?: string

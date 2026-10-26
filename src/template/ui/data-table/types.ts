@@ -6,6 +6,8 @@ export interface ColumnDef<T> {
   accessor?: keyof T | ((row: T) => string | number)
   cell?: (row: T, index: number) => ReactNode
   sortable?: boolean
+  /** Show the pin control in this column header. Overrides the table default. */
+  pinable?: boolean
   className?: string
   width?: string | number
   align?: 'left' | 'center' | 'right'

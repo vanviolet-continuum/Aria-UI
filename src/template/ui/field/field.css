@@ -35,7 +35,7 @@
 
 .form-section + .form-section {
   padding-top: calc(25px * var(--space-scale));
-  border-top: 1px solid var(--border);
+  border-top: var(--border-width, 1px) solid var(--border);
 }
 
 .form-section-title {

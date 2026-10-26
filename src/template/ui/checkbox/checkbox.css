@@ -2,7 +2,7 @@
   width: 14px;
   height: 14px;
   appearance: none;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(4px * var(--radius-scale));
   background: var(--surface);
   display: inline-grid;
@@ -12,8 +12,8 @@
   padding: 0;
   margin: 0;
   transition:
-    border-color 0.1s,
-    background 0.1s;
+    border-color calc(0.1s * var(--motion-scale, 1)),
+    background calc(0.1s * var(--motion-scale, 1));
 }
 
 .checkbox:hover {

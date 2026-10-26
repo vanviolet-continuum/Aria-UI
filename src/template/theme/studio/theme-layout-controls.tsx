@@ -4,7 +4,7 @@ import { useTheme } from '../theme-provider'
 import { Combobox, Field } from '../../ui'
 import type { ControlSize, ThemeFont, ThemeMode } from '../types'
 
-function ThemeSlider({
+export function ThemeSlider({
   label,
   value,
   min,
@@ -12,6 +12,7 @@ function ThemeSlider({
   step = 1,
   suffix = '',
   onChange,
+  disabled,
 }: {
   label: string
   value: number
@@ -20,6 +21,7 @@ function ThemeSlider({
   step?: number
   suffix?: string
   onChange: (value: number) => void
+  disabled?: boolean
 }) {
   const { text: localize } = useI18n()
 
@@ -40,6 +42,7 @@ function ThemeSlider({
         max={max}
         step={step}
         value={value}
+        disabled={disabled}
         onChange={(event) => onChange(Number(event.target.value))}
       />
     </div>
@@ -132,15 +135,6 @@ export function ThemeLayoutControls() {
           step={5}
           suffix="%"
           onChange={(value) => updateConfig({ spaceScale: value / 100 })}
-        />
-        <ThemeSlider
-          label={tr('Sidebar width')}
-          value={config.sidebarWidth}
-          min={200}
-          max={300}
-          step={4}
-          suffix="px"
-          onChange={(sidebarWidth) => updateConfig({ sidebarWidth })}
         />
       </div>
     </section>

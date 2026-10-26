@@ -1,3 +1,4 @@
+import { PopoverContent } from '../popover/popover'
 import { useI18n } from '../../i18n/use-i18n'
 import * as Popover from '@radix-ui/react-popover'
 import { CalendarDays, X } from 'lucide-react'
@@ -63,7 +64,13 @@ export function DatePicker({
         )}
       </div>
       <Popover.Portal>
-        <Popover.Content className="calendar-popover" align="start" sideOffset={7}>
+        <PopoverContent
+          size="auto"
+          variant="form"
+          className="calendar-popover"
+          align="start"
+          sideOffset={7}
+        >
           <Calendar
             value={value}
             onChange={(next) => {
@@ -91,7 +98,7 @@ export function DatePicker({
               {tr('Today')}
             </button>
           </div>
-        </Popover.Content>
+        </PopoverContent>
       </Popover.Portal>
     </Popover.Root>
   )

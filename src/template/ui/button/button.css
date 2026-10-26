@@ -7,10 +7,10 @@
   border-radius: calc(5px * var(--radius-scale));
   font-weight: 500;
   transition:
-    background 0.15s,
-    border-color 0.15s,
-    box-shadow 0.15s;
-  border: 1px solid transparent;
+    background calc(0.15s * var(--motion-scale, 1)),
+    border-color calc(0.15s * var(--motion-scale, 1)),
+    box-shadow calc(0.15s * var(--motion-scale, 1));
+  border: var(--border-width, 1px) solid transparent;
   line-height: 1;
 }
 
@@ -36,20 +36,23 @@
   background: var(--primary);
   color: var(--on-primary);
   border-color: var(--primary);
-  box-shadow: 0 3px 5px color-mix(in srgb, var(--shadow-color) 7.84%, transparent);
+  box-shadow: 0 3px 5px
+    color-mix(in srgb, var(--shadow-color) calc(7.84% * var(--shadow-strength, 1)), transparent);
 }
 
 .button--primary:hover {
   background: var(--primary-hover);
   border-color: var(--primary-hover);
-  box-shadow: 0 4px 8px color-mix(in srgb, var(--shadow-color) 14.12%, transparent);
+  box-shadow: 0 4px 8px
+    color-mix(in srgb, var(--shadow-color) calc(14.12% * var(--shadow-strength, 1)), transparent);
 }
 
 .button--secondary {
   background: var(--surface);
   border-color: var(--border);
   color: var(--text-secondary);
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--shadow-color) 1.18%, transparent);
+  box-shadow: 0 1px 2px
+    color-mix(in srgb, var(--shadow-color) calc(1.18% * var(--shadow-strength, 1)), transparent);
 }
 
 .button--secondary:hover {

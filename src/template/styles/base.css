@@ -160,7 +160,7 @@ svg {
 }
 
 .page-enter {
-  animation: page-enter 0.3s ease-out;
+  animation: page-enter calc(0.3s * var(--motion-scale, 1)) ease-out;
 }
 
 .app-loading {
@@ -179,5 +179,5 @@ svg {
   border: 2px solid var(--border);
   border-top-color: var(--primary);
   border-radius: 50%;
-  animation: loading-spin 0.7s linear infinite;
+  animation: loading-spin calc(0.7s * var(--motion-scale, 1)) linear infinite;
 }

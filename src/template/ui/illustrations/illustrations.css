@@ -59,21 +59,21 @@
 }
 .loader-orbit {
   transform-origin: 60px 60px;
-  animation: orbit 16s linear infinite;
+  animation: orbit calc(16s * var(--motion-scale, 1)) linear infinite;
 }
 .loader-float {
-  animation: loader-float 2.4s ease-in-out infinite;
+  animation: loader-float calc(2.4s * var(--motion-scale, 1)) ease-in-out infinite;
 }
 .loader-dot {
   transform-origin: center;
   transform-box: fill-box;
-  animation: loader-pulse 1.6s ease-in-out infinite;
+  animation: loader-pulse calc(1.6s * var(--motion-scale, 1)) ease-in-out infinite;
 }
 .loader-dot--two {
-  animation-delay: 0.35s;
+  animation-delay: calc(0.35s * var(--motion-scale, 1));
 }
 .loader-dot--three {
-  animation-delay: 0.7s;
+  animation-delay: calc(0.7s * var(--motion-scale, 1));
 }
 @keyframes orbit {
   to {

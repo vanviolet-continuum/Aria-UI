@@ -3,12 +3,12 @@
   align-items: center;
   width: 100%;
   gap: calc(9px * var(--space-scale));
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   background: var(--surface);
   border-radius: calc(7px * var(--radius-scale));
   transition:
-    box-shadow 0.15s,
-    border-color 0.15s;
+    box-shadow calc(0.15s * var(--motion-scale, 1)),
+    border-color calc(0.15s * var(--motion-scale, 1));
   min-width: 0;
   padding: 0 calc(12px * var(--space-scale));
   min-height: 40px;
@@ -16,7 +16,8 @@
 
 .ui-input-wrap:focus-within {
   border-color: var(--border);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--shadow-color) 3.92%, transparent);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--shadow-color) calc(3.92% * var(--shadow-strength, 1)), transparent);
 }
 
 .ui-input {

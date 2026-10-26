@@ -43,6 +43,30 @@ Unit test berada di `tests/template/`, terpisah dari folder portable. Proyek yan
 | Overlay    | `Drawer`, `DrawerFooter`, `ConfirmDialog`, `LoadingOverlay`                                 |
 | Feedback   | `Toaster`, `toast`, `EmptyState`, `SearchEmptyState`, `NotFoundState`, SVG illustrations    |
 
+## Menu dan popover
+
+`Menu` menyatukan menu aksi, pilihan tunggal, dan checkbox. Menu memakai Radix Dropdown Menu untuk navigasi keyboard, typeahead, Escape, dan pemulihan fokus. `ActionMenu` dan pilihan bahasa memakai komponen ini.
+
+```tsx
+import { Menu, Button } from './template/ui'
+;<Menu
+  variant="rich"
+  size="md"
+  label="Workspace actions"
+  description="Choose what comes next."
+  trigger={<Button>Open menu</Button>}
+  items={[
+    { id: 'view', label: 'View details', description: 'Take a closer look', onSelect: view },
+    { id: 'copy', label: 'Duplicate', shortcut: '⌘D', onSelect: duplicate },
+    { id: 'archive', label: 'Archive', separator: true, onSelect: archive },
+  ]}
+/>
+```
+
+Varian: `compact`, `default`, dan `rich`. Ukuran: `sm`, `md`, `lg`. Posisi diatur dengan `side` dan `align`. Untuk pilihan tunggal, gunakan `selection="single"`, `value`, dan `onValueChange`. Untuk pilihan checkbox, isi `checked` dan `onCheckedChange` pada item; `keepOpen` mempertahankan menu saat pilihan diubah. Item juga mendukung `icon`, `trailing`, `disabled`, dan `destructive`.
+
+`Popover` dipakai untuk konten bebas, seperti informasi atau formulir. Gunakan `variant="default | menu | form"` dan `size="sm | md | lg | auto"`. `PopoverContent` dapat dipakai di dalam root/portal Radix untuk komponen composite; combobox dan date/time picker menggunakannya. Semua panel berbagi border, radius, bayangan, batas viewport, dan layer yang sama. Panel biasa memakai `scrollArea="panel"`; composite dengan daftar internal memakai `scrollArea="content"` agar hanya daftar tersebut yang di-scroll. Combobox dan filter tabel memakai pola ini, dengan pencarian dan footer tetap terlihat.
+
 ## Detail halaman dan drawer
 
 `DetailView` menyediakan header identitas, badge, action, metadata, ringkasan, konten utama, dan sidebar informasi. Container query menyesuaikan susunan dengan lebar komponen, sehingga konten yang sama dapat dipakai pada halaman maupun drawer. Seluruh warna mengikuti token tema.
@@ -118,7 +142,7 @@ const [email, setEmail] = useState('')
 />
 ```
 
-Combobox mendukung pencarian, keyboard, disabled options, empty result, dan field `name` untuk hidden form value. Validasi nilai wajib komponen composite dilakukan melalui state/form handler Anda.
+Combobox mendukung pencarian, keyboard, disabled options, empty result, dan field `name` untuk hidden form value. Gunakan `searchable={false}` untuk daftar pendek seperti jumlah baris tabel, serta `size="sm"` untuk trigger ringkas. Tanpa pencarian, navigasi panah, Home/End, Enter, dan pencarian lewat karakter tetap tersedia. Pada tema default, opsi tanpa deskripsi memakai tinggi 36px dan opsi dengan deskripsi 56px; keduanya menyesuaikan ukuran kontrol, font, dan spacing dari tema. Lebar panel mengikuti trigger dengan minimum yang cukup untuk isinya. Virtualisasi memakai offset sesuai tinggi tiap opsi. Validasi nilai wajib komponen composite dilakukan melalui state/form handler Anda.
 
 ## Drawer
 

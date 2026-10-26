@@ -1,6 +1,6 @@
-import type { ThemeConfig } from './types'
+import type { ResolvedThemeConfig } from './types'
 
-export const defaultTheme: ThemeConfig = {
+export const defaultTheme: ResolvedThemeConfig = {
   version: 1,
   mode: 'light',
   preset: 'zendenta',
@@ -11,5 +11,11 @@ export const defaultTheme: ThemeConfig = {
   controlSize: 'md',
   density: 'comfortable',
   sidebarWidth: 232,
+  headerHeight: 70,
+  sidebarCollapsed: false,
+  borderWidth: 1,
+  shadowStrength: 1,
+  motion: 'system',
+  motionScale: 1,
   colors: { light: {}, dark: {} },
 }

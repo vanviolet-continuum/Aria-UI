@@ -22,7 +22,7 @@
   --fc-classic-event: var(--primary-soft);
   --fc-classic-event-contrast: var(--primary);
   --fc-classic-today: color-mix(in srgb, var(--primary) 4%, var(--surface));
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(10px * var(--radius-scale));
   padding: calc(21px * var(--space-scale));
   background: var(--surface);

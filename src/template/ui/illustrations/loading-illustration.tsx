@@ -1,23 +1,32 @@
 import { useI18n } from '../../i18n/use-i18n'
+import { illustrationStyle, type IllustrationProps } from './frame'
 export function LoadingIllustration({
   size = 100,
   label = 'Loading',
-}: {
-  size?: number
+  title,
+  tone,
+  style,
+  className = '',
+}: IllustrationProps & {
   label?: string
 }) {
   const { text: localize } = useI18n()
+  const accessibleTitle = title ?? label
 
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 120 120"
       width={size}
       height={size}
-      className="loading-illustration"
-      role={label ? 'img' : undefined}
-      aria-label={localize(label || undefined)}
-      aria-hidden={label ? undefined : true}
+      className={`loading-illustration ${className}`}
+      role={accessibleTitle ? 'img' : undefined}
+      aria-label={localize(accessibleTitle || undefined)}
+      aria-hidden={accessibleTitle ? undefined : true}
+      focusable="false"
+      style={illustrationStyle({ size, tone, style })}
     >
+      {accessibleTitle && <title>{localize(accessibleTitle)}</title>}
       <circle cx="60" cy="60" r="46" fill="var(--illustration-wash)" />
       <circle
         className="loader-orbit"

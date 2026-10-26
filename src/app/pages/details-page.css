@@ -1,6 +1,5 @@
 .project-details-page {
-  max-width: 1320px;
-  margin-inline: auto;
+  width: 100%;
 }
 
 .project-page-toolbar,
@@ -179,7 +178,7 @@
   gap: calc(10px * var(--space-scale));
   margin-top: calc(24px * var(--space-scale));
   padding: calc(14px * var(--space-scale));
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(8px * var(--radius-scale));
   background: var(--surface-subtle);
   color: var(--primary);

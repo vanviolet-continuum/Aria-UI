@@ -1,5 +1,51 @@
 import * as Primitive from '@radix-ui/react-popover'
-import type { ReactNode } from 'react'
+import clsx from 'clsx'
+import { forwardRef, type ComponentPropsWithoutRef, type ComponentRef, type ReactNode } from 'react'
+
+export interface PopoverContentProps extends ComponentPropsWithoutRef<typeof Primitive.Content> {
+  variant?: 'default' | 'menu' | 'form'
+  size?: 'sm' | 'md' | 'lg' | 'auto'
+  /** Content composites can own their one scrolling region. */
+  scrollArea?: 'panel' | 'content'
+}
+export const PopoverContent = forwardRef<
+  ComponentRef<typeof Primitive.Content>,
+  PopoverContentProps
+>(function PopoverContent(
+  {
+    variant = 'default',
+    size = 'md',
+    scrollArea = 'panel',
+    className,
+    sideOffset = 8,
+    collisionPadding = 12,
+    ...props
+  },
+  ref,
+) {
+  return (
+    <Primitive.Content
+      ref={ref}
+      className={clsx(
+        'ui-floating-surface',
+        'popover',
+        `popover--${variant}`,
+        `popover--${size}`,
+        `popover--scroll-${scrollArea}`,
+        className,
+      )}
+      sideOffset={sideOffset}
+      collisionPadding={collisionPadding}
+      {...props}
+    />
+  )
+})
+export interface PopoverProps extends PopoverContentProps {
+  trigger: ReactNode
+  children: ReactNode
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+}
 
 export function Popover({
   trigger,
@@ -7,22 +53,15 @@ export function Popover({
   open,
   onOpenChange,
   align = 'start',
-  className = '',
-}: {
-  trigger: ReactNode
-  children: ReactNode
-  open?: boolean
-  onOpenChange?: (open: boolean) => void
-  align?: 'start' | 'center' | 'end'
-  className?: string
-}) {
+  ...props
+}: PopoverProps) {
   return (
     <Primitive.Root open={open} onOpenChange={onOpenChange}>
       <Primitive.Trigger asChild>{trigger}</Primitive.Trigger>
       <Primitive.Portal>
-        <Primitive.Content className={`popover ${className}`} align={align} sideOffset={8}>
+        <PopoverContent align={align} {...props}>
           {children}
-        </Primitive.Content>
+        </PopoverContent>
       </Primitive.Portal>
     </Primitive.Root>
   )

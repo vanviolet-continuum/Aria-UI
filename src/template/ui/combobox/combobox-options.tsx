@@ -1,10 +1,13 @@
 import { useI18n } from '../../i18n/use-i18n'
 import { Check } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { LoadingIllustration, SearchIllustration } from '../illustrations'
 import { Spinner } from '../loading-overlay/loading-overlay'
 import type { ComboboxOption } from './types'
+import { useOptionalTheme } from '../../theme/theme-provider'
+import { controlMetrics } from '../../theme/control-metrics'
+import { defaultTheme } from '../../theme/defaults'
 
 interface Props {
   options: ComboboxOption[]
@@ -20,6 +23,7 @@ interface Props {
   error?: string | null
   onRetry: () => void
   emptyMessage: string
+  focusable?: boolean
 }
 export function ComboboxOptions({
   options,
@@ -35,22 +39,38 @@ export function ComboboxOptions({
   error,
   onRetry,
   emptyMessage,
+  focusable,
 }: Props) {
   const { t: tr, text: localize } = useI18n()
 
   const list = useRef<HTMLDivElement>(null)
   const sentinel = useRef<HTMLDivElement>(null)
   const [scroll, setScroll] = useState(0)
+  const typed = useRef({ text: '', at: 0 })
+  const theme = useOptionalTheme()
+  const { optionHeight, richOptionHeight } = controlMetrics(theme?.config ?? defaultTheme)
+  const heights = useMemo(
+    () => options.map((option) => (option.description ? richOptionHeight : optionHeight)),
+    [options, optionHeight, richOptionHeight],
+  )
+  const offsets = useMemo(() => {
+    const values = [0]
+    for (const height of heights) values.push(values[values.length - 1] + height)
+    return values
+  }, [heights])
   const virtual = options.length > 80
-  const start = virtual ? Math.max(0, Math.floor(scroll / 52) - 4) : 0
+  const start = virtual
+    ? Math.max(0, heights.findIndex((height, index) => offsets[index] + height > scroll) - 4)
+    : 0
   const visible = virtual ? options.slice(start, start + 15) : options
   useEffect(() => {
     if (!list.current) return
-    const top = active * 52
+    const top = offsets[active] ?? 0
+    const height = heights[active] ?? optionHeight
     if (top < list.current.scrollTop) list.current.scrollTop = top
-    else if (top + 52 > list.current.scrollTop + list.current.clientHeight)
-      list.current.scrollTop = top + 52 - list.current.clientHeight
-  }, [active])
+    else if (top + height > list.current.scrollTop + list.current.clientHeight)
+      list.current.scrollTop = top + height - list.current.clientHeight
+  }, [active, offsets, heights, optionHeight])
   useEffect(() => {
     if (!sentinel.current || !hasMore || loading || loadingMore || !onLoadMore) return
     const observer = new IntersectionObserver(
@@ -70,6 +90,41 @@ export function ComboboxOptions({
       role="listbox"
       aria-label={tr('Available options')}
       aria-busy={loading || loadingMore}
+      tabIndex={focusable ? 0 : undefined}
+      aria-activedescendant={focusable && options[active] ? `${id}-${active}` : undefined}
+      onKeyDown={(event) => {
+        if (!focusable || event.target !== event.currentTarget) return
+        const enabled = options
+          .map((option, index) => ({ option, index }))
+          .filter(({ option }) => !option.disabled)
+        if (!enabled.length) return
+        const current = enabled.findIndex((item) => item.index === active)
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault()
+          const direction = event.key === 'ArrowDown' ? 1 : -1
+          onActive(enabled[(current + direction + enabled.length) % enabled.length].index)
+        } else if (event.key === 'Home' || event.key === 'End') {
+          event.preventDefault()
+          onActive(event.key === 'Home' ? enabled[0].index : enabled[enabled.length - 1].index)
+        } else if (
+          (event.key === 'Enter' || event.key === ' ') &&
+          options[active] &&
+          !options[active].disabled
+        ) {
+          event.preventDefault()
+          onChoose(options[active])
+        } else if (event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey) {
+          event.preventDefault()
+          const now = Date.now()
+          const text =
+            (now - typed.current.at > 750 ? '' : typed.current.text) + event.key.toLowerCase()
+          typed.current = { text, at: now }
+          const match = enabled.find(({ option }) =>
+            localize(option.label).toLowerCase().startsWith(text),
+          )
+          if (match) onActive(match.index)
+        }
+      }}
       onScroll={(event) => setScroll(event.currentTarget.scrollTop)}
     >
       {loading && (
@@ -79,7 +134,11 @@ export function ComboboxOptions({
         </div>
       )}
       {!loading && (
-        <div style={virtual ? { height: options.length * 52, position: 'relative' } : undefined}>
+        <div
+          style={
+            virtual ? { height: offsets[offsets.length - 1], position: 'relative' } : undefined
+          }
+        >
           {visible.map((option, position) => {
             const index = start + position
             return (
@@ -96,16 +155,28 @@ export function ComboboxOptions({
                 onClick={() => onChoose(option)}
                 style={
                   virtual
-                    ? { position: 'absolute', top: index * 52, left: 0, width: '100%' }
-                    : undefined
+                    ? {
+                        position: 'absolute',
+                        top: offsets[index],
+                        left: 0,
+                        width: '100%',
+                        height: heights[index],
+                      }
+                    : { height: heights[index] }
                 }
-                className={clsx('combobox-option', active === index && 'combobox-option--active')}
+                className={clsx(
+                  'combobox-option',
+                  option.description && 'combobox-option--rich',
+                  active === index && 'combobox-option--active',
+                )}
               >
-                <span>
-                  {localize(option.label)}
+                <span className="combobox-option-copy">
+                  <span className="combobox-option-label">{localize(option.label)}</span>
                   {option.description && <small>{localize(option.description)}</small>}
                 </span>
-                {option.value === selected && <Check size={15} />}
+                <span className="combobox-option-check" aria-hidden="true">
+                  {option.value === selected && <Check size={15} />}
+                </span>
               </button>
             )
           })}
@@ -133,7 +204,7 @@ export function ComboboxOptions({
               {tr('Loading more…')}
             </>
           ) : (
-            'Scroll for more options'
+            tr('Scroll for more options')
           )}
         </div>
       )}

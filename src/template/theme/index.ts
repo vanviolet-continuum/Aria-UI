@@ -7,6 +7,7 @@ export {
 export { ThemeToggle } from './theme-toggle'
 export { initializeTheme } from './bootstrap-theme'
 export { defaultTheme } from './defaults'
+export { normalizeThemeConfig, parseThemeFile } from './config'
 export type {
   ThemeConfig,
   ThemeMode,
@@ -14,4 +15,6 @@ export type {
   ThemePalette,
   ThemeFont,
   ControlSize,
+  ThemeMotion,
+  ResolvedThemeConfig,
 } from './types'

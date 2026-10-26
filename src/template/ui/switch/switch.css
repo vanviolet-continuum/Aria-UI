@@ -8,7 +8,7 @@
   background: var(--surface-hover);
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.2s;
+  transition: background calc(0.2s * var(--motion-scale, 1));
   margin: 0;
 }
 
@@ -19,8 +19,9 @@
   border-radius: 50%;
   background: var(--surface);
   display: block;
-  box-shadow: 0 1px 3px color-mix(in srgb, var(--shadow-color) 13.33%, transparent);
-  transition: transform 0.2s;
+  box-shadow: 0 1px 3px
+    color-mix(in srgb, var(--shadow-color) calc(13.33% * var(--shadow-strength, 1)), transparent);
+  transition: transform calc(0.2s * var(--motion-scale, 1));
 }
 
 .switch:checked {

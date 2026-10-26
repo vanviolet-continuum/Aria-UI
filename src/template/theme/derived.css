@@ -9,6 +9,13 @@
   --control-font-size: 12px;
   --sidebar-width: 232px;
   --header-height: 70px;
+  --border-width: 1px;
+  --shadow-strength: 1;
+  --motion-scale: 1;
+  --option-height: 36px;
+  --option-rich-height: 56px;
+  --checkbox-size: 17px;
+  --switch-height: 20px;
   --document-surface: #ffffff;
   --document-text: #171b25;
   --table-density: 1;
@@ -27,7 +34,11 @@ html[data-theme] {
   --primary-soft: color-mix(in srgb, var(--primary) 9%, var(--surface));
   --table-row-hover: color-mix(in srgb, var(--primary) 2.5%, var(--surface));
   --table-row-selected: color-mix(in srgb, var(--primary) 5%, var(--surface));
-  --table-pin-shadow: color-mix(in srgb, var(--shadow-color) 9%, transparent);
+  --table-pin-shadow: color-mix(
+    in srgb,
+    var(--shadow-color) calc(9% * var(--shadow-strength)),
+    transparent
+  );
   --table-pin-border: color-mix(in srgb, var(--border-strong) 60%, transparent);
   --secondary-hover: color-mix(in srgb, var(--secondary) 86%, var(--text));
   --secondary-soft: color-mix(in srgb, var(--secondary) 9%, var(--surface));

@@ -1,5 +1,5 @@
 .ui-tree {
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(8px * var(--radius-scale));
   padding: calc(7px * var(--space-scale));
   background: var(--surface);
@@ -39,7 +39,7 @@
   color: var(--muted);
 }
 .tree-toggle svg {
-  transition: transform 0.15s;
+  transition: transform calc(0.15s * var(--motion-scale, 1));
 }
 .tree-chevron--open {
   transform: rotate(90deg);

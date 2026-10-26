@@ -1,5 +1,6 @@
 .table-scroll {
   overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: thin;
   scrollbar-color: var(--muted) transparent;
 }
@@ -37,12 +38,12 @@
 .data-table td {
   height: calc(59px * var(--table-density));
   padding: calc(7px * var(--space-scale) * var(--table-density)) calc(12px * var(--space-scale));
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--border-width, 1px) solid var(--border);
 }
 
 .data-table tbody tr {
   --table-row-background: var(--surface);
-  transition: background 0.15s;
+  transition: background calc(0.15s * var(--motion-scale, 1));
 }
 
 .data-table tbody tr:hover {
@@ -124,10 +125,10 @@
   width: 26px;
   height: 25px;
   padding: 0;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(4px * var(--radius-scale));
   color: var(--muted);
-  transition: background 0.15s;
+  transition: background calc(0.15s * var(--motion-scale, 1));
 }
 
 .pagination > button:hover:not(:disabled) {
@@ -145,7 +146,7 @@
   justify-content: space-between;
   align-items: center;
   gap: calc(10px * var(--space-scale));
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   padding: calc(8px * var(--space-scale)) calc(11px * var(--space-scale));
   margin-bottom: calc(10px * var(--space-scale));
   border-radius: calc(6px * var(--radius-scale));

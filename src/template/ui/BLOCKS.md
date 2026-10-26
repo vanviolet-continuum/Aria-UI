@@ -49,15 +49,17 @@ const columns = useTableColumns({
 
 <TableColumnMenu columns={definitions}
   visibility={columns.visibility} onVisibilityChange={columns.setVisibility}
-  pinning={columns.pinning} onPinningChange={columns.setPinning}
-  onReset={columns.reset} />
+  onReset={() => columns.setVisibility({})} />
 <DataTable data={rows} columns={definitions} getRowId={row => row.id}
-  columnVisibility={columns.visibility} columnPinning={columns.pinning} />
+  columnVisibility={columns.visibility} columnPinning={columns.pinning}
+  pinable onColumnPinningChange={columns.setPinning} />
 ```
 
-`ColumnDef` menerima `enableHiding: false` untuk kolom wajib serta `label` untuk header JSX. Menu tidak mengizinkan menyembunyikan kolom terakhir. API controlled memungkinkan state dipersist ke localStorage atau backend oleh aplikasi.
+`ColumnDef` menerima `enableHiding: false` untuk kolom wajib serta `label` untuk header JSX. Kolom wajib ditampilkan dengan ikon kunci pada Customize Columns; menu ini hanya mengatur visibilitas. Kolom terakhir yang masih terlihat juga tidak dapat disembunyikan. API controlled memungkinkan state dipersist ke localStorage atau backend oleh aplikasi.
 
-Untuk pinning, tentukan `width` numerik dalam pixel pada setiap kolom. Width yang tidak diberikan atau relatif memakai fallback 180px. Tabel menggunakan ukuran tetap agar offset beberapa kolom sticky konsisten. Checkbox selection otomatis dipin di kiri dengan lebar 44px. Kolom tersembunyi tidak mengambil ruang atau ikut menghitung offset. Beberapa kolom dapat dipin pada kedua sisi; urutan mengikuti definisi kolom. Jika container tabel di bawah 600px, posisi sticky dinonaktifkan melalui container query agar kolom tidak saling menutupi; preferensi tetap tersimpan dalam state.
+Gunakan `pinable` pada `DataTable` untuk menampilkan ikon pin di header, berdampingan dengan sort. Menu header menyediakan **Pin to left**, **Pin to right**, dan **Unpin column**. `ColumnDef.pinable` dapat mengaktifkan atau menonaktifkan kontrol per kolom, mengesampingkan default tabel. Tanpa state controlled, pinning dikelola internal; jika memberikan `columnPinning`, berikan juga `onColumnPinningChange` agar kontrol dapat mengubahnya.
+
+Tentukan `width` numerik sebagai lebar dasar kolom. Width yang tidak diberikan atau relatif memakai fallback 180px saat pinning aktif. Tabel selalu mengisi 100% lebar container, dan satu kolom menyerap ruang ekstra. Offset sticky dan bayangannya mengikuti lebar hasil render, sehingga tetap benar ketika kolom disembunyikan atau container berubah ukuran. Checkbox selection tetap 44px dan dipin di kiri. Kolom tersembunyi tidak mengambil ruang. Beberapa kolom dapat dipin pada kedua sisi; urutan mengikuti definisi kolom. Jika container tabel di bawah 600px, posisi sticky dinonaktifkan melalui container query agar kolom tidak saling menutupi; preferensi tetap tersimpan dalam state.
 
 ## Filter tabel dengan cmdk
 

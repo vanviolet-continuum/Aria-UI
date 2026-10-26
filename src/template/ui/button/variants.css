@@ -7,9 +7,9 @@
   font-weight: 500;
   cursor: pointer;
   transition:
-    background 0.15s,
-    border-color 0.15s,
-    box-shadow 0.15s;
+    background calc(0.15s * var(--motion-scale, 1)),
+    border-color calc(0.15s * var(--motion-scale, 1)),
+    box-shadow calc(0.15s * var(--motion-scale, 1));
 }
 .button[data-color='secondary'] {
   --btn-main: var(--secondary);
@@ -45,7 +45,8 @@
   background: var(--btn-main);
   border-color: var(--btn-main);
   color: var(--btn-contrast);
-  box-shadow: 0 2px 4px color-mix(in srgb, var(--btn-main) 14%, transparent);
+  box-shadow: 0 2px 4px
+    color-mix(in srgb, var(--btn-main) calc(14% * var(--shadow-strength, 1)), transparent);
 }
 .button[data-variant='contained']:hover:not(:disabled) {
   background: var(--btn-hover);

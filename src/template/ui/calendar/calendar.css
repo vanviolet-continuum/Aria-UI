@@ -10,7 +10,7 @@
   gap: calc(9px * var(--space-scale));
   height: 40px;
   padding: 0 calc(12px * var(--space-scale));
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(7px * var(--radius-scale));
   background: var(--surface);
   text-align: left;
@@ -53,11 +53,12 @@
 }
 .calendar-popover {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(11px * var(--radius-scale));
-  box-shadow: 0 10px 40px color-mix(in srgb, var(--shadow-color) 8.63%, transparent);
+  box-shadow: 0 10px 40px
+    color-mix(in srgb, var(--shadow-color) calc(8.63% * var(--shadow-strength, 1)), transparent);
   z-index: 120;
-  animation: popover-in 0.15s ease;
+  animation: popover-in calc(0.15s * var(--motion-scale, 1)) ease;
   max-width: calc(100vw - 24px);
   overflow: hidden;
 }
@@ -140,7 +141,8 @@
 .calendar-day--selected:hover:not(:disabled) {
   background: var(--primary);
   color: var(--on-primary);
-  box-shadow: 0 2px 5px color-mix(in srgb, var(--shadow-color) 14.51%, transparent);
+  box-shadow: 0 2px 5px
+    color-mix(in srgb, var(--shadow-color) calc(14.51% * var(--shadow-strength, 1)), transparent);
 }
 .calendar-day--selected[aria-current='date']::after {
   background: var(--surface);
@@ -165,7 +167,7 @@
   justify-content: space-between;
   gap: calc(16px * var(--space-scale));
   padding: calc(12px * var(--space-scale)) calc(15px * var(--space-scale));
-  border-top: 1px solid var(--border);
+  border-top: var(--border-width, 1px) solid var(--border);
 }
 .calendar-footer > span {
   font-size: calc(9px * var(--font-scale));
@@ -183,17 +185,17 @@
   display: flex;
 }
 .range-second-month {
-  border-left: 1px solid var(--border);
+  border-left: var(--border-width, 1px) solid var(--border);
 }
 .range-presets {
   display: flex;
   gap: calc(6px * var(--space-scale));
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--border-width, 1px) solid var(--border);
   padding: calc(11px * var(--space-scale)) calc(15px * var(--space-scale));
 }
 .range-presets button,
 .time-quick-options button {
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(5px * var(--radius-scale));
   color: var(--muted);
   font-size: calc(10px * var(--font-scale));

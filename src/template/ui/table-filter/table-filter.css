@@ -11,6 +11,8 @@
 }
 .table-filter-popover .command-search {
   padding: 12px 14px;
+  height: 48px;
+  flex-shrink: 0;
 }
 .table-filter-popover .command-search input {
   font-size: calc(12px * var(--font-scale));
@@ -26,6 +28,16 @@
 .table-filter-popover .command-footer button {
   color: var(--primary);
 }
+.table-filter-popover .ui-command {
+  border: 0;
+  border-radius: 0;
+}
+.table-filter-popover .command-footer {
+  flex-shrink: 0;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+}
 .filter-count {
   display: grid;
   place-items: center;
@@ -39,7 +51,7 @@
 .filter-check {
   width: 17px;
   height: 17px;
-  border: 1px solid var(--border-strong);
+  border: var(--border-width, 1px) solid var(--border-strong);
   border-radius: 4px;
   display: grid;
   place-items: center;
@@ -53,6 +65,10 @@
   display: grid;
   padding: 12px;
   gap: 12px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
 }
 .table-filter-calendar > strong {
   padding-inline: 10px;

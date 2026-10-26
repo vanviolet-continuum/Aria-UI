@@ -4,8 +4,8 @@ Theme studio tersedia di `/settings/appearance` pada starter dan demo. Engine te
 
 ## Menerapkan hasil download
 
-1. Atur preset, mode, warna, font, radius, spacing, ukuran kontrol, density, dan lebar sidebar.
-2. Klik **Download theme.config.ts**.
+1. Atur preset, mode, warna, font, radius, spacing, ukuran kontrol, density, header, sidebar, border, bayangan, dan animasi.
+2. Pilih **Export theme → TypeScript configuration** untuk mengunduh `theme.config.ts`.
 3. Ganti file tujuan yang ditampilkan Theme studio:
    - Starter: `src/app/config/theme.config.ts`.
    - Demo: `examples/app/theme.config.ts`.
@@ -27,7 +27,17 @@ Hasil download menyertakan import type yang sesuai dengan file tujuan. Provider 
 
 ## Penyimpanan
 
-Starter memakai key `admin-template-appearance-v1`; demo memakai `zendenta-appearance-v1`. Setiap preview menyimpan fingerprint config proyek. Ketika config file berubah, preview dari config sebelumnya diabaikan. **Reset to default** kembali ke initialConfig provider. Port yang berbeda juga memiliki localStorage yang terpisah.
+Starter memakai key `admin-template-appearance-v1`; demo memakai `zendenta-appearance-v1`. Setiap preview menyimpan fingerprint config proyek. Ketika config file berubah, preview dari config sebelumnya diabaikan. Konfigurasi lama yang belum mempunyai pengaturan baru dinormalisasi dengan default yang sesuai; preferensi browser yang cocok tetap dipertahankan. **Reset to default** kembali ke initialConfig provider. Port yang berbeda juga memiliki localStorage yang terpisah.
+
+Badge preview mencerminkan keberhasilan penyimpanan. Jika storage browser tidak tersedia, tema tetap diterapkan untuk sesi saat ini dan dapat diekspor untuk disimpan.
+
+## Impor dan ekspor
+
+**Import theme** menerima JSON atau file `theme.config.ts` hasil ekspor Theme Studio, maksimal 128 KB. File dibaca sebagai data, divalidasi, lalu diterapkan dan disimpan sebagai preferensi browser. Kode TypeScript dari file tidak dijalankan. File invalid tidak mengganti tema yang sedang aktif.
+
+**Export theme** menyediakan konfigurasi TypeScript untuk default proyek dan JSON untuk impor kembali atau dibagikan. Impor melalui UI tidak menulis source proyek; untuk mengganti default proyek, tetap gunakan hasil ekspor TypeScript pada path yang ditampilkan lalu build aplikasi.
+
+API `parseThemeFile(text)` memvalidasi file dan mengembalikan `ResolvedThemeConfig`. `normalizeThemeConfig(config)` melengkapi properti baru pada konfigurasi lama. Context `useTheme()` menyediakan `replaceConfig`, `updateConfig`, `resetConfig`, dan `storageStatus`.
 
 Gunakan `initializeTheme(config, storageKey)` sebelum render untuk menerapkan tema awal. Provider mendukung mode light/dark/system dan perubahan preferensi sistem.
 
@@ -41,6 +51,8 @@ Gunakan `initializeTheme(config, storageKey)` sebelum render untuk menerapkan te
 - `theme-provider.tsx`: preferensi runtime.
 - `apply-theme.ts`: resolver, contrast foreground, dan penerapan CSS variables.
 - `config.ts`, `download-theme.ts`: validasi, storage, dan ekspor.
+- `control-metrics.ts`: ukuran kontrol dan baris opsi yang dipakai bersama oleh CSS dan virtualisasi combobox.
+- `effects.css`: preferensi animasi, termasuk komponen di dalam portal.
 - `studio/`: editor tema reusable dan stylesheet-nya.
 
 Preset: Aria UI, Forest, Ocean, Rose, dan Graphite. Semua preset mewarisi warna teks netral yang sama. Default light mengikuti konfigurasi yang dipilih: teks sekunder `#575757`, teks redup `#595959`, success `#2e7d32`, warning `#d97706`, error `#d32f2f`, dan info `#4655e8`. Dark mode mempertahankan warna teks terang dari konfigurasi dark.
@@ -53,6 +65,21 @@ Nilai warna literal hanya berada dalam layer tema. Komponen memakai token semant
 
 ## Layout dan ukuran
 
-Font, spacing, dan radius menggunakan token skala. Button/Input/IconButton tanpa prop ukuran eksplisit mengikuti default control size. Combobox dan picker mengikuti ukuran tema. Lingkaran dan ikon tetap proporsional.
+Font, spacing, dan radius menggunakan token skala. Button, Input, IconButton, combobox, picker, pencarian, textarea, checkbox, switch, dan OTP mengikuti ukuran atau token yang sesuai. Ukuran eksplisit seperti tombol `sm` dan pagination ringkas tetap dipertahankan. Tinggi opsi combobox dihitung bersama offset virtualisasinya; opsi dengan deskripsi tetap lebih tinggi dari opsi biasa.
+
+Pengaturan tambahan berikut opsional pada `ThemeConfig` lama dan selalu tersedia pada `ResolvedThemeConfig`:
+
+| Properti           | Default    | Nilai                                                               |
+| ------------------ | ---------- | ------------------------------------------------------------------- |
+| `headerHeight`     | `70`       | 56–96 px; minimum menyesuaikan ruang kontrol                        |
+| `sidebarCollapsed` | `false`    | State sidebar desktop, tersimpan antar kunjungan                    |
+| `borderWidth`      | `1`        | 0–2 px; checkbox mempertahankan outline minimum agar tetap terlihat |
+| `shadowStrength`   | `1`        | 0–2, setara 0–200%                                                  |
+| `motion`           | `'system'` | `system`, `reduced`, `none`                                         |
+| `motionScale`      | `1`        | 0,5–1,5 kali durasi animasi                                         |
+
+Header dan brand memakai tinggi yang sama. Tombol collapse tetap berada di tengah header, dan sidebar mobile selalu menampilkan label lengkap. Border serta bayangan permukaan memakai token bersama; focus ring tetap terlihat saat bayangan dimatikan. Animasi mengikuti preferensi reduced motion perangkat, serta dapat diperkecil atau dimatikan secara eksplisit dari Theme Studio.
+
+Warna mode terang dan gelap tetap terpisah. **Reset these colors** hanya mengembalikan palet mode yang sedang diedit.
 
 AdminLayout menjaga body di viewport dan memakai `#main-content` sebagai scroll container. Saat drawer/modal terbuka, scroll background dikunci tanpa mengubah posisi atau lebar. Komponen UI dapat digunakan tanpa AdminLayout melalui `template/ui/styles.css`.

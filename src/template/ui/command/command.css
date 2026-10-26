@@ -1,18 +1,25 @@
 .command-drawer .drawer-body {
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .command-drawer .drawer-body > :last-child {
   margin-bottom: 0;
 }
 .ui-command {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(9px * var(--radius-scale));
   overflow: hidden;
 }
 .command-drawer .ui-command {
   border: 0;
   border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 .command-search {
   display: flex;
@@ -20,8 +27,9 @@
   gap: calc(12px * var(--space-scale));
   height: 61px;
   padding: 0 calc(20px * var(--space-scale));
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--border-width, 1px) solid var(--border);
   color: var(--muted);
+  flex-shrink: 0;
 }
 .command-search input {
   flex: 1;
@@ -34,7 +42,7 @@
 }
 .ui-command kbd {
   font-family: inherit;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   background: var(--primary-soft);
   border-radius: calc(4px * var(--radius-scale));
   padding: calc(2px * var(--space-scale)) calc(4px * var(--space-scale));
@@ -48,7 +56,10 @@
   scrollbar-width: thin;
 }
 .command-drawer .command-list {
-  max-height: calc(100dvh - 290px);
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+  overscroll-behavior: contain;
 }
 .command-group {
   color: var(--muted);
@@ -93,7 +104,7 @@
   width: 31px;
   height: 31px;
   border-radius: calc(7px * var(--radius-scale));
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   background: color-mix(in srgb, var(--surface) 50.2%, transparent);
   color: var(--muted);
 }
@@ -115,9 +126,10 @@
   display: flex;
   gap: calc(15px * var(--space-scale));
   padding: calc(13px * var(--space-scale)) calc(18px * var(--space-scale));
-  border-top: 1px solid var(--border);
+  border-top: var(--border-width, 1px) solid var(--border);
   color: var(--muted);
   font-size: calc(9px * var(--font-scale));
+  flex-shrink: 0;
 }
 .command-footer > span {
   display: flex;
@@ -150,7 +162,7 @@
   font-size: calc(10px * var(--font-scale));
   gap: calc(9px * var(--space-scale));
   background: var(--primary-soft);
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   display: flex;
   align-items: center;
   color: var(--muted);
@@ -163,7 +175,7 @@
   font-family: inherit;
   font-size: calc(8px * var(--font-scale));
   padding: calc(2px * var(--space-scale)) calc(4px * var(--space-scale));
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(4px * var(--radius-scale));
   color: var(--muted);
   background: var(--surface);

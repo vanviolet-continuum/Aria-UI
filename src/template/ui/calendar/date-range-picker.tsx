@@ -1,3 +1,4 @@
+import { PopoverContent } from '../popover/popover'
 import { useI18n } from '../../i18n/use-i18n'
 import * as Popover from '@radix-ui/react-popover'
 import { CalendarRange, Check, X } from 'lucide-react'
@@ -68,7 +69,13 @@ export function DateRangePicker({
         )}
       </div>
       <Popover.Portal>
-        <Popover.Content className="calendar-popover range-popover" align="start" sideOffset={7}>
+        <PopoverContent
+          size="auto"
+          variant="form"
+          className="calendar-popover range-popover"
+          align="start"
+          sideOffset={7}
+        >
           <div className="range-presets">
             {presets.map((preset) => (
               <button
@@ -116,7 +123,7 @@ export function DateRangePicker({
               {tr('Apply range')}
             </Button>
           </div>
-        </Popover.Content>
+        </PopoverContent>
       </Popover.Portal>
     </Popover.Root>
   )

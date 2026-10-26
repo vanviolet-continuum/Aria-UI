@@ -1,3 +1,4 @@
+import { PopoverContent } from '../popover/popover'
 import { useI18n } from '../../i18n/use-i18n'
 import * as Popover from '@radix-ui/react-popover'
 import { Check, Clock3 } from 'lucide-react'
@@ -50,7 +51,13 @@ export function TimePicker({
         </button>
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Content className="calendar-popover time-popover" align="start" sideOffset={7}>
+        <PopoverContent
+          size="auto"
+          variant="form"
+          className="calendar-popover time-popover"
+          align="start"
+          sideOffset={7}
+        >
           <h3>{tr('Choose a time')}</h3>
           <p>{tr('Your local time · 24-hour format')}</p>
           <div className="time-selectors">
@@ -105,7 +112,7 @@ export function TimePicker({
               {tr('Done')}
             </Button>
           </div>
-        </Popover.Content>
+        </PopoverContent>
       </Popover.Portal>
     </Popover.Root>
   )

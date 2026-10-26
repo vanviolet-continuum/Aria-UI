@@ -3,20 +3,21 @@
   align-items: center;
   width: 259px;
   height: 33px;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   background: var(--surface-subtle);
   border-radius: calc(30px * var(--radius-scale));
   padding: 0 calc(12px * var(--space-scale));
   gap: calc(9px * var(--space-scale));
   color: var(--muted);
   transition:
-    border-color 0.15s,
-    box-shadow 0.15s;
+    border-color calc(0.15s * var(--motion-scale, 1)),
+    box-shadow calc(0.15s * var(--motion-scale, 1));
 }
 
 .search-input:focus-within {
   border-color: var(--border);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--shadow-color) 2.75%, transparent);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--shadow-color) calc(2.75% * var(--shadow-strength, 1)), transparent);
 }
 
 .search-input input {

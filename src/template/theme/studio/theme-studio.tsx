@@ -1,17 +1,18 @@
 import { useI18n } from '../../i18n/use-i18n'
-import { Download, Palette, RotateCcw } from 'lucide-react'
+import { Palette, RotateCcw } from 'lucide-react'
 import { Button, toast } from '../../ui'
 import { ThemePresets } from './theme-presets'
 import { ThemeColors } from './theme-colors'
 import { ThemeLayoutControls } from './theme-layout-controls'
 import { ThemePreview } from './theme-preview'
+import { ThemeSurfaceControls } from './theme-surface-controls'
+import { ThemeTransfer } from './theme-transfer'
 import { useTheme } from '../theme-provider'
-import { downloadTheme } from '../download-theme'
 
 export function ThemeStudio() {
   const { t: tr } = useI18n()
 
-  const { config, resetConfig, exportTarget } = useTheme()
+  const { resetConfig, exportTarget } = useTheme()
   return (
     <div className="standard-page theme-studio page-enter">
       <div className="theme-studio-intro">
@@ -35,28 +36,23 @@ export function ThemeStudio() {
             <RotateCcw size={14} />
             {tr('Reset to default')}
           </Button>
-          <Button
-            variant="contained"
-            onClick={() => {
-              downloadTheme(config, exportTarget.typeImport)
-              toast.success(tr('Your theme is ready'), {
-                description: `Replace ${exportTarget.filePath} with the downloaded file.`,
-              })
-            }}
-          >
-            <Download size={14} />
-            {tr('Download theme.config.ts')}
-          </Button>
+          <ThemeTransfer />
         </div>
       </div>
       <div className="theme-studio-layout">
         <div>
           <ThemePresets />
           <ThemeLayoutControls />
+          <ThemeSurfaceControls />
           <ThemeColors />
           <div className="theme-export-note">
             <span>{tr('FROM PREVIEW TO PROJECT')}</span>
             <h3>{tr('Take your theme with you.')}</h3>
+            <p>
+              {tr(
+                'Import a JSON file or a theme.config.ts exported by Theme studio. Importing applies your settings immediately; it does not change project source files.',
+              )}
+            </p>
             <p>
               {tr('Download your configuration and replace') + ' '}
               <code>{exportTarget.filePath}</code>

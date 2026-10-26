@@ -1,5 +1,5 @@
 .combobox-popover {
-  min-width: max(130px, var(--radix-popover-trigger-width));
+  min-width: min(calc(100vw - 24px), max(200px, var(--radix-popover-trigger-width)));
   background: var(--surface);
   border-color: var(--border);
 }
@@ -8,7 +8,7 @@
   padding: calc(4px * var(--space-scale));
 }
 .combobox-option {
-  height: 52px;
+  min-height: 0;
   padding: calc(8px * var(--space-scale)) calc(10px * var(--space-scale));
 }
 .combobox-option > span {
@@ -74,9 +74,14 @@
   gap: calc(5px * var(--space-scale));
 }
 .page-size-select .combobox-trigger {
-  height: 28px;
-  font-size: calc(10px * var(--font-scale));
-  padding: 0 calc(6px * var(--space-scale));
+  width: 76px;
+  flex: 0 0 76px;
+  height: 32px;
+  font-size: calc(11px * var(--font-scale));
+  padding: 0 10px;
+  gap: 8px;
+  border-radius: calc(6px * var(--radius-scale));
+  font-variant-numeric: tabular-nums;
 }
 .page-size-select .combobox-trigger-icons > svg {
   width: 11px;

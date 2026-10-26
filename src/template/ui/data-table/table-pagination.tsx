@@ -40,16 +40,18 @@ export function TablePagination({
       </span>
       <div className="pagination-controls">
         {onPageSizeChange && (
-          <label className="page-size-select">
-            {tr('Rows per page')}
+          <div className="page-size-select">
+            <span>{tr('Rows per page')}</span>
             <Combobox
+              searchable={false}
+              size="sm"
               aria-label={tr('Rows per page')}
               disabled={disabled}
               value={String(pageSize)}
               options={options.map((size) => ({ value: String(size), label: String(size) }))}
               onChange={(value) => onPageSizeChange(Number(value))}
             />
-          </label>
+          </div>
         )}
         <span className="pagination-current">
           {bounds.page} / {bounds.pageCount}

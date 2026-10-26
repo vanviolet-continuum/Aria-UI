@@ -19,7 +19,7 @@
   place-items: center;
   height: 49px;
   width: 41px;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(8px * var(--radius-scale));
   color: var(--text);
   font-size: calc(19px * var(--font-scale));
@@ -38,7 +38,7 @@
   width: 1.5px;
   height: 22px;
   background: var(--primary);
-  animation: otp-caret 1s step-end infinite;
+  animation: otp-caret calc(1s * var(--motion-scale, 1)) step-end infinite;
 }
 .input-otp--invalid .otp-cell {
   border-color: var(--error);

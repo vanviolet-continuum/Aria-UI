@@ -18,7 +18,7 @@
   gap: calc(16px * var(--space-scale));
 }
 .parallel-track {
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(10px * var(--radius-scale));
   padding: calc(18px * var(--space-scale));
   background: var(--surface);
@@ -97,7 +97,7 @@
   place-items: center;
   flex: 0 0 25px;
   height: 25px;
-  border: 1px solid var(--border);
+  border: var(--border-width, 1px) solid var(--border);
   border-radius: 50%;
   font-size: 10px;
 }
@@ -135,7 +135,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  border: 1px dashed var(--border-strong);
+  border: var(--border-width, 1px) dashed var(--border-strong);
   border-radius: calc(10px * var(--radius-scale));
   background: var(--surface-subtle);
   padding: calc(20px * var(--space-scale));

@@ -30,6 +30,8 @@ export function TableFilter<T>({ filters, value, onChange, disabled }: TableFilt
   return (
     <div className="table-filters">
       <Popover
+        variant="menu"
+        scrollArea="content"
         className="table-filter-popover"
         onOpenChange={(open) => {
           if (!open) setDateField(null)
