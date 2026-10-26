@@ -32,7 +32,6 @@ import {
   DetailSection,
   DetailView,
   Drawer,
-  EmptyIllustration,
   EmptyState,
   Field,
   FileUpload,
@@ -40,10 +39,8 @@ import {
   IconButton,
   Input,
   InputOTP,
-  LoadingIllustration,
   LoadingOverlay,
   Menu,
-  NotFoundIllustration,
   NotFoundState,
   NumericInput,
   ParallelStepper,
@@ -53,7 +50,6 @@ import {
   PhoneInput,
   Popover,
   SearchEmptyState,
-  SearchIllustration,
   SearchInput,
   Skeleton,
   Stepper,
@@ -63,7 +59,6 @@ import {
   Textarea,
   TimePicker,
   TreeView,
-  UploadIllustration,
   toast,
   type DateRange,
   type TableFilterValue,
@@ -71,6 +66,7 @@ import {
 import { StatusBadge } from '../../template/ui/status-badge'
 import { useI18n } from '../../template/i18n'
 import { MemberTable } from '../pages/table-example-page'
+import { illustrationCatalog } from '../illustrations/illustration-catalog'
 
 export function ComponentPreview({ id }: { id: string }) {
   const { t: tr } = useI18n()
@@ -441,12 +437,22 @@ export function ComponentPreview({ id }: { id: string }) {
       )
     case 'illustrations':
       return (
-        <div className="catalog-illustrations">
-          <EmptyIllustration size={140} />
-          <SearchIllustration size={140} />
-          <UploadIllustration size={140} />
-          <NotFoundIllustration size={140} />
-          <LoadingIllustration size={140} />
+        <div className="catalog-preview-stack">
+          <div className="catalog-illustrations">
+            {illustrationCatalog.map((item) => {
+              const Artwork = item.component
+              return (
+                <div className="catalog-illustration-tile" key={item.id}>
+                  <Artwork size={140} title={tr(item.name)} />
+                  <code>{item.componentName}</code>
+                </div>
+              )
+            })}
+          </div>
+          <Button onClick={() => navigate('/illustrations')}>
+            {tr('View SVG illustration gallery')}
+            <ArrowRight size={14} />
+          </Button>
         </div>
       )
     case 'input':

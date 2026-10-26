@@ -7,11 +7,13 @@ export function serializeIllustration(svg: SVGSVGElement, title: string) {
   originalElements.forEach((element, index) => {
     const target = clonedElements[index]
     const computed = getComputedStyle(element)
-    for (const property of ['fill', 'stroke', 'color']) {
+    for (const property of ['fill', 'stroke', 'color', 'stop-color', 'flood-color']) {
       const value = element.getAttribute(property)
-      if (value?.includes('var(')) target.setAttribute(property, computed.getPropertyValue(property))
+      if (value?.includes('var('))
+        target.setAttribute(property, computed.getPropertyValue(property))
     }
-    if (element.tagName.toLowerCase() === 'text') target.setAttribute('font-family', computed.fontFamily)
+    if (element.tagName.toLowerCase() === 'text')
+      target.setAttribute('font-family', computed.fontFamily)
     target.removeAttribute('class')
     target.removeAttribute('style')
   })
@@ -23,7 +25,7 @@ export function serializeIllustration(svg: SVGSVGElement, title: string) {
   clone.setAttribute('role', 'img')
   clone.setAttribute('aria-label', title)
   clone.removeAttribute('aria-hidden')
-  let label = clone.querySelector('title')
+  let label = clone.querySelector<SVGTitleElement>('title')
   if (!label) {
     label = document.createElementNS('http://www.w3.org/2000/svg', 'title')
     clone.insertBefore(label, clone.firstChild)

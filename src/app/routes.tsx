@@ -18,7 +18,9 @@ const WizardExamplePage = lazy(() =>
 const ComponentsPage = lazy(() =>
   import('./pages/components-page').then((module) => ({ default: module.ComponentsPage })),
 )
-const IllustrationsPage = lazy(() => import('./pages/illustrations-page').then((module) => ({ default: module.IllustrationsPage })))
+const IllustrationsPage = lazy(() =>
+  import('./pages/illustrations-page').then((module) => ({ default: module.IllustrationsPage })),
+)
 
 function DeferredPage({ children }: { children: ReactNode }) {
   const { t: tr } = useI18n()
@@ -51,7 +53,14 @@ export function AppRoutes() {
       <Route element={<StarterLayout />}>
         <Route index element={<HomePage />} />
         <Route path="details" element={<DetailsPage />} />
-        <Route path="illustrations" element={<DeferredPage><IllustrationsPage /></DeferredPage>} />
+        <Route
+          path="illustrations"
+          element={
+            <DeferredPage>
+              <IllustrationsPage />
+            </DeferredPage>
+          }
+        />
         <Route
           path="table-example"
           element={

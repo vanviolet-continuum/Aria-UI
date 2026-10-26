@@ -285,6 +285,25 @@
   flex-wrap: wrap;
   gap: 20px;
 }
+.catalog-illustration-tile {
+  display: grid;
+  grid-template-rows: 145px auto;
+  align-items: center;
+  justify-items: center;
+  gap: 8px;
+  width: 170px;
+  min-width: 0;
+}
+.catalog-illustration-tile > svg {
+  margin: 0;
+  max-width: 100%;
+}
+.catalog-illustration-tile > code {
+  color: var(--muted);
+  font-size: calc(9px * var(--font-scale));
+  overflow-wrap: anywhere;
+  text-align: center;
+}
 .catalog-search-result {
   padding: 10px 14px;
   border: var(--border-width, 1px) solid var(--border);

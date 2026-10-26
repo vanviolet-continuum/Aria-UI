@@ -1,7 +1,14 @@
 import { useI18n } from '../../i18n/use-i18n'
 import type { CSSProperties, ReactNode } from 'react'
 
-export type IllustrationTone = 'primary' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'mint'
+export type IllustrationTone =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
+  | 'violet'
+  | 'mint'
 
 export interface IllustrationProps {
   className?: string
@@ -12,12 +19,14 @@ export interface IllustrationProps {
 }
 export function illustrationStyle({ size, tone, style }: IllustrationProps): CSSProperties {
   return {
-    ...(tone ? {
-      '--illustration-primary': `color-mix(in srgb, var(--${tone}) 75%, var(--text-secondary))`,
-      '--illustration-accent': `color-mix(in srgb, var(--${tone}) 65%, var(--surface))`,
-      '--illustration-line': `color-mix(in srgb, var(--${tone}) 22%, var(--border))`,
-      '--illustration-tint': `color-mix(in srgb, var(--${tone}) 9%, var(--surface))`,
-    } : {}),
+    ...(tone
+      ? {
+          '--illustration-primary': `color-mix(in srgb, var(--${tone}) 75%, var(--text-secondary))`,
+          '--illustration-accent': `color-mix(in srgb, var(--${tone}) 65%, var(--surface))`,
+          '--illustration-line': `color-mix(in srgb, var(--${tone}) 22%, var(--border))`,
+          '--illustration-tint': `color-mix(in srgb, var(--${tone}) 9%, var(--surface))`,
+        }
+      : {}),
     width: size,
     ...style,
   } as CSSProperties

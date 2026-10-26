@@ -5,6 +5,11 @@
   height: auto;
   margin: 0 auto calc(14px * var(--space-scale));
 }
+.ui-decoration {
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+}
 .empty-state > .ui-illustration {
   width: 210px;
 }
