@@ -29,7 +29,7 @@ export function ReportsPage() {
         <Button
           onClick={() =>
             downloadCsv(
-              'zendenta-inventory-report.csv',
+              'aria-ui-inventory-report.csv',
               ['Category', 'Products', 'Units', 'Value (USD)'],
               categories.map((category) => [
                 category.name,

@@ -1,6 +1,6 @@
-# React Admin Template
+# Aria UI
 
-Starter admin React + TypeScript + Vite dengan UI kit portable dan tema yang dapat dikonfigurasi. Contoh klinik dan playground dipisahkan dari source starter.
+Aria UI adalah starter admin React + TypeScript + Vite dengan UI kit portable dan tema yang dapat dikonfigurasi. Contoh klinik dan playground dipisahkan dari source starter.
 
 ## Menjalankan
 
@@ -10,7 +10,7 @@ npm run dev             # Starter bersih — http://127.0.0.1:5173
 npm run dev:examples    # Demo lengkap — http://127.0.0.1:5174
 ```
 
-Starter berisi Home, admin layout, dan Theme studio. Demo terpisah menyediakan Stocks, Dashboard, direktori CRUD, kalender, wizard, serta katalog seluruh komponen.
+Starter berisi Home, contoh Detail (`/details`), admin layout, dan Theme studio. Halaman Detail menampilkan ringkasan proyek, tim, progres, dan aktivitas; tombol **Buka di drawer** memakai konten yang sama. Demo terpisah menyediakan Stocks, Dashboard, direktori CRUD, kalender, wizard, serta katalog seluruh komponen.
 
 Fitur PDF upload/viewer, parallel stepper, password strength, filter command, visibility, dan pinned columns tersedia di **[Advanced blocks](http://127.0.0.1:5174/components?category=blocks)**. Panduan API ada di [BLOCKS.md](src/template/ui/BLOCKS.md).
 
@@ -39,7 +39,8 @@ src/
     ├── hooks/           # Hook general
     ├── lib/             # Helper general
     ├── styles/          # Base, animasi, focus, dan style bersama
-    ├── assets/
+    ├── branding/        # Logo Aria UI reusable
+    ├── assets/          # Logo SVG dan favicon
     ├── index.ts         # Public exports
     └── styles.css       # Entry stylesheet template
 examples/
@@ -76,7 +77,7 @@ Seluruh data klinik, API simulasi, fixture, dan asset demo berada di folder cont
 
 Buka `/settings/appearance`. Hasil download menggantikan **`src/app/config/theme.config.ts`**. Demo memakai file sendiri di `examples/app/theme.config.ts`. Provider menerima konfigurasi melalui props; komponen template tidak mengimpor config aplikasi.
 
-Keduanya memakai `defaultTheme` Zendenta yang sama: sidebar 232px, header 70px desktop, font/spacing 1×, dan kontrol medium. Pilih preset Zendenta untuk mengembalikan ukuran asal jika browser masih menyimpan pengaturan sebelumnya. Mode terang/gelap tetap dipertahankan.
+Keduanya memakai `defaultTheme` Aria UI yang sama: sidebar 232px, header 70px desktop, font/spacing 1×, dan kontrol medium. Pilih preset Aria UI untuk mengembalikan ukuran asal jika browser masih menyimpan pengaturan sebelumnya. Mode terang/gelap tetap dipertahankan.
 
 Font default menggunakan **Hanken Grotesk** dari Fontsource yang dipaketkan lokal. Warna teks light menggunakan `textSecondary: #575757` dan `muted: #595959` pada seluruh preset. Hover tabel memakai token lembut tersendiri. Bayangan kolom pinned muncul hanya saat ada konten yang masih bisa digeser pada sisi tersebut.
 

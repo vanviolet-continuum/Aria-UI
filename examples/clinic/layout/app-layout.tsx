@@ -2,10 +2,10 @@ import { useI18n } from '../../../src/template/i18n'
 import { useState } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { AdminLayout } from '@/template/layouts'
+import { AriaLogo } from '@/template/branding'
 import { useWorkspace } from '../workspace/workspace-context'
 import { navigationGroups, navigationItems } from '../data/navigation'
 import { directories } from '../data/directories'
-import { BrandMark } from './brand-mark'
 import { HeaderActions } from './header'
 import { SettingsDrawer } from './settings-drawer'
 
@@ -39,7 +39,7 @@ export function AppLayout() {
         onNavigate={navigate}
         navigation={navigation}
         compact={settings.compactRows}
-        brand={{ name: 'Zendenta', href: '/dashboard', mark: <BrandMark /> }}
+        brand={{ name: 'Aria UI', href: '/dashboard', mark: <AriaLogo /> }}
         workspace={{
           name: settings.clinicName,
           description: settings.address,

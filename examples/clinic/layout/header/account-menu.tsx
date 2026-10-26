@@ -46,7 +46,7 @@ export function AccountMenu({ onSettings }: { onSettings: () => void }) {
                 {tr('Theme studio')}
               </Link>
             </DropdownMenu.Item>
-            <span className="dropdown-footnote">{tr('Zendenta · Admin workspace')}</span>
+            <span className="dropdown-footnote">{tr('Aria UI · Admin workspace')}</span>
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>

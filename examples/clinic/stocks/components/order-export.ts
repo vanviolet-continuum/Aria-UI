@@ -4,7 +4,7 @@ import { toast } from '@/template/ui/toast/toast'
 
 export function exportOrders(orders: StockOrder[]) {
   downloadCsv(
-    'zendenta-stock-orders.csv',
+    'aria-ui-stock-orders.csv',
     ['Order', 'Created', 'Vendor', 'Products', 'Total (USD)', 'Status', 'Received', 'Units'],
     orders.map((order) => [
       order.id,

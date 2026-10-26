@@ -4,6 +4,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import { Button, LoadingIllustration, NotFoundState } from '../template'
 import { StarterLayout } from './layout'
 import { HomePage } from './pages/home-page'
+import { DetailsPage } from './pages/details-page'
 
 const ThemeStudio = lazy(() =>
   import('../template/theme/studio').then((module) => ({ default: module.ThemeStudio })),
@@ -23,6 +24,7 @@ export function AppRoutes() {
     <Routes>
       <Route element={<StarterLayout />}>
         <Route index element={<HomePage />} />
+        <Route path="details" element={<DetailsPage />} />
         <Route
           path="settings/appearance"
           element={

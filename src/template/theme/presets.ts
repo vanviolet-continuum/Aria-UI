@@ -3,7 +3,7 @@ import type { ThemePreset } from './types'
 export const themePresets: ThemePreset[] = [
   {
     id: 'zendenta',
-    name: 'Zendenta',
+    name: 'Aria UI',
     description: 'The original. Calm indigo, familiar spacing.',
     colors: { light: {}, dark: {} },
     radius: 8,

@@ -1,4 +1,4 @@
-# Example application
+# Aria UI — Example application
 
 Seluruh isi folder ini opsional. Starter di `src/app/` dan kit di `src/template/` tidak mengimpornya.
 
@@ -15,7 +15,7 @@ npm run preview:examples  # Port 4174
 - `mocks/`: endpoint Vite `/api/demo/members`, service async, dan fixture members. Static build memakai fixture URL yang dibundel; file ini tidak berada di public starter.
 - `assets/`: branding contoh.
 
-Halaman utama demo adalah `/stocks`; katalog ada di `/components`, wizard di `/wizard`, kalender di `/calendar`, dan tema di `/settings/appearance`.
+Halaman utama demo adalah `/stocks`; katalog ada di `/components`, contoh detail di `/details`, wizard di `/wizard`, kalender di `/calendar`, dan tema di `/settings/appearance`. Contoh detail produk dapat ditampilkan sebagai halaman maupun drawer dengan komponen `DetailView`, `DetailSection`, `DetailList`, dan `DetailStats`. Katalog kategori Data display / Advanced blocks juga menyediakan preview detail ruang kerja.
 
 Tab `/components?category=blocks` berisi enam fitur referensi terbaru. Komposisinya ada di `playground/blocks/`; komponen general ada di `src/template/ui/`. PDF contoh di `playground/assets/` hanya untuk demo.
 

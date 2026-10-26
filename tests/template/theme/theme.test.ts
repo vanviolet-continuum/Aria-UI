@@ -37,7 +37,7 @@ describe('theme configuration', () => {
       'Hanken Grotesk Variable',
     )
   })
-  it('shares Zendenta defaults between starter and demo and restores saved size overrides', () => {
+  it('shares Aria UI defaults between starter and demo and restores saved size overrides', () => {
     expect(starterTheme).toEqual(defaultTheme)
     const customized = {
       ...defaultTheme,
@@ -49,7 +49,7 @@ describe('theme configuration', () => {
     expect(selectThemePreset(customized, 'zendenta')).toEqual({ ...defaultTheme, mode: 'dark' })
     expect(selectThemePreset(customized, 'forest').sidebarWidth).toBe(290)
   })
-  it('keeps the existing Zendenta theme as the project default', () => {
+  it('keeps the existing Aria UI theme as the project default', () => {
     expect(isThemeConfig(defaultTheme)).toBe(true)
     expect(resolvePalette(defaultTheme, 'light')).toEqual(basePalettes.light)
     expect(resolvePalette(defaultTheme, 'dark')).toEqual(basePalettes.dark)

@@ -21,6 +21,7 @@ import { AdvancedTableDemo } from '../blocks/advanced-table-demo'
 import { PasswordDemo } from '../blocks/password-demo'
 import { ParallelStepperDemo } from '../blocks/parallel-stepper-demo'
 import { PdfUploadDemo } from '../blocks/pdf-upload-demo'
+import { DetailDemo } from '../detail-demo'
 
 const tabs = [
   { value: 'all', label: 'All components' },
@@ -135,6 +136,7 @@ export function ComponentsPage() {
           </DeferredPreview>
         )}
         {show('data') && <TableDemo />}
+        {(show('data') || category === 'blocks') && <DetailDemo />}
         {(show('data') || category === 'blocks') && <AdvancedTableDemo />}
         {show('async') && (
           <DeferredPreview>
@@ -181,7 +183,7 @@ export function ComponentsPage() {
       </section>
       <footer className="kit-footer">
         <span>{tr('Thoughtful defaults. Room to make it your own.')}</span>
-        <span>{tr('Zendenta UI · v1.0')}</span>
+        <span>{tr('Aria UI · v1.0')}</span>
       </footer>
     </div>
   )

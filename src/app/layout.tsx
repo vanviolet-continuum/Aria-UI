@@ -1,7 +1,7 @@
 import { useI18n } from '../template/i18n'
-import { Blocks, Settings2 } from 'lucide-react'
+import { Settings2 } from 'lucide-react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { AdminLayout, IconButton, ThemeToggle, LanguageSwitcher } from '../template'
+import { AdminLayout, AriaLogo, IconButton, ThemeToggle, LanguageSwitcher } from '../template'
 import { navigation } from './config/navigation'
 
 export function StarterLayout() {
@@ -15,7 +15,7 @@ export function StarterLayout() {
       title={localize(title)}
       routeKey={pathname}
       onNavigate={navigate}
-      brand={{ name: 'Admin', href: '/', mark: <Blocks className="brand-mark" /> }}
+      brand={{ name: 'Aria UI', href: '/', mark: <AriaLogo /> }}
       workspace={{ name: tr('Your workspace'), description: tr('React admin starter') }}
       navigation={[
         {

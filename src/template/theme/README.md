@@ -43,9 +43,9 @@ Gunakan `initializeTheme(config, storageKey)` sebelum render untuk menerapkan te
 - `config.ts`, `download-theme.ts`: validasi, storage, dan ekspor.
 - `studio/`: editor tema reusable dan stylesheet-nya.
 
-Preset: Zendenta, Forest, Ocean, Rose, dan Graphite. Semua preset mewarisi warna teks netral yang sama. Default light mengikuti konfigurasi yang dipilih: teks sekunder `#575757`, teks redup `#595959`, success `#2e7d32`, warning `#d97706`, error `#d32f2f`, dan info `#4655e8`. Dark mode mempertahankan warna teks terang dari konfigurasi dark.
+Preset: Aria UI, Forest, Ocean, Rose, dan Graphite. Semua preset mewarisi warna teks netral yang sama. Default light mengikuti konfigurasi yang dipilih: teks sekunder `#575757`, teks redup `#595959`, success `#2e7d32`, warning `#d97706`, error `#d32f2f`, dan info `#4655e8`. Dark mode mempertahankan warna teks terang dari konfigurasi dark.
 
-Font default **Hanken Grotesk Variable**, dipaketkan lokal melalui Fontsource. Font lain tetap tersedia dalam pengaturan. Memilih Zendenta mengembalikan ukuran/font/spacing default sambil mempertahankan mode terang atau gelap. Preset lain mengubah palet/radius dan mempertahankan ukuran serta font yang dipilih.
+Font default **Hanken Grotesk Variable**, dipaketkan lokal melalui Fontsource. Font lain tetap tersedia dalam pengaturan. Memilih Aria UI mengembalikan ukuran/font/spacing default sambil mempertahankan mode terang atau gelap. Preset lain mengubah palet/radius dan mempertahankan ukuran serta font yang dipilih.
 
 Token tabel tersendiri berada di `derived.css`: `--table-row-hover`, `--table-row-selected`, `--table-pin-shadow`, dan `--table-pin-border`. Gradasi shadow ditampilkan per sisi sesuai posisi scroll. Hover memakai campuran primary 2,5% dengan surface.
 

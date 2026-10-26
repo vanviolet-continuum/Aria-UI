@@ -74,7 +74,7 @@ export function DirectoryPage({ page }: { page: string }) {
               size="sm"
               onClick={() => {
                 downloadCsv(
-                  `zendenta-${page}.csv`,
+                  `aria-ui-${page}.csv`,
                   ['ID', config.nameLabel, config.detailLabel, config.valueLabel, 'Status'],
                   filtered.map((record) => [
                     record.id,

@@ -41,7 +41,7 @@ export function InventoryTable({
   )
   const exportProducts = () =>
     downloadCsv(
-      'zendenta-inventory.csv',
+      'aria-ui-inventory.csv',
       ['SKU', 'Product', 'Category', 'Stock', 'Unit price', 'Value', 'Status'],
       filtered.map((product) => [
         product.sku,

@@ -15,7 +15,7 @@
     width: var(--sidebar-width) !important;
     border-radius: 0;
     transform: translateX(-101%);
-    overflow-y: auto;
+    overflow: visible;
     transition: transform 0.2s ease-out;
     z-index: 60;
   }

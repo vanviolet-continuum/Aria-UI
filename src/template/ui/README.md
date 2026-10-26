@@ -35,12 +35,56 @@ Unit test berada di `tests/template/`, terpisah dari folder portable. Proyek yan
 | Form       | `Field`, `FormSection`, `Input`, `Textarea`, `Combobox`, `Checkbox`, `Switch`, `InputOTP`   |
 | Formatting | `NumericInput`, `CurrencyInput`, `PhoneInput`, `PatternInput`, `PercentageInput`            |
 | Display    | `Badge`, `Chip`, `StatusBadge`, `Tabs`, `SearchInput`                                       |
+| Detail     | `DetailView`, `DetailSection`, `DetailList`, `DetailStats`, `DetailTimeline`                |
 | Calendar   | `Calendar`, `DatePicker`, `DateRangePicker`, `DateTimePicker`, `TimePicker`, `FullCalendar` |
 | Data       | `DataTable<T>`, `TablePagination`, `useDataTable`, `useServerTable`, `ColumnDef<T>`         |
 | Workflow   | `FileUpload`/`Dropzone`, `TreeView`, `Stepper`                                              |
 | Navigation | `Command`, `CommandMenu`, `Cmdk`                                                            |
 | Overlay    | `Drawer`, `DrawerFooter`, `ConfirmDialog`, `LoadingOverlay`                                 |
 | Feedback   | `Toaster`, `toast`, `EmptyState`, `SearchEmptyState`, `NotFoundState`, SVG illustrations    |
+
+## Detail halaman dan drawer
+
+`DetailView` menyediakan header identitas, badge, action, metadata, ringkasan, konten utama, dan sidebar informasi. Container query menyesuaikan susunan dengan lebar komponen, sehingga konten yang sama dapat dipakai pada halaman maupun drawer. Seluruh warna mengikuti token tema.
+
+```tsx
+import { Badge, DetailView, DetailSection, DetailList, DetailStats, Drawer } from './template/ui'
+
+function RecordDetails() {
+  return (
+    <DetailView
+      title={record.name}
+      eyebrow={record.id}
+      avatar="AS"
+      badge={<Badge variant="success">Active</Badge>}
+      summary={<DetailStats items={[{ id: 'members', label: 'Members', value: 8 }]} />}
+    >
+      <DetailSection title="Overview">
+        <DetailList
+          columns={2}
+          items={[
+            { id: 'owner', label: 'Owner', value: record.owner },
+            { id: 'email', label: 'Email', value: record.email },
+            { id: 'notes', label: 'Notes', value: record.notes, fullWidth: true },
+          ]}
+        />
+      </DetailSection>
+    </DetailView>
+  )
+}
+
+// Di halaman
+<RecordDetails />
+
+// Di drawer
+<Drawer open={open} onOpenChange={setOpen} title="Record details" size="lg">
+  <RecordDetails />
+</Drawer>
+```
+
+`DetailList` memakai elemen semantik `dl`/`dt`/`dd`, mendukung `columns={1 | 2 | 3}`, `icon`, `hint`, `fullWidth`, dan `emptyValue` (default `—`). Nilai `0` tetap ditampilkan. `DetailSection` menerima `title`, `description`, `icon`, dan `actions`. `DetailTimeline` menerima item dengan `id`, `title`, `description`, `time`, `dateTime`, `icon`, dan `tone` (`neutral`, `primary`, atau `success`). Semua item memakai ID stabil dan nilai dapat berupa ReactNode.
+
+Contoh tersedia di **`/details`** pada starter dan demo, serta kategori **Data display / Advanced blocks** pada katalog demo. Drawer detail produk juga memakai komposisi yang sama.
 
 ## Form controls
 

@@ -33,6 +33,9 @@ const ComponentsPage = lazy(() =>
     default: module.ComponentsPage,
   })),
 )
+const DetailsPage = lazy(() =>
+  import('../playground/pages/details-page').then((module) => ({ default: module.DetailsPage })),
+)
 const CalendarPage = lazy(() =>
   import('../workflows/calendar/calendar-page').then((module) => ({
     default: module.CalendarPage,
@@ -72,6 +75,7 @@ function AppContent() {
               <Route key={page} path={page} element={<DirectoryPage key={page} page={page} />} />
             ))}
             <Route path="components" element={<ComponentsPage />} />
+            <Route path="details" element={<DetailsPage />} />
             <Route path="calendar" element={<CalendarPage />} />
             <Route path="wizard" element={<WizardPage />} />
             <Route path="settings/appearance" element={<ThemeSettingsPage />} />

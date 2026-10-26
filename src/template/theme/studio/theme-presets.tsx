@@ -15,9 +15,7 @@ export function ThemePresets() {
         <span>{tr('01 / A starting point')}</span>
         <h3>{tr('A few good foundations.')}</h3>
         <p>
-          {tr(
-            'Zendenta restores the original sizes and spacing. Other presets change the palette.',
-          )}
+          {tr('Aria UI restores the original sizes and spacing. Other presets change the palette.')}
         </p>
       </div>
       <div className="theme-preset-grid">

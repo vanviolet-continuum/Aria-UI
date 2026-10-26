@@ -1,4 +1,4 @@
-# Portable admin template
+# Aria UI — Portable admin template
 
 Folder ini mandiri: tidak mengimpor `src/app/`, `examples/`, router aplikasi, state klinik, atau service demo. Salin seluruh folder ke lokasi yang Anda inginkan di proyek React.
 

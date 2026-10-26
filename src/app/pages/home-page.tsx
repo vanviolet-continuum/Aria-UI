@@ -11,7 +11,7 @@ export function HomePage() {
     <div className="standard-page starter-home page-enter">
       <div className="page-intro">
         <Badge variant="primary" appearance="outline">
-          {tr('REACT ADMIN STARTER')}
+          Aria UI
         </Badge>
         <h2>{tr('A clear starting point.')}</h2>
         <p>{tr('Your layout, components, and theme are ready. Make room for your application.')}</p>
