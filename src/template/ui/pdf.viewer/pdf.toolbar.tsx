@@ -1,3 +1,6 @@
+import { TextLink } from '../text.link/text.link'
+
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import {
   ChevronLeft,
@@ -63,7 +66,9 @@ export function PdfToolbar({
         >
           <ChevronLeft size={16} />
         </IconButton>
-        <span aria-live="polite">{loaded ? `${page} / ${pages}` : '– / –'}</span>
+        <Text as="span" variant="label" aria-live="polite">
+          {loaded ? `${page} / ${pages}` : '– / –'}
+        </Text>
         <IconButton
           label={tr('Next PDF page')}
           size="sm"
@@ -84,7 +89,9 @@ export function PdfToolbar({
         >
           <ZoomOut size={15} />
         </IconButton>
-        <span>{Math.round(zoom * 100)}%</span>
+        <Text as="span" variant="label">
+          {Math.round(zoom * 100)}%
+        </Text>
         <IconButton
           label={tr('Zoom in PDF')}
           size="sm"
@@ -106,7 +113,9 @@ export function PdfToolbar({
       </div>
       <div>
         {url && (
-          <a
+          <TextLink
+            as="a"
+            variant="link"
             className="pdf-download"
             href={url}
             download={name}
@@ -114,7 +123,7 @@ export function PdfToolbar({
             title={tr('Download PDF')}
           >
             <Download size={16} />
-          </a>
+          </TextLink>
         )}
         <IconButton
           label={tr('Print PDF')}

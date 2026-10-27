@@ -1,3 +1,6 @@
+import { Heading } from '../../ui/heading/heading'
+
+import { Text } from '../../ui/text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { useTheme } from '../theme.provider'
 import { resolvePalette } from '../apply.theme'
@@ -33,22 +36,28 @@ export function ThemeColors() {
   return (
     <section className="theme-section">
       <div className="theme-section-heading">
-        <span>{tr('04 / Your colors')}</span>
-        <h3>{tr('A palette with purpose.')}</h3>
-        <p>
+        <Text as="span" variant="label">
+          {tr('04 / Your colors')}
+        </Text>
+        <Heading as="h3" variant="card">
+          {tr('A palette with purpose.')}
+        </Heading>
+        <Text as="p" variant="body">
           {tr('Editing the') + ' '}
           {resolvedTheme}
           {' ' +
             tr(
               'palette. Switch appearance to customize the other mode. Hover, soft, contrast, and SVG colors follow automatically.',
             )}
-        </p>
+        </Text>
       </div>
       <div className="theme-palette-toolbar">
-        <span>
+        <Text as="span" variant="label">
           {tr('Editing palette')}:{' '}
-          <strong>{tr(resolvedTheme === 'dark' ? 'Dark' : 'Light')}</strong>
-        </span>
+          <Text as="strong" variant="label">
+            {tr(resolvedTheme === 'dark' ? 'Dark' : 'Light')}
+          </Text>
+        </Text>
         <Button
           variant="text"
           size="sm"

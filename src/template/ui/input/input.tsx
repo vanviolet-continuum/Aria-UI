@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { forwardRef, type InputHTMLAttributes, type ReactNode } from 'react'
 import clsx from 'clsx'
 
@@ -13,7 +14,10 @@ export const Input = /* @__PURE__ */ forwardRef<HTMLInputElement, InputProps>(fu
   ref,
 ) {
   return (
-    <span
+    <Text
+      as="span"
+      variant="label"
+      tone="inherit"
       className={clsx(
         'ui-input-wrap',
         `ui-input-wrap--${inputSize}`,
@@ -24,9 +28,23 @@ export const Input = /* @__PURE__ */ forwardRef<HTMLInputElement, InputProps>(fu
         className,
       )}
     >
-      {leadingIcon && <span className="ui-input-icon">{leadingIcon}</span>}
-      <input ref={ref} className="ui-input" aria-invalid={invalid || undefined} {...props} />
-      {trailing && <span className="ui-input-trailing">{trailing}</span>}
-    </span>
+      {leadingIcon && (
+        <Text as="span" variant="label" className="ui-input-icon">
+          {leadingIcon}
+        </Text>
+      )}
+      <input
+        ref={ref}
+        className="ui-input"
+        data-typography="input"
+        aria-invalid={invalid || undefined}
+        {...props}
+      />
+      {trailing && (
+        <Text as="span" variant="label" tone="inherit" className="ui-input-trailing">
+          {trailing}
+        </Text>
+      )}
+    </Text>
   )
 })

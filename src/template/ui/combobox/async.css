@@ -27,8 +27,8 @@
   justify-content: center;
   min-height: 150px;
   gap: calc(7px * var(--space-scale));
-  color: var(--muted);
-  font-size: calc(11px * var(--font-scale));
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
   padding: calc(12px * var(--space-scale));
 }
 .combobox-status .ui-illustration {
@@ -41,18 +41,18 @@
   justify-content: center;
   align-items: center;
   gap: calc(6px * var(--space-scale));
-  font-size: calc(9px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-caption-size);
+  color: var(--typography-caption-color);
 }
 .combobox-error {
   padding: calc(15px * var(--space-scale)) calc(10px * var(--space-scale));
   text-align: center;
   color: var(--error);
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-body-size);
 }
 .combobox-error > button {
   color: var(--primary);
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-button-size);
   display: block;
   margin: calc(8px * var(--space-scale)) auto 0;
 }
@@ -66,18 +66,11 @@
 .combobox-trigger[aria-busy='true'] {
   cursor: progress;
 }
-.calendar-month-select .combobox-trigger {
-  height: 29px;
-  border-color: transparent;
-  font-size: calc(11px * var(--font-scale));
-  padding: 0 calc(6px * var(--space-scale));
-  gap: calc(5px * var(--space-scale));
-}
 .page-size-select .combobox-trigger {
   width: 76px;
   flex: 0 0 76px;
   height: 32px;
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-body-size);
   padding: 0 10px;
   gap: 8px;
   border-radius: calc(6px * var(--radius-scale));

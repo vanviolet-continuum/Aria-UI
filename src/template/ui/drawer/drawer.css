@@ -53,21 +53,21 @@
 }
 .drawer-eyebrow {
   display: block;
-  color: var(--muted);
-  font-size: calc(9px * var(--font-scale));
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: var(--typography-eyebrow-color);
+  font-size: var(--typography-eyebrow-size);
+  text-transform: var(--typography-eyebrow-transform);
+  letter-spacing: var(--typography-eyebrow-tracking);
   margin-bottom: calc(8px * var(--space-scale));
 }
 .drawer-header h2 {
-  font-size: calc(21px * var(--font-scale));
-  font-weight: 550;
-  letter-spacing: -0.6px;
+  font-size: var(--typography-dialog-size);
+  font-weight: var(--typography-dialog-weight);
+  letter-spacing: var(--typography-dialog-tracking);
 }
 .drawer-header p {
-  font-size: calc(12px * var(--font-scale));
-  line-height: 1.7;
-  color: var(--muted);
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-leading);
+  color: var(--typography-body-color);
   margin-top: calc(6px * var(--space-scale));
   max-width: 440px;
 }
@@ -117,13 +117,13 @@
   border-top: var(--border-width, 1px) solid var(--border);
 }
 .drawer .field {
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-body-size);
   margin-bottom: calc(20px * var(--space-scale));
 }
 .drawer .field input,
 .drawer .field select,
 .drawer .field textarea {
-  font-size: calc(12px * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
   height: 41px;
   border-radius: calc(7px * var(--radius-scale));
 }
@@ -135,7 +135,7 @@
 }
 .drawer .button--md {
   height: 39px;
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-button-size);
   border-radius: calc(7px * var(--radius-scale));
 }
 @keyframes drawer-slide-in {

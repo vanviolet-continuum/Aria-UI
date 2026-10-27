@@ -1,3 +1,6 @@
+import { Text } from '../text/text'
+
+import { CodeText } from '../code.text/code.text'
 import { useI18n } from '../../i18n/use.i18n'
 import { Command as CommandPrimitive } from 'cmdk'
 import { CornerDownLeft, Search } from 'lucide-react'
@@ -41,18 +44,28 @@ export function Command({
           aria-label={tr('Search commands')}
           placeholder={localize(placeholder)}
         />
-        <kbd>{tr('esc')}</kbd>
+        <CodeText as="kbd" variant="code">
+          {tr('esc')}
+        </CodeText>
       </div>
       <CommandPrimitive.List className="command-list">
         <CommandPrimitive.Empty className="command-empty">
           <Search size={25} />
-          <strong>{localize(emptyMessage)}</strong>
-          <span>{tr('Try a different keyword.')}</span>
+          <Text as="strong" variant="label">
+            {localize(emptyMessage)}
+          </Text>
+          <Text as="span" variant="label">
+            {tr('Try a different keyword.')}
+          </Text>
         </CommandPrimitive.Empty>
         {groups.map((group) => (
           <CommandPrimitive.Group
             key={group}
-            heading={<div className="command-group">{localize(group)}</div>}
+            heading={
+              <Text as="div" variant="body" className="command-group">
+                {localize(group)}
+              </Text>
+            }
           >
             {items
               .filter((item) => (item.group ?? 'Commands') === group)
@@ -72,27 +85,45 @@ export function Command({
                     onSelect?.()
                   }}
                 >
-                  <span className="command-item-icon">{item.icon ?? <Search size={16} />}</span>
-                  <span>
+                  <Text as="span" variant="label" tone="inherit" className="command-item-icon">
+                    {item.icon ?? <Search size={16} />}
+                  </Text>
+                  <Text as="span" variant="label">
                     {localize(item.label)}
-                    {item.description && <small>{localize(item.description)}</small>}
-                  </span>
-                  {item.shortcut ? <kbd>{item.shortcut}</kbd> : <CornerDownLeft size={13} />}
+                    {item.description && (
+                      <Text as="small" variant="caption">
+                        {localize(item.description)}
+                      </Text>
+                    )}
+                  </Text>
+                  {item.shortcut ? (
+                    <CodeText as="kbd" variant="code">
+                      {item.shortcut}
+                    </CodeText>
+                  ) : (
+                    <CornerDownLeft size={13} />
+                  )}
                 </CommandPrimitive.Item>
               ))}
           </CommandPrimitive.Group>
         ))}
       </CommandPrimitive.List>
       <div className="command-footer">
-        <span>
-          <kbd>↑</kbd>
-          <kbd>↓</kbd>
+        <Text as="span" variant="label">
+          <CodeText as="kbd" variant="code">
+            ↑
+          </CodeText>
+          <CodeText as="kbd" variant="code">
+            ↓
+          </CodeText>
           {' ' + tr('to navigate')}
-        </span>
-        <span>
-          <kbd>↵</kbd>
+        </Text>
+        <Text as="span" variant="label">
+          <CodeText as="kbd" variant="code">
+            ↵
+          </CodeText>
           {' ' + tr('to select')}
-        </span>
+        </Text>
       </div>
     </CommandPrimitive>
   )

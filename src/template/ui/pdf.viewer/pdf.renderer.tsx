@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { useEffect, useRef, useState } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
@@ -89,11 +90,11 @@ export default function PdfRenderer({
       }}
     >
       <LockKeyhole size={30} />
-      <strong>
+      <Text as="strong" variant="label">
         {challenge.incorrect
           ? tr('Incorrect password. Try again.')
           : tr('This PDF is password protected')}
-      </strong>
+      </Text>
       <PasswordInput
         value={password}
         onChange={(event) => setPassword(event.target.value)}
@@ -135,15 +136,23 @@ export default function PdfRenderer({
         noData={
           <div className="pdf-message">
             <FileText size={38} />
-            <strong>{tr('Your document goes here')}</strong>
-            <span>{tr('Upload a PDF to preview its pages.')}</span>
+            <Text as="strong" variant="label">
+              {tr('Your document goes here')}
+            </Text>
+            <Text as="span" variant="label">
+              {tr('Upload a PDF to preview its pages.')}
+            </Text>
           </div>
         }
         error={localize(
           <div className="pdf-message" role="alert">
             <FileText size={34} />
-            <strong>Unable to open this PDF</strong>
-            <span>{localize(error || 'Choose a valid PDF file or check the document URL.')}</span>
+            <Text as="strong" variant="label">
+              Unable to open this PDF
+            </Text>
+            <Text as="span" variant="label">
+              {localize(error || 'Choose a valid PDF file or check the document URL.')}
+            </Text>
           </div>,
         )}
         onLoadError={(cause) => {

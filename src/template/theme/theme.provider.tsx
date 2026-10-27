@@ -11,6 +11,7 @@ import { applyTheme } from './apply.theme'
 import { isThemeConfig, normalizeThemeConfig, readThemeConfig, THEME_STORAGE_KEY } from './config'
 import { defaultTheme } from './defaults'
 import { selectThemePreset } from './select.preset'
+import { mergeTypography } from './typography.config'
 import type { ResolvedThemeConfig, ThemeConfig, ThemeMode } from './types'
 
 export type { ThemeMode } from './types'
@@ -81,7 +82,13 @@ export function ThemeProvider({
       setTheme: (mode: ThemeMode) => setConfig((previous) => ({ ...previous, mode })),
       updateConfig: (changes: Partial<ThemeConfig>) =>
         setConfig((previous) => {
-          const next = { ...previous, ...changes }
+          const next = {
+            ...previous,
+            ...changes,
+            typography: changes.typography
+              ? mergeTypography(previous.typography, changes.typography)
+              : previous.typography,
+          }
           return isThemeConfig(next) ? normalizeThemeConfig(next) : previous
         }),
       selectPreset: (id: string) => {

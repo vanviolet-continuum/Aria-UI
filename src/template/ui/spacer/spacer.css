@@ -1,0 +1,16 @@
+.aria-spacer {
+  display: block;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+.aria-spacer--vertical {
+  width: 0;
+  height: var(--l-spacer-size-current, var(--layout-gap));
+}
+.aria-spacer--horizontal {
+  width: var(--l-spacer-size-current, var(--layout-gap));
+  height: 0;
+}
+.aria-spacer--grow {
+  flex: 1 1 0%;
+}

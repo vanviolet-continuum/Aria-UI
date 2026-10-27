@@ -1,3 +1,4 @@
+import { Text } from '../template/ui/text/text'
 import { useI18n } from '../template/i18n'
 import { Settings2 } from 'lucide-react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
@@ -29,7 +30,9 @@ export function StarterLayout() {
       sidebarFooter={
         <>
           <span className="workspace-indicator" />
-          <span>{tr('Ready to build')}</span>
+          <Text as="span" variant="label">
+            {tr('Ready to build')}
+          </Text>
         </>
       }
       headerActions={

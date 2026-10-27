@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 const labels: Record<string, string> = {
   pending: 'Pending',
   partial: 'Partially received',
@@ -10,10 +11,15 @@ const labels: Record<string, string> = {
 export function StatusBadge({ status, label }: { status: string; label?: string }) {
   const { t } = useI18n()
   return (
-    <span className={`status-badge status-badge--${status}`}>
+    <Text
+      as="span"
+      variant="label"
+      tone="inherit"
+      className={`status-badge status-badge--${status}`}
+    >
       <span />
       {t(label ?? labels[status] ?? status)}
-    </span>
+    </Text>
   )
 }
 import { useI18n } from '../../i18n/use.i18n'

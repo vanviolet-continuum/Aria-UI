@@ -37,15 +37,15 @@
   box-shadow: 0 0 0 7px color-mix(in srgb, var(--error-soft) 40%, transparent);
 }
 .confirm-dialog h2 {
-  font-size: calc(21px * var(--font-scale));
-  font-weight: 550;
-  letter-spacing: -0.6px;
-  color: var(--text);
+  font-size: var(--typography-section-size);
+  font-weight: var(--typography-section-weight);
+  letter-spacing: var(--typography-section-tracking);
+  color: var(--typography-section-color);
 }
 .confirm-dialog p {
-  font-size: calc(12px * var(--font-scale));
-  line-height: 1.8;
-  color: var(--muted);
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-leading);
+  color: var(--typography-body-color);
   margin: calc(10px * var(--space-scale)) 0 calc(25px * var(--space-scale));
 }
 .confirm-dialog-actions {
@@ -55,7 +55,7 @@
 }
 .confirm-dialog-actions .button {
   height: 40px;
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-button-size);
 }
 .mutation-backdrop {
   z-index: 200;
@@ -78,17 +78,17 @@
     color-mix(in srgb, var(--shadow-color) calc(7.06% * var(--shadow-strength, 1)), transparent);
 }
 .loading-overlay-card {
-  color: var(--muted);
+  color: var(--typography-body-color);
   text-align: center;
 }
 .loading-overlay-card strong {
-  font-size: calc(13px * var(--font-scale));
-  color: var(--text);
+  font-size: var(--typography-label-size);
+  color: var(--typography-label-color);
   margin-top: calc(10px * var(--space-scale));
 }
 .loading-overlay-card small {
-  font-size: calc(11px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-caption-size);
+  color: var(--typography-caption-color);
   margin-top: calc(6px * var(--space-scale));
 }
 .loading-overlay {

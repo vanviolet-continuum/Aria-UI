@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { FileText } from 'lucide-react'
 import { fileSize } from '../file.upload/file.utils'
@@ -19,21 +20,49 @@ export function PdfInfo({
   return (
     <aside className="pdf-info" aria-label={tr('PDF information')}>
       <FileText size={25} />
-      <strong>{tr('Document details')}</strong>
-      <p>{name}</p>
+      <Text as="strong" variant="label">
+        {tr('Document details')}
+      </Text>
+      <Text as="p" variant="body">
+        {name}
+      </Text>
       <dl>
-        <dt>{tr('Pages')}</dt>
-        <dd>{pages || '–'}</dd>
-        <dt>{tr('File size')}</dt>
-        <dd>{file instanceof File ? fileSize(file.size) : tr('Remote document')}</dd>
-        <dt>{tr('Title')}</dt>
-        <dd>{info.title || tr('Not provided')}</dd>
-        <dt>{tr('Author')}</dt>
-        <dd>{info.author || tr('Not provided')}</dd>
-        <dt>{tr('Created')}</dt>
-        <dd>{info.created || tr('Not provided')}</dd>
-        <dt>{tr('Page dimensions')}</dt>
-        <dd>{info.dimensions || '–'}</dd>
+        <Text as="dt" variant="label">
+          {tr('Pages')}
+        </Text>
+        <Text as="dd" variant="body">
+          {pages || '–'}
+        </Text>
+        <Text as="dt" variant="label">
+          {tr('File size')}
+        </Text>
+        <Text as="dd" variant="body">
+          {file instanceof File ? fileSize(file.size) : tr('Remote document')}
+        </Text>
+        <Text as="dt" variant="label">
+          {tr('Title')}
+        </Text>
+        <Text as="dd" variant="body">
+          {info.title || tr('Not provided')}
+        </Text>
+        <Text as="dt" variant="label">
+          {tr('Author')}
+        </Text>
+        <Text as="dd" variant="body">
+          {info.author || tr('Not provided')}
+        </Text>
+        <Text as="dt" variant="label">
+          {tr('Created')}
+        </Text>
+        <Text as="dd" variant="body">
+          {info.created || tr('Not provided')}
+        </Text>
+        <Text as="dt" variant="label">
+          {tr('Page dimensions')}
+        </Text>
+        <Text as="dd" variant="body">
+          {info.dimensions || '–'}
+        </Text>
       </dl>
     </aside>
   )

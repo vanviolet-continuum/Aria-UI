@@ -1,3 +1,6 @@
+import { CodeText } from '../code.text/code.text'
+
+import { Text } from '../text/text'
 import * as Primitive from '@radix-ui/react-dropdown-menu'
 import clsx from 'clsx'
 import { Check } from 'lucide-react'
@@ -76,8 +79,16 @@ export function Menu({
         >
           {(label || description) && (
             <Primitive.Label className="ui-menu-heading">
-              {label && <strong>{localize(label)}</strong>}
-              {description && <span>{localize(description)}</span>}
+              {label && (
+                <Text as="strong" variant="label">
+                  {localize(label)}
+                </Text>
+              )}
+              {description && (
+                <Text as="span" variant="menu">
+                  {localize(description)}
+                </Text>
+              )}
             </Primitive.Label>
           )}
           <Primitive.RadioGroup value={value} onValueChange={onValueChange}>
@@ -86,24 +97,46 @@ export function Menu({
               const content = (
                 <>
                   {item.icon && (
-                    <span className="ui-menu-icon" aria-hidden="true">
+                    <Text
+                      as="span"
+                      variant="menu"
+                      tone="inherit"
+                      className="ui-menu-icon"
+                      aria-hidden="true"
+                    >
                       {item.icon}
-                    </span>
+                    </Text>
                   )}
-                  <span className="ui-menu-copy">
-                    <span>{localize(item.label)}</span>
-                    {item.description && <small>{localize(item.description)}</small>}
-                  </span>
+                  <Text as="span" variant="menu" tone="inherit" className="ui-menu-copy">
+                    <Text as="span" variant="menu">
+                      {localize(item.label)}
+                    </Text>
+                    {item.description && (
+                      <Text as="small" variant="description">
+                        {localize(item.description)}
+                      </Text>
+                    )}
+                  </Text>
                   {(item.shortcut || item.trailing) && (
-                    <span className="ui-menu-trailing">
+                    <Text as="span" variant="menu" tone="inherit" className="ui-menu-trailing">
                       {item.trailing}
-                      {item.shortcut && <kbd>{item.shortcut}</kbd>}
-                    </span>
+                      {item.shortcut && (
+                        <CodeText as="kbd" variant="code">
+                          {item.shortcut}
+                        </CodeText>
+                      )}
+                    </Text>
                   )}
                   {(selection === 'single' || item.checked !== undefined) && (
-                    <span className="ui-menu-check" aria-hidden="true">
+                    <Text
+                      as="span"
+                      variant="menu"
+                      tone="inherit"
+                      className="ui-menu-check"
+                      aria-hidden="true"
+                    >
                       {selected && <Check size={15} />}
-                    </span>
+                    </Text>
                   )}
                 </>
               )

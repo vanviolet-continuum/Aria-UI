@@ -1,0 +1,7 @@
+.blocks-preview-search {
+  flex: 1 1 12rem;
+  max-width: 100%;
+}
+.blocks-preview-status {
+  width: min(10rem, 100%);
+}

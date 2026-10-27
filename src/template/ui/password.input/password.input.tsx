@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { Check, Circle, Eye, EyeOff } from 'lucide-react'
 import { forwardRef, useId, useState } from 'react'
@@ -80,7 +81,9 @@ export const PasswordInput = /* @__PURE__ */ forwardRef<HTMLInputElement, Passwo
                 <span key={step} data-filled={step <= result.score || undefined} />
               ))}
             </div>
-            <small aria-live="polite">{localize(result.label)}</small>
+            <Text as="small" variant="caption" aria-live="polite">
+              {localize(result.label)}
+            </Text>
           </div>
         )}
         {showRequirements && (
@@ -88,8 +91,12 @@ export const PasswordInput = /* @__PURE__ */ forwardRef<HTMLInputElement, Passwo
             {result.checks.map((rule) => (
               <li key={rule.id} data-met={rule.met || undefined}>
                 {rule.met ? <Check size={13} /> : <Circle size={11} />}
-                <span>{localize(rule.label)}</span>
-                <span className="sr-only">{rule.met ? tr('met') : tr('not met')}</span>
+                <Text as="span" variant="label">
+                  {localize(rule.label)}
+                </Text>
+                <Text as="span" variant="label" className="sr-only">
+                  {rule.met ? tr('met') : tr('not met')}
+                </Text>
               </li>
             ))}
           </ul>

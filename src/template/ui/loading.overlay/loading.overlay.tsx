@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { LoaderCircle } from 'lucide-react'
 import * as Dialog from '@radix-ui/react-dialog'
@@ -30,8 +31,12 @@ function LoadingContent({ label, description }: { label: string; description: st
   return (
     <div className="loading-overlay-card">
       <LoadingIllustration label={tr('')} size={95} />
-      <strong>{localize(label)}</strong>
-      <small>{localize(description)}</small>
+      <Text as="strong" variant="label">
+        {localize(label)}
+      </Text>
+      <Text as="small" variant="caption">
+        {localize(description)}
+      </Text>
     </div>
   )
 }
@@ -57,7 +62,11 @@ export function LoadingOverlay({
               onEscapeKeyDown={(event) => event.preventDefault()}
               onPointerDownOutside={(event) => event.preventDefault()}
             >
-              <Dialog.Title className="sr-only">{localize(label)}</Dialog.Title>
+              <Dialog.Title className="sr-only">
+                <Text as="span" variant="dialog">
+                  {localize(label)}
+                </Text>
+              </Dialog.Title>
               <div role="status" aria-live="polite">
                 <LoadingContent label={localize(label)} description={localize(description)} />
               </div>

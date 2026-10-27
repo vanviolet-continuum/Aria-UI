@@ -1,3 +1,8 @@
+import { Heading } from '../heading/heading'
+
+import { Eyebrow } from '../eyebrow/eyebrow'
+
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import type { ReactNode } from 'react'
 import { NotFoundIllustration } from '../illustrations/states/not.found.illustration'
@@ -14,12 +19,18 @@ export function NotFoundState({
   const { t: tr, text: localize } = useI18n()
 
   return (
-    <div className="empty-state not-found-state">
+    <Text as="div" variant="body" className="empty-state not-found-state">
       <NotFoundIllustration />
-      <span className="state-eyebrow">{tr('404 · PAGE NOT FOUND')}</span>
-      <h3>{localize(title)}</h3>
-      <p>{localize(description)}</p>
+      <Eyebrow as="span" variant="eyebrow" className="state-eyebrow">
+        {tr('404 · PAGE NOT FOUND')}
+      </Eyebrow>
+      <Heading as="h3" variant="card">
+        {localize(title)}
+      </Heading>
+      <Text as="p" variant="body">
+        {localize(description)}
+      </Text>
       {action}
-    </div>
+    </Text>
   )
 }

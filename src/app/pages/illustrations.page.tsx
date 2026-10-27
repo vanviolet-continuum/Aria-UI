@@ -1,3 +1,10 @@
+import { FieldLabel } from '../../template/ui/field.label/field.label'
+
+import { CodeText } from '../../template/ui/code.text/code.text'
+
+import { Text } from '../../template/ui/text/text'
+
+import { Heading } from '../../template/ui/heading/heading'
 import { useRef, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Blocks, Check, Code2, Copy, Download, Image, Palette, Sparkles } from 'lucide-react'
@@ -6,6 +13,7 @@ import {
   Button,
   Combobox,
   IconButton,
+  PageHeader,
   SearchEmptyState,
   SearchInput,
   Tabs,
@@ -89,16 +97,22 @@ function IllustrationCard({
       </div>
       <div className="illustration-card-content">
         <div className="illustration-card-heading">
-          <h3>{tr(item.name)}</h3>
-          <span>
+          <Heading as="h3" variant="card">
+            {tr(item.name)}
+          </Heading>
+          <Text as="span" variant="label">
             {tr(
               illustrationCategories.find((category) => category.id === item.category)?.label ??
                 item.category,
             )}
-          </span>
+          </Text>
         </div>
-        <p>{tr(item.description)}</p>
-        <code>{item.componentName}</code>
+        <Text as="p" variant="body">
+          {tr(item.description)}
+        </Text>
+        <CodeText as="code" variant="code">
+          {item.componentName}
+        </CodeText>
       </div>
       <footer className="illustration-card-actions">
         <Button variant="text" size="sm" onClick={() => void copy('component')}>
@@ -152,34 +166,38 @@ export function IllustrationsPage() {
 
   return (
     <div className="standard-page illustrations-page page-enter">
-      <header className="illustrations-page-heading">
-        <div>
-          <span className="eyebrow">
+      <PageHeader
+        eyebrow={
+          <>
             <Image size={13} /> ARIA UI / {tr('SVG LIBRARY')}
-          </span>
-          <h2>{tr('Small stories for every state.')}</h2>
-          <p>
-            {tr('Reusable SVG illustrations for empty states, feedback, and everyday workflows.')}
-          </p>
+          </>
+        }
+        title={tr('Small stories for every state.')}
+        description={tr(
+          'Reusable SVG illustrations for empty states, feedback, and everyday workflows.',
+        )}
+        meta={
           <div className="illustrations-heading-tags">
             <Badge variant="primary" appearance="outline">
               {illustrationCatalog.length} {tr('illustrations')}
             </Badge>
-            <span>
+            <Text as="span" variant="label">
               <Palette size={12} />
               {tr('Theme aware')}
-            </span>
-            <span>
+            </Text>
+            <Text as="span" variant="label">
               <Sparkles size={12} />
               {illustrationCatalog.filter((item) => item.isNew).length} {tr('new illustrations')}
-            </span>
+            </Text>
           </div>
-        </div>
-        <Button onClick={() => navigate('/components?component=illustrations')}>
-          <Blocks size={14} />
-          {tr('Component UI')}
-        </Button>
-      </header>
+        }
+        actions={
+          <Button onClick={() => navigate('/components?component=illustrations')}>
+            <Blocks size={14} />
+            {tr('Component UI')}
+          </Button>
+        }
+      />
       <section className="illustrations-library" aria-label={tr('Illustration gallery')}>
         <div className="illustrations-toolbar">
           <SearchInput
@@ -189,8 +207,10 @@ export function IllustrationsPage() {
             placeholder={tr('Search illustrations…')}
           />
           <div className="illustrations-preview-controls">
-            <label>
-              <span>{tr('Color')}</span>
+            <FieldLabel as="label" variant="label">
+              <Text as="span" variant="label">
+                {tr('Color')}
+              </Text>
               <Combobox
                 searchable={false}
                 size="sm"
@@ -204,9 +224,11 @@ export function IllustrationsPage() {
                   { value: 'violet', label: tr('Violet') },
                 ]}
               />
-            </label>
-            <label>
-              <span>{tr('Preview size')}</span>
+            </FieldLabel>
+            <FieldLabel as="label" variant="label">
+              <Text as="span" variant="label">
+                {tr('Preview size')}
+              </Text>
               <Combobox
                 searchable={false}
                 size="sm"
@@ -218,7 +240,7 @@ export function IllustrationsPage() {
                   { value: '260', label: tr('Large') },
                 ]}
               />
-            </label>
+            </FieldLabel>
           </div>
         </div>
         <div className="illustrations-categories">
@@ -239,22 +261,28 @@ export function IllustrationsPage() {
           />
         </div>
         <div className="illustrations-results">
-          <span aria-live="polite">
+          <Text as="span" variant="label" aria-live="polite">
             {visible.length} {tr('illustrations available')}
-          </span>
-          <span>{tr('Copy the React component or download a standalone SVG.')}</span>
+          </Text>
+          <Text as="span" variant="label">
+            {tr('Copy the React component or download a standalone SVG.')}
+          </Text>
         </div>
         {category === 'decoration' && (
           <div className="decoration-library-note">
             <Sparkles size={18} />
             <div>
-              <strong>{tr('Designed for login, onboarding, and hero sections.')}</strong>
-              <p>
+              <Text as="strong" variant="label">
+                {tr('Designed for login, onboarding, and hero sections.')}
+              </Text>
+              <Text as="p" variant="description">
                 {tr(
                   'Transparent SVGs with soft gradients and open space for your content. Layer them around a form or use them as a page accent.',
                 )}
-              </p>
-              <code>{'<AuroraDecoration size="100%" />'}</code>
+              </Text>
+              <CodeText as="code" variant="code">
+                {'<AuroraDecoration size="100%" />'}
+              </CodeText>
             </div>
           </div>
         )}
@@ -278,13 +306,17 @@ export function IllustrationsPage() {
       <footer className="illustrations-usage">
         <Code2 size={18} />
         <div>
-          <strong>{tr('Made to travel with your UI kit.')}</strong>
-          <p>
+          <Text as="strong" variant="label">
+            {tr('Made to travel with your UI kit.')}
+          </Text>
+          <Text as="p" variant="body">
             {tr(
               'All illustrations are vector components with size, title, and tone props. They follow light mode, dark mode, and your theme palette.',
             )}
-          </p>
-          <code>import {'{ SuccessIllustration }'} from '@/template/ui/illustrations'</code>
+          </Text>
+          <CodeText as="code" variant="code">
+            import {'{ SuccessIllustration }'} from '@/template/ui/illustrations'
+          </CodeText>
         </div>
       </footer>
     </div>

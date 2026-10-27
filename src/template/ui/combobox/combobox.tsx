@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { PopoverContent } from '../popover/popover'
 import { useI18n } from '../../i18n/use.i18n'
 import * as Popover from '@radix-ui/react-popover'
@@ -101,7 +102,10 @@ export function Combobox({
     >
       {name && <input type="hidden" name={name} value={value ?? ''} />}
       <Popover.Trigger asChild>
-        <button
+        <Text
+          as="button"
+          variant="button"
+          tone="inherit"
           type="button"
           id={id}
           disabled={disabled}
@@ -112,13 +116,18 @@ export function Combobox({
           aria-busy={pending || undefined}
           {...aria}
         >
-          <span className={selected ? '' : 'ui-placeholder'}>
+          <Text
+            as="span"
+            variant="menu"
+            tone="inherit"
+            className={selected ? '' : 'ui-placeholder'}
+          >
             {localize(selected?.label ?? placeholder)}
-          </span>
-          <span className="combobox-trigger-icons">
+          </Text>
+          <Text as="span" variant="menu" tone="inherit" className="combobox-trigger-icons">
             {pending ? <Spinner size={13} label={tr('')} /> : <ChevronsUpDown size={15} />}
-          </span>
-        </button>
+          </Text>
+        </Text>
       </Popover.Trigger>
       <Popover.Portal>
         <PopoverContent

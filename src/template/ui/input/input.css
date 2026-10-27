@@ -26,10 +26,10 @@
   background: transparent;
   border: none;
   outline: none;
-  font-size: calc(12px * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
   min-width: 0;
   padding: 0;
-  color: var(--text);
+  color: var(--typography-input-color);
 }
 
 .ui-input:focus-visible {
@@ -43,8 +43,8 @@
 }
 
 .ui-input-trailing {
-  color: var(--muted);
-  font-size: calc(11px * var(--font-scale));
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
   flex-shrink: 0;
 }
 
@@ -56,7 +56,7 @@
 
 .ui-input-wrap--sm .ui-input {
   height: 31px;
-  font-size: calc(11px * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
 }
 
 .ui-input-wrap--lg {
@@ -65,7 +65,7 @@
 
 .ui-input-wrap--lg .ui-input {
   height: 44px;
-  font-size: calc(13px * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
 }
 
 .ui-input-wrap--disabled {
@@ -81,5 +81,5 @@
 }
 
 .ui-placeholder {
-  color: var(--muted) !important;
+  color: var(--typography-body-color) !important;
 }

@@ -17,9 +17,9 @@
   gap: calc(9px * var(--space-scale));
   padding: calc(9px * var(--space-scale)) calc(10px * var(--space-scale));
   outline: none;
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-menu-size);
   border-radius: calc(4px * var(--radius-scale));
-  color: var(--text-secondary);
+  color: var(--typography-menu-color);
 }
 
 .dropdown-menu [role='menuitem'][data-highlighted] {
@@ -44,15 +44,15 @@
 
 .dropdown-label {
   padding: calc(8px * var(--space-scale)) calc(10px * var(--space-scale));
-  color: var(--muted);
-  font-size: calc(9px * var(--font-scale));
-  text-transform: uppercase;
-  letter-spacing: 0.7px;
+  color: var(--typography-label-color);
+  font-size: var(--typography-label-size);
+  text-transform: var(--typography-label-transform);
+  letter-spacing: var(--typography-label-tracking);
 }
 
 .dropdown-footnote {
   display: block;
-  font-size: calc(9px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-caption-size);
+  color: var(--typography-caption-color);
   padding: calc(8px * var(--space-scale)) calc(10px * var(--space-scale));
 }

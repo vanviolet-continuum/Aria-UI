@@ -1,0 +1,5 @@
+.aria-inline {
+  flex-direction: var(--l-direction-current, row);
+  align-items: var(--l-align-current, center);
+  flex-wrap: var(--l-wrap-current, wrap);
+}

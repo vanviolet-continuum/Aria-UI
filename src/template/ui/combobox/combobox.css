@@ -10,7 +10,7 @@
   height: 40px;
   padding: 0 calc(12px * var(--space-scale));
   background: var(--surface);
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-body-size);
   min-width: 0;
 }
 
@@ -25,12 +25,12 @@
 }
 .combobox-trigger--sm {
   height: 32px;
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-body-size);
   padding-inline: 10px;
 }
 
 .combobox-trigger > svg {
-  color: var(--muted);
+  color: var(--typography-body-color);
 }
 
 .combobox-trigger:disabled {
@@ -63,7 +63,7 @@
   padding: 0 calc(12px * var(--space-scale));
   height: 42px;
   border-bottom: var(--border-width, 1px) solid var(--border);
-  color: var(--muted);
+  color: var(--typography-input-color);
   flex: 0 0 42px;
 }
 
@@ -75,7 +75,7 @@
   outline: none;
   background: none;
   height: 100%;
-  font-size: calc(11px * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
 }
 
 .combobox-options {
@@ -102,9 +102,9 @@
   width: 100%;
   padding: calc(10px * var(--space-scale)) calc(9px * var(--space-scale));
   border-radius: calc(5px * var(--radius-scale));
-  font-size: calc(var(--control-font-size) * var(--font-scale));
-  color: var(--text-secondary);
-  line-height: 1.4;
+  font-size: var(--typography-menu-size);
+  color: var(--typography-menu-color);
+  line-height: var(--typography-menu-leading);
 }
 .combobox-option-copy {
   display: flex;
@@ -142,14 +142,14 @@
 
 .combobox-option small {
   display: block;
-  font-size: calc(9px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-caption-size);
+  color: var(--typography-caption-color);
   margin-top: calc(3px * var(--space-scale));
 }
 
 .combobox-empty {
   padding: calc(25px * var(--space-scale)) calc(12px * var(--space-scale));
   text-align: center;
-  font-size: calc(11px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-body-size);
+  color: var(--typography-body-color);
 }

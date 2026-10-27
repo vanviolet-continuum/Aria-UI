@@ -1524,5 +1524,10 @@
   "Sticky notes": "Catatan tempel",
   "A layered note pad with a folded corner and short lines.": "Tumpukan catatan dengan sudut terlipat dan garis pendek.",
   "Push pins": "Paku payung",
-  "Two pinboard tacks with clear caps and narrow points.": "Dua paku papan dengan kepala jelas dan ujung ramping."
+  "Two pinboard tacks with clear caps and narrow points.": "Dua paku papan dengan kepala jelas dan ujung ramping.",
+  "All filters": "Semua filter",
+  "End date": "Tanggal akhir",
+  "Select date": "Pilih tanggal",
+  "Sort {{column}} ascending": "Urutkan {{column}} menaik",
+  "Sort {{column}} descending": "Urutkan {{column}} menurun"
 }

@@ -1,6 +1,14 @@
+import { MetricValue } from '../metric.value/metric.value'
+
+import { Text } from '../text/text'
+
+import { Heading } from '../heading/heading'
+
+import { Eyebrow } from '../eyebrow/eyebrow'
 import clsx from 'clsx'
 import { useId, type HTMLAttributes, type ReactNode } from 'react'
 import { useI18n } from '../../i18n/use.i18n'
+import { SectionHeader } from '../section.header/section.header'
 
 export interface DetailViewProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   title: ReactNode
@@ -37,16 +45,30 @@ export function DetailView({
         <div className="detail-header-main">
           {avatar && <div className="detail-avatar">{avatar}</div>}
           <div className="detail-identity">
-            {eyebrow && <div className="detail-eyebrow">{localize(eyebrow)}</div>}
+            {eyebrow && (
+              <Eyebrow as="div" variant="eyebrow" className="detail-eyebrow">
+                {localize(eyebrow)}
+              </Eyebrow>
+            )}
             <div className="detail-title-row">
-              <h2>{localize(title)}</h2>
+              <Heading as="h2" variant="section">
+                {localize(title)}
+              </Heading>
               {badge}
             </div>
-            {description && <p className="detail-description">{localize(description)}</p>}
+            {description && (
+              <Text as="p" variant="description" className="detail-description">
+                {localize(description)}
+              </Text>
+            )}
           </div>
           {actions && <div className="detail-actions">{actions}</div>}
         </div>
-        {meta && <div className="detail-meta">{meta}</div>}
+        {meta && (
+          <Text as="div" variant="body" className="detail-meta">
+            {meta}
+          </Text>
+        )}
       </header>
       {summary}
       <div className={clsx('detail-layout', aside && 'detail-layout--with-aside')}>
@@ -78,18 +100,20 @@ export function DetailSection({
 
   return (
     <section className={clsx('detail-section', className)} aria-labelledby={id} {...props}>
-      <div className="detail-section-header">
-        {icon && (
-          <span className="detail-section-icon" aria-hidden="true">
-            {icon}
-          </span>
-        )}
-        <div>
-          <h3 id={id}>{localize(title)}</h3>
-          {description && <p>{localize(description)}</p>}
-        </div>
-        {actions && <div className="detail-section-actions">{actions}</div>}
-      </div>
+      <SectionHeader
+        className="detail-section-header"
+        title={localize(title)}
+        description={localize(description)}
+        leading={icon}
+        actions={actions}
+        padding="md"
+        paddingX="lg"
+        slotProps={{
+          title: { id },
+          leading: { className: 'detail-section-icon', 'aria-hidden': true },
+          actions: { className: 'detail-section-actions' },
+        }}
+      />
       <div className="detail-section-body">{children}</div>
     </section>
   )
@@ -123,16 +147,24 @@ export function DetailList({
     <dl className={clsx('detail-list', `detail-list--${columns}`, className)} {...props}>
       {items.map((item) => (
         <div className={clsx('detail-field', item.fullWidth && 'detail-field--full')} key={item.id}>
-          <dt>
-            {item.icon && <span aria-hidden="true">{item.icon}</span>}
+          <Text as="dt" variant="label">
+            {item.icon && (
+              <Text as="span" variant="label" tone="inherit" aria-hidden="true">
+                {item.icon}
+              </Text>
+            )}
             {localize(item.label)}
-          </dt>
-          <dd>
+          </Text>
+          <Text as="dd" variant="body">
             {item.value === null || item.value === undefined || item.value === ''
               ? localize(emptyValue)
               : localize(item.value)}
-            {item.hint && <small>{localize(item.hint)}</small>}
-          </dd>
+            {item.hint && (
+              <Text as="small" variant="caption">
+                {localize(item.hint)}
+              </Text>
+            )}
+          </Text>
         </div>
       ))}
     </dl>
@@ -158,14 +190,24 @@ export function DetailStats({ items, className, ...props }: DetailStatsProps) {
     <dl className={clsx('detail-stats', className)} {...props}>
       {items.map((item) => (
         <div className="detail-stat" key={item.id}>
-          <dt>
+          <Text as="dt" variant="label">
             {localize(item.label)}
-            {item.icon && <span aria-hidden="true">{item.icon}</span>}
-          </dt>
-          <dd>
-            <strong>{localize(item.value)}</strong>
-            {item.hint && <small>{localize(item.hint)}</small>}
-          </dd>
+            {item.icon && (
+              <Text as="span" variant="label" tone="inherit" aria-hidden="true">
+                {item.icon}
+              </Text>
+            )}
+          </Text>
+          <Text as="dd" variant="body">
+            <MetricValue as="strong" variant="metric">
+              {localize(item.value)}
+            </MetricValue>
+            {item.hint && (
+              <Text as="small" variant="caption">
+                {localize(item.hint)}
+              </Text>
+            )}
+          </Text>
         </div>
       ))}
     </dl>
@@ -196,13 +238,29 @@ export function DetailTimeline({ items, className, ...props }: DetailTimelinePro
           className={`detail-timeline-item detail-timeline-item--${item.tone ?? 'neutral'}`}
           key={item.id}
         >
-          <span className="detail-timeline-marker" aria-hidden="true">
+          <Text
+            as="span"
+            variant="label"
+            tone="inherit"
+            className="detail-timeline-marker"
+            aria-hidden="true"
+          >
             {item.icon}
-          </span>
+          </Text>
           <div>
-            <strong>{localize(item.title)}</strong>
-            {item.description && <p>{localize(item.description)}</p>}
-            {item.time && <time dateTime={item.dateTime}>{localize(item.time)}</time>}
+            <Text as="strong" variant="label">
+              {localize(item.title)}
+            </Text>
+            {item.description && (
+              <Text as="p" variant="body">
+                {localize(item.description)}
+              </Text>
+            )}
+            {item.time && (
+              <Text as="time" variant="caption" dateTime={item.dateTime}>
+                {localize(item.time)}
+              </Text>
+            )}
           </div>
         </li>
       ))}

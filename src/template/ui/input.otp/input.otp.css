@@ -12,7 +12,7 @@
   pointer-events: none;
   width: 100%;
   height: 100%;
-  font-size: calc(16px * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
 }
 .otp-cell {
   display: grid;
@@ -21,9 +21,9 @@
   width: 41px;
   border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(8px * var(--radius-scale));
-  color: var(--text);
-  font-size: calc(19px * var(--font-scale));
-  font-weight: 500;
+  color: var(--typography-input-color);
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
+  font-weight: var(--typography-input-weight);
   cursor: text;
   background: var(--surface);
 }

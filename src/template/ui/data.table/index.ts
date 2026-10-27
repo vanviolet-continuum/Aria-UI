@@ -1,4 +1,5 @@
 export * from './data.table'
 export * from './types'
+export { getDefaultColumnPinning } from './column.pinning'
 export * from './table.column.menu'
 export * from './use.table.columns'

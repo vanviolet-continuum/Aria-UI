@@ -8,6 +8,8 @@ export interface ColumnDef<T> {
   sortable?: boolean
   /** Show the pin control in this column header. Overrides the table default. */
   pinable?: boolean
+  /** Initial side; remains fixed when pinable is false. */
+  defaultPin?: 'left' | 'right'
   className?: string
   width?: string | number
   align?: 'left' | 'center' | 'right'

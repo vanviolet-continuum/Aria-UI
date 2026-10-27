@@ -2,18 +2,18 @@
   min-width: 0;
 }
 .ui-data-table {
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-table-size);
 }
 .ui-data-table th {
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-label-size);
   height: 43px;
-  font-weight: 500;
-  color: var(--muted);
+  font-weight: var(--typography-label-weight);
+  color: var(--typography-label-color);
 }
 .ui-data-table td {
   height: calc(65px * var(--table-density));
-  color: var(--text-secondary);
-  font-size: calc(12px * var(--font-scale));
+  color: var(--typography-table-color);
+  font-size: var(--typography-table-size);
   padding: calc(12px * var(--space-scale) * var(--table-density)) calc(12px * var(--space-scale));
 }
 .ui-data-table th:first-child,
@@ -33,16 +33,16 @@
   width: 100%;
   min-height: 74px;
   padding: calc(16px * var(--space-scale)) calc(20px * var(--space-scale));
-  color: var(--muted);
-  font-size: calc(11px * var(--font-scale));
-  line-height: 1.6;
+  color: var(--typography-table-color);
+  font-size: var(--typography-table-size);
+  line-height: var(--typography-table-leading);
 }
 .pagination-summary {
   min-width: 0;
 }
 .pagination-summary strong {
-  font-weight: 550;
-  color: var(--text-secondary);
+  font-weight: var(--typography-table-weight);
+  color: var(--typography-table-color);
 }
 .pagination-controls {
   display: flex;
@@ -93,7 +93,7 @@
   text-align: center;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
-  color: var(--text-secondary);
+  color: var(--typography-table-color);
 }
 @container (max-width: 780px) {
   .ui-table-pagination {
@@ -131,14 +131,14 @@
   }
 }
 .ui-data-table .table-sort {
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-table-size);
   white-space: nowrap;
 }
 .ui-data-table .directory-name strong {
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-table-size);
 }
 .ui-data-table .directory-name small {
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-caption-size);
 }
 .stock-order-data {
   min-width: 950px;
@@ -147,10 +147,10 @@
   min-width: 930px;
 }
 .stock-inventory-data .product-name strong {
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-table-size);
 }
 .stock-inventory-data .product-name small {
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-caption-size);
 }
 .inventory-table-caption {
   display: flex;
@@ -158,41 +158,41 @@
   align-items: center;
   gap: calc(15px * var(--space-scale));
   padding: 0 0 calc(10px * var(--space-scale));
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
 }
 .stock-order-data .order-name {
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-table-size);
 }
 .stock-order-data .cell-subtitle {
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-description-size);
 }
 .stock-order-data .vendor-cell,
 .stock-order-data .date-cell {
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-table-size);
 }
 .stock-order-data .received-cell {
   min-width: 110px;
 }
 .stock-order-data .receive-button {
   height: 32px;
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-button-size);
 }
 .stock-order-data .receive-button:disabled {
-  font-size: calc(9px * var(--font-scale));
+  font-size: var(--typography-button-size);
 }
 .stock-order-data .email-pending {
   opacity: 0.5;
 }
 .stock-order-data .status-badge {
-  font-size: calc(8.5px * var(--font-scale));
+  font-size: var(--typography-table-size);
 }
 .directory-panel .toolbar-actions > .ui-select-wrap {
   width: 135px;
 }
 .directory-panel .toolbar-actions > .ui-select-wrap select {
   height: 33px;
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-table-size);
 }
 .directory-panel .ui-data-table {
   min-width: 740px;

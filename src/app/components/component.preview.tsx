@@ -1,3 +1,10 @@
+import { CodeBlock } from '../../template/ui/code.block/code.block'
+
+import { CodeText } from '../../template/ui/code.text/code.text'
+
+import { Text } from '../../template/ui/text/text'
+
+import { FieldLabel } from '../../template/ui/field.label/field.label'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -18,7 +25,7 @@ import {
   Badge,
   Button,
   Calendar,
-  Checkbox,
+  CheckboxField,
   Chip,
   Combobox,
   Command,
@@ -67,6 +74,9 @@ import { StatusBadge } from '../../template/ui/status.badge'
 import { useI18n } from '../../template/i18n'
 import { MemberTable } from '../pages/table.example.page'
 import { illustrationCatalog } from '../catalogs/illustrations'
+import { LayoutPreview } from './layout.preview'
+import { BlocksPreview } from './blocks.preview'
+import { TypographyPreview } from './typography.preview'
 
 export function ComponentPreview({ id }: { id: string }) {
   const { t: tr } = useI18n()
@@ -165,10 +175,39 @@ export function ComponentPreview({ id }: { id: string }) {
   )
 
   switch (id) {
+    case 'text':
+    case 'heading':
+    case 'eyebrow':
+    case 'field-label':
+    case 'field-hint':
+    case 'field-error':
+    case 'text-link':
+    case 'code-text':
+    case 'code-block':
+    case 'metric-value':
+      return <TypographyPreview id={id} />
+    case 'heading-group':
+    case 'page-header':
+    case 'section-header':
+    case 'card':
+    case 'toolbar':
+    case 'settings-row':
+      return <BlocksPreview id={id} />
+    case 'box':
+    case 'stack':
+    case 'inline':
+    case 'grid':
+    case 'grid-item':
+    case 'container':
+    case 'divider':
+    case 'spacer':
+      return <LayoutPreview id={id} />
     case 'action-menu':
       return (
         <div className="catalog-preview-row">
-          <span>{tr('Workspace actions')}</span>
+          <Text as="span" variant="label" tone="inherit">
+            {tr('Workspace actions')}
+          </Text>
           <ActionMenu items={menuItems} />
         </div>
       )
@@ -227,18 +266,15 @@ export function ComponentPreview({ id }: { id: string }) {
     case 'checkbox':
       return (
         <div className="catalog-preview-stack">
-          <label className="catalog-preview-row">
-            <Checkbox checked={checked} onChange={(event) => setChecked(event.target.checked)} />
-            {tr('Keep me updated')}
-          </label>
-          <label className="catalog-preview-row">
-            <Checkbox defaultChecked />
-            {tr('Include project activity')}
-          </label>
-          <label className="catalog-preview-row">
-            <Checkbox disabled />
-            {tr('Disabled')}
-          </label>
+          <CheckboxField
+            variant="card"
+            label={tr('Keep me updated')}
+            description={tr('Include project activity')}
+            checked={checked}
+            onChange={(event) => setChecked(event.target.checked)}
+          />
+          <CheckboxField variant="row" label={tr('Include project activity')} defaultChecked />
+          <CheckboxField variant="card" label={tr('Disabled')} disabled />
         </div>
       )
     case 'chip':
@@ -249,8 +285,13 @@ export function ComponentPreview({ id }: { id: string }) {
               {tr('Design')}
             </Chip>
           )}
-          <Chip variant="success">{tr('Active')}</Chip>
-          <Chip icon={<Layers3 size={12} />}>Aria UI</Chip>
+          <Chip variant="success" appearance="outline">
+            {tr('Active')}
+          </Chip>
+          <Chip icon={<Layers3 size={14} />}>Aria UI</Chip>
+          <Chip variant="primary" appearance="solid" size="sm">
+            {tr('New')}
+          </Chip>
           {!checked && (
             <Button size="sm" onClick={() => setChecked(true)}>
               {tr('Reset')}
@@ -275,9 +316,9 @@ export function ComponentPreview({ id }: { id: string }) {
               { value: 'archived', label: tr('Archived'), disabled: true },
             ]}
           />
-          <p>
+          <Text as="p" variant="body">
             {tr('Selected')}: {choice}
-          </p>
+          </Text>
         </div>
       )
     case 'command':
@@ -385,12 +426,12 @@ export function ComponentPreview({ id }: { id: string }) {
       )
     case 'field':
       return (
-        <div className="catalog-preview-grid">
+        <Text as="div" variant="body" className="catalog-preview-grid">
           {field}
           <Field label={tr('Project name')} error={tr('A project name is required.')}>
             <Input invalid placeholder={tr('Project name')} />
           </Field>
-        </div>
+        </Text>
       )
     case 'file-upload':
       return <FileUpload files={files} onChange={setFiles} maxFiles={3} accept="image/*,.pdf" />
@@ -444,7 +485,9 @@ export function ComponentPreview({ id }: { id: string }) {
               return (
                 <div className="catalog-illustration-tile" key={item.id}>
                   <Artwork size={140} title={tr(item.name)} />
-                  <code>{item.componentName}</code>
+                  <CodeText as="code" variant="code">
+                    {item.componentName}
+                  </CodeText>
                 </div>
               )
             })}
@@ -476,7 +519,9 @@ export function ComponentPreview({ id }: { id: string }) {
             onChange={setValue}
             onComplete={() => toast.success(tr('Code entered'))}
           />
-          <p>{tr('Enter a 6-digit code to see the completed state.')}</p>
+          <Text as="p" variant="body">
+            {tr('Enter a 6-digit code to see the completed state.')}
+          </Text>
         </div>
       )
     case 'loading-overlay':
@@ -614,24 +659,26 @@ export function ComponentPreview({ id }: { id: string }) {
         <div className="catalog-preview-row">
           <Popover trigger={<Button>{tr('Information popover')}</Button>}>
             <div className="popover-heading">
-              <strong>{tr('A little more context')}</strong>
+              <Text as="strong" variant="label">
+                {tr('A little more context')}
+              </Text>
               <Badge size="sm">Aria UI</Badge>
             </div>
-            <p>
+            <Text as="p" variant="body">
               {tr('Shared spacing, borders, and shadows keep every floating panel consistent.')}
-            </p>
+            </Text>
           </Popover>
           <Popover
             variant="form"
             size="lg"
             trigger={<Button variant="contained">{tr('Form popover')}</Button>}
           >
-            <div className="catalog-preview-stack">
+            <Text as="div" variant="body" className="catalog-preview-stack">
               {field}
               <Button variant="contained" onClick={notify}>
                 {tr('Save changes')}
               </Button>
-            </div>
+            </Text>
           </Popover>
         </div>
       )
@@ -651,9 +698,9 @@ export function ComponentPreview({ id }: { id: string }) {
           {['Nadia Putri', 'Ahmad Fauzi', 'Dewi Rahma']
             .filter((name) => name.toLowerCase().includes(value.toLowerCase()))
             .map((name) => (
-              <div className="catalog-search-result" key={name}>
+              <Text as="div" variant="body" className="catalog-search-result" key={name}>
                 {name}
-              </div>
+              </Text>
             ))}
         </div>
       )
@@ -690,17 +737,21 @@ export function ComponentPreview({ id }: { id: string }) {
     case 'switch':
       return (
         <div className="catalog-control">
-          <label className="example-toggle-row">
-            <span>
+          <FieldLabel as="label" variant="label" className="example-toggle-row">
+            <Text as="span" variant="label">
               {tr('Notifications')}
-              <small>{tr('Keep me updated')}</small>
-            </span>
+              <Text as="small" variant="caption">
+                {tr('Keep me updated')}
+              </Text>
+            </Text>
             <Switch checked={checked} onChange={(event) => setChecked(event.target.checked)} />
-          </label>
-          <label className="example-toggle-row">
-            <span>{tr('Disabled')}</span>
+          </FieldLabel>
+          <FieldLabel as="label" variant="label" className="example-toggle-row">
+            <Text as="span" variant="label">
+              {tr('Disabled')}
+            </Text>
             <Switch disabled />
-          </label>
+          </FieldLabel>
         </div>
       )
     case 'table-filter':
@@ -722,10 +773,12 @@ export function ComponentPreview({ id }: { id: string }) {
             value={filters}
             onChange={setFilters}
           />
-          <p>
+          <Text as="p" variant="body">
             {tr('Active filters')}: {Object.keys(filters).length}
-          </p>
-          <pre className="catalog-inline-code">{JSON.stringify(filters, null, 2)}</pre>
+          </Text>
+          <CodeBlock as="pre" variant="code" className="catalog-inline-code">
+            {JSON.stringify(filters, null, 2)}
+          </CodeBlock>
         </div>
       )
     case 'tabs':
@@ -739,13 +792,13 @@ export function ComponentPreview({ id }: { id: string }) {
               { value: 'activity', label: tr('Activity'), count: 3 },
             ]}
           />
-          <div className="catalog-tab-content">
+          <Text as="div" variant="body" className="catalog-tab-content">
             {tr(
               choice === 'activity'
                 ? 'Your recent workspace activity appears here.'
                 : 'A calm space for the overview.',
             )}
-          </div>
+          </Text>
           <Tabs
             variant="pill"
             value={choice === 'activity' ? 'activity' : 'overview'}

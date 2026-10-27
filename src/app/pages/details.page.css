@@ -17,13 +17,13 @@
 }
 
 .project-page-breadcrumb {
-  color: var(--muted);
-  font-size: calc(11px * var(--font-scale));
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
 }
 
 .project-page-breadcrumb strong {
-  color: var(--text);
-  font-weight: 500;
+  color: var(--typography-label-color);
+  font-weight: var(--typography-label-weight);
 }
 
 .project-page-actions {
@@ -48,8 +48,8 @@
   border-radius: 50%;
   background: var(--primary-soft);
   color: var(--primary);
-  font-size: calc(11px * var(--font-scale));
-  font-weight: 600;
+  font-size: var(--typography-body-size);
+  font-weight: var(--typography-body-weight);
 }
 
 .project-owner > div {
@@ -59,15 +59,15 @@
 
 .project-owner strong {
   display: block;
-  color: var(--text);
-  font-size: calc(12px * var(--font-scale));
-  font-weight: 550;
+  color: var(--typography-label-color);
+  font-size: var(--typography-label-size);
+  font-weight: var(--typography-label-weight);
 }
 
 .project-owner small {
   display: block;
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
 }
 
 .project-collaborators {
@@ -83,8 +83,8 @@
   margin-left: -4px;
   border: 2px solid var(--surface);
   background: var(--surface-hover);
-  color: var(--text-secondary);
-  font-size: calc(9px * var(--font-scale));
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
 }
 
 .project-collaborators > span:nth-child(2) {
@@ -105,7 +105,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-body-size);
 }
 
 .project-progress-heading strong {
@@ -147,8 +147,8 @@
   flex-wrap: wrap;
   gap: calc(10px * var(--space-scale));
   margin-top: calc(15px * var(--space-scale));
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
 }
 
 .project-milestones > span {
@@ -189,15 +189,15 @@
 }
 
 .project-next-step strong {
-  color: var(--text);
-  font-size: calc(11px * var(--font-scale));
-  font-weight: 550;
+  color: var(--typography-label-color);
+  font-size: var(--typography-label-size);
+  font-weight: var(--typography-label-weight);
 }
 
 .project-next-step p {
   margin-top: calc(2px * var(--space-scale));
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
 }
 
 @media (max-width: 650px) {

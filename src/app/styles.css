@@ -2,9 +2,6 @@
 .starter-home {
   width: 100%;
 }
-.starter-home .page-intro {
-  padding-top: 10px;
-}
 .starter-welcome {
   margin-top: calc(30px * var(--space-scale));
   padding: calc(60px * var(--space-scale)) calc(20px * var(--space-scale));

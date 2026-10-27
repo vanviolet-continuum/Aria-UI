@@ -2,6 +2,126 @@
 const folders = import.meta.glob('../../template/ui/*/index.ts')
 
 const descriptions: Record<string, [string, string, string]> = {
+  'field-label': [
+    'FieldLabel, Input',
+    'Accessible form labels with a shared text style.',
+    '<FieldLabel htmlFor="workspace" required>Workspace name</FieldLabel>\n<Input id="workspace" />',
+  ],
+  'field-hint': [
+    'FieldHint, Input',
+    'Helpful guidance connected to your form controls.',
+    '<Input aria-describedby="workspace-hint" />\n<FieldHint id="workspace-hint">Choose a name your team will recognize.</FieldHint>',
+  ],
+  'field-error': [
+    'FieldError, Input',
+    'Clear validation messages using the error text role.',
+    '<Input invalid aria-describedby="workspace-error" />\n<FieldError id="workspace-error">Enter a workspace name.</FieldError>',
+  ],
+  'text-link': [
+    'TextLink',
+    'Semantic links with shared colors and focus styles.',
+    '<TextLink href="/settings/appearance">Customize your theme</TextLink>',
+  ],
+  'code-text': [
+    'Text, CodeText',
+    'Inline code with the shared monospace text role.',
+    '<Text>Use <CodeText>variant="body"</CodeText> for your content.</Text>',
+  ],
+  'code-block': [
+    'CodeBlock',
+    'Readable code blocks with optional line wrapping.',
+    '<CodeBlock>{`<Text variant="body">Your content</Text>`}</CodeBlock>',
+  ],
+  'metric-value': [
+    'MetricValue',
+    'Consistent numbers for statistics and summaries.',
+    '<MetricValue tone="primary">12,840</MetricValue>',
+  ],
+  text: [
+    'Text',
+    'Readable text with shared sizes, tones, and line limits.',
+    '<Text variant="description" lineClamp={2}>Your description goes here.</Text>',
+  ],
+  heading: [
+    'Heading',
+    'Consistent typography with independent visual size and heading level.',
+    '<Heading as="h2" variant="page">Your workspace</Heading>',
+  ],
+  eyebrow: [
+    'Eyebrow',
+    'A small introduction for headings and content blocks.',
+    '<Eyebrow tone="primary">ARIA UI / WORKSPACE</Eyebrow>',
+  ],
+  'heading-group': [
+    'HeadingGroup',
+    'A flexible heading pattern for pages, cards, and drawers.',
+    '<HeadingGroup eyebrow="WORKSPACE" title="Bring your ideas together."\n  description="A shared pattern for every part of your application." />',
+  ],
+  'page-header': [
+    'PageHeader, Button',
+    'Page introductions with optional navigation, metadata, and custom actions.',
+    '<PageHeader eyebrow="TEAM" title="People, in one place."\n  description="Manage your workspace members."\n  actions={<Button>Add member</Button>} />',
+  ],
+  'section-header': [
+    'SectionHeader, Badge',
+    'A shared heading for panels, forms, and drawer sections.',
+    '<SectionHeader title="Project details" description="Keep the essentials clear."\n  actions={<Badge variant="success">Active</Badge>} />',
+  ],
+  card: [
+    'Card, Text, Button',
+    'Composable surfaces with consistent headers, bodies, and footers.',
+    '<Card title="Project overview" description="Everything in one place."\n  footer={<Button>View details</Button>}>\n  <Text>Your content goes here.</Text>\n</Card>',
+  ],
+  toolbar: [
+    'Toolbar, ToolbarGroup, ToolbarActions, Button',
+    'Flexible groups for search, filters, and contextual actions.',
+    '<Toolbar label="Project actions">\n  <ToolbarGroup grow>Project directory</ToolbarGroup>\n  <ToolbarActions><Button>Export</Button><Button>Create project</Button></ToolbarActions>\n</Toolbar>',
+  ],
+  'settings-row': [
+    'SettingsRow, Switch',
+    'Clear labels and descriptions with your own accessible controls.',
+    '<SettingsRow label="Project notifications"\n  description="Keep the team informed."\n  control={<Switch defaultChecked />} />',
+  ],
+  box: [
+    'Box, Stack, Text',
+    'Theme-aware surfaces, spacing, and semantic elements.',
+    '<Box as="section" variant="outlined" padding={{ base: "md", md: "lg" }}>\n  <Stack><Text as="strong" variant="label">Project overview</Text><Text as="p" variant="body">Your content goes here.</Text></Stack>\n</Box>',
+  ],
+  stack: [
+    'Stack, Box',
+    'Consistent spacing and responsive direction for any composition.',
+    '<Stack direction={{ base: "column", md: "row" }} gap="lg" align="stretch">\n  <Box variant="outlined">Overview</Box>\n  <Box variant="subtle">Details</Box>\n</Stack>',
+  ],
+  inline: [
+    'Inline, Badge, Button',
+    'Aligned rows that wrap naturally as space changes.',
+    '<Inline justify="between" gap="sm">\n  <Badge variant="success">Active</Badge>\n  <Button>View details</Button>\n</Inline>',
+  ],
+  grid: [
+    'Grid, Box',
+    'Responsive columns and auto-fit layouts with shared spacing.',
+    '<Grid columns={{ base: 1, sm: 2, lg: 3 }} gap="lg">\n  <Box variant="outlined">Overview</Box>\n  <Box variant="outlined">Projects</Box>\n  <Box variant="outlined">Reports</Box>\n</Grid>',
+  ],
+  'grid-item': [
+    'Grid, GridItem',
+    'Flexible column spans for main content and supporting details.',
+    '<Grid columns={{ base: 1, md: 12 }}>\n  <GridItem colSpan={{ base: 1, md: 8 }} variant="outlined">Main content</GridItem>\n  <GridItem colSpan={{ base: 1, md: 4 }} variant="subtle">Supporting details</GridItem>\n  <GridItem colSpan="full">Footer</GridItem>\n</Grid>',
+  ],
+  container: [
+    'Container, Stack, Heading, Text',
+    'Full width by default, with optional centered reading widths.',
+    '<Container as="section" size="full" padding={{ base: "md", lg: "lg" }}>\n  <Stack><Heading as="h2" variant="section">Workspace</Heading><Text as="p" variant="body">Your page content.</Text></Stack>\n</Container>',
+  ],
+  divider: [
+    'Stack, Divider, Text',
+    'A shared separator for sections and horizontal toolbars.',
+    '<Stack gap={0}>\n  <Text as="strong" variant="label">Overview</Text>\n  <Divider spacing="md" />\n  <Text as="p" variant="body">Project details.</Text>\n</Stack>',
+  ],
+  spacer: [
+    'Inline, Spacer, Button, Text',
+    'Intentional breathing room and flexible toolbar space.',
+    '<Inline wrap={false}>\n  <Text as="strong" variant="label">Workspace</Text>\n  <Spacer axis="horizontal" grow />\n  <Button>Continue</Button>\n</Inline>',
+  ],
   'action-menu': [
     'ActionMenu',
     'Contextual actions, kept neatly within reach.',
@@ -18,19 +138,19 @@ const descriptions: Record<string, [string, string, string]> = {
     '<Button variant="contained" onClick={save}>Save changes</Button>',
   ],
   calendar: [
-    'Calendar, DatePicker, DateRangePicker, DateTimePicker, TimePicker',
+    'Calendar, RangeCalendar, DatePicker, DateRangePicker, DateTimePicker, TimePicker',
     'Choose a day, a range, or a moment.',
     'const [date, setDate] = useState<string>()\n\n<DatePicker value={date} onChange={setDate} />',
   ],
   checkbox: [
-    'Checkbox',
+    'Checkbox, CheckboxField',
     'Make one choice, or a few.',
-    '<Checkbox checked={checked} onChange={e => setChecked(e.target.checked)} />',
+    '<CheckboxField variant="card" label="Keep me updated"\n  description="Include project activity" checked={checked}\n  onChange={e => setChecked(e.target.checked)} />',
   ],
   chip: [
     'Chip',
     'Selections that stay easy to see and remove.',
-    '<Chip variant="primary" onRemove={remove}>Design</Chip>',
+    '<Chip variant="primary" onRemove={remove}>Design</Chip>\n<Chip variant="success" appearance="outline">Active</Chip>\n<Chip variant="primary" appearance="solid" size="sm">New</Chip>',
   ],
   combobox: [
     'Combobox',
@@ -53,9 +173,9 @@ const descriptions: Record<string, [string, string, string]> = {
     '<ConfirmDrawer open={open} onOpenChange={setOpen}\n  description="Remove this sample record?" onConfirm={remove} />',
   ],
   'data-table': [
-    'DataTable',
+    'DataTable, type ColumnDef',
     'Sort, select, filter, and explore your records.',
-    '<DataTable data={rows} columns={columns}\n  getRowId={row => row.id} initialPageSize={8} />',
+    'type Member = { id: string; name: string; email: string }\nconst columns: ColumnDef<Member>[] = [\n  { id: "name", header: "Name", accessor: "name", sortable: true, defaultPin: "left", pinable: false },\n  { id: "email", header: "Email", accessor: "email", sortable: true },\n]\n\n<DataTable data={rows} columns={columns} pinable\n  getRowId={row => row.id} initialPageSize={8} />',
   ],
   detail: [
     'DetailView, DetailSection, DetailList',

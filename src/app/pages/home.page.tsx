@@ -1,7 +1,7 @@
 import { useI18n } from '../../template/i18n'
 import { ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { Badge, Button, EmptyState } from '../../template'
+import { Badge, Button, EmptyState, PageHeader } from '../../template'
 
 export function HomePage() {
   const { t: tr } = useI18n()
@@ -9,13 +9,18 @@ export function HomePage() {
   const navigate = useNavigate()
   return (
     <div className="standard-page starter-home page-enter">
-      <div className="page-intro">
-        <Badge variant="primary" appearance="outline">
-          Aria UI
-        </Badge>
-        <h2>{tr('A clear starting point.')}</h2>
-        <p>{tr('Your layout, components, and theme are ready. Make room for your application.')}</p>
-      </div>
+      <PageHeader
+        size="md"
+        eyebrow={
+          <Badge variant="primary" appearance="outline">
+            Aria UI
+          </Badge>
+        }
+        title={tr('A clear starting point.')}
+        description={tr(
+          'Your layout, components, and theme are ready. Make room for your application.',
+        )}
+      />
       <section className="starter-welcome">
         <EmptyState
           title={tr('Ready for what comes next.')}

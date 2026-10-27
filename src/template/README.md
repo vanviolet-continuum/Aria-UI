@@ -12,6 +12,8 @@ npm install react react-dom clsx lucide-react cmdk sonner react-number-format re
 
 ## Pemakaian dasar
 
+Gunakan komponen tipografi dan variant semantik untuk konten baru. Pengaturan per role berada pada ThemeConfig.typography dan dapat diedit melalui Theme Studio. Lihat [Typography](./ui/typography.md) untuk Heading/Text, label/error/hint, link, kode, dan statistik. Tampilan starter dan komponen kit telah menggunakan sistem yang sama.
+
 ```tsx
 import { TemplateProvider, AdminLayout, Button, Input } from './template'
 import './template/styles.css'
@@ -76,6 +78,10 @@ Theme config milik aplikasi diberikan melalui props. `exportTarget` mengatur pet
 API detail ada di [UI README](./ui/readme.md), [advanced components](./ui/advanced.md), [PDF/workflow/table blocks](./ui/blocks.md), dan [theme README](./theme/readme.md). PDF renderer dimuat hanya saat `PdfViewer` digunakan.
 
 ## Penamaan dan tree shaking
+
+Blok `Heading`, `Text`, `Eyebrow`, `HeadingGroup`, `PageHeader`, `SectionHeader`, `Card`, `Toolbar`, dan `SettingsRow` menyediakan tampilan default serta part terpisah untuk komposisi custom. Seluruhnya menerima konten ReactNode dan mengikuti token tema. API serta contoh terdapat di [panduan komposisi](./ui/composition.md).
+
+Fondasi layout reusable tersedia melalui `Box`, `Stack`, `Inline`, `Grid`, `GridItem`, `Container`, `Divider`, dan `Spacer`. Semua memakai token tema untuk spacing/surface/radius. `layoutGap` dan `layoutPadding` dapat dikonfigurasi melalui Theme Studio; konfigurasi lama tetap didukung. Lihat [panduan layout](./ui/layout.md) untuk props responsive dan contoh halaman.
 
 Semua nama file dan folder menggunakan dot case: `confirm.dialog/confirm.dialog.tsx`, `use.local.storage.ts`, dan `access.denied.illustration.tsx`. Nama komponen React dan props tetap menggunakan konvensi React/TypeScript.
 

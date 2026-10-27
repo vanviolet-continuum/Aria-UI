@@ -1,7 +1,8 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { Columns3, LockKeyhole, RotateCcw } from 'lucide-react'
 import { Button } from '../button/button'
-import { Checkbox } from '../checkbox/checkbox'
+import { CheckboxField } from '../checkbox/checkbox.field'
 import { Popover } from '../popover/popover'
 import type { ColumnDef, ColumnPinning, ColumnVisibility } from './types'
 
@@ -36,16 +37,20 @@ export function TableColumnMenu<T>({
           <Columns3 size={14} />
           {tr('Columns')}
           {hidden > 0 && (
-            <span className="column-hidden-count">
+            <Text as="span" variant="menu" className="column-hidden-count">
               {hidden} {tr('hidden')}
-            </span>
+            </Text>
           )}
         </Button>
       }
     >
       <div className="column-menu-heading">
-        <strong>{tr('Customize columns')}</strong>
-        <small>{tr('Choose which columns are visible.')}</small>
+        <Text as="strong" variant="label">
+          {tr('Customize columns')}
+        </Text>
+        <Text as="small" variant="caption">
+          {tr('Choose which columns are visible.')}
+        </Text>
       </div>
       {columns.map((column) => {
         const checked = visible.includes(column)
@@ -53,37 +58,50 @@ export function TableColumnMenu<T>({
         const lastVisible = checked && visible.length === 1
         const label =
           column.label ?? (typeof column.header === 'string' ? column.header : column.id)
-        return (
-          <div className="column-menu-row" data-locked={locked || undefined} key={column.id}>
-            {locked ? (
-              <div
-                className="column-menu-locked-label"
-                title={tr('This column is always visible.')}
-              >
-                <span className="column-menu-lock" aria-hidden="true">
-                  <LockKeyhole size={14} />
-                </span>
-                <span>{localize(label)}</span>
-                <small>{tr('Locked')}</small>
-              </div>
-            ) : (
-              <label title={lastVisible ? tr('At least one column must stay visible.') : undefined}>
-                <Checkbox
-                  checked={checked}
-                  disabled={lastVisible}
-                  onChange={(event) =>
-                    onVisibilityChange({ ...visibility, [column.id]: event.target.checked })
-                  }
-                />
-                <span>{localize(label)}</span>
-                {lastVisible && (
+        if (!locked)
+          return (
+            <CheckboxField
+              key={column.id}
+              variant="row"
+              className="column-menu-row"
+              label={localize(label)}
+              checked={checked}
+              disabled={lastVisible}
+              containerProps={{
+                title: lastVisible ? tr('At least one column must stay visible.') : undefined,
+              }}
+              onChange={(event) =>
+                onVisibilityChange({ ...visibility, [column.id]: event.target.checked })
+              }
+              trailing={
+                lastVisible ? (
                   <LockKeyhole
                     size={13}
                     aria-label={tr('At least one column must stay visible.')}
                   />
-                )}
-              </label>
-            )}
+                ) : undefined
+              }
+            />
+          )
+        return (
+          <div className="column-menu-row" data-locked={locked || undefined} key={column.id}>
+            <div className="column-menu-locked-label" title={tr('This column is always visible.')}>
+              <Text
+                as="span"
+                variant="menu"
+                tone="inherit"
+                className="column-menu-lock"
+                aria-hidden="true"
+              >
+                <LockKeyhole size={14} />
+              </Text>
+              <Text as="span" variant="menu">
+                {localize(label)}
+              </Text>
+              <Text as="small" variant="caption">
+                {tr('Locked')}
+              </Text>
+            </div>
           </div>
         )
       })}

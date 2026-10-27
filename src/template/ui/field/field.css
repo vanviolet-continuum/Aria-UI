@@ -1,3 +1,5 @@
+@import '../blocks.css';
+
 .ui-field {
   display: flex;
   flex-direction: column;
@@ -6,9 +8,9 @@
 }
 
 .ui-field > label {
-  font-size: calc(12px * var(--font-scale));
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-size: var(--typography-label-size);
+  font-weight: var(--typography-label-weight);
+  color: var(--typography-label-color);
 }
 
 .ui-field > label > span {
@@ -17,12 +19,12 @@
 
 .ui-field-hint,
 .ui-field-error {
-  font-size: calc(11px * var(--font-scale));
-  line-height: 1.6;
+  font-size: var(--typography-error-size);
+  line-height: var(--typography-error-leading);
 }
 
 .ui-field-hint {
-  color: var(--muted);
+  color: var(--typography-helper-color);
 }
 
 .ui-field-error {
@@ -40,16 +42,4 @@
 
 .form-section-title {
   margin-bottom: calc(20px * var(--space-scale));
-}
-
-.form-section-title h3 {
-  font-size: calc(13px * var(--font-scale));
-  font-weight: 550;
-}
-
-.form-section-title p {
-  font-size: calc(11px * var(--font-scale));
-  line-height: 1.7;
-  color: var(--muted);
-  margin-top: calc(4px * var(--space-scale));
 }

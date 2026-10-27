@@ -1,3 +1,4 @@
+import { TextLink } from '../template/ui/text.link/text.link'
 import { useI18n } from '../template/i18n'
 import { AppProviders } from './providers'
 import { AppRoutes } from './routes'
@@ -7,9 +8,9 @@ function AppContent() {
 
   return (
     <>
-      <a href="#main-content" className="skip-link">
+      <TextLink as="a" variant="link" href="#main-content" className="skip-link">
         {tr('Skip to content')}
-      </a>
+      </TextLink>
       <AppRoutes />
     </>
   )

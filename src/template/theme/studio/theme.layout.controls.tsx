@@ -1,3 +1,8 @@
+import { Heading } from '../../ui/heading/heading'
+
+import { Text } from '../../ui/text/text'
+
+import { FieldLabel } from '../../ui/field.label/field.label'
 import { useI18n } from '../../i18n/use.i18n'
 import { useId } from 'react'
 import { useTheme } from '../theme.provider'
@@ -29,11 +34,13 @@ export function ThemeSlider({
   return (
     <div className="theme-slider">
       <div>
-        <label htmlFor={id}>{localize(label)}</label>
-        <output htmlFor={id}>
-          {Math.round(value * 100) / 100}
+        <FieldLabel as="label" variant="label" htmlFor={id}>
+          {localize(label)}
+        </FieldLabel>
+        <Text as="output" variant="label" htmlFor={id}>
+          {Math.round(value * 1000) / 1000}
           {suffix}
-        </output>
+        </Text>
       </div>
       <input
         id={id}
@@ -55,13 +62,17 @@ export function ThemeLayoutControls() {
   return (
     <section className="theme-section">
       <div className="theme-section-heading">
-        <span>{tr('02 / The details')}</span>
-        <h3>{tr('Find your rhythm.')}</h3>
-        <p>
+        <Text as="span" variant="label">
+          {tr('02 / The details')}
+        </Text>
+        <Heading as="h3" variant="card">
+          {tr('Find your rhythm.')}
+        </Heading>
+        <Text as="p" variant="body">
           {tr(
             'Typography, corners, and room between things. Changes preview across the whole workspace.',
           )}
-        </p>
+        </Text>
       </div>
       <div className="theme-control-grid">
         <Field label={tr('Appearance')}>
@@ -135,6 +146,24 @@ export function ThemeLayoutControls() {
           step={5}
           suffix="%"
           onChange={(value) => updateConfig({ spaceScale: value / 100 })}
+        />
+        <ThemeSlider
+          label={tr('Default layout gap')}
+          value={config.layoutGap}
+          min={0}
+          max={48}
+          step={2}
+          suffix="px"
+          onChange={(layoutGap) => updateConfig({ layoutGap })}
+        />
+        <ThemeSlider
+          label={tr('Default surface padding')}
+          value={config.layoutPadding}
+          min={0}
+          max={64}
+          step={2}
+          suffix="px"
+          onChange={(layoutPadding) => updateConfig({ layoutPadding })}
         />
       </div>
     </section>

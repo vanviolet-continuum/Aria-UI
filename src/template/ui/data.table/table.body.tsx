@@ -1,9 +1,10 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { memo } from 'react'
 import { LoadingIllustration } from '../illustrations/states/loading.illustration'
 import { SearchIllustration } from '../illustrations/states/search.illustration'
 import { Button } from '../button/button'
-import { Checkbox } from '../checkbox/checkbox'
+import { CheckboxField } from '../checkbox/checkbox.field'
 import { getCellValue } from './use.data.table'
 import type { RowSelection } from './types'
 import type { ColumnLayout } from './column.layout'
@@ -37,22 +38,24 @@ function Body<T>({
     return (
       <tbody>
         <tr>
-          <td colSpan={Math.max(1, layout.length + Number(!!selection))}>
+          <Text as="td" variant="table" colSpan={Math.max(1, layout.length + Number(!!selection))}>
             <div className="table-body-loading" role={error ? 'alert' : 'status'}>
               {error ? <SearchIllustration /> : <LoadingIllustration label={tr('')} size={88} />}
-              <strong>{error ?? loadingLabel}</strong>
-              <small>
+              <Text as="strong" variant="label">
+                {error ?? loadingLabel}
+              </Text>
+              <Text as="small" variant="caption">
                 {error
                   ? tr('Your search is saved. Give it another try.')
                   : tr('A fresh view is on its way.')}
-              </small>
+              </Text>
               {error && onRetry && (
                 <Button variant="outlined" size="sm" onClick={onRetry}>
                   {tr('Try again')}
                 </Button>
               )}
             </div>
-          </td>
+          </Text>
         </tr>
       </tbody>
     )
@@ -63,9 +66,15 @@ function Body<T>({
         return (
           <tr key={id} className={selected.has(id) ? 'row--selected' : undefined}>
             {selection && (
-              <td className={`checkbox-cell${pinSelection ? ' table-selection-pinned' : ''}`}>
-                <Checkbox
-                  aria-label={tr('Select row {{value0}}', { value0: localize(id) })}
+              <Text
+                as="td"
+                variant="table"
+                className={`checkbox-cell${pinSelection ? ' table-selection-pinned' : ''}`}
+              >
+                <CheckboxField
+                  label={tr('Select row {{value0}}', { value0: localize(id) })}
+                  labelHidden
+                  className="table-checkbox-field"
                   checked={selected.has(id)}
                   onChange={(event) =>
                     selection.onChange(
@@ -75,10 +84,12 @@ function Body<T>({
                     )
                   }
                 />
-              </td>
+              </Text>
             )}
             {layout.map(({ column, style, pin, edge }) => (
-              <td
+              <Text
+                as="td"
+                variant="table"
                 key={column.id}
                 className={column.className}
                 style={style}
@@ -88,7 +99,7 @@ function Body<T>({
                 {column.cell
                   ? column.cell(row, index)
                   : String(getCellValue(row, column.accessor) ?? '')}
-              </td>
+              </Text>
             ))}
           </tr>
         )

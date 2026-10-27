@@ -4,15 +4,15 @@
 }
 
 .page-intro h2 {
-  font-size: calc(24px * var(--font-scale));
-  line-height: 1.4;
-  font-weight: 550;
-  letter-spacing: -0.8px;
+  font-size: var(--typography-section-size);
+  line-height: var(--typography-section-leading);
+  font-weight: var(--typography-section-weight);
+  letter-spacing: var(--typography-section-tracking);
   margin-top: calc(7px * var(--space-scale));
 }
 
 .page-intro > p {
-  color: var(--muted);
-  font-size: calc(11px * var(--font-scale));
+  color: var(--typography-section-color);
+  font-size: var(--typography-section-size);
   margin-top: calc(7px * var(--space-scale));
 }

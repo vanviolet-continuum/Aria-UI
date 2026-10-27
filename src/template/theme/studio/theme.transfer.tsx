@@ -1,3 +1,4 @@
+import { FieldError } from '../../ui/field.error/field.error'
 import { useRef, useState } from 'react'
 import { Braces, ChevronDown, Download, FileCode2, Upload } from 'lucide-react'
 import { Button, Menu, toast } from '../../ui'
@@ -85,9 +86,9 @@ export function ThemeTransfer() {
         />
       </div>
       {error && (
-        <p className="theme-transfer-error" role="alert">
+        <FieldError as="p" variant="error" className="theme-transfer-error" role="alert">
           {tr(error)}
-        </p>
+        </FieldError>
       )}
     </div>
   )

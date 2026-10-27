@@ -30,24 +30,24 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
-  font-weight: 500;
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
+  font-weight: var(--typography-caption-weight);
   background: var(--surface);
   flex-shrink: 0;
 }
 .stepper-step strong {
-  font-size: calc(11px * var(--font-scale));
-  font-weight: 500;
+  font-size: var(--typography-label-size);
+  font-weight: var(--typography-label-weight);
   display: block;
-  color: var(--muted);
+  color: var(--typography-label-color);
   white-space: nowrap;
 }
 .stepper-step small {
   display: block;
   margin-top: calc(4px * var(--space-scale));
-  font-size: calc(9px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-caption-size);
+  color: var(--typography-caption-color);
   white-space: nowrap;
   opacity: 0.75;
 }
@@ -114,6 +114,6 @@
     min-width: 10px;
   }
   .stepper-step strong {
-    font-size: calc(9px * var(--font-scale));
+    font-size: var(--typography-label-size);
   }
 }

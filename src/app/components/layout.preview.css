@@ -1,0 +1,40 @@
+.layout-preview-tile {
+  /* Percent basis falls back to content height in an auto-height column. */
+  flex: 1 1 0%;
+}
+.layout-preview-tile strong {
+  font-size: var(--typography-label-size);
+  font-weight: var(--typography-label-weight);
+}
+.layout-preview-tile p,
+.layout-preview-note {
+  margin: 0;
+  color: var(--typography-description-color);
+  line-height: var(--typography-description-leading);
+  font-size: var(--typography-description-size);
+}
+.layout-preview-number {
+  display: inline-grid;
+  place-items: center;
+  width: calc(38px * var(--space-scale));
+  height: calc(38px * var(--space-scale));
+  align-self: start;
+  flex-shrink: 0;
+  font-size: var(--typography-body-size);
+  font-weight: var(--typography-body-weight);
+}
+.layout-preview-controls > span {
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
+  margin-inline-end: var(--space-xs);
+}
+.layout-preview-container-stage {
+  min-height: 220px;
+  display: grid;
+  align-items: center;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 8px,
+    var(--surface-subtle) 8px 9px
+  );
+}

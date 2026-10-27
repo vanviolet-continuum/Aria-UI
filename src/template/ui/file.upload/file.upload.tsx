@@ -1,3 +1,6 @@
+import { FieldError } from '../field.error/field.error'
+
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { useRef, useState } from 'react'
 import clsx from 'clsx'
@@ -113,19 +116,23 @@ export function FileUpload({
         }}
       >
         <UploadIllustration />
-        <strong>{dragging ? tr('A perfect place to land.') : localize(label)}</strong>
-        <p>
+        <Text as="strong" variant="label">
+          {dragging ? tr('A perfect place to land.') : localize(label)}
+        </Text>
+        <Text as="p" variant="body">
           {tr('or') + ' '}
-          <span>{tr('browse files')}</span>
+          <Text as="span" variant="label">
+            {tr('browse files')}
+          </Text>
           {' ' + tr('from your computer')}
-        </p>
-        <small>
+        </Text>
+        <Text as="small" variant="caption">
           {localize(description) ??
             tr('{{types}} · Up to {{size}} each', {
               types: accept || tr('Any file type'),
               size: fileSize(maxSize),
             })}
-        </small>
+        </Text>
       </div>
       {!!files.length && (
         <ul className="upload-file-list">
@@ -140,9 +147,9 @@ export function FileUpload({
         </ul>
       )}
       {!!errors.length && (
-        <p className="ui-field-error" role="alert">
+        <FieldError as="p" variant="error" className="ui-field-error" role="alert">
           {errors[0].file.name}: {rejectMessage(errors[0])}
-        </p>
+        </FieldError>
       )}
     </div>
   )

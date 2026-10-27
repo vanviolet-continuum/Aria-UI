@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { FileText, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -24,16 +25,18 @@ export function FileItem({
   }, [file])
   return (
     <li className="upload-file-item">
-      <span className="upload-file-icon">
+      <Text as="span" variant="label" tone="inherit" className="upload-file-icon">
         {preview ? <img src={preview} alt="" /> : <FileText size={21} />}
-      </span>
-      <span>
-        <strong>{file.name}</strong>
-        <small>
+      </Text>
+      <Text as="span" variant="label" tone="inherit">
+        <Text as="strong" variant="label">
+          {file.name}
+        </Text>
+        <Text as="small" variant="caption">
           {fileSize(file.size)}
           {' ' + tr('· Ready to upload')}
-        </small>
-      </span>
+        </Text>
+      </Text>
       <IconButton
         label={tr('Remove {{value0}}', { value0: localize(file.name) })}
         size="sm"

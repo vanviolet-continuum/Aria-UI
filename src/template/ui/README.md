@@ -29,19 +29,33 @@ Unit test berada di `tests/template/`, terpisah dari folder portable. Proyek yan
 
 ## Komponen
 
-| Area       | Komponen                                                                                    |
-| ---------- | ------------------------------------------------------------------------------------------- |
-| Actions    | `Button`, `IconButton`, `ActionMenu`, `Popover`                                             |
-| Form       | `Field`, `FormSection`, `Input`, `Textarea`, `Combobox`, `Checkbox`, `Switch`, `InputOTP`   |
-| Formatting | `NumericInput`, `CurrencyInput`, `PhoneInput`, `PatternInput`, `PercentageInput`            |
-| Display    | `Badge`, `Chip`, `StatusBadge`, `Tabs`, `SearchInput`                                       |
-| Detail     | `DetailView`, `DetailSection`, `DetailList`, `DetailStats`, `DetailTimeline`                |
-| Calendar   | `Calendar`, `DatePicker`, `DateRangePicker`, `DateTimePicker`, `TimePicker`, `FullCalendar` |
-| Data       | `DataTable<T>`, `TablePagination`, `useDataTable`, `useServerTable`, `ColumnDef<T>`         |
-| Workflow   | `FileUpload`/`Dropzone`, `TreeView`, `Stepper`                                              |
-| Navigation | `Command`, `CommandMenu`, `Cmdk`                                                            |
-| Overlay    | `Drawer`, `DrawerFooter`, `ConfirmDialog`, `LoadingOverlay`                                 |
-| Feedback   | `Toaster`, `toast`, `EmptyState`, `SearchEmptyState`, `NotFoundState`, SVG illustrations    |
+Seluruh teks UI memakai komponen atau adapter token tipografi bersama. `Heading`, `Text`, `Eyebrow`, `FieldLabel`, `FieldHint`, `FieldError`, `TextLink`, `CodeText`, `CodeBlock`, dan `MetricValue` memakai peran tema yang dapat dikonfigurasi. API dan konfigurasi lengkap tersedia di [Typography](./typography.md).
+
+| Area       | Komponen                                                                                                     |
+| ---------- | ------------------------------------------------------------------------------------------------------------ |
+| Layout     | `Box`, `Stack`, `Inline`, `Grid`, `GridItem`, `Container`, `Divider`, `Spacer`                               |
+| Typography | `Heading`, `Text`, `Eyebrow`                                                                                 |
+| Text roles | `FieldLabel`, `FieldHint`, `FieldError`, `TextLink`, `CodeText`, `CodeBlock`, `MetricValue`                  |
+| Blocks     | `HeadingGroup`, `PageHeader`, `SectionHeader`, `Card`, `Toolbar`, `SettingsRow`                              |
+| Actions    | `Button`, `IconButton`, `ActionMenu`, `Popover`                                                              |
+| Form       | `Field`, `FormSection`, `Input`, `Textarea`, `Combobox`, `Checkbox`, `CheckboxField`, `Switch`, `InputOTP`   |
+| Formatting | `NumericInput`, `CurrencyInput`, `PhoneInput`, `PatternInput`, `PercentageInput`                             |
+| Display    | `Badge`, `Chip`, `StatusBadge`, `Tabs`, `SearchInput`                                                        |
+| Detail     | `DetailView`, `DetailSection`, `DetailList`, `DetailStats`, `DetailTimeline`                                 |
+| Calendar   | `Calendar`, `RangeCalendar`, `DatePicker`, `DateRangePicker`, `DateTimePicker`, `TimePicker`, `FullCalendar` |
+| Data       | `DataTable<T>`, `TablePagination`, `useDataTable`, `useServerTable`, `ColumnDef<T>`                          |
+| Workflow   | `FileUpload`/`Dropzone`, `TreeView`, `Stepper`                                                               |
+| Navigation | `Command`, `CommandMenu`, `Cmdk`                                                                             |
+| Overlay    | `Drawer`, `DrawerFooter`, `ConfirmDialog`, `LoadingOverlay`                                                  |
+| Feedback   | `Toaster`, `toast`, `EmptyState`, `SearchEmptyState`, `NotFoundState`, SVG illustrations                     |
+
+## Fondasi layout
+
+Blok presentasional di atas fondasi layout mendukung props praktis maupun komposisi part terpisah. `Heading`, `Text`, dan `Eyebrow` menyatukan tipografi. `HeadingGroup`, `PageHeader`, dan `SectionHeader` menyediakan slot untuk judul, deskripsi, ikon, badge, navigasi, metadata, dan actions. `Card` menyediakan Header/Body/Footer; `Toolbar` menyediakan Group/Actions; `SettingsRow` menghubungkan label dan kontrol. Lihat [Reusable content blocks](./composition.md) untuk API, slotProps, contoh custom, dan import selektif. Semua tersedia di katalog Components.
+
+Gunakan `Stack` untuk susunan vertikal, `Inline` untuk baris yang dapat wrap, `Grid` untuk kolom responsive atau auto-fit, dan `Box` untuk surface. Default gap serta padding panel mengikuti `layoutGap`/`layoutPadding` pada tema; token spacing eksplisit tetap mengikuti `spaceScale`. `Container` default full width. Seluruh komponen tetap tanpa scroll container internal.
+
+API, skala ukuran, breakpoint, import selektif, dan contoh komposisi dijelaskan di [Layout foundations](./layout.md). Preview tersedia melalui folder masing-masing di halaman Components.
 
 ## Menu dan popover
 
@@ -192,7 +206,7 @@ Nilai memakai **local calendar date**, tanpa konversi UTC otomatis:
 - Time: `HH:mm`, format 24 jam.
 - Date-time: `YYYY-MM-DDTHH:mm | undefined`.
 
-Calendar memakai minggu Senin–Minggu. Navigasi tersedia melalui arrow keys, Home/End, PageUp/PageDown, pilihan bulan/tahun, dan tombol sebelumnya/berikutnya. Range picker menampilkan dua bulan di desktop dan satu di mobile.
+Calendar memakai minggu Senin–Minggu. Navigasi tersedia melalui arrow keys, Home/End, PageUp/PageDown, pilihan bulan/tahun, dan tombol sebelumnya/berikutnya. `RangeCalendar` dipakai oleh range picker dan filter tabel: dua bulan berurutan, ringkasan tanggal awal/akhir, serta highlight rentang yang sama. Kedua bulan tetap tersedia di mobile dengan susunan vertikal. Gunakan `<RangeCalendar value={range} onChange={setRange} />` untuk kalender inline; `summary={false}` menyembunyikan ringkasannya. Props `month`, `onMonthChange`, `minDate`, dan `maxDate` juga tersedia. Area kalender filter menjadi satu-satunya area scroll; header dan footer tetap terlihat.
 
 ## Typed table
 
@@ -222,6 +236,41 @@ const columns: ColumnDef<User>[] = [
 ```
 
 `accessor` dapat berupa key atau function yang menghasilkan string/number. Default sorting/pagination dilakukan di client. Filtering dikelola di luar komponen. Untuk API, berikan prop `server` dan gunakan `useServerTable` atau state request sendiri; detail ada di [ADVANCED.md](./advanced.md). `pagination={false}` menampilkan seluruh data. `loading` menampilkan SVG animasi di tengah body. `error` dan `onRetry` menyediakan state gagal. Gunakan `emptyState` untuk membedakan koleksi kosong dari pencarian tanpa hasil.
+
+Aksi sort dan pin berada di ujung kanan masing-masing header. `DataTable.pinable` mengaktifkan tombol pin secara umum; `ColumnDef.pinable` mengatur per kolom. `ColumnDef.defaultPin: 'left' | 'right'` memberi posisi awal. Jika efektif `pinable` adalah `false`, posisi default tersebut terkunci, tetap diterapkan meskipun state pin berubah, dan tombol pin tidak ditampilkan.
+
+```tsx
+const columns: ColumnDef<User>[] = [
+  { id: 'name', header: 'Name', accessor: 'name', defaultPin: 'left', pinable: false },
+  { id: 'status', header: 'Status', accessor: user => Number(user.active), pinable: true },
+]
+const columnState = useTableColumns({ columns })
+
+<DataTable data={users} columns={columns} getRowId={user => user.id}
+  columnPinning={columnState.pinning} onColumnPinningChange={columnState.setPinning} />
+```
+
+Tanpa `columnPinning`, tabel menyimpan state sendiri dan membaca `defaultPin` saat mount. Dalam mode controlled, inisialisasi dengan `useTableColumns({ columns })` atau `getDefaultColumnPinning(columns)`. State controlled menggantikan default untuk kolom yang boleh dipindah; default kolom yang terkunci selalu berlaku. Menu Columns hanya mengatur visibilitas; `enableHiding: false` pada definisi kolom ditampilkan sebagai baris terkunci.
+
+## Checkbox rows and cards
+
+Gunakan `CheckboxField` ketika checkbox berada di dalam baris atau kartu pilihan. Native label mencakup seluruh container termasuk padding, sehingga klik di area mana pun mengganti pilihan sekali dan cursor menjadi pointer. Status disabled tetap dihormati. `variant` tersedia sebagai `plain`, `row`, dan `card`; `label`, `description`, `trailing`, `labelHidden`, props native input, serta `indeterminate` tersedia. `className` mengatur container dan `inputClassName` mengatur checkbox. Letakkan tombol/link terpisah dari label.
+
+```tsx
+<CheckboxField
+  variant="card"
+  label="Project activity"
+  description="Include updates from your team."
+  checked={enabled}
+  onChange={(event) => setEnabled(event.target.checked)}
+/>
+```
+
+`TableColumnMenu`, sel pemilihan tabel, dan preview tema menggunakan pola ini. Filter dan checkbox menu memakai aksi pada seluruh item. `SettingsRow` juga meneruskan klik area baris ke satu kontrol checkbox/switch yang aktif di slot control, tanpa menggandakan toggle saat kontrol atau labelnya diklik.
+
+## Chips
+
+`Chip` memakai warna semantik dari Badge dengan border halus, radius tema, ikon opsional, dan tombol hapus terpisah. Props: `variant` (`neutral`, `primary`, `success`, `warning`, `danger`, `violet`), `appearance` (`soft`, `outline`, `solid`), `size` (`sm`, `md`), `icon`, `onRemove`, `removeLabel`, `disabled`, dan props native span. Label panjang terpotong mengikuti lebar container. Tombol hapus mendukung fokus keyboard dan tidak meneruskan klik ke parent.
 
 ## Command menu
 

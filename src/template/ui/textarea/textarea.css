@@ -6,8 +6,8 @@
   background: var(--surface);
   border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(7px * var(--radius-scale));
-  line-height: 1.8;
-  font-size: calc(12px * var(--font-scale));
+  line-height: var(--typography-input-leading);
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
 }
 
 .ui-textarea:focus {

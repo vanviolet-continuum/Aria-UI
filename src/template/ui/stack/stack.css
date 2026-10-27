@@ -1,0 +1,8 @@
+.aria-stack {
+  display: flex;
+  flex-direction: var(--l-direction-current, column);
+  gap: var(--l-gap-current, var(--layout-gap));
+  align-items: var(--l-align-current, stretch);
+  justify-content: var(--l-justify-current, start);
+  flex-wrap: var(--l-wrap-current, nowrap);
+}

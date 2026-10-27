@@ -1,3 +1,4 @@
+import { Text } from '../template/ui/text/text'
 import { useI18n } from '../template/i18n'
 import { lazy, Suspense, type ReactNode } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
@@ -27,10 +28,10 @@ function DeferredPage({ children }: { children: ReactNode }) {
   return (
     <Suspense
       fallback={
-        <div className="app-loading" role="status">
+        <Text as="div" variant="body" className="app-loading" role="status">
           <LoadingIllustration size={65} label={tr('')} />
           {tr('Preparing your workspace…')}
-        </div>
+        </Text>
       }
     >
       {children}
@@ -90,10 +91,10 @@ export function AppRoutes() {
           element={
             <Suspense
               fallback={
-                <div className="app-loading" role="status">
+                <Text as="div" variant="body" className="app-loading" role="status">
                   <LoadingIllustration size={65} label={tr('')} />
                   {tr('Preparing your workspace…')}
-                </div>
+                </Text>
               }
             >
               <ThemeStudio />

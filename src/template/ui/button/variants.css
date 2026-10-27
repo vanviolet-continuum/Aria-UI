@@ -4,7 +4,7 @@
   --btn-soft: var(--primary-soft);
   --btn-contrast: var(--on-primary);
   border-radius: calc(7px * var(--radius-scale));
-  font-weight: 500;
+  font-weight: var(--typography-button-weight);
   cursor: pointer;
   transition:
     background calc(0.15s * var(--motion-scale, 1)),

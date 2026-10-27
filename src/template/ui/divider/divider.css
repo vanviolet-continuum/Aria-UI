@@ -1,0 +1,17 @@
+.aria-divider {
+  flex-shrink: 0;
+  border: 0;
+  background: var(--border);
+}
+.aria-divider--horizontal {
+  height: max(1px, var(--border-width, 1px));
+  margin-block: var(--divider-spacing);
+  margin-inline: var(--divider-inset);
+  align-self: stretch;
+}
+.aria-divider--vertical {
+  width: max(1px, var(--border-width, 1px));
+  margin-inline: var(--divider-spacing);
+  margin-block: var(--divider-inset);
+  align-self: stretch;
+}

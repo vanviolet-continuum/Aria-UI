@@ -1,7 +1,14 @@
+import { CodeBlock } from '../../template/ui/code.block/code.block'
+
+import { Heading } from '../../template/ui/heading/heading'
+
+import { CodeText } from '../../template/ui/code.text/code.text'
+
+import { Text } from '../../template/ui/text/text'
 import { lazy, Suspense, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Blocks, Check, ChevronRight, Code2, Copy, Folder, Layers3 } from 'lucide-react'
-import { Badge, Button, SearchInput, Spinner, toast } from '../../template'
+import { Badge, Button, PageHeader, SearchInput, Spinner, toast } from '../../template'
 import { useI18n } from '../../template/i18n'
 import { componentCatalog } from '../components/component.catalog'
 import './components.page.css'
@@ -31,29 +38,33 @@ export function ComponentsPage() {
 
   return (
     <div className="standard-page component-catalog-page page-enter">
-      <div className="catalog-page-heading">
-        <div>
-          <span className="eyebrow">
+      <PageHeader
+        eyebrow={
+          <>
             <Blocks size={13} /> ARIA UI / {tr('COMPONENT LIBRARY')}
-          </span>
-          <h2>{tr('Small pieces. Endless possibilities.')}</h2>
-          <p>
-            {tr(
-              'Choose a component from the sidebar. Explore the preview, then take the code with you.',
-            )}
-          </p>
-        </div>
-        <Badge variant="primary" appearance="outline">
-          <Layers3 size={12} />
-          {componentCatalog.length} {tr('components')}
-        </Badge>
-      </div>
+          </>
+        }
+        title={tr('Small pieces. Endless possibilities.')}
+        description={tr(
+          'Choose a component from the sidebar. Explore the preview, then take the code with you.',
+        )}
+        actions={
+          <Badge variant="primary" appearance="outline">
+            <Layers3 size={12} />
+            {componentCatalog.length} {tr('components')}
+          </Badge>
+        }
+      />
       <div className="component-catalog-layout">
         <aside className="catalog-sidebar">
           <div className="catalog-sidebar-heading">
             <Folder size={15} />
-            <strong>{tr('Components')}</strong>
-            <span>{componentCatalog.length}</span>
+            <Text as="strong" variant="navigation" tone="inherit">
+              {tr('Components')}
+            </Text>
+            <Text as="span" variant="navigation" tone="inherit">
+              {componentCatalog.length}
+            </Text>
           </div>
           <div className="catalog-sidebar-search">
             <SearchInput
@@ -65,7 +76,10 @@ export function ComponentsPage() {
           </div>
           <nav aria-label={tr('Component folders')} className="catalog-component-list">
             {matching.map((item) => (
-              <button
+              <Text
+                as="button"
+                variant="button"
+                tone="inherit"
                 key={item.id}
                 className={`catalog-component-link${item.id === selected.id ? ' catalog-component-link--active' : ''}`}
                 aria-current={item.id === selected.id ? 'page' : undefined}
@@ -74,16 +88,20 @@ export function ComponentsPage() {
                   setCode(false)
                 }}
               >
-                <span className="catalog-folder-icon">
+                <Text as="span" variant="navigation" tone="inherit" className="catalog-folder-icon">
                   <Folder size={13} />
-                </span>
-                <span>{item.id}</span>
+                </Text>
+                <Text as="span" variant="navigation" tone="inherit">
+                  {item.id}
+                </Text>
                 {item.id === selected.id && <ChevronRight size={13} />}
-              </button>
+              </Text>
             ))}
             {!matching.length && (
               <div className="catalog-no-results">
-                <span>{tr('No components found.')}</span>
+                <Text as="span" variant="navigation" tone="inherit">
+                  {tr('No components found.')}
+                </Text>
                 <Button variant="text" size="sm" onClick={() => setSearch('')}>
                   {tr('Clear search')}
                 </Button>
@@ -91,7 +109,9 @@ export function ComponentsPage() {
             )}
           </nav>
           <div className="catalog-sidebar-footer">
-            <code>src/template/ui/</code>
+            <CodeText as="code" variant="code">
+              src/template/ui/
+            </CodeText>
           </div>
         </aside>
         <div className="catalog-component-content">
@@ -99,12 +119,20 @@ export function ComponentsPage() {
             <div>
               <div className="catalog-path">
                 <Folder size={12} />
-                <span>ui</span>
+                <Text as="span" variant="label">
+                  ui
+                </Text>
                 <ChevronRight size={11} />
-                <code>{selected.id}</code>
+                <CodeText as="code" variant="code">
+                  {selected.id}
+                </CodeText>
               </div>
-              <h3>{selected.name}</h3>
-              <p>{tr(selected.description)}</p>
+              <Heading as="h3" variant="card">
+                {selected.name}
+              </Heading>
+              <Text as="p" variant="body">
+                {tr(selected.description)}
+              </Text>
             </div>
             <Badge variant="neutral" size="sm">
               React + TypeScript
@@ -113,22 +141,28 @@ export function ComponentsPage() {
           <section className="catalog-preview-panel" aria-label={selected.name}>
             <div className="catalog-panel-toolbar">
               <div className="catalog-panel-tabs">
-                <button
+                <Text
+                  as="button"
+                  variant="button"
+                  tone="inherit"
                   aria-pressed={!code}
                   className={!code ? 'is-active' : ''}
                   onClick={() => setCode(false)}
                 >
                   <Layers3 size={14} />
                   {tr('Preview')}
-                </button>
-                <button
+                </Text>
+                <Text
+                  as="button"
+                  variant="button"
+                  tone="inherit"
                   aria-pressed={code}
                   className={code ? 'is-active' : ''}
                   onClick={() => setCode(true)}
                 >
                   <Code2 size={14} />
                   {tr('Code')}
-                </button>
+                </Text>
               </div>
               <Button
                 variant="text"
@@ -151,17 +185,19 @@ export function ComponentsPage() {
               </Button>
             </div>
             {code ? (
-              <pre className="catalog-code">
-                <code>{selected.code}</code>
-              </pre>
+              <CodeBlock as="pre" variant="code" className="catalog-code">
+                <CodeText as="code" variant="code">
+                  {selected.code}
+                </CodeText>
+              </CodeBlock>
             ) : (
               <div className="catalog-component-preview">
                 <Suspense
                   fallback={
-                    <div className="catalog-preview-loading">
+                    <Text as="div" variant="body" className="catalog-preview-loading">
                       <Spinner />
                       {tr('Preparing your component…')}
-                    </div>
+                    </Text>
                   }
                 >
                   <ComponentPreview key={selected.id} id={selected.id} />
@@ -171,19 +207,25 @@ export function ComponentsPage() {
             <footer className="catalog-panel-footer">
               <span className="catalog-live-dot" />
               {tr('Interactive preview')}
-              <span>{tr('Follows your theme and language')}</span>
+              <Text as="span" variant="label">
+                {tr('Follows your theme and language')}
+              </Text>
             </footer>
           </section>
           <div className="catalog-usage-note">
             <Code2 size={16} />
             <div>
-              <strong>{tr('Ready for your workspace')}</strong>
-              <p>
+              <Text as="strong" variant="label">
+                {tr('Ready for your workspace')}
+              </Text>
+              <Text as="p" variant="description">
                 {tr(
                   'Import from the UI kit and pass your own data. Components stay independent from application logic.',
                 )}
-              </p>
-              <code>import {'{ … }'} from '@/template/ui'</code>
+              </Text>
+              <CodeText as="code" variant="code">
+                import {'{ … }'} from '@/template/ui'
+              </CodeText>
             </div>
           </div>
         </div>

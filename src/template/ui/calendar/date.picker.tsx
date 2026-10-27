@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { PopoverContent } from '../popover/popover'
 import { useI18n } from '../../i18n/use.i18n'
 import * as Popover from '@radix-ui/react-popover'
@@ -41,7 +42,10 @@ export function DatePicker({
       {name && <input type="hidden" name={name} value={value ?? ''} />}
       <div className="picker-wrap">
         <Popover.Trigger asChild>
-          <button
+          <Text
+            as="button"
+            variant="menu"
+            tone="inherit"
             type="button"
             id={id}
             disabled={disabled}
@@ -49,18 +53,23 @@ export function DatePicker({
             {...aria}
           >
             <CalendarDays size={16} />
-            <span>{value ? formatDate(value, undefined, locale) : tr(placeholder)}</span>
-          </button>
+            <Text as="span" variant="label" tone="inherit" className="picker-value">
+              {value ? formatDate(value, undefined, locale) : tr(placeholder)}
+            </Text>
+          </Text>
         </Popover.Trigger>
         {value && clearable && !disabled && (
-          <button
+          <Text
+            as="button"
+            variant="menu"
+            tone="inherit"
             type="button"
             className="picker-clear"
             aria-label={tr('Clear date')}
             onClick={() => onChange(undefined)}
           >
             <X size={13} />
-          </button>
+          </Text>
         )}
       </div>
       <Popover.Portal>
@@ -81,8 +90,13 @@ export function DatePicker({
             maxDate={maxDate}
           />
           <div className="calendar-footer">
-            <span>{tr('Select a day on the calendar')}</span>
-            <button
+            <Text as="span" variant="caption">
+              {tr('Select a day on the calendar')}
+            </Text>
+            <Text
+              as="button"
+              variant="menu"
+              tone="inherit"
               type="button"
               disabled={
                 !!(
@@ -96,7 +110,7 @@ export function DatePicker({
               }}
             >
               {tr('Today')}
-            </button>
+            </Text>
           </div>
         </PopoverContent>
       </Popover.Portal>

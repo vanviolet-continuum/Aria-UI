@@ -1,3 +1,6 @@
+import { Text } from '../text/text'
+
+import { Eyebrow } from '../eyebrow/eyebrow'
 import { useI18n } from '../../i18n/use.i18n'
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
@@ -50,9 +53,21 @@ export function Drawer({
         >
           <header className="drawer-header">
             <div>
-              <span className="drawer-eyebrow">{tr('Details & information')}</span>
-              <Dialog.Title>{localize(title)}</Dialog.Title>
-              {description && <Dialog.Description>{localize(description)}</Dialog.Description>}
+              <Eyebrow as="span" variant="eyebrow" className="drawer-eyebrow">
+                {tr('Details & information')}
+              </Eyebrow>
+              <Dialog.Title>
+                <Text as="span" variant="dialog">
+                  {localize(title)}
+                </Text>
+              </Dialog.Title>
+              {description && (
+                <Dialog.Description>
+                  <Text as="span" variant="description">
+                    {localize(description)}
+                  </Text>
+                </Dialog.Description>
+              )}
             </div>
             <Dialog.Close className="icon-button drawer-close" aria-label={tr('Close panel')}>
               <X size={19} />

@@ -46,7 +46,7 @@
     padding: 0 calc(20px * var(--space-scale));
   }
   .page-title h1 {
-    font-size: calc(19px * var(--font-scale));
+    font-size: var(--typography-page-size);
   }
   .header-actions {
     gap: calc(15px * var(--space-scale));
@@ -78,7 +78,7 @@
   .app-shell {
   }
   body {
-    font-size: calc(12px * var(--font-scale));
+    font-size: var(--typography-body-size);
   }
   .topbar {
     padding: 0 calc(14px * var(--space-scale));
@@ -91,6 +91,6 @@
     gap: calc(6px * var(--space-scale));
   }
   .page-title h1 {
-    font-size: calc(18px * var(--font-scale));
+    font-size: var(--typography-page-size);
   }
 }

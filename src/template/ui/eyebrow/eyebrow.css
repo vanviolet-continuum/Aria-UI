@@ -1,0 +1,11 @@
+.aria-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  font-size: var(--l-type-size-current, var(--font-text-xs));
+  font-weight: 500;
+  line-height: var(--type-leading, var(--leading-normal));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

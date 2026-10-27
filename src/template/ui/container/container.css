@@ -1,0 +1,19 @@
+.aria-container {
+  width: 100%;
+  margin-inline: auto;
+}
+.aria-container--sm {
+  max-width: 40rem;
+}
+.aria-container--md {
+  max-width: 52rem;
+}
+.aria-container--lg {
+  max-width: 64rem;
+}
+.aria-container--xl {
+  max-width: 80rem;
+}
+.aria-container--full {
+  max-width: none;
+}

@@ -1,10 +1,11 @@
+import { Text } from '../text/text'
 import { PopoverContent } from '../popover/popover'
 import { useI18n } from '../../i18n/use.i18n'
 import * as Popover from '@radix-ui/react-popover'
 import { CalendarRange, Check, X } from 'lucide-react'
 import { useState } from 'react'
-import { Calendar } from './calendar'
-import { addDays, addMonths, formatDate, toDateKey, type DateRange } from './date.utils'
+import { RangeCalendar } from './range.calendar'
+import { addDays, formatDate, fromDateKey, toDateKey, type DateRange } from './date.utils'
 import { Button } from '../button/button'
 
 export interface DateRangePickerProps {
@@ -26,7 +27,7 @@ export function DateRangePicker({
   const { t: tr, text: localize, locale } = useI18n()
 
   const [open, setOpen] = useState(false)
-  const [month, setMonth] = useState(new Date())
+  const [month, setMonth] = useState(() => (value.from ? fromDateKey(value.from) : new Date()))
   const today = toDateKey(new Date())
   const label = value.from
     ? `${formatDate(value.from, undefined, locale)}${value.to ? ` – ${formatDate(value.to, undefined, locale)}` : ' – …'}`
@@ -47,25 +48,33 @@ export function DateRangePicker({
     <Popover.Root open={open} onOpenChange={setOpen}>
       <div className="picker-wrap">
         <Popover.Trigger asChild>
-          <button
+          <Text
+            as="button"
+            variant="menu"
+            tone="inherit"
             type="button"
             disabled={disabled}
             className={`picker-trigger${value.from ? '' : ' ui-placeholder'}`}
             {...aria}
           >
             <CalendarRange size={16} />
-            <span>{localize(label)}</span>
-          </button>
+            <Text as="span" variant="label" tone="inherit" className="picker-value">
+              {localize(label)}
+            </Text>
+          </Text>
         </Popover.Trigger>
         {value.from && !disabled && (
-          <button
+          <Text
+            as="button"
+            variant="menu"
+            tone="inherit"
             type="button"
             className="picker-clear"
             aria-label={tr('Clear date range')}
             onClick={() => onChange({})}
           >
             <X size={13} />
-          </button>
+          </Text>
         )}
       </div>
       <Popover.Portal>
@@ -78,7 +87,10 @@ export function DateRangePicker({
         >
           <div className="range-presets">
             {presets.map((preset) => (
-              <button
+              <Text
+                as="button"
+                variant="menu"
+                tone="inherit"
                 type="button"
                 key={preset.label}
                 onClick={() => {
@@ -87,32 +99,16 @@ export function DateRangePicker({
                 }}
               >
                 {localize(preset.label)}
-              </button>
+              </Text>
             ))}
           </div>
-          <div className="range-calendars">
-            <Calendar
-              mode="range"
-              value={value}
-              onChange={onChange}
-              month={month}
-              onMonthChange={setMonth}
-            />
-            <Calendar
-              mode="range"
-              value={value}
-              onChange={onChange}
-              className="range-second-month"
-              month={addMonths(month, 1)}
-              onMonthChange={(next) => setMonth(addMonths(next, -1))}
-            />
-          </div>
+          <RangeCalendar value={value} onChange={onChange} month={month} onMonthChange={setMonth} />
           <div className="calendar-footer">
-            <span>
+            <Text as="span" variant="caption">
               {value.from && !value.to
                 ? tr('Now choose an end date')
                 : tr('Choose a start and end date')}
-            </span>
+            </Text>
             <Button
               variant="primary"
               size="sm"

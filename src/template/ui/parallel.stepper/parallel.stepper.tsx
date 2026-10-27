@@ -1,3 +1,8 @@
+import { FieldError } from '../field.error/field.error'
+
+import { Heading } from '../heading/heading'
+
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { ArrowRight, Check, GitMerge, Layers3, LockKeyhole, RotateCcw } from 'lucide-react'
 import { Button } from '../button/button'
@@ -17,10 +22,12 @@ export function ParallelStepper({
   return (
     <section className="parallel-stepper" aria-label={tr('Parallel workflow')}>
       <div className="parallel-summary">
-        <span>
+        <Text as="span" variant="label" tone="inherit">
           <Layers3 size={17} />
-          <strong>{tr('Workstreams')}</strong>
-        </span>
+          <Text as="strong" variant="label">
+            {tr('Workstreams')}
+          </Text>
+        </Text>
         <Badge variant={progress.ready ? 'success' : 'primary'}>
           {progress.completed} / {progress.total}
           {' ' + tr('steps complete')}
@@ -35,16 +42,20 @@ export function ParallelStepper({
           return (
             <section className="parallel-track" key={track.id} aria-label={localize(track.title)}>
               <header>
-                <span className="parallel-track-icon">{track.icon ?? <Layers3 size={18} />}</span>
+                <Text as="span" variant="label" tone="inherit" className="parallel-track-icon">
+                  {track.icon ?? <Layers3 size={18} />}
+                </Text>
                 <div>
-                  <h4>{localize(track.title)}</h4>
-                  <small>
+                  <Heading as="h4" variant="card">
+                    {localize(track.title)}
+                  </Heading>
+                  <Text as="small" variant="caption">
                     {localize(track.description) ??
                       tr('{{completed}} of {{total}} complete', {
                         completed,
                         total: track.steps.length,
                       })}
-                  </small>
+                  </Text>
                 </div>
                 <Badge variant={completed === track.steps.length ? 'success' : 'neutral'}>
                   {completed}/{track.steps.length}
@@ -58,27 +69,36 @@ export function ParallelStepper({
                       index < completed ? 'complete' : index === completed ? 'current' : 'upcoming'
                     }
                   >
-                    <button
+                    <Text
+                      as="button"
+                      variant="button"
+                      tone="inherit"
                       type="button"
                       disabled={disabled || !onStepSelect || index > completed}
                       aria-current={index === completed ? 'step' : undefined}
                       onClick={() => onStepSelect?.(track.id, step.id)}
                     >
-                      <span className="parallel-step-dot">
+                      <Text as="span" variant="label" tone="inherit" className="parallel-step-dot">
                         {index < completed ? <Check size={13} /> : index + 1}
-                      </span>
-                      <span>
-                        <strong>{localize(step.title)}</strong>
-                        {step.description && <small>{localize(step.description)}</small>}
-                      </span>
-                    </button>
+                      </Text>
+                      <Text as="span" variant="label" tone="inherit">
+                        <Text as="strong" variant="label">
+                          {localize(step.title)}
+                        </Text>
+                        {step.description && (
+                          <Text as="small" variant="caption">
+                            {localize(step.description)}
+                          </Text>
+                        )}
+                      </Text>
+                    </Text>
                   </li>
                 ))}
               </ol>
               {track.error && (
-                <p className="ui-field-error" role="alert">
+                <FieldError as="p" variant="error" className="ui-field-error" role="alert">
                   {localize(track.error)}
-                </p>
+                </FieldError>
               )}
               <footer>
                 <Button
@@ -117,7 +137,7 @@ export function ParallelStepper({
         <span />
       </div>
       <div className="parallel-integration" data-ready={progress.ready || undefined}>
-        <span className="parallel-integration-icon">
+        <Text as="span" variant="label" tone="inherit" className="parallel-integration-icon">
           {integration.complete ? (
             <Check size={22} />
           ) : progress.ready ? (
@@ -125,10 +145,12 @@ export function ParallelStepper({
           ) : (
             <LockKeyhole size={20} />
           )}
-        </span>
+        </Text>
         <div>
-          <h4>{localize(integration.title)}</h4>
-          <p aria-live="polite">
+          <Heading as="h4" variant="card">
+            {localize(integration.title)}
+          </Heading>
+          <Text as="p" variant="body" aria-live="polite">
             {integration.complete
               ? tr('All workstreams have been integrated.')
               : progress.ready
@@ -136,7 +158,7 @@ export function ParallelStepper({
                     integration.description ?? 'All tracks are complete. Ready to integrate.',
                   )
                 : tr('Complete every workstream to unlock integration.')}
-          </p>
+          </Text>
         </div>
         <Button
           variant="contained"

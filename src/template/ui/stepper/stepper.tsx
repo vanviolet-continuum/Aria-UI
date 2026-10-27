@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { Check, CircleAlert } from 'lucide-react'
 import clsx from 'clsx'
@@ -37,13 +38,16 @@ export function Stepper({
                   : 'upcoming'
           return (
             <li key={step.id} className={`stepper-step stepper-step--${status}`}>
-              <button
+              <Text
+                as="button"
+                variant="button"
+                tone="inherit"
                 type="button"
                 aria-current={index === activeStep ? 'step' : undefined}
                 disabled={!onStepChange || index > activeStep}
                 onClick={() => onStepChange?.(index)}
               >
-                <span className="stepper-indicator">
+                <Text as="span" variant="label" tone="inherit" className="stepper-indicator">
                   {status === 'complete' ? (
                     <Check size={16} />
                   ) : status === 'error' ? (
@@ -51,12 +55,18 @@ export function Stepper({
                   ) : (
                     String(index + 1).padStart(2, '0')
                   )}
-                </span>
-                <span>
-                  <strong>{localize(step.title)}</strong>
-                  {step.description && <small>{localize(step.description)}</small>}
-                </span>
-              </button>
+                </Text>
+                <Text as="span" variant="label" tone="inherit">
+                  <Text as="strong" variant="label" tone="inherit">
+                    {localize(step.title)}
+                  </Text>
+                  {step.description && (
+                    <Text as="small" variant="caption">
+                      {localize(step.description)}
+                    </Text>
+                  )}
+                </Text>
+              </Text>
               {index < steps.length - 1 && (
                 <span className="stepper-connector" aria-hidden="true" />
               )}

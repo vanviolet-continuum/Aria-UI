@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { useId, useRef, type ReactNode } from 'react'
 import clsx from 'clsx'
@@ -33,7 +34,10 @@ export function Tabs({
       ref={ref}
     >
       {items.map((item) => (
-        <button
+        <Text
+          as="button"
+          variant="button"
+          tone="inherit"
           type="button"
           key={item.value}
           role="tab"
@@ -60,8 +64,12 @@ export function Tabs({
           }}
         >
           {localize(item.label)}
-          {item.count !== undefined && <span>{item.count}</span>}
-        </button>
+          {item.count !== undefined && (
+            <Text as="span" variant="label">
+              {item.count}
+            </Text>
+          )}
+        </Text>
       ))}
     </div>
   )

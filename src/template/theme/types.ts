@@ -1,3 +1,13 @@
+import type { TypographyConfig, TypographyOverrides } from './typography.types'
+export type {
+  TypographyConfig,
+  TypographyOverrides,
+  TypographyRole,
+  TypographyStyle,
+  TypographyTone,
+  HeadingVariant,
+  TextVariant,
+} from './typography.types'
 export type ThemeMode = 'light' | 'dark' | 'system'
 export type ColorMode = 'light' | 'dark'
 export type ControlSize = 'sm' | 'md' | 'lg'
@@ -29,7 +39,11 @@ export interface ThemeConfig {
   radius: number
   font: ThemeFont
   fontScale: number
+  typography?: TypographyOverrides
   spaceScale: number
+  /** Base layout spacing in px, before spaceScale is applied. */
+  layoutGap?: number
+  layoutPadding?: number
   controlSize: ControlSize
   density: 'comfortable' | 'compact'
   sidebarWidth: number
@@ -43,6 +57,9 @@ export interface ThemeConfig {
   colors: Record<ColorMode, Partial<ThemePalette>>
 }
 export interface ResolvedThemeConfig extends ThemeConfig {
+  typography: TypographyConfig
+  layoutGap: number
+  layoutPadding: number
   headerHeight: number
   sidebarCollapsed: boolean
   borderWidth: number

@@ -1,0 +1,87 @@
+.aria-heading-group {
+  --block-align: var(--l-text-align-current, start);
+  --block-title-size: var(--typography-section-size);
+  --block-title-weight: var(--typography-section-weight);
+  --block-title-leading: var(--typography-section-leading);
+  --block-title-tracking: var(--typography-section-tracking);
+  --block-title-transform: var(--typography-section-transform);
+  --block-title-color: var(--typography-section-color);
+  --block-description-size: var(--font-text-sm);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: var(--l-gap-current, var(--layout-gap));
+  row-gap: var(--l-gap-current, var(--space-md));
+  text-align: var(--l-text-align-current, start);
+}
+.aria-heading-group[data-heading-size='sm'] {
+  --block-title-size: var(--typography-card-size);
+  --block-title-weight: var(--typography-card-weight);
+  --block-title-leading: var(--typography-card-leading);
+  --block-title-tracking: var(--typography-card-tracking);
+  --block-title-transform: var(--typography-card-transform);
+  --block-title-color: var(--typography-card-color);
+}
+.aria-heading-group[data-heading-size='lg'] {
+  --block-title-size: var(--typography-page-size);
+  --block-title-weight: var(--typography-page-weight);
+  --block-title-leading: var(--typography-page-leading);
+  --block-title-tracking: var(--typography-page-tracking);
+  --block-title-transform: var(--typography-page-transform);
+  --block-title-color: var(--typography-page-color);
+}
+.aria-heading-group[data-heading-layout='stacked'] {
+  flex-direction: column;
+  align-items: var(--l-text-align-current, start);
+}
+.aria-heading-group-content {
+  display: flex;
+  flex: 1 1 16rem;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-width: 100%;
+}
+.aria-heading-group[data-heading-layout='stacked'] > .aria-heading-group-content {
+  flex-basis: auto;
+  width: 100%;
+}
+.aria-heading-group-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: var(--block-align, start);
+  gap: var(--space-sm);
+}
+.aria-heading-group-title {
+  --heading-size-default: var(--block-title-size);
+}
+.aria-heading-group-description {
+  --text-size-default: var(--block-description-size);
+  color: var(--typography-description-color);
+  line-height: var(--type-leading, var(--leading-relaxed));
+}
+.aria-heading-group-actions,
+.aria-heading-group-meta,
+.aria-heading-group-navigation {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  max-width: 100%;
+}
+.aria-heading-group-actions {
+  flex: 0 1 auto;
+}
+.aria-heading-group-meta {
+  color: var(--typography-body-color);
+  font-size: var(--font-text-sm);
+}
+.aria-heading-group-navigation {
+  flex-basis: 100%;
+}
+.aria-heading-group-leading {
+  display: inline-flex;
+  align-items: center;
+  color: var(--primary);
+  flex-shrink: 0;
+}

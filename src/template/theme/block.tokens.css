@@ -1,0 +1,19 @@
+:root,
+html[data-theme] {
+  --font-text-xs: calc(10px * var(--font-scale, 1));
+  --font-text-sm: calc(12px * var(--font-scale, 1));
+  --font-text-md: calc(13px * var(--font-scale, 1));
+  --font-text-lg: calc(15px * var(--font-scale, 1));
+  --font-text-xl: calc(17px * var(--font-scale, 1));
+  --font-heading-xs: calc(16px * var(--font-scale, 1));
+  --font-heading-sm: calc(20px * var(--font-scale, 1));
+  --font-heading-md: calc(24px * var(--font-scale, 1));
+  --font-heading-lg: calc(28px * var(--font-scale, 1));
+  --font-heading-xl: calc(36px * var(--font-scale, 1));
+  --font-heading-2xl: calc(44px * var(--font-scale, 1));
+  --font-heading-weight: 550;
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  --page-header-space: calc(28px * var(--space-scale, 1));
+}

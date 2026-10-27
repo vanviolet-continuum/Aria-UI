@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight } from 'lucide-react'
 import { pageBounds } from './use.data.table'
@@ -30,18 +31,23 @@ export function TablePagination({
   const options = [...new Set([...pageSizeOptions, pageSize])].sort((a, b) => a - b)
   return (
     <div className="ui-table-pagination">
-      <span className="pagination-summary">
+      <Text as="span" variant="table" className="pagination-summary">
         {tr('Showing')}{' '}
-        <strong>
+        <Text as="strong" variant="label">
           {bounds.start}–{bounds.end}
-        </strong>{' '}
+        </Text>{' '}
         {tr('of') + ' '}
-        <strong>{totalItems}</strong> {localize(itemLabel)}
-      </span>
+        <Text as="strong" variant="label">
+          {totalItems}
+        </Text>{' '}
+        {localize(itemLabel)}
+      </Text>
       <div className="pagination-controls">
         {onPageSizeChange && (
           <div className="page-size-select">
-            <span>{tr('Rows per page')}</span>
+            <Text as="span" variant="table">
+              {tr('Rows per page')}
+            </Text>
             <Combobox
               searchable={false}
               size="sm"
@@ -53,42 +59,54 @@ export function TablePagination({
             />
           </div>
         )}
-        <span className="pagination-current">
+        <Text as="span" variant="table" className="pagination-current">
           {bounds.page} / {bounds.pageCount}
-        </span>
+        </Text>
         <nav aria-label={tr('Table pagination')}>
-          <button
+          <Text
+            as="button"
+            variant="button"
+            tone="inherit"
             type="button"
             aria-label={tr('First page')}
             disabled={disabled || bounds.page === 1}
             onClick={() => onPageChange(1)}
           >
             <ChevronFirst size={15} />
-          </button>
-          <button
+          </Text>
+          <Text
+            as="button"
+            variant="button"
+            tone="inherit"
             type="button"
             aria-label={tr('Previous page')}
             disabled={disabled || bounds.page === 1}
             onClick={() => onPageChange(bounds.page - 1)}
           >
             <ChevronLeft size={15} />
-          </button>
-          <button
+          </Text>
+          <Text
+            as="button"
+            variant="button"
+            tone="inherit"
             type="button"
             aria-label={tr('Next page')}
             disabled={disabled || bounds.page === bounds.pageCount}
             onClick={() => onPageChange(bounds.page + 1)}
           >
             <ChevronRight size={15} />
-          </button>
-          <button
+          </Text>
+          <Text
+            as="button"
+            variant="button"
+            tone="inherit"
             type="button"
             aria-label={tr('Last page')}
             disabled={disabled || bounds.page === bounds.pageCount}
             onClick={() => onPageChange(bounds.pageCount)}
           >
             <ChevronLast size={15} />
-          </button>
+          </Text>
         </nav>
       </div>
     </div>

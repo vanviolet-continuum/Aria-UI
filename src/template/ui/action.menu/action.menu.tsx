@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { MoreHorizontal } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useI18n } from '../../i18n/use.i18n'
@@ -30,9 +31,16 @@ export function ActionMenu({
       variant={variant}
       size="sm"
       trigger={
-        <button type="button" className="icon-button" aria-label={localize(label)}>
+        <Text
+          as="button"
+          variant="button"
+          tone="inherit"
+          type="button"
+          className="icon-button"
+          aria-label={localize(label)}
+        >
           <MoreHorizontal size={18} />
-        </button>
+        </Text>
       }
     />
   )

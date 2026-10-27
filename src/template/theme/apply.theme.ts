@@ -3,6 +3,7 @@ import { themePresets } from './presets'
 import type { ColorMode, ThemeConfig } from './types'
 import { normalizeThemeConfig } from './config'
 import { controlMetrics } from './control.metrics'
+import { typographyVariables } from './typography.config'
 
 export function resolvePalette(config: ThemeConfig, mode: ColorMode) {
   const preset = themePresets.find((item) => item.id === config.preset) ?? themePresets[0]
@@ -47,19 +48,23 @@ export function themeVariables(config: ThemeConfig, mode: ColorMode) {
   const size = controlMetrics(settings)
   return {
     ...colors,
+    ...typographyVariables(settings.typography),
     '--font-family': themeFonts[config.font],
     '--font-scale': String(config.fontScale),
     '--space-scale': String(config.spaceScale),
+    '--layout-gap-base': `${settings.layoutGap}px`,
+    '--layout-padding-base': `${settings.layoutPadding}px`,
     '--radius-scale': String(config.radius / 8),
     '--sidebar-width': `${config.sidebarWidth}px`,
     '--control-height': `${size.controlHeight}px`,
     '--button-height': `${size.buttonHeight}px`,
     '--control-font-size': `${size.fontSize}px`,
+    '--button-font-size': `${size.buttonFontSize}px`,
     '--option-height': `${size.optionHeight}px`,
     '--option-rich-height': `${size.richOptionHeight}px`,
     '--checkbox-size': `${size.checkboxSize}px`,
     '--switch-height': `${size.switchHeight}px`,
-    '--header-height': `${settings.headerHeight}px`,
+    '--header-height': `${Math.max(settings.headerHeight, size.buttonHeight + 12, settings.typography.page.fontSize * settings.typography.page.lineHeight * settings.fontScale + 16)}px`,
     '--border-width': `${settings.borderWidth}px`,
     '--shadow-strength': String(settings.shadowStrength),
     '--motion-scale': String(settings.motionScale),

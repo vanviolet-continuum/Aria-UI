@@ -1,4 +1,5 @@
 import type { ResolvedThemeConfig } from './types'
+import { defaultTypography } from './typography.defaults'
 
 export const defaultTheme: ResolvedThemeConfig = {
   version: 1,
@@ -7,7 +8,10 @@ export const defaultTheme: ResolvedThemeConfig = {
   radius: 8,
   font: 'hanken',
   fontScale: 1,
+  typography: defaultTypography,
   spaceScale: 1,
+  layoutGap: 16,
+  layoutPadding: 24,
   controlSize: 'md',
   density: 'comfortable',
   sidebarWidth: 232,

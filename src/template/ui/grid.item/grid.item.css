@@ -1,0 +1,5 @@
+.aria-grid-item {
+  grid-column: var(--l-span-current, auto);
+  grid-row: var(--l-row-span-current, auto);
+  order: var(--l-order-current, 0);
+}

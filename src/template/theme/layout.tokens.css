@@ -1,0 +1,36 @@
+:root,
+html[data-theme] {
+  --space-0: 0px;
+  --space-1: calc(4px * var(--space-scale, 1));
+  --space-2: calc(8px * var(--space-scale, 1));
+  --space-3: calc(12px * var(--space-scale, 1));
+  --space-4: calc(16px * var(--space-scale, 1));
+  --space-5: calc(20px * var(--space-scale, 1));
+  --space-6: calc(24px * var(--space-scale, 1));
+  --space-8: calc(32px * var(--space-scale, 1));
+  --space-10: calc(40px * var(--space-scale, 1));
+  --space-12: calc(48px * var(--space-scale, 1));
+  --space-16: calc(64px * var(--space-scale, 1));
+  --space-none: var(--space-0);
+  --space-xs: var(--space-2);
+  --space-sm: var(--space-3);
+  --space-md: var(--space-4);
+  --space-lg: var(--space-6);
+  --space-xl: var(--space-8);
+  --space-2xl: var(--space-12);
+  --space-3xl: var(--space-16);
+  --radius-none: 0px;
+  --radius-sm: calc(4px * var(--radius-scale, 1));
+  --radius-md: calc(8px * var(--radius-scale, 1));
+  --radius-lg: calc(12px * var(--radius-scale, 1));
+  --radius-xl: calc(16px * var(--radius-scale, 1));
+  --radius-full: 9999px;
+  --layout-gap: calc(var(--layout-gap-base, 16px) * var(--space-scale, 1));
+  --layout-padding: calc(var(--layout-padding-base, 24px) * var(--space-scale, 1));
+  --layout-shadow-sm: 0 2px 8px
+    color-mix(in srgb, var(--shadow-color) calc(5% * var(--shadow-strength, 1)), transparent);
+  --layout-shadow-md: 0 8px 24px
+    color-mix(in srgb, var(--shadow-color) calc(8% * var(--shadow-strength, 1)), transparent);
+  --layout-shadow-lg: 0 16px 48px
+    color-mix(in srgb, var(--shadow-color) calc(12% * var(--shadow-strength, 1)), transparent);
+}

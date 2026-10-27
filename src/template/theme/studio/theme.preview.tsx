@@ -1,13 +1,21 @@
+import { MetricValue } from '../../ui/metric.value/metric.value'
+
+import { Heading } from '../../ui/heading/heading'
+
+import { Text } from '../../ui/text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { ArrowUpRight, Check, Mail, Plus, Sparkles } from 'lucide-react'
 import { useState } from 'react'
 import {
   Badge,
+  Box,
   Button,
-  Checkbox,
+  CheckboxField,
   Combobox,
   DatePicker,
   Field,
+  Grid,
+  Stack,
   Input,
   EmptyIllustration,
   toast,
@@ -23,20 +31,24 @@ export function ThemePreview() {
   return (
     <aside className="theme-preview">
       <div className="theme-preview-heading">
-        <span>
+        <Text as="span" variant="label">
           <Sparkles size={14} />
           {' ' + tr('LIVE PREVIEW')}
-        </span>
+        </Text>
         <Badge variant={storageStatus === 'saved' ? 'success' : 'warning'} dot>
           {tr(storageStatus === 'saved' ? 'All changes saved' : 'Session only')}
         </Badge>
       </div>
       <div className="theme-preview-body">
-        <span className="theme-preview-icon">
+        <Text as="span" variant="label" tone="inherit" className="theme-preview-icon">
           <Mail size={21} strokeWidth={1.6} />
-        </span>
-        <h3>{tr('A little more you.')}</h3>
-        <p>{tr('A few familiar pieces, wearing your new theme.')}</p>
+        </Text>
+        <Heading as="h3" variant="card">
+          {tr('A little more you.')}
+        </Heading>
+        <Text as="p" variant="body">
+          {tr('A few familiar pieces, wearing your new theme.')}
+        </Text>
         <Field
           label={tr('Project name')}
           hint={tr('Your default font, radius, size, and spacing.')}
@@ -60,9 +72,9 @@ export function ThemePreview() {
           </Field>
         </div>
         {storageStatus === 'unavailable' && (
-          <p className="theme-storage-note">
+          <Text as="p" variant="description" className="theme-storage-note">
             {tr('Browser storage is unavailable. Export your theme to keep these settings.')}
-          </p>
+          </Text>
         )}
         <div className="theme-preview-buttons">
           <Button
@@ -94,36 +106,73 @@ export function ThemePreview() {
           <Badge variant="warning">{tr('Review')}</Badge>
           <Badge variant="danger">{tr('Attention')}</Badge>
         </div>
-        <label className="theme-preview-check">
-          <Checkbox defaultChecked />
-          <span>{tr('Make room for the details')}</span>
-        </label>
+        <CheckboxField
+          className="theme-preview-check"
+          label={tr('Make room for the details')}
+          defaultChecked
+        />
         <div className="theme-preview-illustration">
           <EmptyIllustration />
-          <span>{tr('One palette. Every little detail.')}</span>
+          <Text as="span" variant="label">
+            {tr('One palette. Every little detail.')}
+          </Text>
         </div>
+        <Box variant="outlined" className="theme-preview-layout">
+          <Stack>
+            <Text as="strong" variant="label">
+              {tr('Layout foundations')}
+            </Text>
+            <Text as="p" variant="body">
+              {tr('Shared spacing and padding respond to your theme.')}
+            </Text>
+            <Grid minItemWidth={100}>
+              <Box variant="subtle" padding="sm" radius="sm">
+                <Text as="span" variant="label">
+                  {tr('Overview')}
+                </Text>
+              </Box>
+              <Box variant="subtle" padding="sm" radius="sm">
+                <Text as="span" variant="label">
+                  {tr('Details')}
+                </Text>
+              </Box>
+            </Grid>
+          </Stack>
+        </Box>
         <div className="theme-preview-metrics">
           <div>
-            <span>{tr('BORDER')}</span>
-            <strong>{config.borderWidth}px</strong>
+            <Text as="span" variant="label">
+              {tr('BORDER')}
+            </Text>
+            <MetricValue as="strong" variant="metric">
+              {config.borderWidth}px
+            </MetricValue>
           </div>
           <div>
-            <span>{tr('SHADOW')}</span>
-            <strong>{Math.round(config.shadowStrength * 100)}%</strong>
+            <Text as="span" variant="label">
+              {tr('SHADOW')}
+            </Text>
+            <MetricValue as="strong" variant="metric">
+              {Math.round(config.shadowStrength * 100)}%
+            </MetricValue>
           </div>
           <div>
-            <span>{tr('DEFAULT SIZE')}</span>
-            <strong>
+            <Text as="span" variant="label">
+              {tr('DEFAULT SIZE')}
+            </Text>
+            <MetricValue as="strong" variant="metric">
               {config.controlSize.toUpperCase()} <ArrowUpRight size={13} />
-            </strong>
+            </MetricValue>
           </div>
           <div>
-            <span>{tr('CORNERS')}</span>
-            <strong>
+            <Text as="span" variant="label">
+              {tr('CORNERS')}
+            </Text>
+            <MetricValue as="strong" variant="metric">
               {config.radius}
               {tr('px') + ' '}
               <Check size={13} />
-            </strong>
+            </MetricValue>
           </div>
         </div>
       </div>

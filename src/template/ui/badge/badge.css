@@ -7,9 +7,9 @@
   align-items: center;
   justify-content: center;
   gap: calc(6px * var(--space-scale));
-  font-size: calc(10px * var(--font-scale));
-  line-height: 1;
-  font-weight: 500;
+  font-size: var(--typography-label-size);
+  line-height: var(--typography-label-leading);
+  font-weight: var(--typography-label-weight);
   padding: calc(6px * var(--space-scale)) calc(8px * var(--space-scale));
   border-radius: calc(5px * var(--radius-scale));
   color: var(--badge-color);
@@ -64,7 +64,7 @@
 }
 
 .ui-badge--sm {
-  font-size: calc(9px * var(--font-scale));
+  font-size: var(--typography-label-size);
   padding: calc(4px * var(--space-scale)) calc(6px * var(--space-scale));
 }
 

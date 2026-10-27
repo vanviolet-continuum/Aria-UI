@@ -65,6 +65,12 @@ Nilai warna literal hanya berada dalam layer tema. Komponen memakai token semant
 
 ## Layout dan ukuran
 
+ThemeConfig.typography menerima override per peran teks. Theme Studio menyediakan editor untuk 20 peran, termasuk ukuran, tone, weight, line height, letter spacing, dan transform. Provider melakukan merge per field; konfigurasi lama dilengkapi default. Semua pengaturan ikut penyimpanan serta ekspor/impor. Panduan dan contoh ada di [Typography](../ui/typography.md). Nilai headerHeight yang tersimpan adalah preferensi; tinggi header efektif dapat bertambah agar judul serta tombol tetap mendapat ruang.
+
+Tipografi dan blok konten memakai `block.tokens.css` untuk ukuran teks/heading, weight heading, line height, dan jarak bawah PageHeader. Ukuran visual terpisah dari level h1–h6. Pengaturan fontScale dan spacing tema langsung memengaruhi blok, termasuk Card, Toolbar, dan SettingsRow. Lihat [panduan komposisi](../ui/composition.md).
+
+Fondasi `Box`, `Stack`, `Inline`, `Grid`, `GridItem`, `Container`, `Divider`, dan `Spacer` dijelaskan di [panduan layout](../ui/layout.md). `layout.tokens.css` menyediakan token spacing/radius/shadow bersama. `layoutGap` (default 16px, rentang 0–48px) dan `layoutPadding` (default 24px, rentang 0–64px) mengatur jarak layout dan padding surface. Nilai dasar tersebut dikalikan `spaceScale`; props ukuran eksplisit memakai token spacing yang dipilih. Pengaturan tersedia di Theme Studio, preview, penyimpanan, serta impor/ekspor. Properti bersifat opsional pada konfigurasi lama dan selalu terisi pada `ResolvedThemeConfig`.
+
 Font, spacing, dan radius menggunakan token skala. Button, Input, IconButton, combobox, picker, pencarian, textarea, checkbox, switch, dan OTP mengikuti ukuran atau token yang sesuai. Ukuran eksplisit seperti tombol `sm` dan pagination ringkas tetap dipertahankan. Tinggi opsi combobox dihitung bersama offset virtualisasinya; opsi dengan deskripsi tetap lebih tinggi dari opsi biasa.
 
 Pengaturan tambahan berikut opsional pada `ThemeConfig` lama dan selalu tersedia pada `ResolvedThemeConfig`:

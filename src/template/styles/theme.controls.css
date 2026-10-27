@@ -1,33 +1,33 @@
 .button--default {
   height: var(--button-height);
   padding: 0 calc(15px * var(--space-scale));
-  font-size: calc((var(--control-font-size) - 1px) * var(--font-scale));
+  font-size: var(--typography-button-size);
 }
 .ui-input-wrap--default {
   min-height: var(--control-height);
 }
 .ui-input-wrap--default .ui-input {
   height: calc(var(--control-height) - var(--border-width) * 2);
-  font-size: calc(var(--control-font-size) * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
 }
 .combobox-trigger:not(.combobox-trigger--sm),
 .picker-trigger {
   height: var(--control-height);
-  font-size: calc(var(--control-font-size) * var(--font-scale));
+  font-size: var(--typography-body-size);
 }
 .combobox-trigger--sm {
   height: 32px;
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-body-size);
 }
 .ui-textarea {
-  font-size: calc(var(--control-font-size) * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
   min-height: calc(var(--control-height) * 2.5);
 }
 .search-input {
   height: var(--control-height);
 }
 .search-input input {
-  font-size: calc((var(--control-font-size) - 1px) * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
 }
 .checkbox {
   width: var(--checkbox-size);
@@ -64,5 +64,5 @@
 .ui-textarea,
 .ui-input,
 .combobox-trigger {
-  color: var(--text);
+  color: var(--typography-input-color);
 }

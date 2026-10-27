@@ -3,11 +3,11 @@ body,
 .app-shell,
 .main-shell {
   background: var(--surface);
-  color: var(--text);
+  color: var(--typography-body-color);
 }
 input,
 textarea {
-  color: var(--text);
+  color: var(--typography-input-color);
 }
 @media (max-width: 650px) {
   .header-actions {

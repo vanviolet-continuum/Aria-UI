@@ -1,0 +1,18 @@
+.aria-toolbar,
+.aria-toolbar-group {
+  display: flex;
+  flex-direction: var(--l-direction-current, row);
+  flex-wrap: var(--l-wrap-current, wrap);
+  align-items: var(--l-align-current, center);
+  justify-content: var(--l-justify-current, start);
+  gap: var(--l-gap-current, var(--space-sm));
+}
+.aria-toolbar {
+  gap: var(--l-gap-current, var(--layout-gap));
+}
+.aria-toolbar-group--grow {
+  flex: 1 1 16rem;
+}
+.aria-toolbar-actions {
+  margin-inline-start: auto;
+}

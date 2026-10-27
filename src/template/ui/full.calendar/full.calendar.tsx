@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { lazy, Suspense } from 'react'
 import { LoadingIllustration } from '../illustrations/states/loading.illustration'
@@ -13,7 +14,9 @@ export function FullCalendar(props: FullCalendarProps) {
         fallback={
           <div className="calendar-initial-loading" role="status">
             <LoadingIllustration size={90} label={tr('')} />
-            <span>{tr('Making room on your calendar…')}</span>
+            <Text as="span" variant="label">
+              {tr('Making room on your calendar…')}
+            </Text>
           </div>
         }
       >

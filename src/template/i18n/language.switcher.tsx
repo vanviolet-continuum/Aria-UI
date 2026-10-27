@@ -1,3 +1,4 @@
+import { Text } from '../ui/text/text'
 import { Languages } from 'lucide-react'
 import { Button } from '../ui/button/button'
 import { Menu } from '../ui/menu/menu'
@@ -30,7 +31,9 @@ export function LanguageSwitcher() {
           title={t('Language')}
         >
           <Languages size={15} />
-          <span>{language.toUpperCase()}</span>
+          <Text as="span" variant="label">
+            {language.toUpperCase()}
+          </Text>
         </Button>
       }
     />

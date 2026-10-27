@@ -1524,5 +1524,10 @@
   "Sticky notes": "Sticky notes",
   "A layered note pad with a folded corner and short lines.": "A layered note pad with a folded corner and short lines.",
   "Push pins": "Push pins",
-  "Two pinboard tacks with clear caps and narrow points.": "Two pinboard tacks with clear caps and narrow points."
+  "Two pinboard tacks with clear caps and narrow points.": "Two pinboard tacks with clear caps and narrow points.",
+  "All filters": "All filters",
+  "End date": "End date",
+  "Select date": "Select date",
+  "Sort {{column}} ascending": "Sort {{column}} ascending",
+  "Sort {{column}} descending": "Sort {{column}} descending"
 }

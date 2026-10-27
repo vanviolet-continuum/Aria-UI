@@ -1,5 +1,11 @@
 import { useI18n } from '../../i18n/use.i18n'
-import { useId, type ReactElement, type ReactNode, cloneElement } from 'react'
+import { useId, type HTMLAttributes, type ReactElement, type ReactNode, cloneElement } from 'react'
+import { SectionHeader } from '../section.header/section.header'
+import type { HeadingGroupSlotProps } from '../heading.group/heading.group.types'
+import { FieldLabel } from '../field.label/field.label'
+import { FieldHint } from '../field.hint/field.hint'
+import { FieldError } from '../field.error/field.error'
+import { mergeIds } from '../block.shared/block.utils'
 
 export interface FieldProps {
   label: string
@@ -18,41 +24,67 @@ export function Field({ label, hint, error, required, children, className = '' }
   const message = error ?? hint
   return (
     <div className={`ui-field ${className}`}>
-      <label htmlFor={id}>
+      <FieldLabel htmlFor={id} required={required}>
         {localize(label)}
-        {required && <span aria-hidden="true"> *</span>}
-      </label>
+      </FieldLabel>
       {cloneElement(children, {
         id,
-        'aria-describedby': message ? `${id}-message` : undefined,
-        'aria-invalid': !!error || undefined,
+        'aria-describedby': mergeIds(
+          children.props['aria-describedby'],
+          message ? `${id}-message` : undefined,
+        ),
+        'aria-invalid': error ? true : children.props['aria-invalid'],
       })}
-      {message && (
-        <p id={`${id}-message`} className={error ? 'ui-field-error' : 'ui-field-hint'}>
-          {localize(message)}
-        </p>
-      )}
+      {message &&
+        (error ? (
+          <FieldError id={`${id}-message`} className="ui-field-error">
+            {localize(message)}
+          </FieldError>
+        ) : (
+          <FieldHint id={`${id}-message`} className="ui-field-hint">
+            {localize(message)}
+          </FieldHint>
+        ))}
     </div>
   )
+}
+
+export interface FormSectionProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> {
+  title: ReactNode
+  description?: ReactNode
+  actions?: ReactNode
+  leading?: ReactNode
+  slotProps?: HeadingGroupSlotProps
 }
 
 export function FormSection({
   title,
   description,
+  actions,
+  leading,
   children,
-}: {
-  title: string
-  description?: string
-  children: ReactNode
-}) {
+  className,
+  slotProps,
+  ...props
+}: FormSectionProps) {
   const { text: localize } = useI18n()
+  const generatedId = useId()
+  const titleId = slotProps?.title?.id ?? generatedId
 
   return (
-    <section className="form-section">
-      <div className="form-section-title">
-        <h3>{localize(title)}</h3>
-        {description && <p>{localize(description)}</p>}
-      </div>
+    <section
+      className={['form-section', className].filter(Boolean).join(' ')}
+      aria-labelledby={titleId}
+      {...props}
+    >
+      <SectionHeader
+        className="form-section-title"
+        title={localize(title)}
+        description={localize(description)}
+        actions={actions}
+        leading={leading}
+        slotProps={{ ...slotProps, title: { ...slotProps?.title, id: titleId } }}
+      />
       {children}
     </section>
   )

@@ -1,7 +1,7 @@
 import { defaultTheme } from './defaults'
 import { basePalettes, themeFonts } from './palettes'
 import { themePresets } from './presets'
-import { controlMetrics } from './control.metrics'
+import { isTypographyConfig, normalizeTypography } from './typography.config'
 import type { ResolvedThemeConfig, ThemeConfig } from './types'
 
 export const THEME_STORAGE_KEY = 'admin-template-appearance-v1'
@@ -40,6 +40,8 @@ export function isThemeConfig(value: unknown): value is ThemeConfig {
       return false
   }
   for (const [key, min, max] of [
+    ['layoutGap', 0, 48],
+    ['layoutPadding', 0, 64],
     ['headerHeight', 56, 96],
     ['borderWidth', 0, 2],
     ['shadowStrength', 0, 2],
@@ -54,6 +56,7 @@ export function isThemeConfig(value: unknown): value is ThemeConfig {
   }
   if (value.sidebarCollapsed !== undefined && typeof value.sidebarCollapsed !== 'boolean')
     return false
+  if (value.typography !== undefined && !isTypographyConfig(value.typography)) return false
   if (value.motion !== undefined && !['system', 'reduced', 'none'].includes(String(value.motion)))
     return false
   const colors = value.colors
@@ -79,14 +82,14 @@ export function normalizeThemeConfig(config: ThemeConfig): ResolvedThemeConfig {
     radius: config.radius,
     font: config.font,
     fontScale: config.fontScale,
+    typography: normalizeTypography(config.typography),
     spaceScale: config.spaceScale,
+    layoutGap: config.layoutGap ?? defaultTheme.layoutGap,
+    layoutPadding: config.layoutPadding ?? defaultTheme.layoutPadding,
     controlSize: config.controlSize,
     density: config.density,
     sidebarWidth: config.sidebarWidth,
-    headerHeight: Math.max(
-      config.headerHeight ?? defaultTheme.headerHeight,
-      controlMetrics(config).buttonHeight + 12,
-    ),
+    headerHeight: config.headerHeight ?? defaultTheme.headerHeight,
     sidebarCollapsed: config.sidebarCollapsed ?? defaultTheme.sidebarCollapsed,
     borderWidth: config.borderWidth ?? defaultTheme.borderWidth,
     shadowStrength: config.shadowStrength ?? defaultTheme.shadowStrength,

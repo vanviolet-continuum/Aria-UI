@@ -1,5 +1,8 @@
 @import './palette.css';
 @import './derived.css';
+@import './layout.tokens.css';
+@import './block.tokens.css';
+@import './typography.tokens.css';
 :root {
   font-family: var(--font-family);
   color: var(--text);

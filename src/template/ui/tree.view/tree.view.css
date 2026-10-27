@@ -15,8 +15,8 @@
   border-radius: calc(5px * var(--radius-scale));
   padding-right: calc(9px * var(--space-scale));
   cursor: pointer;
-  font-size: calc(11px * var(--font-scale));
-  color: var(--text-secondary);
+  font-size: var(--typography-body-size);
+  color: var(--typography-body-color);
 }
 .tree-row:hover {
   background: var(--surface-hover);
@@ -36,7 +36,7 @@
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  color: var(--muted);
+  color: var(--typography-body-color);
 }
 .tree-toggle svg {
   transition: transform calc(0.15s * var(--motion-scale, 1));
@@ -52,8 +52,8 @@
 }
 .tree-row > small {
   margin-left: auto;
-  color: var(--muted);
-  font-size: calc(9px * var(--font-scale));
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
   background: var(--surface-subtle);
   padding: 0 calc(5px * var(--space-scale));
   border-radius: calc(4px * var(--radius-scale));

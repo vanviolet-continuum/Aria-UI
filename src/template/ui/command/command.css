@@ -28,7 +28,7 @@
   height: 61px;
   padding: 0 calc(20px * var(--space-scale));
   border-bottom: var(--border-width, 1px) solid var(--border);
-  color: var(--muted);
+  color: var(--typography-body-color);
   flex-shrink: 0;
 }
 .command-search input {
@@ -37,7 +37,7 @@
   border: none;
   outline: none;
   background: none;
-  font-size: calc(13px * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
   height: 100%;
 }
 .ui-command kbd {
@@ -46,8 +46,8 @@
   background: var(--primary-soft);
   border-radius: calc(4px * var(--radius-scale));
   padding: calc(2px * var(--space-scale)) calc(4px * var(--space-scale));
-  color: var(--muted);
-  font-size: calc(9px * var(--font-scale));
+  color: var(--typography-code-color);
+  font-size: var(--typography-code-size);
 }
 .command-list {
   padding: calc(8px * var(--space-scale));
@@ -62,10 +62,10 @@
   overscroll-behavior: contain;
 }
 .command-group {
-  color: var(--muted);
-  font-size: calc(9px * var(--font-scale));
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
+  letter-spacing: var(--typography-caption-tracking);
+  text-transform: var(--typography-caption-transform);
   padding: calc(13px * var(--space-scale)) calc(10px * var(--space-scale))
     calc(8px * var(--space-scale));
 }
@@ -77,8 +77,8 @@
   text-align: left;
   padding: calc(11px * var(--space-scale)) calc(12px * var(--space-scale));
   border-radius: calc(7px * var(--radius-scale));
-  color: var(--text-secondary);
-  font-size: calc(12px * var(--font-scale));
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
 }
 .command-item--active {
   background: var(--primary-soft);
@@ -114,21 +114,21 @@
 }
 .command-item small {
   display: block;
-  font-size: calc(10px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-caption-size);
+  color: var(--typography-caption-color);
   margin-top: calc(3px * var(--space-scale));
 }
 .command-item > svg {
   margin-left: auto;
-  color: var(--muted);
+  color: var(--typography-body-color);
 }
 .command-footer {
   display: flex;
   gap: calc(15px * var(--space-scale));
   padding: calc(13px * var(--space-scale)) calc(18px * var(--space-scale));
   border-top: var(--border-width, 1px) solid var(--border);
-  color: var(--muted);
-  font-size: calc(9px * var(--font-scale));
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
   flex-shrink: 0;
 }
 .command-footer > span {
@@ -142,16 +142,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--muted);
+  color: var(--typography-body-color);
   gap: calc(10px * var(--space-scale));
 }
 .command-empty strong {
-  font-size: calc(12px * var(--font-scale));
-  color: var(--muted);
-  font-weight: 500;
+  font-size: var(--typography-label-size);
+  color: var(--typography-label-color);
+  font-weight: var(--typography-label-weight);
 }
 .command-empty span {
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-caption-size);
 }
 .command-trigger {
   cursor: pointer;
@@ -159,13 +159,13 @@
   width: 260px;
   height: 35px;
   padding: 0 calc(11px * var(--space-scale));
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-caption-size);
   gap: calc(9px * var(--space-scale));
   background: var(--primary-soft);
   border: var(--border-width, 1px) solid var(--border);
   display: flex;
   align-items: center;
-  color: var(--muted);
+  color: var(--typography-caption-color);
 }
 .command-trigger > span {
   flex: 1;
@@ -173,11 +173,11 @@
 }
 .command-trigger > kbd {
   font-family: inherit;
-  font-size: calc(8px * var(--font-scale));
+  font-size: var(--typography-code-size);
   padding: calc(2px * var(--space-scale)) calc(4px * var(--space-scale));
   border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(4px * var(--radius-scale));
-  color: var(--muted);
+  color: var(--typography-code-color);
   background: var(--surface);
 }
 .command-trigger:hover {

@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { CalendarHeader } from './calendar.header'
 import { useRef, useState, type KeyboardEvent } from 'react'
@@ -95,21 +96,26 @@ export function Calendar(props: CalendarProps) {
           {Array.from({ length: 7 }, (_, index) =>
             new Date(2026, 0, 5 + index).toLocaleDateString(locale, { weekday: 'short' }),
           ).map((day) => (
-            <span role="columnheader" key={day}>
+            <Text as="span" variant="caption" role="columnheader" key={day}>
               {day}
-            </span>
+            </Text>
           ))}
         </div>
         {Array.from({ length: 6 }, (_, week) => (
           <div className="calendar-week" role="row" key={week}>
             {days.slice(week * 7, week * 7 + 7).map((date) => {
-              const outside = fromDateKey(date).getMonth() !== month.getMonth()
+              const day = fromDateKey(date)
+              const outside =
+                day.getMonth() !== month.getMonth() || day.getFullYear() !== month.getFullYear()
               const selected = range
                 ? date === range.from || date === range.to
                 : date === props.value
               const between = !!(range?.from && range.to && date > range.from && date < range.to)
               return (
-                <span
+                <Text
+                  as="span"
+                  variant="label"
+                  tone="inherit"
                   role="gridcell"
                   aria-selected={selected || between}
                   key={date}
@@ -120,9 +126,13 @@ export function Calendar(props: CalendarProps) {
                     range?.from && date === range.to && 'calendar-cell--end',
                   )}
                 >
-                  <button
+                  <Text
+                    as="button"
+                    variant="menu"
+                    tone="inherit"
                     type="button"
                     data-date={date}
+                    data-outside-month={outside || undefined}
                     aria-label={fromDateKey(date).toLocaleDateString(locale, {
                       weekday: 'long',
                       month: 'long',
@@ -148,8 +158,8 @@ export function Calendar(props: CalendarProps) {
                     onClick={() => select(date)}
                   >
                     {fromDateKey(date).getDate()}
-                  </button>
-                </span>
+                  </Text>
+                </Text>
               )
             })}
           </div>

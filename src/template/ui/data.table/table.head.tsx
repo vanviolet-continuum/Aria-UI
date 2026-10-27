@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import {
   ArrowDown,
@@ -8,7 +9,7 @@ import {
   Pin,
   PinOff,
 } from 'lucide-react'
-import { Checkbox } from '../checkbox/checkbox'
+import { CheckboxField } from '../checkbox/checkbox.field'
 import { Menu } from '../menu/menu'
 import type { RowSelection, SortState } from './types'
 import type { ColumnLayout } from './column.layout'
@@ -44,22 +45,30 @@ export function TableHead<T>({
     <thead>
       <tr>
         {selection && (
-          <th className={`checkbox-cell${pinSelection ? ' table-selection-pinned' : ''}`}>
-            <Checkbox
-              aria-label={tr('Select all rows on this page')}
+          <Text
+            as="th"
+            variant="eyebrow"
+            className={`checkbox-cell${pinSelection ? ' table-selection-pinned' : ''}`}
+          >
+            <CheckboxField
+              label={tr('Select all rows on this page')}
+              labelHidden
+              className="table-checkbox-field"
               checked={allSelected}
               indeterminate={!allSelected && someSelected}
               disabled={loading}
               onChange={(event) => onToggleAll(event.target.checked)}
             />
-          </th>
+          </Text>
         )}
         {layout.map(({ column, style, pin, edge }, index) => {
           const sorted = sort?.column === column.id
           const label =
             column.label ?? (typeof column.header === 'string' ? column.header : column.id)
           return (
-            <th
+            <Text
+              as="th"
+              variant="eyebrow"
               key={column.id}
               className={column.className}
               style={style}
@@ -77,68 +86,95 @@ export function TableHead<T>({
               }
             >
               <div className="table-header-content" data-align={column.align}>
-                {column.sortable ? (
-                  <button
-                    type="button"
-                    className="table-sort"
-                    disabled={loading}
-                    onClick={() =>
-                      onSort({
-                        column: column.id,
-                        direction: sorted && sort?.direction === 'asc' ? 'desc' : 'asc',
-                      })
-                    }
-                  >
-                    {localize(column.header)}
-                    {sorted ? (
-                      sort?.direction === 'asc' ? (
-                        <ArrowUp size={12} />
-                      ) : (
-                        <ArrowDown size={12} />
-                      )
-                    ) : (
-                      <ArrowDownUp size={12} />
-                    )}
-                  </button>
-                ) : (
-                  localize(column.header)
-                )}
-                {(column.pinable ?? pinable) && (
-                  <Menu
-                    label={localize(label)}
-                    variant="compact"
-                    size="sm"
-                    selection="single"
-                    value={pin ?? 'none'}
-                    onValueChange={(side) => {
-                      if (side === 'left' || side === 'right' || side === 'none')
-                        onPin?.(column.id, side)
-                    }}
-                    trigger={
-                      <button
+                <Text as="div" variant="eyebrow" tone="inherit" className="table-header-label">
+                  {localize(column.header)}
+                </Text>
+                {(column.sortable || (column.pinable ?? pinable)) && (
+                  <div className="table-header-actions">
+                    {column.sortable && (
+                      <Text
+                        as="button"
+                        variant="eyebrow"
+                        tone="inherit"
                         type="button"
-                        className={`table-header-pin${pin ? ' table-header-pin--active' : ''}`}
-                        disabled={loading || !onPin}
-                        aria-label={tr('Pin column {{column}}', { column: localize(label) })}
-                        title={tr(pin ? 'Change column pin' : 'Pin column')}
+                        className="table-sort"
+                        disabled={loading}
+                        data-active={sorted || undefined}
+                        aria-label={tr(
+                          sorted && sort?.direction === 'asc'
+                            ? 'Sort {{column}} descending'
+                            : 'Sort {{column}} ascending',
+                          { column: localize(label) },
+                        )}
+                        title={tr(
+                          sorted && sort?.direction === 'asc'
+                            ? 'Sort {{column}} descending'
+                            : 'Sort {{column}} ascending',
+                          { column: localize(label) },
+                        )}
+                        onClick={() =>
+                          onSort({
+                            column: column.id,
+                            direction: sorted && sort?.direction === 'asc' ? 'desc' : 'asc',
+                          })
+                        }
                       >
-                        <Pin size={12} />
-                      </button>
-                    }
-                    items={[
-                      { id: 'left', label: 'Pin to left', icon: <ArrowLeftToLine size={14} /> },
-                      { id: 'right', label: 'Pin to right', icon: <ArrowRightToLine size={14} /> },
-                      {
-                        id: 'none',
-                        label: 'Unpin column',
-                        icon: <PinOff size={14} />,
-                        separator: true,
-                      },
-                    ]}
-                  />
+                        {sorted ? (
+                          sort?.direction === 'asc' ? (
+                            <ArrowUp size={12} />
+                          ) : (
+                            <ArrowDown size={12} />
+                          )
+                        ) : (
+                          <ArrowDownUp size={12} />
+                        )}
+                      </Text>
+                    )}
+                    {(column.pinable ?? pinable) && (
+                      <Menu
+                        label={localize(label)}
+                        variant="compact"
+                        size="sm"
+                        selection="single"
+                        value={pin ?? 'none'}
+                        onValueChange={(side) => {
+                          if (side === 'left' || side === 'right' || side === 'none')
+                            onPin?.(column.id, side)
+                        }}
+                        trigger={
+                          <Text
+                            as="button"
+                            variant="eyebrow"
+                            tone="inherit"
+                            type="button"
+                            className={`table-header-pin${pin ? ' table-header-pin--active' : ''}`}
+                            disabled={loading || !onPin}
+                            aria-label={tr('Pin column {{column}}', { column: localize(label) })}
+                            title={tr(pin ? 'Change column pin' : 'Pin column')}
+                          >
+                            <Pin size={12} />
+                          </Text>
+                        }
+                        items={[
+                          { id: 'left', label: 'Pin to left', icon: <ArrowLeftToLine size={14} /> },
+                          {
+                            id: 'right',
+                            label: 'Pin to right',
+                            icon: <ArrowRightToLine size={14} />,
+                          },
+                          {
+                            id: 'none',
+                            label: 'Unpin column',
+                            icon: <PinOff size={14} />,
+                            separator: true,
+                          },
+                        ]}
+                      />
+                    )}
+                  </div>
                 )}
               </div>
-            </th>
+            </Text>
           )
         })}
       </tr>

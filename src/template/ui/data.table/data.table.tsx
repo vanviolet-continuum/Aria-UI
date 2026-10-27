@@ -16,6 +16,7 @@ import type {
 } from './types'
 import { getColumnLayout } from './column.layout'
 import { TableScrollArea } from './table.scroll.area'
+import { getDefaultColumnPinning, resolveColumnPinning } from './column.pinning'
 
 export interface DataTableProps<T> {
   data: T[]
@@ -64,18 +65,29 @@ export function DataTable<T>({
   'aria-label': label = 'Data table',
 }: DataTableProps<T>) {
   const { text: localize } = useI18n()
-  const [internalPinning, setInternalPinning] = useState<ColumnPinning>({ left: [], right: [] })
-  const supportsPinning = pinable || columns.some((column) => column.pinable)
-  const pinning = columnPinning ?? (supportsPinning ? internalPinning : undefined)
+  const [internalPinning, setInternalPinning] = useState<ColumnPinning>(() =>
+    getDefaultColumnPinning(columns),
+  )
+  const supportsPinning = pinable || columns.some((column) => column.pinable || column.defaultPin)
+  const pinning = useMemo(
+    () =>
+      columnPinning !== undefined || supportsPinning
+        ? resolveColumnPinning(columns, columnPinning ?? internalPinning, pinable)
+        : undefined,
+    [columns, columnPinning, internalPinning, pinable, supportsPinning],
+  )
   const changePin = (id: string, side: 'left' | 'right' | 'none') => {
+    const column = columns.find((item) => item.id === id)
+    if (!column || !(column.pinable ?? pinable)) return
     const current = pinning ?? { left: [], right: [] }
     const next: ColumnPinning = {
       left: current.left.filter((value) => value !== id),
       right: current.right.filter((value) => value !== id),
     }
     if (side !== 'none') next[side].push(id)
-    if (columnPinning === undefined) setInternalPinning(next)
-    onColumnPinningChange?.(next)
+    const resolved = resolveColumnPinning(columns, next, pinable)
+    if (columnPinning === undefined) setInternalPinning(resolved)
+    onColumnPinningChange?.(resolved)
   }
 
   const table = useDataTable({

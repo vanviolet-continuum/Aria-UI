@@ -1,8 +1,13 @@
+import { TextLink } from '../../template/ui/text.link/text.link'
+
+import { Text } from '../../template/ui/text/text'
 import { useMemo, useState } from 'react'
 import { Download, Eye, Mail, MoreHorizontal, Pause, Play, Users } from 'lucide-react'
 import {
   Badge,
   Button,
+  Card,
+  CardHeader,
   DataTable,
   DetailList,
   DetailSection,
@@ -10,10 +15,14 @@ import {
   DetailView,
   Drawer,
   Menu,
+  PageHeader,
   SearchEmptyState,
   SearchInput,
   TableColumnMenu,
   TableFilter,
+  Toolbar,
+  ToolbarGroup,
+  ToolbarActions,
   filterTableData,
   useTableColumns,
   type ColumnDef,
@@ -53,7 +62,7 @@ export function MemberTable() {
   const [filters, setFilters] = useState<TableFilterValue>({})
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const [viewed, setViewed] = useState<string | null>(null)
-  const columnState = useTableColumns({ pinning: { left: ['name'], right: ['actions'] } })
+  const columnState = useTableColumns()
   const formatDate = (value: string) =>
     new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(new Date(`${value}T12:00:00`))
   const definitions: TableFilterDef<Member>[] = [
@@ -92,25 +101,37 @@ export function MemberTable() {
   const columns: ColumnDef<Member>[] = [
     {
       id: 'name',
+      defaultPin: 'left',
+      pinable: false,
       header: tr('Member'),
       accessor: 'name',
       sortable: true,
       width: 250,
       enableHiding: false,
       cell: (row) => (
-        <button className="member-cell" onClick={() => setViewed(row.id)}>
-          <span className="member-initials">
+        <Text
+          as="button"
+          variant="button"
+          tone="inherit"
+          className="member-cell"
+          onClick={() => setViewed(row.id)}
+        >
+          <Text as="span" variant="table" tone="inherit" className="member-initials">
             {row.name
               .split(' ')
               .map((part) => part[0])
               .slice(0, 2)
               .join('')}
-          </span>
-          <span>
-            <strong>{row.name}</strong>
-            <small>ARIA-{row.id}</small>
-          </span>
-        </button>
+          </Text>
+          <Text as="span" variant="table">
+            <Text as="strong" variant="label">
+              {row.name}
+            </Text>
+            <Text as="small" variant="caption">
+              ARIA-{row.id}
+            </Text>
+          </Text>
+        </Text>
       ),
     },
     { id: 'email', header: tr('Email address'), accessor: 'email', sortable: true, width: 240 },
@@ -149,9 +170,14 @@ export function MemberTable() {
     },
     {
       id: 'actions',
-      header: <span className="sr-only">{tr('Actions')}</span>,
+      header: (
+        <Text as="span" variant="table" className="sr-only">
+          {tr('Actions')}
+        </Text>
+      ),
       label: 'Actions',
       width: 64,
+      defaultPin: 'right',
       pinable: false,
       enableHiding: false,
       align: 'right',
@@ -160,9 +186,15 @@ export function MemberTable() {
           variant="rich"
           label={row.name}
           trigger={
-            <button className="icon-button" aria-label={`${tr('Actions')}: ${row.name}`}>
+            <Text
+              as="button"
+              variant="button"
+              tone="inherit"
+              className="icon-button"
+              aria-label={`${tr('Actions')}: ${row.name}`}
+            >
               <MoreHorizontal size={17} />
-            </button>
+            </Text>
           }
           items={[
             {
@@ -231,32 +263,42 @@ export function MemberTable() {
           ]}
         />
       </div>
-      <section className="example-panel">
-        <div className="example-panel-heading">
-          <div>
-            <h3>{tr('Team directory')}</h3>
-            <p>{tr('Search, filter, and keep everyone in view.')}</p>
-          </div>
-          <Button onClick={exportRows}>
-            <Download size={14} />
-            {tr('Export CSV')}
-          </Button>
-        </div>
-        <div className="example-table-toolbar">
-          <SearchInput value={search} onChange={setSearch} placeholder={tr('Search members…')} />
-          <TableFilter filters={definitions} value={filters} onChange={setFilters} />
-          <TableColumnMenu
-            columns={columns}
-            visibility={columnState.visibility}
-            onVisibilityChange={columnState.setVisibility}
-            onReset={() => columnState.setVisibility({})}
-          />
-        </div>
+      <Card as="section">
+        <CardHeader
+          title={tr('Team directory')}
+          description={tr('Search, filter, and keep everyone in view.')}
+          divider
+          actions={
+            <Button onClick={exportRows}>
+              <Download size={14} />
+              {tr('Export CSV')}
+            </Button>
+          }
+        />
+        <Toolbar padding="md" label={tr('Member filters')}>
+          <ToolbarGroup grow>
+            <SearchInput
+              value={search}
+              onChange={setSearch}
+              placeholder={tr('Search members…')}
+              className="example-table-search"
+            />
+            <TableFilter filters={definitions} value={filters} onChange={setFilters} />
+          </ToolbarGroup>
+          <ToolbarActions>
+            <TableColumnMenu
+              columns={columns}
+              visibility={columnState.visibility}
+              onVisibilityChange={columnState.setVisibility}
+              onReset={() => columnState.setVisibility({})}
+            />
+          </ToolbarActions>
+        </Toolbar>
         {selectedIds.length > 0 && (
           <div className="example-selection-bar">
-            <span>
+            <Text as="span" variant="table">
               {selectedIds.length} {tr('members selected')}
-            </span>
+            </Text>
             <Button size="sm" variant="text" onClick={() => setSelectedIds([])}>
               {tr('Clear selection')}
             </Button>
@@ -284,7 +326,7 @@ export function MemberTable() {
             />
           }
         />
-      </section>
+      </Card>
       <Drawer
         open={!!member}
         onOpenChange={(open) => {
@@ -312,7 +354,11 @@ export function MemberTable() {
                     id: 'email',
                     label: tr('Email address'),
                     icon: <Mail size={13} />,
-                    value: <a href={`mailto:${member.email}`}>{member.email}</a>,
+                    value: (
+                      <TextLink as="a" variant="link" href={`mailto:${member.email}`}>
+                        {member.email}
+                      </TextLink>
+                    ),
                   },
                   { id: 'team', label: tr('Team'), value: tr(member.role) },
                   { id: 'joined', label: tr('Joined'), value: formatDate(member.joined) },
@@ -330,13 +376,13 @@ export function TableExamplePage() {
   const { t: tr } = useI18n()
   return (
     <div className="standard-page example-page page-enter">
-      <div className="example-page-heading">
-        <span className="eyebrow">{tr('TABLE EXAMPLE')}</span>
-        <h2>{tr('People, in one place.')}</h2>
-        <p>
-          {tr('A complete table with search, filters, selection, pinned columns, and row actions.')}
-        </p>
-      </div>
+      <PageHeader
+        eyebrow={tr('TABLE EXAMPLE')}
+        title={tr('People, in one place.')}
+        description={tr(
+          'A complete table with search, filters, selection, pinned columns, and row actions.',
+        )}
+      />
       <MemberTable />
     </div>
   )

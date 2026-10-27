@@ -25,9 +25,9 @@
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: calc(19px * var(--font-scale));
-  font-weight: 550;
-  letter-spacing: -0.65px;
+  font-size: var(--typography-page-size);
+  font-weight: var(--typography-page-weight);
+  letter-spacing: var(--typography-page-tracking);
   white-space: nowrap;
 }
 

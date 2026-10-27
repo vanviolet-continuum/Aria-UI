@@ -1,3 +1,6 @@
+import { TextLink } from '../../template/ui/text.link/text.link'
+
+import { Text } from '../../template/ui/text/text'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -72,18 +75,18 @@ function ProjectDetailContent() {
       }
       meta={
         <>
-          <span>
+          <Text as="span" variant="label">
             <BriefcaseBusiness size={14} />
             Aria Studio
-          </span>
-          <span>
+          </Text>
+          <Text as="span" variant="label">
             <CalendarDays size={14} />
             {tr('Created')} {date('2026-10-12')}
-          </span>
-          <span>
+          </Text>
+          <Text as="span" variant="label">
             <Clock3 size={14} />
             {tr('Updated')} {date('2026-10-26')}
-          </span>
+          </Text>
         </>
       }
       summary={
@@ -121,10 +124,16 @@ function ProjectDetailContent() {
         <>
           <DetailSection title={tr('Project team')} icon={<Users size={16} />}>
             <div className="project-owner">
-              <span className="project-person-avatar">NP</span>
+              <Text as="span" variant="label" tone="inherit" className="project-person-avatar">
+                NP
+              </Text>
               <div>
-                <strong>Nadia Putri</strong>
-                <small>{tr('Project owner')}</small>
+                <Text as="strong" variant="label">
+                  Nadia Putri
+                </Text>
+                <Text as="small" variant="caption">
+                  {tr('Project owner')}
+                </Text>
               </div>
               <Badge size="sm" variant="neutral">
                 {tr('Lead')}
@@ -138,9 +147,9 @@ function ProjectDetailContent() {
                   label: tr('Email address'),
                   icon: <Mail size={12} />,
                   value: (
-                    <a href="mailto:nadia@example.com">
+                    <TextLink as="a" variant="link" href="mailto:nadia@example.com">
                       nadia@example.com <ArrowUpRight size={12} />
-                    </a>
+                    </TextLink>
                   ),
                 },
                 {
@@ -148,10 +157,18 @@ function ProjectDetailContent() {
                   label: tr('Collaborators'),
                   value: (
                     <div className="project-collaborators">
-                      <span>NP</span>
-                      <span>AF</span>
-                      <span>DR</span>
-                      <small>{tr('Design & development')}</small>
+                      <Text as="span" variant="label">
+                        NP
+                      </Text>
+                      <Text as="span" variant="label">
+                        AF
+                      </Text>
+                      <Text as="span" variant="label">
+                        DR
+                      </Text>
+                      <Text as="small" variant="caption">
+                        {tr('Design & development')}
+                      </Text>
                     </div>
                   ),
                 },
@@ -239,8 +256,12 @@ function ProjectDetailContent() {
         }
       >
         <div className="project-progress-heading">
-          <span>{tr('Overall completion')}</span>
-          <strong>75%</strong>
+          <Text as="span" variant="label">
+            {tr('Overall completion')}
+          </Text>
+          <Text as="strong" variant="label">
+            75%
+          </Text>
         </div>
         <progress
           className="project-progress"
@@ -251,25 +272,31 @@ function ProjectDetailContent() {
           75%
         </progress>
         <div className="project-milestones">
-          <span>
+          <Text as="span" variant="label">
             <Check size={13} />
             {tr('Discovery')}
-          </span>
-          <span>
+          </Text>
+          <Text as="span" variant="label">
             <Check size={13} />
             {tr('Design')}
-          </span>
-          <span className="project-milestone-current">
+          </Text>
+          <Text as="span" variant="label" className="project-milestone-current">
             <span />
             {tr('Development')}
-          </span>
-          <span>{tr('Handover')}</span>
+          </Text>
+          <Text as="span" variant="label">
+            {tr('Handover')}
+          </Text>
         </div>
         <div className="project-next-step">
           <Flag size={16} />
           <div>
-            <strong>{tr('Next milestone')}</strong>
-            <p>{tr('Review the first working version with the team.')}</p>
+            <Text as="strong" variant="label">
+              {tr('Next milestone')}
+            </Text>
+            <Text as="p" variant="body">
+              {tr('Review the first working version with the team.')}
+            </Text>
           </div>
         </div>
       </DetailSection>
@@ -318,9 +345,15 @@ export function DetailsPage() {
           <IconButton label={tr('Back to home')} variant="outlined" onClick={() => navigate('/')}>
             <ArrowLeft size={16} />
           </IconButton>
-          <span>{tr('Projects')}</span>
-          <span aria-hidden="true">/</span>
-          <strong>{projectId}</strong>
+          <Text as="span" variant="label">
+            {tr('Projects')}
+          </Text>
+          <Text as="span" variant="label" aria-hidden="true">
+            /
+          </Text>
+          <Text as="strong" variant="label">
+            {projectId}
+          </Text>
         </div>
         <div className="project-page-actions">
           <Button onClick={exportDetails}>

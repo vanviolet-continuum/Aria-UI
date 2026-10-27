@@ -1,0 +1,27 @@
+.aria-box {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+  --box-default-padding: 0px;
+  padding: var(--l-padding-current, var(--box-default-padding));
+  padding-inline: var(--l-padding-x-current, var(--l-padding-current, var(--box-default-padding)));
+  padding-block: var(--l-padding-y-current, var(--l-padding-current, var(--box-default-padding)));
+}
+.aria-box[data-box-variant='surface'],
+.aria-box[data-box-variant='subtle'],
+.aria-box[data-box-variant='outlined'],
+.aria-box[data-box-variant='elevated'] {
+  --box-default-padding: var(--layout-padding);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+.aria-box[data-box-variant='subtle'] {
+  background: var(--surface-subtle);
+}
+.aria-box[data-box-variant='outlined'],
+.aria-box[data-box-variant='elevated'] {
+  border: var(--border-width, 1px) solid var(--border);
+}
+.aria-box[data-box-variant='elevated'] {
+  box-shadow: var(--layout-shadow-md);
+}

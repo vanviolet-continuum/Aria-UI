@@ -20,15 +20,15 @@
 .pdf-toolbar span {
   min-width: 42px;
   text-align: center;
-  font-size: calc(11px * var(--font-scale));
-  color: var(--text-secondary);
+  font-size: var(--typography-body-size);
+  color: var(--typography-body-color);
 }
 .pdf-download {
   display: grid;
   place-items: center;
   width: 30px;
   height: 30px;
-  color: var(--text-secondary);
+  color: var(--typography-body-color);
   border-radius: calc(6px * var(--radius-scale));
 }
 .pdf-download:hover {
@@ -76,11 +76,11 @@
   gap: 16px;
   padding: 36px 20px;
   min-height: 280px;
-  color: var(--muted);
-  font-size: calc(12px * var(--font-scale));
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
 }
 .pdf-message > strong {
-  color: var(--text);
+  color: var(--typography-label-color);
 }
 .pdf-message > span {
   max-width: 420px;
@@ -104,8 +104,8 @@
   background: var(--surface-subtle);
 }
 .pdf-thumbnails > span {
-  color: var(--muted);
-  font-size: 10px;
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
 }
 .pdf-thumbnails > button {
   border: var(--border-width, 1px) solid transparent;
@@ -139,27 +139,27 @@
   margin-bottom: 15px;
 }
 .pdf-info > strong {
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-label-size);
 }
 .pdf-info p {
   overflow-wrap: anywhere;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.6;
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-leading);
 }
 .pdf-info dl {
   margin: 25px 0 0;
 }
 .pdf-info dt {
-  color: var(--muted);
-  font-size: 10px;
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
   margin-top: 18px;
 }
 .pdf-info dd {
   margin: 5px 0 0;
-  color: var(--text-secondary);
+  color: var(--typography-body-color);
   overflow-wrap: anywhere;
-  font-size: 11px;
+  font-size: var(--typography-body-size);
 }
 .pdf-print-frame {
   position: fixed;
@@ -205,7 +205,7 @@
   }
   .pdf-thumbnails > button {
     max-width: 65px;
-    font-size: 9px;
+    font-size: var(--typography-button-size);
   }
   .pdf-viewport {
     padding: 12px;

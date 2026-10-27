@@ -47,19 +47,19 @@
   align-items: center;
   flex-direction: column;
   padding: calc(24px * var(--space-scale));
-  color: var(--muted);
+  color: var(--typography-body-color);
 }
 
 .loading-overlay-card strong {
-  font-size: calc(12px * var(--font-scale));
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-size: var(--typography-label-size);
+  font-weight: var(--typography-label-weight);
+  color: var(--typography-label-color);
   margin-top: calc(12px * var(--space-scale));
 }
 
 .loading-overlay-card small {
-  font-size: calc(10px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-caption-size);
+  color: var(--typography-caption-color);
   margin-top: calc(4px * var(--space-scale));
 }
 

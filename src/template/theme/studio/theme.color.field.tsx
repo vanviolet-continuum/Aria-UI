@@ -1,3 +1,4 @@
+import { FieldLabel } from '../../ui/field.label/field.label'
 import { useI18n } from '../../i18n/use.i18n'
 import { useEffect, useId, useState } from 'react'
 import { Input } from '../../ui'
@@ -19,7 +20,9 @@ export function ThemeColorField({
   const valid = /^#[0-9a-f]{6}$/i.test(draft)
   return (
     <div className="theme-color-field">
-      <label htmlFor={id}>{localize(label)}</label>
+      <FieldLabel as="label" variant="label" htmlFor={id}>
+        {localize(label)}
+      </FieldLabel>
       <div>
         <input
           type="color"

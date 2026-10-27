@@ -1,3 +1,8 @@
+import { FieldError } from '../field.error/field.error'
+
+import { Text } from '../text/text'
+
+import { Eyebrow } from '../eyebrow/eyebrow'
 import { useI18n } from '../../i18n/use.i18n'
 import * as Dialog from '@radix-ui/react-dialog'
 import { AlertTriangle, Trash2 } from 'lucide-react'
@@ -49,16 +54,26 @@ export function ConfirmDialog({
           }}
         >
           <LoadingOverlay loading={!!busy} label={tr('Updating your workspace…')}>
-            <span className="confirm-dialog-icon">
+            <Text as="span" variant="label" tone="inherit" className="confirm-dialog-icon">
               <AlertTriangle size={26} strokeWidth={1.6} />
-            </span>
-            <span className="state-eyebrow">{tr('A QUICK DOUBLE-CHECK')}</span>
-            <Dialog.Title>{localize(title)}</Dialog.Title>
-            <Dialog.Description>{localize(description)}</Dialog.Description>
+            </Text>
+            <Eyebrow as="span" variant="eyebrow" className="state-eyebrow">
+              {tr('A QUICK DOUBLE-CHECK')}
+            </Eyebrow>
+            <Dialog.Title>
+              <Text as="span" variant="dialog">
+                {localize(title)}
+              </Text>
+            </Dialog.Title>
+            <Dialog.Description>
+              <Text as="span" variant="description">
+                {localize(description)}
+              </Text>
+            </Dialog.Description>
             {error && (
-              <p className="ui-field-error" role="alert">
+              <FieldError as="p" variant="error" className="ui-field-error" role="alert">
                 {localize(error)}
-              </p>
+              </FieldError>
             )}
             <div className="confirm-dialog-actions">
               <Button

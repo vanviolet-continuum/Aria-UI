@@ -31,33 +31,33 @@
 /* v7 renders accessible roles; styling avoids private generated class names. */
 .ui-fullcalendar > div {
   font-family: inherit;
-  font-size: calc(12px * var(--font-scale));
+  font-size: var(--typography-body-size);
 }
 .ui-fullcalendar [role='heading'] {
-  font-size: calc(18px * var(--font-scale));
-  font-weight: 550;
-  letter-spacing: -0.5px;
-  color: var(--text);
+  font-size: var(--typography-card-size);
+  font-weight: var(--typography-card-weight);
+  letter-spacing: var(--typography-card-tracking);
+  color: var(--typography-card-color);
 }
 .ui-fullcalendar button {
   font-family: inherit;
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-button-size);
   cursor: pointer;
 }
 .ui-fullcalendar button:disabled {
   cursor: default;
 }
 .ui-fullcalendar [role='columnheader'] {
-  font-size: calc(10px * var(--font-scale));
-  font-weight: 450;
-  color: var(--muted);
+  font-size: var(--typography-label-size);
+  font-weight: var(--typography-label-weight);
+  color: var(--typography-label-color);
 }
 .ui-fullcalendar [role='tab'][aria-selected='true'] {
   color: var(--primary);
 }
 .ui-fullcalendar [role='list'] button,
 .ui-fullcalendar [role='cell'] li button {
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-button-size);
 }
 .calendar-event--care {
   --fc-classic-event: color-mix(in srgb, var(--success) 12%, var(--surface));
@@ -78,8 +78,8 @@
   align-items: center;
   justify-content: center;
   gap: calc(15px * var(--space-scale));
-  color: var(--muted);
-  font-size: calc(12px * var(--font-scale));
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
 }
 @media (max-width: 650px) {
   .ui-fullcalendar {
@@ -95,9 +95,9 @@
     justify-content: center;
   }
   .ui-fullcalendar [role='heading'] {
-    font-size: calc(16px * var(--font-scale));
+    font-size: var(--typography-card-size);
   }
   .ui-fullcalendar [role='cell'] li button {
-    font-size: calc(8px * var(--font-scale));
+    font-size: var(--typography-button-size);
   }
 }

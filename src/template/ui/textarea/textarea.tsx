@@ -10,6 +10,7 @@ export const Textarea = /* @__PURE__ */ forwardRef<
       ref={ref}
       rows={rows}
       className={clsx('ui-textarea', className)}
+      data-typography="input"
       aria-invalid={invalid || undefined}
       {...props}
     />

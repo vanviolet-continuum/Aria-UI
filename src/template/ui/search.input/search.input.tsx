@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { Search, X } from 'lucide-react'
 
@@ -28,9 +29,16 @@ export function SearchInput({
         aria-label={localize(label)}
       />
       {value && (
-        <button type="button" aria-label={tr('Clear search')} onClick={() => onChange('')}>
+        <Text
+          as="button"
+          variant="button"
+          tone="inherit"
+          type="button"
+          aria-label={tr('Clear search')}
+          onClick={() => onChange('')}
+        >
           <X size={14} />
-        </button>
+        </Text>
       )}
     </div>
   )

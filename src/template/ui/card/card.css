@@ -1,0 +1,47 @@
+.aria-card {
+  --card-padding: var(--layout-padding);
+  min-width: 0;
+}
+.aria-card[data-card-size='sm'] {
+  --card-padding: var(--space-md);
+}
+.aria-card[data-card-size='lg'] {
+  --card-padding: var(--space-xl);
+}
+.aria-card-header.aria-box,
+.aria-card-body.aria-box,
+.aria-card-footer.aria-box {
+  --box-default-padding: var(--card-padding, var(--layout-padding));
+}
+.aria-card-header {
+  border-start-start-radius: var(--card-radius, var(--radius-lg));
+  border-start-end-radius: var(--card-radius, var(--radius-lg));
+}
+.aria-card-header:not(:last-child):not(.aria-card-header--divider) {
+  padding-block-end: var(--l-padding-y-current, var(--l-padding-current, 0px));
+}
+.aria-card-header--divider {
+  padding-block-end: var(
+    --l-padding-y-current,
+    var(--l-padding-current, var(--card-padding, var(--layout-padding)))
+  );
+  border-block-end: var(--border-width, 1px) solid var(--border);
+}
+.aria-card-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  border-end-start-radius: var(--card-radius, var(--radius-lg));
+  border-end-end-radius: var(--card-radius, var(--radius-lg));
+}
+.aria-card-body + .aria-card-footer:not(.aria-card-footer--divider) {
+  padding-block-start: var(--l-padding-y-current, var(--l-padding-current, 0px));
+}
+.aria-card-footer--divider {
+  padding-block-start: var(
+    --l-padding-y-current,
+    var(--l-padding-current, var(--card-padding, var(--layout-padding)))
+  );
+  border-block-start: var(--border-width, 1px) solid var(--border);
+}

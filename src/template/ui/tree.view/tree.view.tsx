@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { ChevronRight, FileText, Folder, FolderOpen } from 'lucide-react'
 import { useMemo, useRef, useState } from 'react'
@@ -120,7 +121,10 @@ export function TreeView({
             }}
           >
             {folder ? (
-              <button
+              <Text
+                as="button"
+                variant="button"
+                tone="inherit"
                 type="button"
                 className="tree-toggle"
                 tabIndex={-1}
@@ -135,11 +139,16 @@ export function TreeView({
                 }}
               >
                 <ChevronRight size={14} className={open ? 'tree-chevron--open' : ''} />
-              </button>
+              </Text>
             ) : (
               <span className="tree-toggle" />
             )}
-            <span className={folder ? 'tree-folder-icon' : 'tree-file-icon'}>
+            <Text
+              as="span"
+              variant="label"
+              tone="inherit"
+              className={folder ? 'tree-folder-icon' : 'tree-file-icon'}
+            >
               {node.icon ??
                 (folder ? (
                   open ? (
@@ -150,9 +159,15 @@ export function TreeView({
                 ) : (
                   <FileText size={16} />
                 ))}
-            </span>
-            <span>{localize(node.label)}</span>
-            {folder && <small>{node.children!.length}</small>}
+            </Text>
+            <Text as="span" variant="label" tone="inherit">
+              {localize(node.label)}
+            </Text>
+            {folder && (
+              <Text as="small" variant="caption">
+                {node.children!.length}
+              </Text>
+            )}
           </div>
         )
       })}

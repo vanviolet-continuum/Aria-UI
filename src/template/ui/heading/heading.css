@@ -1,0 +1,8 @@
+.aria-heading {
+  --heading-size-default: var(--font-heading-md);
+  font-size: var(--l-type-size-current, var(--heading-size-default));
+  font-weight: var(--font-heading-weight);
+  line-height: var(--type-leading, var(--leading-tight));
+  letter-spacing: -0.035em;
+  text-wrap: pretty;
+}

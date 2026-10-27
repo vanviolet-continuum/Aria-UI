@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
@@ -79,7 +80,10 @@ export function InputOTP({
         }}
       />
       {Array.from({ length: size }, (_, index) => (
-        <span
+        <Text
+          as="span"
+          variant="input"
+          tone="inherit"
           key={index}
           aria-hidden="true"
           className={clsx(
@@ -94,8 +98,8 @@ export function InputOTP({
             setActive(index)
           }}
         >
-          {value[index] ? mask ? '•' : value[index] : <i />}
-        </span>
+          {value[index] ? mask ? '•' : value[index] : <Text as="i" variant="body" size="inherit" />}
+        </Text>
       ))}
     </div>
   )

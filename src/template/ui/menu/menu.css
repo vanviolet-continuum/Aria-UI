@@ -2,7 +2,7 @@
 .dropdown-menu {
   z-index: 140;
   background: var(--surface);
-  color: var(--text);
+  color: var(--typography-menu-color);
   border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(12px * var(--radius-scale));
   box-shadow:
@@ -41,14 +41,14 @@
     calc(13px * var(--space-scale));
 }
 .ui-menu-heading strong {
-  color: var(--text);
-  font-size: calc(11px * var(--font-scale));
-  font-weight: 600;
+  color: var(--typography-menu-color);
+  font-size: var(--typography-menu-size);
+  font-weight: var(--typography-menu-weight);
 }
 .ui-menu-heading > span {
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
-  line-height: 1.6;
+  color: var(--typography-menu-color);
+  font-size: var(--typography-menu-size);
+  line-height: var(--typography-menu-leading);
 }
 .ui-menu .ui-menu-item {
   display: flex;
@@ -58,8 +58,8 @@
   margin-block: 2px;
   padding: calc(9px * var(--space-scale)) calc(12px * var(--space-scale));
   border-radius: calc(7px * var(--radius-scale));
-  font-size: calc(12px * var(--font-scale));
-  color: var(--text-secondary);
+  font-size: var(--typography-menu-size);
+  color: var(--typography-menu-color);
   cursor: pointer;
   outline: none;
   user-select: none;
@@ -94,19 +94,19 @@
 }
 .ui-menu-copy > span {
   overflow-wrap: anywhere;
-  line-height: 1.5;
+  line-height: var(--typography-menu-leading);
 }
 .ui-menu-copy small {
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
-  line-height: 1.5;
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
+  line-height: var(--typography-caption-leading);
 }
 .ui-menu-trailing {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
+  color: var(--typography-menu-color);
+  font-size: var(--typography-menu-size);
 }
 .ui-menu-trailing kbd {
   font-family: inherit;
@@ -128,8 +128,8 @@
   margin: 6px -6px -6px;
   padding: calc(12px * var(--space-scale));
   border-top: var(--border-width, 1px) solid var(--border);
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
+  color: var(--typography-menu-color);
+  font-size: var(--typography-menu-size);
 }
 .ui-menu .ui-menu-item--danger {
   color: var(--error);
@@ -141,7 +141,7 @@
 .ui-menu--compact .ui-menu-item {
   min-height: 32px;
   padding-block: calc(6px * var(--space-scale));
-  font-size: calc(11px * var(--font-scale));
+  font-size: var(--typography-menu-size);
 }
 .ui-menu--rich .ui-menu-item {
   padding-block: calc(12px * var(--space-scale));
@@ -214,17 +214,6 @@
 }
 .popover.combobox-popover[data-searchable='false'] {
   min-width: min(calc(100vw - 24px), max(96px, var(--radix-popover-trigger-width)));
-}
-.popover.calendar-popover {
-  padding: calc(12px * var(--space-scale));
-}
-.popover.time-popover {
-  width: min(320px, calc(100vw - 24px));
-}
-.popover.table-filter-popover {
-  padding: 0;
-  width: min(360px, calc(100vw - 24px));
-  max-height: min(520px, var(--radix-popover-content-available-height));
 }
 @media (prefers-reduced-motion: reduce) {
   .ui-floating-surface {

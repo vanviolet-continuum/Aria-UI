@@ -4,8 +4,8 @@
   min-width: 44px;
 }
 .language-switcher > span {
-  font-size: 10px;
-  font-weight: 600;
+  font-size: var(--typography-caption-size);
+  font-weight: var(--typography-caption-weight);
 }
 @media (max-width: 650px) {
   .language-switcher {

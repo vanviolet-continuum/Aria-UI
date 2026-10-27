@@ -3,14 +3,14 @@
   text-align: center;
 }
 .empty-state h3 {
-  font-size: calc(16px * var(--font-scale));
-  font-weight: 550;
-  color: var(--text);
+  font-size: var(--typography-card-size);
+  font-weight: var(--typography-card-weight);
+  color: var(--typography-card-color);
 }
 .empty-state p {
-  color: var(--muted);
-  font-size: calc(12px * var(--font-scale));
-  line-height: 1.8;
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-leading);
   max-width: 370px;
   margin: calc(8px * var(--space-scale)) auto calc(20px * var(--space-scale));
 }

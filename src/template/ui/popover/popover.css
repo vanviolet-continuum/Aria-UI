@@ -20,26 +20,26 @@
 }
 
 .popover-heading > strong {
-  font-size: calc(12px * var(--font-scale));
-  font-weight: 600;
+  font-size: var(--typography-label-size);
+  font-weight: var(--typography-label-weight);
 }
 
 .popover-eyebrow {
-  font-size: calc(9px * var(--font-scale));
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: var(--muted);
+  font-size: var(--typography-eyebrow-size);
+  letter-spacing: var(--typography-eyebrow-tracking);
+  text-transform: var(--typography-eyebrow-transform);
+  color: var(--typography-eyebrow-color);
   padding: calc(4px * var(--space-scale)) calc(8px * var(--space-scale))
     calc(7px * var(--space-scale));
 }
 
 .popover-heading > .muted {
-  font-size: calc(9px * var(--font-scale));
+  font-size: var(--typography-caption-size);
 }
 
 .popover p {
-  font-size: calc(11px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-body-size);
+  color: var(--typography-body-color);
 }
 
 .popover-note {
@@ -48,7 +48,7 @@
   justify-content: center;
   gap: calc(6px * var(--space-scale));
   border-top: var(--border-width, 1px) solid var(--border);
-  color: var(--muted);
-  font-size: calc(9px * var(--font-scale));
+  color: var(--typography-description-color);
+  font-size: var(--typography-description-size);
   padding: calc(13px * var(--space-scale));
 }

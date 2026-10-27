@@ -1,3 +1,8 @@
+import { FieldLabel } from '../../ui/field.label/field.label'
+
+import { Heading } from '../../ui/heading/heading'
+
+import { Text } from '../../ui/text/text'
 import { Combobox, Field, Switch } from '../../ui'
 import { useI18n } from '../../i18n/use.i18n'
 import { useTheme } from '../theme.provider'
@@ -10,13 +15,17 @@ export function ThemeSurfaceControls() {
   return (
     <section className="theme-section">
       <div className="theme-section-heading">
-        <span>{tr('03 / Layout & effects')}</span>
-        <h3>{tr('The space around your work.')}</h3>
-        <p>
+        <Text as="span" variant="label">
+          {tr('03 / Layout & effects')}
+        </Text>
+        <Heading as="h3" variant="card">
+          {tr('The space around your work.')}
+        </Heading>
+        <Text as="p" variant="body">
           {tr(
             'Fine-tune the layout, surface details, and movement across the workspace. The header keeps enough room for your chosen control size.',
           )}
-        </p>
+        </Text>
       </div>
       <div className="theme-control-grid">
         <ThemeSlider
@@ -80,16 +89,20 @@ export function ThemeSurfaceControls() {
           onChange={(value) => updateConfig({ motionScale: value / 100 })}
         />
       </div>
-      <label className="theme-preference-row">
-        <span>
-          <strong>{tr('Collapsed sidebar')}</strong>
-          <small>{tr('Start with an icon rail. Your choice is saved between visits.')}</small>
-        </span>
+      <FieldLabel as="label" variant="label" className="theme-preference-row">
+        <Text as="span" variant="label" tone="inherit">
+          <Text as="strong" variant="label">
+            {tr('Collapsed sidebar')}
+          </Text>
+          <Text as="small" variant="caption">
+            {tr('Start with an icon rail. Your choice is saved between visits.')}
+          </Text>
+        </Text>
         <Switch
           checked={config.sidebarCollapsed}
           onChange={(event) => updateConfig({ sidebarCollapsed: event.target.checked })}
         />
-      </label>
+      </FieldLabel>
     </section>
   )
 }

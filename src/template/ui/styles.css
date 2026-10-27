@@ -1,6 +1,7 @@
 @import '@fontsource-variable/hanken-grotesk/wght.css';
 @import '../theme/tokens.css';
 @import '../styles/base.css';
+@import './blocks.css';
 @import '../i18n/i18n.css';
 @import './button/button.css';
 @import './input/input.css';
@@ -49,3 +50,4 @@
 @import './detail/detail.css';
 @import './menu/menu.css';
 @import '../theme/effects.css';
+@import '../styles/typography.controls.css';

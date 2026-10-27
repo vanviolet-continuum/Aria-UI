@@ -1,0 +1,25 @@
+.aria-field-label {
+  display: block;
+}
+.aria-text-link {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.aria-text-link:not([data-typography='navigation']):hover {
+  text-decoration-line: underline;
+}
+.aria-text-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+.aria-code-text {
+  font-family: var(--font-mono);
+}
+.aria-code-block {
+  font-family: var(--font-mono);
+  tab-size: 2;
+}
+.aria-metric-value {
+  font-variant-numeric: tabular-nums;
+}

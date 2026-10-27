@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import clsx from 'clsx'
 import { forwardRef, type ButtonHTMLAttributes } from 'react'
@@ -24,6 +25,7 @@ export const Button = /* @__PURE__ */ forwardRef<HTMLButtonElement, ButtonProps>
     fullWidth,
     children,
     disabled,
+    style: customStyle,
     ...props
   },
   ref,
@@ -31,8 +33,21 @@ export const Button = /* @__PURE__ */ forwardRef<HTMLButtonElement, ButtonProps>
   const { t: tr } = useI18n()
 
   const style = resolveButtonStyle(variant, color)
+  const explicitFont =
+    size === 'xs'
+      ? 'calc(var(--typography-button-size) * 0.833333)'
+      : size === 'sm'
+        ? 'calc(var(--typography-button-size) * 0.916667)'
+        : size === 'md'
+          ? 'var(--typography-button-size)'
+          : size === 'lg'
+            ? 'calc(var(--typography-button-size) * 1.083333)'
+            : undefined
   return (
-    <button
+    <Text
+      as="button"
+      variant="button"
+      tone="inherit"
       ref={ref}
       type={type}
       disabled={disabled || loading}
@@ -47,9 +62,10 @@ export const Button = /* @__PURE__ */ forwardRef<HTMLButtonElement, ButtonProps>
         className,
       )}
       {...props}
+      style={{ ...(explicitFont ? { fontSize: explicitFont } : {}), ...customStyle }}
     >
       {loading && <Spinner size={15} label={tr('')} />}
       {loading && loadingText ? loadingText : children}
-    </button>
+    </Text>
   )
 })

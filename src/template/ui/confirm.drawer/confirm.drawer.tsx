@@ -1,3 +1,6 @@
+import { Text } from '../text/text'
+
+import { Heading } from '../heading/heading'
 import { useI18n } from '../../i18n/use.i18n'
 import { AlertTriangle, Trash2 } from 'lucide-react'
 import { Drawer } from '../drawer/drawer'
@@ -42,11 +45,15 @@ export function ConfirmDrawer({
       }
     >
       <div className="confirm-message">
-        <span>
+        <Text as="span" variant="label" tone="inherit">
           <AlertTriangle size={24} />
-        </span>
-        <h3>{tr('Take a moment to double-check.')}</h3>
-        <p>{tr('This action removes the selected record from your workspace.')}</p>
+        </Text>
+        <Heading as="h3" variant="card">
+          {tr('Take a moment to double-check.')}
+        </Heading>
+        <Text as="p" variant="body">
+          {tr('This action removes the selected record from your workspace.')}
+        </Text>
       </div>
     </Drawer>
   )

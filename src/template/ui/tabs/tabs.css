@@ -19,21 +19,21 @@
   white-space: nowrap;
   height: 43px;
   padding: 0 0 calc(12px * var(--space-scale));
-  font-size: calc(11px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-body-size);
+  color: var(--typography-body-color);
 }
 
 .ui-tab > span {
-  font-size: calc(8px * var(--font-scale));
+  font-size: var(--typography-caption-size);
   padding: calc(2px * var(--space-scale)) calc(5px * var(--space-scale));
   border-radius: calc(4px * var(--radius-scale));
   background: var(--primary-soft);
-  color: var(--muted);
+  color: var(--typography-caption-color);
 }
 
 .ui-tab--active {
   color: var(--primary);
-  font-weight: 500;
+  font-weight: var(--typography-body-weight);
 }
 
 .ui-tab--active::after {
@@ -69,7 +69,7 @@
   padding: 0 calc(13px * var(--space-scale));
   height: 31px;
   border-radius: calc(5px * var(--radius-scale));
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-caption-size);
 }
 
 .ui-tabs--pill .ui-tab--active {

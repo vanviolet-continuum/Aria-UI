@@ -2,16 +2,16 @@
   display: inline-flex;
   align-items: center;
   gap: calc(4px * var(--space-scale));
-  font-size: calc(8.5px * var(--font-scale));
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: 0.03px;
+  font-size: var(--typography-label-size);
+  line-height: var(--typography-label-leading);
+  text-transform: var(--typography-label-transform);
+  letter-spacing: var(--typography-label-tracking);
   white-space: nowrap;
   border-radius: calc(20px * var(--radius-scale));
   padding: calc(5px * var(--space-scale)) calc(7px * var(--space-scale));
   color: var(--muted);
   background: var(--surface-subtle);
-  font-weight: 500;
+  font-weight: var(--typography-label-weight);
 }
 
 .status-badge > span {

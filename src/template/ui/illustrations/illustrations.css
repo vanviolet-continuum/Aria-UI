@@ -17,21 +17,21 @@
   background: none;
 }
 .empty-state h3 {
-  font-size: calc(16px * var(--font-scale));
-  font-weight: 550;
-  color: var(--text);
+  font-size: var(--typography-card-size);
+  font-weight: var(--typography-card-weight);
+  color: var(--typography-card-color);
 }
 .empty-state p {
   max-width: 370px;
   margin: calc(8px * var(--space-scale)) auto calc(20px * var(--space-scale));
-  font-size: calc(12px * var(--font-scale));
-  line-height: 1.8;
-  color: var(--muted);
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-leading);
+  color: var(--typography-body-color);
 }
 .state-eyebrow {
   display: block;
-  font-size: calc(9px * var(--font-scale));
-  letter-spacing: 1.2px;
+  font-size: var(--typography-eyebrow-size);
+  letter-spacing: var(--typography-eyebrow-tracking);
   color: var(--primary);
   margin-bottom: calc(10px * var(--space-scale));
 }

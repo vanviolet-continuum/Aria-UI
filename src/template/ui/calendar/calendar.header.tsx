@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Combobox } from '../combobox/combobox'
@@ -30,7 +31,10 @@ export function CalendarHeader({
   }))
   return (
     <div className="calendar-heading">
-      <button
+      <Text
+        as="button"
+        variant="menu"
+        tone="inherit"
         type="button"
         className="icon-button"
         aria-label={tr('Previous month')}
@@ -38,22 +42,30 @@ export function CalendarHeader({
         onClick={() => onChange(addMonths(month, -1))}
       >
         <ChevronLeft size={16} />
-      </button>
+      </Text>
       <div className="calendar-month-select">
         <Combobox
+          className="calendar-month-control"
+          size="sm"
+          searchable={false}
           aria-label={tr('Month')}
           value={String(month.getMonth())}
           options={months}
           onChange={(value) => onChange(new Date(month.getFullYear(), Number(value), 1, 12))}
         />
         <Combobox
+          className="calendar-year-control"
+          size="sm"
           aria-label={tr('Year')}
           value={String(month.getFullYear())}
           options={years}
           onChange={(value) => onChange(new Date(Number(value), month.getMonth(), 1, 12))}
         />
       </div>
-      <button
+      <Text
+        as="button"
+        variant="menu"
+        tone="inherit"
         type="button"
         className="icon-button"
         aria-label={tr('Next month')}
@@ -61,7 +73,7 @@ export function CalendarHeader({
         onClick={() => onChange(addMonths(month, 1))}
       >
         <ChevronRight size={16} />
-      </button>
+      </Text>
     </div>
   )
 }

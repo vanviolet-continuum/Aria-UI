@@ -1,0 +1,305 @@
+/* Reset responsive values on every element so nested layouts never inherit parent props. */
+.aria-layout {
+  --l-padding: initial;
+  --l-padding-sm: initial;
+  --l-padding-md: initial;
+  --l-padding-lg: initial;
+  --l-padding-xl: initial;
+  --l-padding-x: initial;
+  --l-padding-x-sm: initial;
+  --l-padding-x-md: initial;
+  --l-padding-x-lg: initial;
+  --l-padding-x-xl: initial;
+  --l-padding-y: initial;
+  --l-padding-y-sm: initial;
+  --l-padding-y-md: initial;
+  --l-padding-y-lg: initial;
+  --l-padding-y-xl: initial;
+  --l-gap: initial;
+  --l-gap-sm: initial;
+  --l-gap-md: initial;
+  --l-gap-lg: initial;
+  --l-gap-xl: initial;
+  --l-row-gap: initial;
+  --l-row-gap-sm: initial;
+  --l-row-gap-md: initial;
+  --l-row-gap-lg: initial;
+  --l-row-gap-xl: initial;
+  --l-column-gap: initial;
+  --l-column-gap-sm: initial;
+  --l-column-gap-md: initial;
+  --l-column-gap-lg: initial;
+  --l-column-gap-xl: initial;
+  --l-direction: initial;
+  --l-direction-sm: initial;
+  --l-direction-md: initial;
+  --l-direction-lg: initial;
+  --l-direction-xl: initial;
+  --l-align: initial;
+  --l-align-sm: initial;
+  --l-align-md: initial;
+  --l-align-lg: initial;
+  --l-align-xl: initial;
+  --l-justify: initial;
+  --l-justify-sm: initial;
+  --l-justify-md: initial;
+  --l-justify-lg: initial;
+  --l-justify-xl: initial;
+  --l-wrap: initial;
+  --l-wrap-sm: initial;
+  --l-wrap-md: initial;
+  --l-wrap-lg: initial;
+  --l-wrap-xl: initial;
+  --l-columns: initial;
+  --l-columns-sm: initial;
+  --l-columns-md: initial;
+  --l-columns-lg: initial;
+  --l-columns-xl: initial;
+  --l-span: initial;
+  --l-span-sm: initial;
+  --l-span-md: initial;
+  --l-span-lg: initial;
+  --l-span-xl: initial;
+  --l-row-span: initial;
+  --l-row-span-sm: initial;
+  --l-row-span-md: initial;
+  --l-row-span-lg: initial;
+  --l-row-span-xl: initial;
+  --l-order: initial;
+  --l-order-sm: initial;
+  --l-order-md: initial;
+  --l-order-lg: initial;
+  --l-order-xl: initial;
+  --l-spacer-size: initial;
+  --l-spacer-size-sm: initial;
+  --l-spacer-size-md: initial;
+  --l-spacer-size-lg: initial;
+  --l-spacer-size-xl: initial;
+  --l-type-size: initial;
+  --l-type-size-sm: initial;
+  --l-type-size-md: initial;
+  --l-type-size-lg: initial;
+  --l-type-size-xl: initial;
+  --l-text-align: initial;
+  --l-text-align-sm: initial;
+  --l-text-align-md: initial;
+  --l-text-align-lg: initial;
+  --l-text-align-xl: initial;
+  --l-settings-align: initial;
+  --l-settings-align-sm: initial;
+  --l-settings-align-md: initial;
+  --l-settings-align-lg: initial;
+  --l-settings-align-xl: initial;
+  --l-padding-current: var(--l-padding);
+  --l-padding-x-current: var(--l-padding-x);
+  --l-padding-y-current: var(--l-padding-y);
+  --l-gap-current: var(--l-gap);
+  --l-row-gap-current: var(--l-row-gap);
+  --l-column-gap-current: var(--l-column-gap);
+  --l-direction-current: var(--l-direction);
+  --l-align-current: var(--l-align);
+  --l-justify-current: var(--l-justify);
+  --l-wrap-current: var(--l-wrap);
+  --l-columns-current: var(--l-columns);
+  --l-span-current: var(--l-span);
+  --l-row-span-current: var(--l-row-span);
+  --l-order-current: var(--l-order);
+  --l-spacer-size-current: var(--l-spacer-size);
+  --l-type-size-current: var(--l-type-size);
+  --l-text-align-current: var(--l-text-align);
+  --l-settings-align-current: var(--l-settings-align);
+}
+
+@media (min-width: 40rem) {
+  .aria-layout {
+    --l-padding-current: var(--l-padding-sm, var(--l-padding));
+    --l-padding-x-current: var(--l-padding-x-sm, var(--l-padding-x));
+    --l-padding-y-current: var(--l-padding-y-sm, var(--l-padding-y));
+    --l-gap-current: var(--l-gap-sm, var(--l-gap));
+    --l-row-gap-current: var(--l-row-gap-sm, var(--l-row-gap));
+    --l-column-gap-current: var(--l-column-gap-sm, var(--l-column-gap));
+    --l-direction-current: var(--l-direction-sm, var(--l-direction));
+    --l-align-current: var(--l-align-sm, var(--l-align));
+    --l-justify-current: var(--l-justify-sm, var(--l-justify));
+    --l-wrap-current: var(--l-wrap-sm, var(--l-wrap));
+    --l-columns-current: var(--l-columns-sm, var(--l-columns));
+    --l-span-current: var(--l-span-sm, var(--l-span));
+    --l-row-span-current: var(--l-row-span-sm, var(--l-row-span));
+    --l-order-current: var(--l-order-sm, var(--l-order));
+    --l-spacer-size-current: var(--l-spacer-size-sm, var(--l-spacer-size));
+    --l-type-size-current: var(--l-type-size-sm, var(--l-type-size));
+    --l-text-align-current: var(--l-text-align-sm, var(--l-text-align));
+    --l-settings-align-current: var(--l-settings-align-sm, var(--l-settings-align));
+  }
+}
+
+@media (min-width: 48rem) {
+  .aria-layout {
+    --l-padding-current: var(--l-padding-md, var(--l-padding-sm, var(--l-padding)));
+    --l-padding-x-current: var(--l-padding-x-md, var(--l-padding-x-sm, var(--l-padding-x)));
+    --l-padding-y-current: var(--l-padding-y-md, var(--l-padding-y-sm, var(--l-padding-y)));
+    --l-gap-current: var(--l-gap-md, var(--l-gap-sm, var(--l-gap)));
+    --l-row-gap-current: var(--l-row-gap-md, var(--l-row-gap-sm, var(--l-row-gap)));
+    --l-column-gap-current: var(--l-column-gap-md, var(--l-column-gap-sm, var(--l-column-gap)));
+    --l-direction-current: var(--l-direction-md, var(--l-direction-sm, var(--l-direction)));
+    --l-align-current: var(--l-align-md, var(--l-align-sm, var(--l-align)));
+    --l-justify-current: var(--l-justify-md, var(--l-justify-sm, var(--l-justify)));
+    --l-wrap-current: var(--l-wrap-md, var(--l-wrap-sm, var(--l-wrap)));
+    --l-columns-current: var(--l-columns-md, var(--l-columns-sm, var(--l-columns)));
+    --l-span-current: var(--l-span-md, var(--l-span-sm, var(--l-span)));
+    --l-row-span-current: var(--l-row-span-md, var(--l-row-span-sm, var(--l-row-span)));
+    --l-order-current: var(--l-order-md, var(--l-order-sm, var(--l-order)));
+    --l-spacer-size-current: var(--l-spacer-size-md, var(--l-spacer-size-sm, var(--l-spacer-size)));
+    --l-type-size-current: var(--l-type-size-md, var(--l-type-size-sm, var(--l-type-size)));
+    --l-text-align-current: var(--l-text-align-md, var(--l-text-align-sm, var(--l-text-align)));
+    --l-settings-align-current: var(
+      --l-settings-align-md,
+      var(--l-settings-align-sm, var(--l-settings-align))
+    );
+  }
+}
+
+@media (min-width: 64rem) {
+  .aria-layout {
+    --l-padding-current: var(
+      --l-padding-lg,
+      var(--l-padding-md, var(--l-padding-sm, var(--l-padding)))
+    );
+    --l-padding-x-current: var(
+      --l-padding-x-lg,
+      var(--l-padding-x-md, var(--l-padding-x-sm, var(--l-padding-x)))
+    );
+    --l-padding-y-current: var(
+      --l-padding-y-lg,
+      var(--l-padding-y-md, var(--l-padding-y-sm, var(--l-padding-y)))
+    );
+    --l-gap-current: var(--l-gap-lg, var(--l-gap-md, var(--l-gap-sm, var(--l-gap))));
+    --l-row-gap-current: var(
+      --l-row-gap-lg,
+      var(--l-row-gap-md, var(--l-row-gap-sm, var(--l-row-gap)))
+    );
+    --l-column-gap-current: var(
+      --l-column-gap-lg,
+      var(--l-column-gap-md, var(--l-column-gap-sm, var(--l-column-gap)))
+    );
+    --l-direction-current: var(
+      --l-direction-lg,
+      var(--l-direction-md, var(--l-direction-sm, var(--l-direction)))
+    );
+    --l-align-current: var(--l-align-lg, var(--l-align-md, var(--l-align-sm, var(--l-align))));
+    --l-justify-current: var(
+      --l-justify-lg,
+      var(--l-justify-md, var(--l-justify-sm, var(--l-justify)))
+    );
+    --l-wrap-current: var(--l-wrap-lg, var(--l-wrap-md, var(--l-wrap-sm, var(--l-wrap))));
+    --l-columns-current: var(
+      --l-columns-lg,
+      var(--l-columns-md, var(--l-columns-sm, var(--l-columns)))
+    );
+    --l-span-current: var(--l-span-lg, var(--l-span-md, var(--l-span-sm, var(--l-span))));
+    --l-row-span-current: var(
+      --l-row-span-lg,
+      var(--l-row-span-md, var(--l-row-span-sm, var(--l-row-span)))
+    );
+    --l-order-current: var(--l-order-lg, var(--l-order-md, var(--l-order-sm, var(--l-order))));
+    --l-spacer-size-current: var(
+      --l-spacer-size-lg,
+      var(--l-spacer-size-md, var(--l-spacer-size-sm, var(--l-spacer-size)))
+    );
+    --l-type-size-current: var(
+      --l-type-size-lg,
+      var(--l-type-size-md, var(--l-type-size-sm, var(--l-type-size)))
+    );
+    --l-text-align-current: var(
+      --l-text-align-lg,
+      var(--l-text-align-md, var(--l-text-align-sm, var(--l-text-align)))
+    );
+    --l-settings-align-current: var(
+      --l-settings-align-lg,
+      var(--l-settings-align-md, var(--l-settings-align-sm, var(--l-settings-align)))
+    );
+  }
+}
+
+@media (min-width: 80rem) {
+  .aria-layout {
+    --l-padding-current: var(
+      --l-padding-xl,
+      var(--l-padding-lg, var(--l-padding-md, var(--l-padding-sm, var(--l-padding))))
+    );
+    --l-padding-x-current: var(
+      --l-padding-x-xl,
+      var(--l-padding-x-lg, var(--l-padding-x-md, var(--l-padding-x-sm, var(--l-padding-x))))
+    );
+    --l-padding-y-current: var(
+      --l-padding-y-xl,
+      var(--l-padding-y-lg, var(--l-padding-y-md, var(--l-padding-y-sm, var(--l-padding-y))))
+    );
+    --l-gap-current: var(
+      --l-gap-xl,
+      var(--l-gap-lg, var(--l-gap-md, var(--l-gap-sm, var(--l-gap))))
+    );
+    --l-row-gap-current: var(
+      --l-row-gap-xl,
+      var(--l-row-gap-lg, var(--l-row-gap-md, var(--l-row-gap-sm, var(--l-row-gap))))
+    );
+    --l-column-gap-current: var(
+      --l-column-gap-xl,
+      var(--l-column-gap-lg, var(--l-column-gap-md, var(--l-column-gap-sm, var(--l-column-gap))))
+    );
+    --l-direction-current: var(
+      --l-direction-xl,
+      var(--l-direction-lg, var(--l-direction-md, var(--l-direction-sm, var(--l-direction))))
+    );
+    --l-align-current: var(
+      --l-align-xl,
+      var(--l-align-lg, var(--l-align-md, var(--l-align-sm, var(--l-align))))
+    );
+    --l-justify-current: var(
+      --l-justify-xl,
+      var(--l-justify-lg, var(--l-justify-md, var(--l-justify-sm, var(--l-justify))))
+    );
+    --l-wrap-current: var(
+      --l-wrap-xl,
+      var(--l-wrap-lg, var(--l-wrap-md, var(--l-wrap-sm, var(--l-wrap))))
+    );
+    --l-columns-current: var(
+      --l-columns-xl,
+      var(--l-columns-lg, var(--l-columns-md, var(--l-columns-sm, var(--l-columns))))
+    );
+    --l-span-current: var(
+      --l-span-xl,
+      var(--l-span-lg, var(--l-span-md, var(--l-span-sm, var(--l-span))))
+    );
+    --l-row-span-current: var(
+      --l-row-span-xl,
+      var(--l-row-span-lg, var(--l-row-span-md, var(--l-row-span-sm, var(--l-row-span))))
+    );
+    --l-order-current: var(
+      --l-order-xl,
+      var(--l-order-lg, var(--l-order-md, var(--l-order-sm, var(--l-order))))
+    );
+    --l-spacer-size-current: var(
+      --l-spacer-size-xl,
+      var(
+        --l-spacer-size-lg,
+        var(--l-spacer-size-md, var(--l-spacer-size-sm, var(--l-spacer-size)))
+      )
+    );
+    --l-type-size-current: var(
+      --l-type-size-xl,
+      var(--l-type-size-lg, var(--l-type-size-md, var(--l-type-size-sm, var(--l-type-size))))
+    );
+    --l-text-align-current: var(
+      --l-text-align-xl,
+      var(--l-text-align-lg, var(--l-text-align-md, var(--l-text-align-sm, var(--l-text-align))))
+    );
+    --l-settings-align-current: var(
+      --l-settings-align-xl,
+      var(
+        --l-settings-align-lg,
+        var(--l-settings-align-md, var(--l-settings-align-sm, var(--l-settings-align)))
+      )
+    );
+  }
+}

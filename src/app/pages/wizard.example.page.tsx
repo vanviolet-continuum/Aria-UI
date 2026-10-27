@@ -1,12 +1,20 @@
+import { Text } from '../../template/ui/text/text'
+
+import { Heading } from '../../template/ui/heading/heading'
 import { useState } from 'react'
 import { ArrowLeft, ArrowRight, Check, CircleCheck, FolderPlus, Sparkles } from 'lucide-react'
 import {
   Badge,
   Button,
+  Card,
+  CardFooter,
   Combobox,
   DetailList,
   Field,
   Input,
+  PageHeader,
+  SectionHeader,
+  SettingsRow,
   Stepper,
   Switch,
   Textarea,
@@ -62,36 +70,40 @@ export function WizardExamplePage() {
   }
   return (
     <div className="standard-page example-page page-enter">
-      <div className="example-page-heading">
-        <span className="eyebrow">{tr('EXAMPLE WIZARD')}</span>
-        <h2>{tr('A good beginning, step by step.')}</h2>
-        <p>{tr('A guided project setup with validation, a review step, and a clear finish.')}</p>
-      </div>
+      <PageHeader
+        eyebrow={tr('EXAMPLE WIZARD')}
+        title={tr('A good beginning, step by step.')}
+        description={tr(
+          'A guided project setup with validation, a review step, and a clear finish.',
+        )}
+      />
       <div className="wizard-layout">
         <aside className="wizard-guide">
-          <h3>
+          <Heading as="h3" variant="card">
             <Sparkles size={16} /> {tr('Create something new')}
-          </h3>
+          </Heading>
           <Stepper
             steps={steps}
             activeStep={finished ? steps.length : step}
             onStepChange={finished ? undefined : setStep}
             orientation="vertical"
           />
-          <p className="wizard-guide-note">
+          <Text as="p" variant="description" className="wizard-guide-note">
             {tr(
               'Your changes stay in place as you move between steps. Review everything before creating your project.',
             )}
-          </p>
+          </Text>
         </aside>
-        <section className="example-panel">
+        <Card as="section">
           {finished ? (
             <div className="wizard-success" role="status">
               <CircleCheck size={48} strokeWidth={1.4} />
-              <h3>{tr('Your project is ready.')}</h3>
-              <p>
+              <Heading as="h3" variant="card">
+                {tr('Your project is ready.')}
+              </Heading>
+              <Text as="p" variant="body">
                 {projectId} · {draft.name}
-              </p>
+              </Text>
               <Badge variant="success" dot>
                 {tr('Ready to build')}
               </Badge>
@@ -123,10 +135,12 @@ export function WizardExamplePage() {
               }}
             >
               <div className="wizard-body">
-                <div className="wizard-body-heading">
-                  <h3>{tr(steps[step].title)}</h3>
-                  <p>{tr(steps[step].description)}</p>
-                </div>
+                <SectionHeader
+                  className="wizard-body-heading"
+                  size="md"
+                  title={tr(steps[step].title)}
+                  description={tr(steps[step].description)}
+                />
                 {step === 0 && (
                   <div className="example-form-stack">
                     <Field label={tr('Project name')} required>
@@ -197,18 +211,19 @@ export function WizardExamplePage() {
                         }))}
                       />
                     </Field>
-                    <label className="example-toggle-row">
-                      <span>
-                        {tr('Project notifications')}
-                        <small>{tr('Keep the team informed about project activity.')}</small>
-                      </span>
-                      <Switch
-                        checked={draft.notifications}
-                        onChange={(event) =>
-                          setDraft({ ...draft, notifications: event.target.checked })
-                        }
-                      />
-                    </label>
+                    <SettingsRow
+                      variant="outlined"
+                      label={tr('Project notifications')}
+                      description={tr('Keep the team informed about project activity.')}
+                      control={
+                        <Switch
+                          checked={draft.notifications}
+                          onChange={(event) =>
+                            setDraft({ ...draft, notifications: event.target.checked })
+                          }
+                        />
+                      }
+                    />
                   </div>
                 )}
                 {step === 2 && (
@@ -218,10 +233,10 @@ export function WizardExamplePage() {
                   </div>
                 )}
               </div>
-              <footer className="wizard-footer">
-                <span>
+              <CardFooter as="footer" divider className="wizard-footer">
+                <Text as="span" variant="label">
                   {step + 1} / {steps.length}
-                </span>
+                </Text>
                 <div>
                   {step > 0 && (
                     <Button onClick={() => setStep(step - 1)}>
@@ -234,10 +249,10 @@ export function WizardExamplePage() {
                     {step === 2 ? <Check size={14} /> : <ArrowRight size={14} />}
                   </Button>
                 </div>
-              </footer>
+              </CardFooter>
             </form>
           )}
-        </section>
+        </Card>
       </div>
     </div>
   )

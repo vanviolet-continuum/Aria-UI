@@ -1,43 +1,17 @@
 .illustrations-page {
   width: 100%;
 }
-.illustrations-page-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-bottom: calc(28px * var(--space-scale));
-}
-.illustrations-page-heading .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-.illustrations-page-heading h2 {
-  font-size: calc(28px * var(--font-scale));
-  font-weight: 550;
-  letter-spacing: -0.8px;
-  margin-top: 10px;
-}
-.illustrations-page-heading p {
-  color: var(--muted);
-  font-size: calc(12px * var(--font-scale));
-  line-height: 1.8;
-  margin-top: 8px;
-}
 .illustrations-heading-tags {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-  margin-top: 16px;
 }
 .illustrations-heading-tags > span:not(.ui-badge) {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-label-size);
   color: var(--muted);
 }
 .illustrations-library {
@@ -67,8 +41,8 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  color: var(--muted);
-  font-size: calc(11px * var(--font-scale));
+  color: var(--typography-label-color);
+  font-size: var(--typography-label-size);
 }
 .illustrations-preview-controls .combobox-trigger {
   width: 142px;
@@ -89,8 +63,8 @@
   flex-wrap: wrap;
   gap: 10px;
   margin: 22px 0 16px;
-  color: var(--muted);
-  font-size: calc(10px * var(--font-scale));
+  color: var(--typography-caption-color);
+  font-size: var(--typography-caption-size);
 }
 .illustrations-grid {
   display: grid;
@@ -147,19 +121,19 @@
   color: var(--primary);
 }
 .decoration-library-note strong {
-  color: var(--text);
-  font-size: calc(12px * var(--font-scale));
-  font-weight: 550;
+  color: var(--typography-description-color);
+  font-size: var(--typography-description-size);
+  font-weight: var(--typography-description-weight);
 }
 .decoration-library-note p {
   margin: 5px 0 10px;
-  font-size: calc(11px * var(--font-scale));
-  color: var(--muted);
-  line-height: 1.8;
+  font-size: var(--typography-description-size);
+  color: var(--typography-description-color);
+  line-height: var(--typography-description-leading);
 }
 .decoration-library-note code {
-  font-size: calc(10px * var(--font-scale));
-  color: var(--text-secondary);
+  font-size: var(--typography-code-size);
+  color: var(--typography-code-color);
   overflow-wrap: anywhere;
 }
 .illustration-new-label {
@@ -179,27 +153,27 @@
   gap: 8px;
 }
 .illustration-card-heading h3 {
-  font-size: calc(14px * var(--font-scale));
-  font-weight: 550;
-  letter-spacing: -0.2px;
+  font-size: var(--typography-card-size);
+  font-weight: var(--typography-card-weight);
+  letter-spacing: var(--typography-card-tracking);
 }
 .illustration-card-heading > span {
-  font-size: calc(9px * var(--font-scale));
-  color: var(--muted);
+  font-size: var(--typography-caption-size);
+  color: var(--typography-caption-color);
 }
 .illustration-card-content > p {
   min-height: 38px;
   margin-top: 8px;
-  color: var(--muted);
-  font-size: calc(11px * var(--font-scale));
-  line-height: 1.7;
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-leading);
 }
 .illustration-card-content > code {
   display: block;
   margin-top: 12px;
-  color: var(--text-secondary);
+  color: var(--typography-code-color);
   font-family: var(--font-mono);
-  font-size: calc(10px * var(--font-scale));
+  font-size: var(--typography-code-size);
   overflow-wrap: anywhere;
 }
 .illustration-card-actions {
@@ -230,19 +204,19 @@
   color: var(--primary);
 }
 .illustrations-usage strong {
-  font-size: calc(12px * var(--font-scale));
-  font-weight: 550;
-  color: var(--text);
+  font-size: var(--typography-label-size);
+  font-weight: var(--typography-label-weight);
+  color: var(--typography-label-color);
 }
 .illustrations-usage p {
   margin: 6px 0 10px;
-  color: var(--muted);
-  font-size: calc(11px * var(--font-scale));
-  line-height: 1.8;
+  color: var(--typography-body-color);
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-leading);
 }
 .illustrations-usage code {
-  font-size: calc(10px * var(--font-scale));
-  color: var(--text-secondary);
+  font-size: var(--typography-code-size);
+  color: var(--typography-code-color);
   overflow-wrap: anywhere;
 }
 @media (max-width: 650px) {

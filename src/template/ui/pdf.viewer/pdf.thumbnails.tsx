@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { Page } from 'react-pdf'
 import { Button } from '../button/button'
@@ -18,14 +19,19 @@ export function PdfThumbnails({
   const visible = Array.from({ length: Math.min(5, pages) }, (_, index) => start + index)
   return (
     <nav className="pdf-thumbnails" aria-label={tr('PDF pages')}>
-      <span>{tr('Pages')}</span>
+      <Text as="span" variant="label">
+        {tr('Pages')}
+      </Text>
       {start > 1 && (
         <Button size="sm" variant="text" onClick={() => onPage(Math.max(1, start - 5))}>
           {tr('← Earlier')}
         </Button>
       )}
       {visible.map((number) => (
-        <button
+        <Text
+          as="button"
+          variant="button"
+          tone="inherit"
           key={number}
           type="button"
           aria-label={tr('Go to PDF page {{value0}}', { value0: localize(number) })}
@@ -39,8 +45,10 @@ export function PdfThumbnails({
             renderAnnotationLayer={false}
             loading={<span className="pdf-thumbnail-loading" />}
           />
-          <small>{number}</small>
-        </button>
+          <Text as="small" variant="caption">
+            {number}
+          </Text>
+        </Text>
       ))}
       {start + visible.length <= pages && (
         <Button size="sm" variant="text" onClick={() => onPage(Math.min(pages, start + 5))}>

@@ -4,10 +4,15 @@
   flex-wrap: wrap;
   gap: calc(8px * var(--space-scale));
 }
-.table-filter-popover {
+.popover.table-filter-popover {
   width: min(360px, calc(100vw - 24px));
   padding: 0;
   overflow: hidden;
+  max-height: min(520px, var(--radix-popover-content-available-height));
+}
+.popover.table-filter-popover--date {
+  width: min(600px, calc(100vw - 24px));
+  max-height: min(600px, var(--radix-popover-content-available-height));
 }
 .table-filter-popover .command-search {
   padding: 12px 14px;
@@ -15,15 +20,15 @@
   flex-shrink: 0;
 }
 .table-filter-popover .command-search input {
-  font-size: calc(12px * var(--font-scale));
+  font-size: calc(var(--control-font-size, 12px) * var(--font-scale, 1));
 }
 .table-filter-popover .command-item {
   gap: 10px;
 }
 .table-filter-popover .command-item > small {
-  color: var(--muted);
+  color: var(--typography-caption-color);
   margin-left: auto;
-  font-size: 10px;
+  font-size: var(--typography-caption-size);
 }
 .table-filter-popover .command-footer button {
   color: var(--primary);
@@ -46,33 +51,45 @@
   border-radius: 50%;
   color: var(--primary);
   background: var(--primary-soft);
-  font-size: 10px;
+  font-size: var(--typography-caption-size);
 }
-.filter-check {
-  width: 17px;
-  height: 17px;
-  border: var(--border-width, 1px) solid var(--border-strong);
-  border-radius: 4px;
-  display: grid;
-  place-items: center;
+.filter-choice-checkbox {
+  pointer-events: none;
+  flex-shrink: 0;
 }
-.filter-check--active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: var(--on-primary);
+.table-filter-popover .command-item {
+  cursor: pointer;
 }
 .table-filter-calendar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+.table-filter-date-heading {
   display: grid;
-  padding: 12px;
-  gap: 12px;
+  gap: 4px;
+  padding: 10px 14px 12px;
+  border-bottom: var(--border-width, 1px) solid var(--border);
+  flex-shrink: 0;
+}
+.table-filter-date-heading > .button {
+  justify-self: start;
+  margin-inline-start: -8px;
+}
+.table-filter-date-body {
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
+  flex: 1 1 auto;
 }
-.table-filter-calendar > strong {
-  padding-inline: 10px;
-}
-.table-filter-calendar > .button {
-  justify-self: start;
+.table-filter-date-footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-top: var(--border-width, 1px) solid var(--border);
+  background: var(--surface-subtle);
 }

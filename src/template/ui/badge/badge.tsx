@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import clsx from 'clsx'
 import type { HTMLAttributes } from 'react'
@@ -22,7 +23,10 @@ export function Badge({
   const { text: localize } = useI18n()
 
   return (
-    <span
+    <Text
+      as="span"
+      variant="label"
+      tone="inherit"
       className={clsx(
         'ui-badge',
         `ui-badge--${variant}`,
@@ -32,8 +36,8 @@ export function Badge({
       )}
       {...props}
     >
-      {dot && <i aria-hidden="true" />}
+      {dot && <Text as="i" variant="body" tone="inherit" size="inherit" aria-hidden="true" />}
       {localize(children)}
-    </span>
+    </Text>
   )
 }

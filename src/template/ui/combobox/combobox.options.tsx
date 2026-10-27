@@ -1,3 +1,4 @@
+import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
 import { Check } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -131,7 +132,9 @@ export function ComboboxOptions({
       {loading && (
         <div className="combobox-status" role="status">
           <LoadingIllustration size={65} label={tr('')} />
-          <span>{tr('Finding your options…')}</span>
+          <Text as="span" variant="menu" tone="inherit">
+            {tr('Finding your options…')}
+          </Text>
         </div>
       )}
       {!loading && (
@@ -143,7 +146,10 @@ export function ComboboxOptions({
           {visible.map((option, position) => {
             const index = start + position
             return (
-              <button
+              <Text
+                as="button"
+                variant="menu"
+                tone="inherit"
                 type="button"
                 key={option.value}
                 id={`${id}-${index}`}
@@ -171,14 +177,26 @@ export function ComboboxOptions({
                   active === index && 'combobox-option--active',
                 )}
               >
-                <span className="combobox-option-copy">
-                  <span className="combobox-option-label">{localize(option.label)}</span>
-                  {option.description && <small>{localize(option.description)}</small>}
-                </span>
-                <span className="combobox-option-check" aria-hidden="true">
+                <Text as="span" variant="menu" tone="inherit" className="combobox-option-copy">
+                  <Text as="span" variant="menu" className="combobox-option-label">
+                    {localize(option.label)}
+                  </Text>
+                  {option.description && (
+                    <Text as="small" variant="description">
+                      {localize(option.description)}
+                    </Text>
+                  )}
+                </Text>
+                <Text
+                  as="span"
+                  variant="menu"
+                  tone="inherit"
+                  className="combobox-option-check"
+                  aria-hidden="true"
+                >
                   {option.value === selected && <Check size={15} />}
-                </span>
-              </button>
+                </Text>
+              </Text>
             )
           })}
         </div>
@@ -186,15 +204,19 @@ export function ComboboxOptions({
       {!loading && !options.length && !error && (
         <div className="combobox-status">
           <SearchIllustration />
-          <span>{localize(emptyMessage)}</span>
+          <Text as="span" variant="menu" tone="inherit">
+            {localize(emptyMessage)}
+          </Text>
         </div>
       )}
       {error && (
         <div className="combobox-error" role="alert">
-          <span>{localize(error)}</span>
-          <button type="button" onClick={onRetry}>
+          <Text as="span" variant="menu">
+            {localize(error)}
+          </Text>
+          <Text as="button" variant="menu" tone="inherit" type="button" onClick={onRetry}>
             {tr('Try again')}
-          </button>
+          </Text>
         </div>
       )}
       {hasMore && !error && (
