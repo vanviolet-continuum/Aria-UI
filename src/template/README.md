@@ -34,7 +34,7 @@ export function App() {
 
 `TemplateProvider` memasang theme provider, mutation overlay, dan Sonner. Gunakan `ThemeProvider` / `MutationProvider` / `Toaster` terpisah bila ingin menyusun provider sendiri. Jangan memasang Toaster kedua jika sudah memakai TemplateProvider.
 
-`TemplateProvider` juga memasang i18n ID/EN dengan default Bahasa Indonesia. Tambahkan `LanguageSwitcher` pada header; berikan `i18n` untuk instance aplikasi Anda. Panduan dan contoh ada di [i18n/README.md](i18n/README.md). Font default Hanken Grotesk dimuat lokal melalui Fontsource, dengan weight variabel.
+`TemplateProvider` juga memasang i18n ID/EN dengan default Bahasa Indonesia. Tambahkan `LanguageSwitcher` pada header; berikan `i18n` untuk instance aplikasi Anda. Panduan dan contoh ada di [i18n/README.md](./i18n/readme.md). Font default Hanken Grotesk dimuat lokal melalui Fontsource, dengan weight variabel.
 
 Gunakan `template/ui/styles.css` untuk style UI tanpa admin layout, atau `template/styles.css` untuk paket lengkap. Setiap komponen memiliki entry lokal; misalnya `import { Button } from './template/ui/button'`.
 
@@ -63,7 +63,7 @@ Semua nilai warna berada di layer tema. Komponen memakai token CSS dan tidak men
 <TemplateProvider
   initialConfig={themeConfig}
   storageKey="my-app-appearance"
-  exportTarget={{ filePath: 'src/config/theme.ts', typeImport: '../template/theme/types' }}
+  exportTarget={{ filePath: 'src/config/theme.ts', typeImport: './theme/types' }}
 >
   <AppContent />
 </TemplateProvider>
@@ -73,4 +73,12 @@ Theme config milik aplikasi diberikan melalui props. `exportTarget` mengatur pet
 
 `useMutationTask().runTask(label, asyncOperation)` menampilkan overlay hingga operasi selesai dan mengembalikan `{ success, data? }`. Periksa `success` sebelum menutup form atau menampilkan toast berhasil.
 
-API detail ada di [UI README](ui/README.md), [advanced components](ui/ADVANCED.md), [PDF/workflow/table blocks](ui/BLOCKS.md), dan [theme README](theme/README.md). PDF renderer dimuat hanya saat `PdfViewer` digunakan.
+API detail ada di [UI README](./ui/readme.md), [advanced components](./ui/advanced.md), [PDF/workflow/table blocks](./ui/blocks.md), dan [theme README](./theme/readme.md). PDF renderer dimuat hanya saat `PdfViewer` digunakan.
+
+## Penamaan dan tree shaking
+
+Semua nama file dan folder menggunakan dot case: `confirm.dialog/confirm.dialog.tsx`, `use.local.storage.ts`, dan `access.denied.illustration.tsx`. Nama komponen React dan props tetap menggunakan konvensi React/TypeScript.
+
+Paket menyediakan ekspor ESM, modul ilustrasi/ikon per aset, dan metadata `sideEffects: ["**/*.css"]`. Komponen yang tidak direferensikan dapat dibuang oleh bundler. Factory komponen diberi anotasi PURE. Katalog galeri berada di aplikasi dan tidak diekspor dari paket template.
+
+Untuk memilih CSS per komponen, impor `template/base.css` lalu stylesheet yang dibutuhkan, misalnya `template/ui/button/button.css`. `template/styles.css` tetap merupakan entry lengkap untuk starter/showcase, sehingga seluruh CSS kit memang ikut ketika entry lengkap tersebut digunakan. Tree shaking kode bukan penghapusan otomatis selector CSS.

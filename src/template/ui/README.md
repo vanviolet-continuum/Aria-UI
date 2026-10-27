@@ -23,7 +23,7 @@ Komponen dalam folder ini tidak bergantung pada router, context klinik, atau API
    import { Button, Input, Field, Drawer, DataTable } from './template/ui'
    ```
 
-Alias `@/` sudah dikonfigurasi di template ini. Di proyek lain, sesuaikan alias atau gunakan import relatif. Entry stylesheet sudah menyertakan base style yang dipakai komponen. Nilai warna/font dan konfigurasi berada di `src/template/theme/`; `tokens.css` mengimpor palette dan token turunannya. Lihat [panduan tema](../theme/README.md).
+Alias `@/` sudah dikonfigurasi di template ini. Di proyek lain, sesuaikan alias atau gunakan import relatif. Entry stylesheet sudah menyertakan base style yang dipakai komponen. Nilai warna/font dan konfigurasi berada di `src/template/theme/`; `tokens.css` mengimpor palette dan token turunannya. Lihat [panduan tema](../theme/readme.md).
 
 Unit test berada di `tests/template/`, terpisah dari folder portable. Proyek yang menyalin kit tidak perlu memasang Vitest.
 
@@ -112,7 +112,7 @@ Contoh tersedia di **`/details`** pada starter dan demo, serta kategori **Data d
 
 ## Form controls
 
-Komponen baru `PdfViewer`, `ParallelStepper`, `PasswordInput`, `TableFilter`, `TableColumnMenu`, dan `useTableColumns` dijelaskan di [BLOCKS.md](BLOCKS.md), dengan contoh interaktif pada tab **Advanced blocks**.
+Komponen baru `PdfViewer`, `ParallelStepper`, `PasswordInput`, `TableFilter`, `TableColumnMenu`, dan `useTableColumns` dijelaskan di [BLOCKS.md](./blocks.md), dengan contoh interaktif pada tab **Advanced blocks**.
 
 ```tsx
 const [email, setEmail] = useState('')
@@ -221,7 +221,7 @@ const columns: ColumnDef<User>[] = [
 />
 ```
 
-`accessor` dapat berupa key atau function yang menghasilkan string/number. Default sorting/pagination dilakukan di client. Filtering dikelola di luar komponen. Untuk API, berikan prop `server` dan gunakan `useServerTable` atau state request sendiri; detail ada di [ADVANCED.md](ADVANCED.md). `pagination={false}` menampilkan seluruh data. `loading` menampilkan SVG animasi di tengah body. `error` dan `onRetry` menyediakan state gagal. Gunakan `emptyState` untuk membedakan koleksi kosong dari pencarian tanpa hasil.
+`accessor` dapat berupa key atau function yang menghasilkan string/number. Default sorting/pagination dilakukan di client. Filtering dikelola di luar komponen. Untuk API, berikan prop `server` dan gunakan `useServerTable` atau state request sendiri; detail ada di [ADVANCED.md](./advanced.md). `pagination={false}` menampilkan seluruh data. `loading` menampilkan SVG animasi di tengah body. `error` dan `onRetry` menyediakan state gagal. Gunakan `emptyState` untuk membedakan koleksi kosong dari pencarian tanpa hasil.
 
 ## Command menu
 
@@ -245,7 +245,7 @@ const columns: ColumnDef<User>[] = [
 
 ## Feedback
 
-Koleksi **295 ilustrasi SVG** tersedia di menu `/illustrations`, lengkap dengan kategori, pencarian, salin komponen, dan unduhan SVG. Lihat [panduan ilustrasi](illustrations/README.md) untuk daftar komponen dan props ukuran, judul aksesibel, serta tone warna.
+Koleksi **605 ilustrasi SVG** tersedia di menu `/illustrations`, lengkap dengan kategori, pencarian, salin komponen, dan unduhan SVG. Lihat [panduan ilustrasi](./illustrations/readme.md) untuk daftar komponen dan props ukuran, judul aksesibel, serta tone warna.
 
 ```tsx
 // Sekali pada root aplikasi.
@@ -269,4 +269,4 @@ toast.promise(saveProject(), {
 
 Loading overlay dapat dibatasi pada container atau menggunakan `fullscreen`. Untuk konten awal gunakan `Skeleton`. Overlay dan tombol loading menyampaikan status melalui atribut aksesibilitas.
 
-Lihat [ADVANCED.md](ADVANCED.md) untuk async combobox/table, formatted inputs, upload, OTP, tree, stepper, FullCalendar, confirmation, mutation overlay, dan tema.
+Lihat [ADVANCED.md](./advanced.md) untuk async combobox/table, formatted inputs, upload, OTP, tree, stepper, FullCalendar, confirmation, mutation overlay, dan tema.

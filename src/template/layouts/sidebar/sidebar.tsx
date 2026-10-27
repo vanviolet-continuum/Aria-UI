@@ -1,7 +1,7 @@
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 import { Building2, ChevronDown, ChevronLeft, X } from 'lucide-react'
 import type { MouseEvent } from 'react'
-import { useSidebarFocus } from './use-sidebar-focus'
+import { useSidebarFocus } from './use.sidebar.focus'
 import type { SidebarProps } from './types'
 
 export function Sidebar({

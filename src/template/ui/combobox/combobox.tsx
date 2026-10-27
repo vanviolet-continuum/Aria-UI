@@ -1,13 +1,13 @@
 import { PopoverContent } from '../popover/popover'
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 import * as Popover from '@radix-ui/react-popover'
 import { ChevronsUpDown } from 'lucide-react'
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx'
-import { Spinner } from '../loading-overlay/loading-overlay'
-import { ComboboxOptions } from './combobox-options'
-import { ComboboxSearch } from './combobox-search'
-import { useAsyncOptions } from './use-async-options'
+import { Spinner } from '../loading.overlay/loading.overlay'
+import { ComboboxOptions } from './combobox.options'
+import { ComboboxSearch } from './combobox.search'
+import { useAsyncOptions } from './use.async.options'
 import type { ComboboxOption, ComboboxProps } from './types'
 
 export type {

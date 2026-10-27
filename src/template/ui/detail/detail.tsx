@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useId, type HTMLAttributes, type ReactNode } from 'react'
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 
 export interface DetailViewProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   title: ReactNode

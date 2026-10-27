@@ -1,0 +1,56 @@
+# Creative & arts
+
+50 komponen. Impor dari `@/template/ui/illustrations/creative` atau leaf module yang tercantum di bawah.
+
+| Komponen                        | File                                                                       |
+| ------------------------------- | -------------------------------------------------------------------------- |
+| `AccordionIllustration`         | [accordion.illustration.tsx](accordion.illustration.tsx)                   |
+| `AcousticGuitarIllustration`    | [acoustic.guitar.illustration.tsx](acoustic.guitar.illustration.tsx)       |
+| `ArtStudioIllustration`         | [art.studio.illustration.tsx](art.studio.illustration.tsx)                 |
+| `ButtonJarIllustration`         | [button.jar.illustration.tsx](button.jar.illustration.tsx)                 |
+| `CalligraphyBrushIllustration`  | [calligraphy.brush.illustration.tsx](calligraphy.brush.illustration.tsx)   |
+| `CelloIllustration`             | [cello.illustration.tsx](cello.illustration.tsx)                           |
+| `ClarinetIllustration`          | [clarinet.illustration.tsx](clarinet.illustration.tsx)                     |
+| `ColorPaletteIllustration`      | [color.palette.illustration.tsx](color.palette.illustration.tsx)           |
+| `ConcertHarpIllustration`       | [concert.harp.illustration.tsx](concert.harp.illustration.tsx)             |
+| `CraftPunchIllustration`        | [craft.punch.illustration.tsx](craft.punch.illustration.tsx)               |
+| `CrochetHookIllustration`       | [crochet.hook.illustration.tsx](crochet.hook.illustration.tsx)             |
+| `DesignToolsIllustration`       | [design.tools.illustration.tsx](design.tools.illustration.tsx)             |
+| `DrumKitIllustration`           | [drum.kit.illustration.tsx](drum.kit.illustration.tsx)                     |
+| `EmbroideryHoopIllustration`    | [embroidery.hoop.illustration.tsx](embroidery.hoop.illustration.tsx)       |
+| `FabricRollIllustration`        | [fabric.roll.illustration.tsx](fabric.roll.illustration.tsx)               |
+| `FluteIllustration`             | [flute.illustration.tsx](flute.illustration.tsx)                           |
+| `HarmonicaIllustration`         | [harmonica.illustration.tsx](harmonica.illustration.tsx)                   |
+| `InkPadIllustration`            | [ink.pad.illustration.tsx](ink.pad.illustration.tsx)                       |
+| `KalimbaIllustration`           | [kalimba.illustration.tsx](kalimba.illustration.tsx)                       |
+| `KnittingBasketIllustration`    | [knitting.basket.illustration.tsx](knitting.basket.illustration.tsx)       |
+| `MaracasIllustration`           | [maracas.illustration.tsx](maracas.illustration.tsx)                       |
+| `MetronomeIllustration`         | [metronome.illustration.tsx](metronome.illustration.tsx)                   |
+| `MusicBoxIllustration`          | [music.box.illustration.tsx](music.box.illustration.tsx)                   |
+| `MusicIllustration`             | [music.illustration.tsx](music.illustration.tsx)                           |
+| `OrigamiCraneIllustration`      | [origami.crane.illustration.tsx](origami.crane.illustration.tsx)           |
+| `PaperFanIllustration`          | [paper.fan.illustration.tsx](paper.fan.illustration.tsx)                   |
+| `PaperLanternIllustration`      | [paper.lantern.illustration.tsx](paper.lantern.illustration.tsx)           |
+| `PhotographyStudioIllustration` | [photography.studio.illustration.tsx](photography.studio.illustration.tsx) |
+| `PinCushionIllustration`        | [pin.cushion.illustration.tsx](pin.cushion.illustration.tsx)               |
+| `PodcastIllustration`           | [podcast.illustration.tsx](podcast.illustration.tsx)                       |
+| `QuiltingBlockIllustration`     | [quilting.block.illustration.tsx](quilting.block.illustration.tsx)         |
+| `RubberStampIllustration`       | [rubber.stamp.illustration.tsx](rubber.stamp.illustration.tsx)             |
+| `SafetyPinsIllustration`        | [safety.pins.illustration.tsx](safety.pins.illustration.tsx)               |
+| `SaxophoneIllustration`         | [saxophone.illustration.tsx](saxophone.illustration.tsx)                   |
+| `SculptureIllustration`         | [sculpture.illustration.tsx](sculpture.illustration.tsx)                   |
+| `SealingWaxIllustration`        | [sealing.wax.illustration.tsx](sealing.wax.illustration.tsx)               |
+| `SewingKitIllustration`         | [sewing.kit.illustration.tsx](sewing.kit.illustration.tsx)                 |
+| `SheetMusicStandIllustration`   | [sheet.music.stand.illustration.tsx](sheet.music.stand.illustration.tsx)   |
+| `SnareDrumIllustration`         | [snare.drum.illustration.tsx](snare.drum.illustration.tsx)                 |
+| `TambourineIllustration`        | [tambourine.illustration.tsx](tambourine.illustration.tsx)                 |
+| `TheaterIllustration`           | [theater.illustration.tsx](theater.illustration.tsx)                       |
+| `TrumpetIllustration`           | [trumpet.illustration.tsx](trumpet.illustration.tsx)                       |
+| `TuningForkIllustration`        | [tuning.fork.illustration.tsx](tuning.fork.illustration.tsx)               |
+| `VideoEditingIllustration`      | [video.editing.illustration.tsx](video.editing.illustration.tsx)           |
+| `ViolinIllustration`            | [violin.illustration.tsx](violin.illustration.tsx)                         |
+| `WashiTapeIllustration`         | [washi.tape.illustration.tsx](washi.tape.illustration.tsx)                 |
+| `WaxSealIllustration`           | [wax.seal.illustration.tsx](wax.seal.illustration.tsx)                     |
+| `WritingIllustration`           | [writing.illustration.tsx](writing.illustration.tsx)                       |
+| `XylophoneIllustration`         | [xylophone.illustration.tsx](xylophone.illustration.tsx)                   |
+| `YarnSpoolsIllustration`        | [yarn.spools.illustration.tsx](yarn.spools.illustration.tsx)               |

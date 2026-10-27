@@ -1,0 +1,6 @@
+export { AchievementIllustration } from './achievement.illustration'
+export { CollaborationIllustration } from './collaboration.illustration'
+export { PersonIllustration } from './person.illustration'
+export { PresentationIllustration } from './presentation.illustration'
+export { ReadingIllustration } from './reading.illustration'
+export { SupportAgentIllustration } from './support.agent.illustration'

@@ -1,0 +1,8 @@
+export { ArchiveBoxIllustration } from './archive.box.illustration'
+export { CloudSyncIllustration } from './cloud.sync.illustration'
+export { DocumentsIllustration } from './documents.illustration'
+export { DocumentTubeIllustration } from './document.tube.illustration'
+export { DownloadIllustration } from './download.illustration'
+export { FileCabinetIllustration } from './file.cabinet.illustration'
+export { FolderIllustration } from './folder.illustration'
+export { UploadIllustration } from './upload.illustration'

@@ -1,7 +1,7 @@
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 import clsx from 'clsx'
 import { forwardRef, type ButtonHTMLAttributes } from 'react'
-import { Spinner } from '../loading-overlay/loading-overlay'
+import { Spinner } from '../loading.overlay/loading.overlay'
 import { resolveButtonStyle, type ButtonVariant, type SemanticColor } from './button.types'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,7 +12,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loadingText?: string
   fullWidth?: boolean
 }
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+export const Button = /* @__PURE__ */ forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {
     className,
     variant = 'secondary',

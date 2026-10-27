@@ -1,4 +1,4 @@
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 import { Menu } from 'lucide-react'
 import type { ReactNode } from 'react'
 

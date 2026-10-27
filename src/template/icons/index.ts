@@ -1,0 +1,11 @@
+// Import a named icon or a leaf module; no eager icon registry is exported here.
+export * from './commerce'
+export * from './communication'
+export * from './development'
+export * from './files'
+export * from './interface'
+export * from './layout'
+export * from './media'
+export * from './navigation'
+export * from './security'
+export type { AriaIcon, AriaIconProps, AriaIconNode, AriaIconTag } from './types'

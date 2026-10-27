@@ -1,5 +1,5 @@
-import { useI18n } from '../../i18n/use-i18n'
-import { CalendarHeader } from './calendar-header'
+import { useI18n } from '../../i18n/use.i18n'
+import { CalendarHeader } from './calendar.header'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import clsx from 'clsx'
 import {
@@ -10,8 +10,8 @@ import {
   isDateDisabled,
   selectRange,
   toDateKey,
-} from './date-utils'
-import type { DateRange } from './date-utils'
+} from './date.utils'
+import type { DateRange } from './date.utils'
 
 interface CalendarBase {
   month?: Date

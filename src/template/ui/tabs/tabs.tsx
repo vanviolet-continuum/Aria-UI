@@ -1,4 +1,4 @@
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 import { useId, useRef, type ReactNode } from 'react'
 import clsx from 'clsx'
 

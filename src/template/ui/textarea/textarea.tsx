@@ -1,7 +1,7 @@
 import { forwardRef, type TextareaHTMLAttributes } from 'react'
 import clsx from 'clsx'
 
-export const Textarea = forwardRef<
+export const Textarea = /* @__PURE__ */ forwardRef<
   HTMLTextAreaElement,
   TextareaHTMLAttributes<HTMLTextAreaElement> & { invalid?: boolean }
 >(function Textarea({ className, invalid, rows = 4, ...props }, ref) {

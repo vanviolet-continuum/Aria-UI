@@ -8,7 +8,7 @@ export interface PopoverContentProps extends ComponentPropsWithoutRef<typeof Pri
   /** Content composites can own their one scrolling region. */
   scrollArea?: 'panel' | 'content'
 }
-export const PopoverContent = forwardRef<
+export const PopoverContent = /* @__PURE__ */ forwardRef<
   ComponentRef<typeof Primitive.Content>,
   PopoverContentProps
 >(function PopoverContent(

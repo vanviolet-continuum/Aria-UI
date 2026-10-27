@@ -1,170 +1,114 @@
-# Education SVG
+# Education
 
-100 ilustrasi pendidikan baru, dibagi menjadi 10 tema dengan masing-masing 10 komponen. Semuanya masuk kategori **Education** di `/illustrations?category=education`. Dengan tujuh komponen pendidikan sebelumnya, kategori ini memiliki **107 SVG**; keseluruhan galeri memiliki **295 SVG**.
+108 komponen. Impor dari `@/template/ui/illustrations/education` atau leaf module yang tercantum di bawah.
 
-Komponen mengikuti `IllustrationProps`: `size`, `tone`, `title`, `className`, dan `style`. Rasio gambar adalah 260:180. Tanpa `title`, SVG disembunyikan dari screen reader. Warna berasal dari token `--illustration-*` agar mengikuti tema terang, gelap, dan palet aplikasi.
-
-```tsx
-import {
-  ClassroomIllustration,
-  VirtualClassroomIllustration,
-  KnowledgeTreeIllustration,
-} from '@/template/ui/illustrations'
-import '@/template/styles.css'
-
-<ClassroomIllustration size={260} title="Ruang belajar" />
-<VirtualClassroomIllustration size={220} tone="violet" title="Kelas virtual" />
-<KnowledgeTreeIllustration size={220} tone="mint" title="Pengetahuan yang bertumbuh" />
-```
-
-Semua komponen juga diekspor dari `@/template/ui/illustrations/education`, `@/template/ui`, dan `@/template`. Galeri mendukung pencarian nama, deskripsi, atau nama komponen; salin kode React, salin SVG, serta unduh SVG mandiri dengan warna tema saat ini. Utilitas bentuk pada `education-parts.tsx` merupakan bagian internal dan tidak masuk katalog.
-
-## Mata pelajaran
-
-| Komponen                      | Ilustrasi          |
-| ----------------------------- | ------------------ |
-| `ArithmeticIllustration`      | Aritmetika         |
-| `AlgebraIllustration`         | Aljabar            |
-| `GeometryIllustration`        | Geometri           |
-| `FractionsIllustration`       | Pecahan            |
-| `CalculusIllustration`        | Kalkulus           |
-| `StatisticsIllustration`      | Statistika         |
-| `PhysicsLessonIllustration`   | Pelajaran fisika   |
-| `GeographyLessonIllustration` | Pelajaran geografi |
-| `HistoryLessonIllustration`   | Pelajaran sejarah  |
-| `LanguageLessonIllustration`  | Pelajaran bahasa   |
-
-## Perlengkapan sekolah
-
-| Komponen                     | Ilustrasi               |
-| ---------------------------- | ----------------------- |
-| `PencilCaseIllustration`     | Kotak pensil            |
-| `StationerySetIllustration`  | Perlengkapan alat tulis |
-| `SchoolScissorsIllustration` | Gunting sekolah         |
-| `GeometrySetIllustration`    | Peralatan geometri      |
-| `SchoolRulerIllustration`    | Penggaris sekolah       |
-| `AbacusIllustration`         | Sempoa                  |
-| `CrayonsIllustration`        | Krayon                  |
-| `HighlighterIllustration`    | Stabilo                 |
-| `GlueStickIllustration`      | Lem stik                |
-| `SchoolBinderIllustration`   | Binder sekolah          |
-
-## Membaca dan menulis
-
-| Komponen                       | Ilustrasi          |
-| ------------------------------ | ------------------ |
-| `LibraryCardIllustration`      | Kartu perpustakaan |
-| `BookStackIllustration`        | Tumpukan buku      |
-| `DictionaryIllustration`       | Kamus              |
-| `StorybookIllustration`        | Buku cerita        |
-| `AudiobookIllustration`        | Buku audio         |
-| `BookmarkIllustration`         | Pembatas buku      |
-| `JournalIllustration`          | Jurnal             |
-| `EssayWritingIllustration`     | Menulis esai       |
-| `SpellingPracticeIllustration` | Latihan mengeja    |
-| `ReadingLampIllustration`      | Lampu baca         |
-
-## Kehidupan di kelas
-
-| Komponen                      | Ilustrasi            |
-| ----------------------------- | -------------------- |
-| `ClassroomIllustration`       | Ruang kelas          |
-| `TeacherIllustration`         | Guru                 |
-| `StudentDeskIllustration`     | Meja siswa           |
-| `ChalkboardIllustration`      | Papan tulis kapur    |
-| `WhiteboardIllustration`      | Papan tulis spidol   |
-| `SchoolBellIllustration`      | Bel sekolah          |
-| `ClassScheduleIllustration`   | Jadwal pelajaran     |
-| `AttendanceIllustration`      | Presensi             |
-| `LessonPlanIllustration`      | Rencana pembelajaran |
-| `ClassDiscussionIllustration` | Diskusi kelas        |
-
-## Belajar online
-
-| Komponen                       | Ilustrasi              |
-| ------------------------------ | ---------------------- |
-| `VirtualClassroomIllustration` | Kelas virtual          |
-| `VideoLessonIllustration`      | Video pembelajaran     |
-| `DigitalTextbookIllustration`  | Buku pelajaran digital |
-| `LearningAppIllustration`      | Aplikasi belajar       |
-| `OnlineQuizIllustration`       | Kuis online            |
-| `CoursePlaylistIllustration`   | Daftar video kursus    |
-| `StudyDashboardIllustration`   | Dasbor belajar         |
-| `WebinarIllustration`          | Webinar                |
-| `CodingLessonIllustration`     | Pelajaran pemrograman  |
-| `CloudLearningIllustration`    | Pembelajaran cloud     |
-
-## Pembelajaran sains
-
-| Komponen                        | Ilustrasi           |
-| ------------------------------- | ------------------- |
-| `BiologyLessonIllustration`     | Pelajaran biologi   |
-| `ChemistryLessonIllustration`   | Pelajaran kimia     |
-| `AstronomyLessonIllustration`   | Pelajaran astronomi |
-| `BotanyLessonIllustration`      | Pelajaran botani    |
-| `AnatomyLessonIllustration`     | Pelajaran anatomi   |
-| `ElectricCircuitIllustration`   | Rangkaian listrik   |
-| `ScienceExperimentIllustration` | Eksperimen sains    |
-| `RoboticsClassIllustration`     | Kelas robotika      |
-| `EcologyLessonIllustration`     | Pelajaran ekologi   |
-| `FossilStudyIllustration`       | Studi fosil         |
-
-## Seni dan keterampilan
-
-| Komponen                      | Ilustrasi            |
-| ----------------------------- | -------------------- |
-| `DrawingLessonIllustration`   | Pelajaran menggambar |
-| `WatercolorClassIllustration` | Kelas cat air        |
-| `PotteryClassIllustration`    | Kelas keramik        |
-| `MusicLessonIllustration`     | Pelajaran musik      |
-| `PianoLessonIllustration`     | Pelajaran piano      |
-| `DanceClassIllustration`      | Kelas tari           |
-| `DramaClassIllustration`      | Kelas drama          |
-| `SewingClassIllustration`     | Kelas menjahit       |
-| `WoodworkClassIllustration`   | Kelas pertukangan    |
-| `CulinaryClassIllustration`   | Kelas memasak        |
-
-## Sekolah dan kampus
-
-| Komponen                       | Ilustrasi           |
-| ------------------------------ | ------------------- |
-| `SchoolBuildingIllustration`   | Gedung sekolah      |
-| `UniversityCampusIllustration` | Kampus universitas  |
-| `CampusLibraryIllustration`    | Perpustakaan kampus |
-| `SchoolBusIllustration`        | Bus sekolah         |
-| `SchoolLockerIllustration`     | Loker sekolah       |
-| `CafeteriaIllustration`        | Kantin              |
-| `PlaygroundIllustration`       | Taman bermain       |
-| `ScienceFairIllustration`      | Pameran sains       |
-| `SchoolSportsIllustration`     | Olahraga sekolah    |
-| `FieldTripIllustration`        | Kunjungan belajar   |
-
-## Kebiasaan belajar
-
-| Komponen                    | Ilustrasi              |
-| --------------------------- | ---------------------- |
-| `StudyPlannerIllustration`  | Agenda belajar         |
-| `StudyTimerIllustration`    | Pengatur waktu belajar |
-| `FlashcardsIllustration`    | Kartu belajar          |
-| `MindMapIllustration`       | Peta pikiran           |
-| `GroupStudyIllustration`    | Belajar kelompok       |
-| `HomeworkIllustration`      | Pekerjaan rumah        |
-| `StudyBreakIllustration`    | Istirahat belajar      |
-| `LearningGoalsIllustration` | Target belajar         |
-| `ResearchIllustration`      | Riset                  |
-| `NoteTakingIllustration`    | Mencatat               |
-
-## Pencapaian akademik
-
-| Komponen                       | Ilustrasi               |
-| ------------------------------ | ----------------------- |
-| `SchoolAdmissionIllustration`  | Penerimaan sekolah      |
-| `StudentIdIllustration`        | Kartu pelajar           |
-| `ExamPaperIllustration`        | Lembar ujian            |
-| `ExamResultsIllustration`      | Hasil ujian             |
-| `ScholarshipIllustration`      | Beasiswa                |
-| `DiplomaIllustration`          | Ijazah                  |
-| `AcademicMedalIllustration`    | Medali akademik         |
-| `GraduationGownIllustration`   | Toga wisuda             |
-| `KnowledgeTreeIllustration`    | Pohon pengetahuan       |
-| `LifelongLearningIllustration` | Belajar sepanjang hayat |
+| Komponen                        | File                                                                       |
+| ------------------------------- | -------------------------------------------------------------------------- |
+| `AbacusIllustration`            | [abacus.illustration.tsx](abacus.illustration.tsx)                         |
+| `AcademicMedalIllustration`     | [academic.medal.illustration.tsx](academic.medal.illustration.tsx)         |
+| `AlgebraIllustration`           | [algebra.illustration.tsx](algebra.illustration.tsx)                       |
+| `AnatomyLessonIllustration`     | [anatomy.lesson.illustration.tsx](anatomy.lesson.illustration.tsx)         |
+| `ArithmeticIllustration`        | [arithmetic.illustration.tsx](arithmetic.illustration.tsx)                 |
+| `AstronomyLessonIllustration`   | [astronomy.lesson.illustration.tsx](astronomy.lesson.illustration.tsx)     |
+| `AttendanceIllustration`        | [attendance.illustration.tsx](attendance.illustration.tsx)                 |
+| `AudiobookIllustration`         | [audiobook.illustration.tsx](audiobook.illustration.tsx)                   |
+| `BiologyLessonIllustration`     | [biology.lesson.illustration.tsx](biology.lesson.illustration.tsx)         |
+| `BookCartIllustration`          | [book.cart.illustration.tsx](book.cart.illustration.tsx)                   |
+| `BookmarkIllustration`          | [bookmark.illustration.tsx](bookmark.illustration.tsx)                     |
+| `BookshelfIllustration`         | [bookshelf.illustration.tsx](bookshelf.illustration.tsx)                   |
+| `BookStackIllustration`         | [book.stack.illustration.tsx](book.stack.illustration.tsx)                 |
+| `BotanyLessonIllustration`      | [botany.lesson.illustration.tsx](botany.lesson.illustration.tsx)           |
+| `CafeteriaIllustration`         | [cafeteria.illustration.tsx](cafeteria.illustration.tsx)                   |
+| `CalculusIllustration`          | [calculus.illustration.tsx](calculus.illustration.tsx)                     |
+| `CampusLibraryIllustration`     | [campus.library.illustration.tsx](campus.library.illustration.tsx)         |
+| `CertificateIllustration`       | [certificate.illustration.tsx](certificate.illustration.tsx)               |
+| `ChalkboardIllustration`        | [chalkboard.illustration.tsx](chalkboard.illustration.tsx)                 |
+| `ChemistryLessonIllustration`   | [chemistry.lesson.illustration.tsx](chemistry.lesson.illustration.tsx)     |
+| `ClassDiscussionIllustration`   | [class.discussion.illustration.tsx](class.discussion.illustration.tsx)     |
+| `ClassroomIllustration`         | [classroom.illustration.tsx](classroom.illustration.tsx)                   |
+| `ClassScheduleIllustration`     | [class.schedule.illustration.tsx](class.schedule.illustration.tsx)         |
+| `CloudLearningIllustration`     | [cloud.learning.illustration.tsx](cloud.learning.illustration.tsx)         |
+| `CodingLessonIllustration`      | [coding.lesson.illustration.tsx](coding.lesson.illustration.tsx)           |
+| `CoursePlaylistIllustration`    | [course.playlist.illustration.tsx](course.playlist.illustration.tsx)       |
+| `CrayonsIllustration`           | [crayons.illustration.tsx](crayons.illustration.tsx)                       |
+| `CulinaryClassIllustration`     | [culinary.class.illustration.tsx](culinary.class.illustration.tsx)         |
+| `DanceClassIllustration`        | [dance.class.illustration.tsx](dance.class.illustration.tsx)               |
+| `DictionaryIllustration`        | [dictionary.illustration.tsx](dictionary.illustration.tsx)                 |
+| `DigitalTextbookIllustration`   | [digital.textbook.illustration.tsx](digital.textbook.illustration.tsx)     |
+| `DiplomaIllustration`           | [diploma.illustration.tsx](diploma.illustration.tsx)                       |
+| `DramaClassIllustration`        | [drama.class.illustration.tsx](drama.class.illustration.tsx)               |
+| `DrawingLessonIllustration`     | [drawing.lesson.illustration.tsx](drawing.lesson.illustration.tsx)         |
+| `EcologyLessonIllustration`     | [ecology.lesson.illustration.tsx](ecology.lesson.illustration.tsx)         |
+| `ElectricCircuitIllustration`   | [electric.circuit.illustration.tsx](electric.circuit.illustration.tsx)     |
+| `EssayWritingIllustration`      | [essay.writing.illustration.tsx](essay.writing.illustration.tsx)           |
+| `ExamPaperIllustration`         | [exam.paper.illustration.tsx](exam.paper.illustration.tsx)                 |
+| `ExamResultsIllustration`       | [exam.results.illustration.tsx](exam.results.illustration.tsx)             |
+| `FieldTripIllustration`         | [field.trip.illustration.tsx](field.trip.illustration.tsx)                 |
+| `FlashcardsIllustration`        | [flashcards.illustration.tsx](flashcards.illustration.tsx)                 |
+| `FossilStudyIllustration`       | [fossil.study.illustration.tsx](fossil.study.illustration.tsx)             |
+| `FractionsIllustration`         | [fractions.illustration.tsx](fractions.illustration.tsx)                   |
+| `GeographyLessonIllustration`   | [geography.lesson.illustration.tsx](geography.lesson.illustration.tsx)     |
+| `GeometryIllustration`          | [geometry.illustration.tsx](geometry.illustration.tsx)                     |
+| `GeometrySetIllustration`       | [geometry.set.illustration.tsx](geometry.set.illustration.tsx)             |
+| `GlueStickIllustration`         | [glue.stick.illustration.tsx](glue.stick.illustration.tsx)                 |
+| `GraduationGownIllustration`    | [graduation.gown.illustration.tsx](graduation.gown.illustration.tsx)       |
+| `GraduationIllustration`        | [graduation.illustration.tsx](graduation.illustration.tsx)                 |
+| `GroupStudyIllustration`        | [group.study.illustration.tsx](group.study.illustration.tsx)               |
+| `GuideIllustration`             | [guide.illustration.tsx](guide.illustration.tsx)                           |
+| `HighlighterIllustration`       | [highlighter.illustration.tsx](highlighter.illustration.tsx)               |
+| `HistoryLessonIllustration`     | [history.lesson.illustration.tsx](history.lesson.illustration.tsx)         |
+| `HomeworkIllustration`          | [homework.illustration.tsx](homework.illustration.tsx)                     |
+| `JournalIllustration`           | [journal.illustration.tsx](journal.illustration.tsx)                       |
+| `KnowledgeTreeIllustration`     | [knowledge.tree.illustration.tsx](knowledge.tree.illustration.tsx)         |
+| `LanguageLessonIllustration`    | [language.lesson.illustration.tsx](language.lesson.illustration.tsx)       |
+| `LearningAppIllustration`       | [learning.app.illustration.tsx](learning.app.illustration.tsx)             |
+| `LearningGoalsIllustration`     | [learning.goals.illustration.tsx](learning.goals.illustration.tsx)         |
+| `LearningIllustration`          | [learning.illustration.tsx](learning.illustration.tsx)                     |
+| `LessonPlanIllustration`        | [lesson.plan.illustration.tsx](lesson.plan.illustration.tsx)               |
+| `LibraryCardIllustration`       | [library.card.illustration.tsx](library.card.illustration.tsx)             |
+| `LifelongLearningIllustration`  | [lifelong.learning.illustration.tsx](lifelong.learning.illustration.tsx)   |
+| `MindMapIllustration`           | [mind.map.illustration.tsx](mind.map.illustration.tsx)                     |
+| `MusicLessonIllustration`       | [music.lesson.illustration.tsx](music.lesson.illustration.tsx)             |
+| `NotebookIllustration`          | [notebook.illustration.tsx](notebook.illustration.tsx)                     |
+| `NoteTakingIllustration`        | [note.taking.illustration.tsx](note.taking.illustration.tsx)               |
+| `OnlineQuizIllustration`        | [online.quiz.illustration.tsx](online.quiz.illustration.tsx)               |
+| `OpenBookIllustration`          | [open.book.illustration.tsx](open.book.illustration.tsx)                   |
+| `PencilCaseIllustration`        | [pencil.case.illustration.tsx](pencil.case.illustration.tsx)               |
+| `PhysicsLessonIllustration`     | [physics.lesson.illustration.tsx](physics.lesson.illustration.tsx)         |
+| `PianoLessonIllustration`       | [piano.lesson.illustration.tsx](piano.lesson.illustration.tsx)             |
+| `PlaygroundIllustration`        | [playground.illustration.tsx](playground.illustration.tsx)                 |
+| `PotteryClassIllustration`      | [pottery.class.illustration.tsx](pottery.class.illustration.tsx)           |
+| `ReadingLampIllustration`       | [reading.lamp.illustration.tsx](reading.lamp.illustration.tsx)             |
+| `ResearchIllustration`          | [research.illustration.tsx](research.illustration.tsx)                     |
+| `RoboticsClassIllustration`     | [robotics.class.illustration.tsx](robotics.class.illustration.tsx)         |
+| `ScholarshipIllustration`       | [scholarship.illustration.tsx](scholarship.illustration.tsx)               |
+| `SchoolAdmissionIllustration`   | [school.admission.illustration.tsx](school.admission.illustration.tsx)     |
+| `SchoolBellIllustration`        | [school.bell.illustration.tsx](school.bell.illustration.tsx)               |
+| `SchoolBinderIllustration`      | [school.binder.illustration.tsx](school.binder.illustration.tsx)           |
+| `SchoolBuildingIllustration`    | [school.building.illustration.tsx](school.building.illustration.tsx)       |
+| `SchoolBusIllustration`         | [school.bus.illustration.tsx](school.bus.illustration.tsx)                 |
+| `SchoolLockerIllustration`      | [school.locker.illustration.tsx](school.locker.illustration.tsx)           |
+| `SchoolRulerIllustration`       | [school.ruler.illustration.tsx](school.ruler.illustration.tsx)             |
+| `SchoolScissorsIllustration`    | [school.scissors.illustration.tsx](school.scissors.illustration.tsx)       |
+| `SchoolSportsIllustration`      | [school.sports.illustration.tsx](school.sports.illustration.tsx)           |
+| `ScienceExperimentIllustration` | [science.experiment.illustration.tsx](science.experiment.illustration.tsx) |
+| `ScienceFairIllustration`       | [science.fair.illustration.tsx](science.fair.illustration.tsx)             |
+| `SewingClassIllustration`       | [sewing.class.illustration.tsx](sewing.class.illustration.tsx)             |
+| `SpellingPracticeIllustration`  | [spelling.practice.illustration.tsx](spelling.practice.illustration.tsx)   |
+| `StationerySetIllustration`     | [stationery.set.illustration.tsx](stationery.set.illustration.tsx)         |
+| `StatisticsIllustration`        | [statistics.illustration.tsx](statistics.illustration.tsx)                 |
+| `StorybookIllustration`         | [storybook.illustration.tsx](storybook.illustration.tsx)                   |
+| `StudentDeskIllustration`       | [student.desk.illustration.tsx](student.desk.illustration.tsx)             |
+| `StudentIdIllustration`         | [student.id.illustration.tsx](student.id.illustration.tsx)                 |
+| `StudyBreakIllustration`        | [study.break.illustration.tsx](study.break.illustration.tsx)               |
+| `StudyDashboardIllustration`    | [study.dashboard.illustration.tsx](study.dashboard.illustration.tsx)       |
+| `StudyPlannerIllustration`      | [study.planner.illustration.tsx](study.planner.illustration.tsx)           |
+| `StudyTimerIllustration`        | [study.timer.illustration.tsx](study.timer.illustration.tsx)               |
+| `TeacherIllustration`           | [teacher.illustration.tsx](teacher.illustration.tsx)                       |
+| `UniversityCampusIllustration`  | [university.campus.illustration.tsx](university.campus.illustration.tsx)   |
+| `VideoLessonIllustration`       | [video.lesson.illustration.tsx](video.lesson.illustration.tsx)             |
+| `VirtualClassroomIllustration`  | [virtual.classroom.illustration.tsx](virtual.classroom.illustration.tsx)   |
+| `WatercolorClassIllustration`   | [watercolor.class.illustration.tsx](watercolor.class.illustration.tsx)     |
+| `WebinarIllustration`           | [webinar.illustration.tsx](webinar.illustration.tsx)                       |
+| `WhiteboardIllustration`        | [whiteboard.illustration.tsx](whiteboard.illustration.tsx)                 |
+| `WoodworkClassIllustration`     | [woodwork.class.illustration.tsx](woodwork.class.illustration.tsx)         |

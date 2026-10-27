@@ -1,1 +1,1 @@
-export { AriaLogo } from './aria-logo'
+export { AriaLogo } from './aria.logo'

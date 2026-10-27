@@ -1,0 +1,5 @@
+export { DatabaseIllustration } from './database.illustration'
+export { HydroelectricDamIllustration } from './hydroelectric.dam.illustration'
+export { ServerIllustration } from './server.illustration'
+export { SolarPanelIllustration } from './solar.panel.illustration'
+export { WindTurbineIllustration } from './wind.turbine.illustration'

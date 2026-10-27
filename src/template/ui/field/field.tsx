@@ -1,4 +1,4 @@
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 import { useId, type ReactElement, type ReactNode, cloneElement } from 'react'
 
 export interface FieldProps {

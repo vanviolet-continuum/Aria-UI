@@ -3,23 +3,23 @@ import { lazy, Suspense, type ReactNode } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { Button, LoadingIllustration, NotFoundState } from '../template'
 import { StarterLayout } from './layout'
-import { HomePage } from './pages/home-page'
-import { DetailsPage } from './pages/details-page'
+import { HomePage } from './pages/home.page'
+import { DetailsPage } from './pages/details.page'
 
 const ThemeStudio = lazy(() =>
   import('../template/theme/studio').then((module) => ({ default: module.ThemeStudio })),
 )
 const TableExamplePage = lazy(() =>
-  import('./pages/table-example-page').then((module) => ({ default: module.TableExamplePage })),
+  import('./pages/table.example.page').then((module) => ({ default: module.TableExamplePage })),
 )
 const WizardExamplePage = lazy(() =>
-  import('./pages/wizard-example-page').then((module) => ({ default: module.WizardExamplePage })),
+  import('./pages/wizard.example.page').then((module) => ({ default: module.WizardExamplePage })),
 )
 const ComponentsPage = lazy(() =>
-  import('./pages/components-page').then((module) => ({ default: module.ComponentsPage })),
+  import('./pages/components.page').then((module) => ({ default: module.ComponentsPage })),
 )
 const IllustrationsPage = lazy(() =>
-  import('./pages/illustrations-page').then((module) => ({ default: module.IllustrationsPage })),
+  import('./pages/illustrations.page').then((module) => ({ default: module.IllustrationsPage })),
 )
 
 function DeferredPage({ children }: { children: ReactNode }) {

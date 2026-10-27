@@ -1,7 +1,7 @@
 import { forwardRef, type InputHTMLAttributes } from 'react'
 import clsx from 'clsx'
 
-export const Switch = forwardRef<
+export const Switch = /* @__PURE__ */ forwardRef<
   HTMLInputElement,
   Omit<InputHTMLAttributes<HTMLInputElement>, 'type'>
 >(function Switch({ className, ...props }, ref) {

@@ -1,1 +1,1 @@
-export { ThemeStudio } from './theme-studio'
+export { ThemeStudio } from './theme.studio'

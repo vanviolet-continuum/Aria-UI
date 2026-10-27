@@ -1,0 +1,26 @@
+import type { IllustrationCategory } from './illustration.types'
+
+export const illustrationCategories: { id: 'all' | IllustrationCategory; label: string }[] = [
+  { id: 'all', label: 'All illustrations' },
+  { id: 'nature', label: 'Nature' },
+  { id: 'travel', label: 'Travel' },
+  { id: 'food', label: 'Food & drink' },
+  { id: 'health', label: 'Health & wellness' },
+  { id: 'technology', label: 'Technology' },
+  { id: 'finance', label: 'Finance' },
+  { id: 'business', label: 'Business' },
+  { id: 'creative', label: 'Creative & arts' },
+  { id: 'science', label: 'Science' },
+  { id: 'lifestyle', label: 'Everyday life' },
+  { id: 'people', label: 'People' },
+  { id: 'education', label: 'Education' },
+  { id: 'objects', label: 'Objects' },
+  { id: 'decoration', label: 'Decoration' },
+  { id: 'states', label: 'States & feedback' },
+  { id: 'workspace', label: 'Workspace' },
+  { id: 'files', label: 'Files' },
+  { id: 'communication', label: 'Communication' },
+  { id: 'security', label: 'Security' },
+  { id: 'commerce', label: 'Commerce' },
+  { id: 'infrastructure', label: 'Infrastructure' },
+]

@@ -1,7 +1,7 @@
 import { defaultTheme } from './defaults'
 import { basePalettes, themeFonts } from './palettes'
 import { themePresets } from './presets'
-import { controlMetrics } from './control-metrics'
+import { controlMetrics } from './control.metrics'
 import type { ResolvedThemeConfig, ThemeConfig } from './types'
 
 export const THEME_STORAGE_KEY = 'admin-template-appearance-v1'

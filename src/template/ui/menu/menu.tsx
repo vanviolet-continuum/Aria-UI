@@ -2,7 +2,7 @@ import * as Primitive from '@radix-ui/react-dropdown-menu'
 import clsx from 'clsx'
 import { Check } from 'lucide-react'
 import { Fragment, type ReactNode } from 'react'
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 
 export interface MenuItem {
   id: string

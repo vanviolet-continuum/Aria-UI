@@ -1,9 +1,9 @@
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
-import { useDrawerDismiss, type OutsideClose } from './use-drawer-dismiss'
+import { useDrawerDismiss, type OutsideClose } from './use.drawer.dismiss'
 
 export interface DrawerProps {
   open: boolean

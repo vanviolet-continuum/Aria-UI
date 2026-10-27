@@ -1,4 +1,4 @@
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 import { Command as CommandPrimitive } from 'cmdk'
 import { CornerDownLeft, Search } from 'lucide-react'
 import type { ReactNode } from 'react'

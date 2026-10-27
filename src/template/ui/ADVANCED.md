@@ -108,7 +108,7 @@ FileUpload menyediakan browse/dropzone, validasi, hapus, dan preview image. Komp
 
 Konfirmasi delete muncul di tengah; form/detail tetap Drawer dari kanan. ConfirmDialog menunggu promise, menampilkan overlay lokal, menangani error, dan tetap terbuka jika callback mengembalikan `false`. Cancel mendapat fokus awal. Fullscreen overlay memiliki focus trap dan mencegah penutupan saat proses berjalan.
 
-Template menyediakan `MutationProvider` / `useMutationTask` di `src/template/providers/mutation-provider.tsx`. Bungkus operasi dengan `runTask(label, () => apiCall())`, lalu periksa `result.success` sebelum menutup form/toast success. Provider boleh disalin atau diganti state manager proyek Anda. Semua create/update/delete contoh sudah memakainya.
+Template menyediakan `MutationProvider` / `useMutationTask` di `src/template/providers/mutation.provider.tsx`. Bungkus operasi dengan `runTask(label, () => apiCall())`, lalu periksa `result.success` sebelum menutup form/toast success. Provider boleh disalin atau diganti state manager proyek Anda. Semua create/update/delete contoh sudah memakainya.
 
 ## Empty states, SVG, dan theme
 
@@ -117,6 +117,6 @@ Template menyediakan `MutationProvider` / `useMutationTask` di `src/template/pro
 - `NotFoundState`: resource/halaman tidak ditemukan, navigasi kembali.
 - `EmptyIllustration`, `SearchIllustration`, `NotFoundIllustration`, `UploadIllustration`, `LoadingIllustration`: SVG original berbasis CSS variables. Loader menghormati reduced motion.
 
-Tema template memakai `src/template/theme/theme-provider.tsx` (`light | dark | system`) dan seluruh layer `src/template/theme/`. Inisialisasi sebelum render ada di `main.tsx`. Untuk memindahkan fitur lengkap, salin folder template utuh dan pasang TemplateProvider pada root. Semua CSS warna berasal dari semantic tokens; `src/template/styles/surfaces.css` hanya menghubungkan layout dasar. Sonner memakai toast styles dari UI kit dan palette yang sama.
+Tema template memakai `src/template/theme/theme.provider.tsx` (`light | dark | system`) dan seluruh layer `src/template/theme/`. Inisialisasi sebelum render ada di `main.tsx`. Untuk memindahkan fitur lengkap, salin folder template utuh dan pasang TemplateProvider pada root. Semua CSS warna berasal dari semantic tokens; `src/template/styles/surfaces.css` hanya menghubungkan layout dasar. Sonner memakai toast styles dari UI kit dan palette yang sama.
 
-Theme studio di `/settings/appearance` menyediakan preset, warna kedua mode, font, radius, spacing, default control size, density, serta download `theme.config.ts`. Ganti `src/app/config/theme.config.ts` dengan hasil download untuk menjadikannya default proyek. Lihat [panduan lengkap](../theme/README.md). Button/Input/IconButton yang tidak diberi prop size eksplisit mengikuti ukuran tema.
+Theme studio di `/settings/appearance` menyediakan preset, warna kedua mode, font, radius, spacing, default control size, density, serta download `theme.config.ts`. Ganti `src/app/config/theme.config.ts` dengan hasil download untuk menjadikannya default proyek. Lihat [panduan lengkap](../theme/readme.md). Button/Input/IconButton yang tidak diberi prop size eksplisit mengikuti ukuran tema.

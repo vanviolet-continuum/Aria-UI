@@ -1,0 +1,32 @@
+{
+  "name": "@aria-ui/template",
+  "private": true,
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./index.ts",
+    "./styles.css": "./styles.css",
+    "./base.css": "./base.css",
+    "./ui": "./ui/index.ts",
+    "./ui/*": "./ui/*/index.ts",
+    "./ui/illustrations": "./ui/illustrations/index.ts",
+    "./ui/illustrations/*": "./ui/illustrations/*/index.ts",
+    "./icons": "./icons/index.ts",
+    "./icons/*": "./icons/*/index.ts",
+    "./icons/*.icon": "./icons/*.icon.ts",
+    "./ui/*.css": "./ui/*.css",
+    "./ui/illustrations/*.illustration": "./ui/illustrations/*.illustration.tsx",
+    "./ui/illustrations/*.decoration": "./ui/illustrations/*.decoration.tsx",
+    "./ui/illustrations/illustration.types": "./ui/illustrations/illustration.types.ts",
+    "./layouts": "./layouts/index.ts",
+    "./layouts/*": "./layouts/*/index.ts",
+    "./theme": "./theme/index.ts",
+    "./theme/studio": "./theme/studio/index.ts",
+    "./hooks": "./hooks/index.ts",
+    "./i18n": "./i18n/index.ts",
+    "./providers": "./providers/index.ts",
+    "./branding": "./branding/index.ts"
+  }
+}

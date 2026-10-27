@@ -1,4 +1,4 @@
-import { useI18n } from '../../i18n/use-i18n'
+import { useI18n } from '../../i18n/use.i18n'
 import { X } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { Badge, type BadgeVariant } from '../badge/badge'

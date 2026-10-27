@@ -1,120 +1,108 @@
-export {
-  ArithmeticIllustration,
-  AlgebraIllustration,
-  GeometryIllustration,
-  FractionsIllustration,
-  CalculusIllustration,
-  StatisticsIllustration,
-  PhysicsLessonIllustration,
-  GeographyLessonIllustration,
-  HistoryLessonIllustration,
-  LanguageLessonIllustration,
-} from './subjects'
-export {
-  PencilCaseIllustration,
-  StationerySetIllustration,
-  SchoolScissorsIllustration,
-  GeometrySetIllustration,
-  SchoolRulerIllustration,
-  AbacusIllustration,
-  CrayonsIllustration,
-  HighlighterIllustration,
-  GlueStickIllustration,
-  SchoolBinderIllustration,
-} from './supplies'
-export {
-  LibraryCardIllustration,
-  BookStackIllustration,
-  DictionaryIllustration,
-  StorybookIllustration,
-  AudiobookIllustration,
-  BookmarkIllustration,
-  JournalIllustration,
-  EssayWritingIllustration,
-  SpellingPracticeIllustration,
-  ReadingLampIllustration,
-} from './reading-writing'
-export {
-  ClassroomIllustration,
-  TeacherIllustration,
-  StudentDeskIllustration,
-  ChalkboardIllustration,
-  WhiteboardIllustration,
-  SchoolBellIllustration,
-  ClassScheduleIllustration,
-  AttendanceIllustration,
-  LessonPlanIllustration,
-  ClassDiscussionIllustration,
-} from './classroom'
-export {
-  VirtualClassroomIllustration,
-  VideoLessonIllustration,
-  DigitalTextbookIllustration,
-  LearningAppIllustration,
-  OnlineQuizIllustration,
-  CoursePlaylistIllustration,
-  StudyDashboardIllustration,
-  WebinarIllustration,
-  CodingLessonIllustration,
-  CloudLearningIllustration,
-} from './online-study'
-export {
-  BiologyLessonIllustration,
-  ChemistryLessonIllustration,
-  AstronomyLessonIllustration,
-  BotanyLessonIllustration,
-  AnatomyLessonIllustration,
-  ElectricCircuitIllustration,
-  ScienceExperimentIllustration,
-  RoboticsClassIllustration,
-  EcologyLessonIllustration,
-  FossilStudyIllustration,
-} from './science-lessons'
-export {
-  DrawingLessonIllustration,
-  WatercolorClassIllustration,
-  PotteryClassIllustration,
-  MusicLessonIllustration,
-  PianoLessonIllustration,
-  DanceClassIllustration,
-  DramaClassIllustration,
-  SewingClassIllustration,
-  WoodworkClassIllustration,
-  CulinaryClassIllustration,
-} from './arts-skills'
-export {
-  SchoolBuildingIllustration,
-  UniversityCampusIllustration,
-  CampusLibraryIllustration,
-  SchoolBusIllustration,
-  SchoolLockerIllustration,
-  CafeteriaIllustration,
-  PlaygroundIllustration,
-  ScienceFairIllustration,
-  SchoolSportsIllustration,
-  FieldTripIllustration,
-} from './campus'
-export {
-  StudyPlannerIllustration,
-  StudyTimerIllustration,
-  FlashcardsIllustration,
-  MindMapIllustration,
-  GroupStudyIllustration,
-  HomeworkIllustration,
-  StudyBreakIllustration,
-  LearningGoalsIllustration,
-  ResearchIllustration,
-  NoteTakingIllustration,
-} from './study-habits'
-export {
-  SchoolAdmissionIllustration,
-  StudentIdIllustration,
-  ExamPaperIllustration,
-  ExamResultsIllustration,
-  ScholarshipIllustration,
-  DiplomaIllustration,
-  AcademicMedalIllustration,
-  GraduationGownIllustration,
-  KnowledgeTreeIllustration,
-  LifelongLearningIllustration,
-} from './milestones'
+export { AbacusIllustration } from './abacus.illustration'
+export { AcademicMedalIllustration } from './academic.medal.illustration'
+export { AlgebraIllustration } from './algebra.illustration'
+export { AnatomyLessonIllustration } from './anatomy.lesson.illustration'
+export { ArithmeticIllustration } from './arithmetic.illustration'
+export { AstronomyLessonIllustration } from './astronomy.lesson.illustration'
+export { AttendanceIllustration } from './attendance.illustration'
+export { AudiobookIllustration } from './audiobook.illustration'
+export { BiologyLessonIllustration } from './biology.lesson.illustration'
+export { BookCartIllustration } from './book.cart.illustration'
+export { BookmarkIllustration } from './bookmark.illustration'
+export { BookshelfIllustration } from './bookshelf.illustration'
+export { BookStackIllustration } from './book.stack.illustration'
+export { BotanyLessonIllustration } from './botany.lesson.illustration'
+export { CafeteriaIllustration } from './cafeteria.illustration'
+export { CalculusIllustration } from './calculus.illustration'
+export { CampusLibraryIllustration } from './campus.library.illustration'
+export { CertificateIllustration } from './certificate.illustration'
+export { ChalkboardIllustration } from './chalkboard.illustration'
+export { ChemistryLessonIllustration } from './chemistry.lesson.illustration'
+export { ClassDiscussionIllustration } from './class.discussion.illustration'
+export { ClassroomIllustration } from './classroom.illustration'
+export { ClassScheduleIllustration } from './class.schedule.illustration'
+export { CloudLearningIllustration } from './cloud.learning.illustration'
+export { CodingLessonIllustration } from './coding.lesson.illustration'
+export { CoursePlaylistIllustration } from './course.playlist.illustration'
+export { CrayonsIllustration } from './crayons.illustration'
+export { CulinaryClassIllustration } from './culinary.class.illustration'
+export { DanceClassIllustration } from './dance.class.illustration'
+export { DictionaryIllustration } from './dictionary.illustration'
+export { DigitalTextbookIllustration } from './digital.textbook.illustration'
+export { DiplomaIllustration } from './diploma.illustration'
+export { DramaClassIllustration } from './drama.class.illustration'
+export { DrawingLessonIllustration } from './drawing.lesson.illustration'
+export { EcologyLessonIllustration } from './ecology.lesson.illustration'
+export { ElectricCircuitIllustration } from './electric.circuit.illustration'
+export { EssayWritingIllustration } from './essay.writing.illustration'
+export { ExamPaperIllustration } from './exam.paper.illustration'
+export { ExamResultsIllustration } from './exam.results.illustration'
+export { FieldTripIllustration } from './field.trip.illustration'
+export { FlashcardsIllustration } from './flashcards.illustration'
+export { FossilStudyIllustration } from './fossil.study.illustration'
+export { FractionsIllustration } from './fractions.illustration'
+export { GeographyLessonIllustration } from './geography.lesson.illustration'
+export { GeometryIllustration } from './geometry.illustration'
+export { GeometrySetIllustration } from './geometry.set.illustration'
+export { GlueStickIllustration } from './glue.stick.illustration'
+export { GraduationGownIllustration } from './graduation.gown.illustration'
+export { GraduationIllustration } from './graduation.illustration'
+export { GroupStudyIllustration } from './group.study.illustration'
+export { GuideIllustration } from './guide.illustration'
+export { HighlighterIllustration } from './highlighter.illustration'
+export { HistoryLessonIllustration } from './history.lesson.illustration'
+export { HomeworkIllustration } from './homework.illustration'
+export { JournalIllustration } from './journal.illustration'
+export { KnowledgeTreeIllustration } from './knowledge.tree.illustration'
+export { LanguageLessonIllustration } from './language.lesson.illustration'
+export { LearningAppIllustration } from './learning.app.illustration'
+export { LearningGoalsIllustration } from './learning.goals.illustration'
+export { LearningIllustration } from './learning.illustration'
+export { LessonPlanIllustration } from './lesson.plan.illustration'
+export { LibraryCardIllustration } from './library.card.illustration'
+export { LifelongLearningIllustration } from './lifelong.learning.illustration'
+export { MindMapIllustration } from './mind.map.illustration'
+export { MusicLessonIllustration } from './music.lesson.illustration'
+export { NotebookIllustration } from './notebook.illustration'
+export { NoteTakingIllustration } from './note.taking.illustration'
+export { OnlineQuizIllustration } from './online.quiz.illustration'
+export { OpenBookIllustration } from './open.book.illustration'
+export { PencilCaseIllustration } from './pencil.case.illustration'
+export { PhysicsLessonIllustration } from './physics.lesson.illustration'
+export { PianoLessonIllustration } from './piano.lesson.illustration'
+export { PlaygroundIllustration } from './playground.illustration'
+export { PotteryClassIllustration } from './pottery.class.illustration'
+export { ReadingLampIllustration } from './reading.lamp.illustration'
+export { ResearchIllustration } from './research.illustration'
+export { RoboticsClassIllustration } from './robotics.class.illustration'
+export { ScholarshipIllustration } from './scholarship.illustration'
+export { SchoolAdmissionIllustration } from './school.admission.illustration'
+export { SchoolBellIllustration } from './school.bell.illustration'
+export { SchoolBinderIllustration } from './school.binder.illustration'
+export { SchoolBuildingIllustration } from './school.building.illustration'
+export { SchoolBusIllustration } from './school.bus.illustration'
+export { SchoolLockerIllustration } from './school.locker.illustration'
+export { SchoolRulerIllustration } from './school.ruler.illustration'
+export { SchoolScissorsIllustration } from './school.scissors.illustration'
+export { SchoolSportsIllustration } from './school.sports.illustration'
+export { ScienceExperimentIllustration } from './science.experiment.illustration'
+export { ScienceFairIllustration } from './science.fair.illustration'
+export { SewingClassIllustration } from './sewing.class.illustration'
+export { SpellingPracticeIllustration } from './spelling.practice.illustration'
+export { StationerySetIllustration } from './stationery.set.illustration'
+export { StatisticsIllustration } from './statistics.illustration'
+export { StorybookIllustration } from './storybook.illustration'
+export { StudentDeskIllustration } from './student.desk.illustration'
+export { StudentIdIllustration } from './student.id.illustration'
+export { StudyBreakIllustration } from './study.break.illustration'
+export { StudyDashboardIllustration } from './study.dashboard.illustration'
+export { StudyPlannerIllustration } from './study.planner.illustration'
+export { StudyTimerIllustration } from './study.timer.illustration'
+export { TeacherIllustration } from './teacher.illustration'
+export { UniversityCampusIllustration } from './university.campus.illustration'
+export { VideoLessonIllustration } from './video.lesson.illustration'
+export { VirtualClassroomIllustration } from './virtual.classroom.illustration'
+export { WatercolorClassIllustration } from './watercolor.class.illustration'
+export { WebinarIllustration } from './webinar.illustration'
+export { WhiteboardIllustration } from './whiteboard.illustration'
+export { WoodworkClassIllustration } from './woodwork.class.illustration'

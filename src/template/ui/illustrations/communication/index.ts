@@ -1,0 +1,6 @@
+export { AnnouncementIllustration } from './announcement.illustration'
+export { EmailSentIllustration } from './email.sent.illustration'
+export { InboxIllustration } from './inbox.illustration'
+export { MessagesIllustration } from './messages.illustration'
+export { NotificationsIllustration } from './notifications.illustration'
+export { PostOfficeIllustration } from './post.office.illustration'
