@@ -62,11 +62,13 @@ Gunakan `initializeTheme(themeConfig)` sebelum render. Theme Studio dapat diimpo
 
 ## Komponen dan custom
 
-Gunakan [layout foundations](ui/layout.md), [tipografi](ui/typography.md), dan [blok komposisi](ui/composition.md). Props native, elemen semantik, children, slot, dan className menyediakan ruang custom. Warna dan ukuran bersama berasal dari tema.
+Komponen interaksi umum dijelaskan pada [Slider, Dialog, MultiSelect, dan komponen lain](ui/primitives.md). Gunakan [layout foundations](ui/layout.md), [tipografi](ui/typography.md), dan [blok komposisi](ui/composition.md). Props native, elemen semantik, children, slot, dan className menyediakan ruang custom. Warna dan ukuran bersama berasal dari tema.
 
 Panduan lain: [UI API](ui/readme.md), [advanced](ui/advanced.md), [tabel/PDF/workflow](ui/blocks.md), [tema](theme/readme.md), [i18n](i18n/readme.md), [ikon](icons/readme.md), dan [ilustrasi](ui/illustrations/readme.md).
 
 ## Nama dan bundle
+
+Integrasi opsional berada di `integrations/`: TanStack Query/cache/persistence dan mutation feedback, TanStack Form, Zod, React Router URL state, adapter auth/session, unsaved changes guard, serta bridge Tailwind v4. Lihat [panduan integrasi](integrations/readme.md). UI core tetap dapat dikonsumsi terpisah dari adapter. Generated SDK, endpoint, autentikasi, dan schema bisnis tetap milik aplikasi.
 
 File/folder source memakai dot case: `confirm.dialog/confirm.dialog.tsx`, `use.local.storage.ts`, dan `access.denied.illustration.tsx`. Nama komponen/props mengikuti React dan TypeScript.
 

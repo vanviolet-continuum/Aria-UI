@@ -39,6 +39,8 @@ Tambahkan route di `src/routes.tsx`. Tambahkan hanya menu yang dapat dibuka ke `
 
 ## Nama dan public API
 
+Untuk fitur API, tambahkan query.keys.ts, queries.ts, mutations.ts, search.schema.ts, dan form.schema.ts ketika dipakai. SDK generated tetap pada lokasi output generator, bukan dipindah ke setiap fitur. Client/error config aplikasi ada di src/api dan src/config; adapter generic berada di templates/integrations. Baca [generated API](generated.api.md) dan [query/cache](query.cache.md).
+
 - File/folder beberapa kata menggunakan titik: `confirm.dialog/`, `access.denied.illustration.tsx`, `use.table.columns.ts`.
 - Nama file satu kata seperti `root.tsx`, `list.tsx`, `types.ts`, dan `index.ts` tetap sederhana.
 - Komponen memakai PascalCase dan hook memakai `use…`.

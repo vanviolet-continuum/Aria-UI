@@ -16,6 +16,8 @@ Variant: `contained | outlined | soft | text`. Color: `primary | secondary | suc
 
 ## Async combobox
 
+Bagian loader/cache internal di bawah tersedia untuk pemakaian tanpa TanStack. Untuk API baru, gunakan [adapter Query](../integrations/readme.md) dan controlled options/loading/error/onRetry/onSearchChange; jangan menumpuk cache loader ini di atas Query. Error GET tampil dengan ErrorState/ilustrasi pada area hasil, tanpa toast.
+
 ```tsx
 const loadOptions: OptionsLoader = async ({ search, cursor, signal }) => {
   const params = new URLSearchParams({ search, cursor: cursor ?? '', limit: '20' })
@@ -44,6 +46,8 @@ const loadOptions: OptionsLoader = async ({ search, cursor, signal }) => {
 Jika request dikelola library lain, gunakan `options`, `loading`, `loadingMore`, `hasMore`, `onLoadMore`, dan `onSearchChange`. Dalam mode tersebut filtering di backend dikelola pemilik callback.
 
 ## Server table
+
+Untuk fitur API baru, gunakan TanStack Query bersama state filter/pagination/sort dari URL dan props server DataTable. `useServerTable` di bawah adalah alternatif mandiri ber-cache untuk pemakaian tanpa TanStack. Error dan empty state berada pada area body tabel yang sama.
 
 ```tsx
 const table = useServerTable<User>({

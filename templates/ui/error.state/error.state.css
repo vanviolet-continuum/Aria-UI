@@ -1,0 +1,24 @@
+.ui-error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-width: 0;
+  padding: var(--space-lg);
+  text-align: center;
+  white-space: normal;
+}
+.ui-error-state-message {
+  max-width: 440px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.ui-error-state--compact {
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-sm);
+}
+.ui-error-state > .ui-illustration {
+  max-width: 100%;
+  margin: 0;
+}

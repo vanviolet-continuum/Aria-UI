@@ -1,0 +1,53 @@
+.ui-progress-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.ui-progress-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.ui-progress {
+  position: relative;
+  height: calc(6px * var(--space-scale));
+  background: var(--surface-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.ui-progress--sm {
+  height: calc(3px * var(--space-scale));
+}
+.ui-progress--lg {
+  height: calc(10px * var(--space-scale));
+}
+.ui-progress-indicator {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--progress-color, var(--primary));
+  transition: width calc(200ms * var(--motion-scale)) ease;
+}
+.ui-progress[data-indeterminate] .ui-progress-indicator {
+  position: absolute;
+  width: 35%;
+  animation: ui-progress-slide calc(1.4s * var(--motion-scale, 1)) ease-in-out infinite;
+}
+@keyframes ui-progress-slide {
+  from {
+    inset-inline-start: -35%;
+  }
+  to {
+    inset-inline-start: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ui-progress-indicator {
+    transition: none;
+  }
+  .ui-progress[data-indeterminate] .ui-progress-indicator {
+    animation: none;
+    inset-inline-start: 30%;
+  }
+}

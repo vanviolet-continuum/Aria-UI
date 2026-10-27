@@ -20,7 +20,7 @@ Tambahkan tipe/service ketika dipakai. Untuk fitur kecil, gabungkan koordinasi s
 
 Ikuti kontrak API/service yang sudah dimiliki aplikasi. Pisahkan nilai form, DTO request, dan label tampilan bila bentuknya berbeda. Untuk demo yang diminta tanpa backend, tempatkan mock di area aplikasi demo dan jelaskan perilaku persistensinya; jangan menyisipkan mock bisnis ke kit.
 
-`useMutationTask().runTask(label, operation)` mengembalikan union `{ success: true, data } | { success: false, error }`. Tunggu hasilnya dan hanya tutup drawer, pindah route, atau refresh daftar jika `success` bernilai true. Nilai form tetap tersedia jika operasi gagal. Tangani error yang memang harus tampil pada field di layer form/service.
+Gunakan useAppMutation untuk write API dengan feedback overlay/toast dan invalidation yang tepat. Tunggu mutateAsync berhasil sebelum menutup drawer atau navigasi. Bila gagal, pertahankan draft dan tampilkan field error API apa adanya melalui useApiFormErrors; MutationCache sudah menjadi pemilik toast. Jangan menumpuk runTask yang mengembalikan TaskResult pada query/mutation.
 
 Pada load/edit sediakan state loading, gagal, dan record tidak ditemukan sesuai kebutuhan alur. Tambah/ubah berbagi isi form; halaman dan drawer berbagi isi detail. Pertahankan pencarian/filter yang relevan saat kembali ke daftar.
 

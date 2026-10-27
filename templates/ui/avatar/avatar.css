@@ -1,0 +1,76 @@
+.ui-avatar {
+  --avatar-size: calc(36px * var(--space-scale));
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-flex;
+  vertical-align: middle;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: var(--radius-full);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.ui-avatar--xs {
+  --avatar-size: calc(24px * var(--space-scale));
+}
+.ui-avatar--sm {
+  --avatar-size: calc(30px * var(--space-scale));
+}
+.ui-avatar--lg {
+  --avatar-size: calc(48px * var(--space-scale));
+}
+.ui-avatar--xl {
+  --avatar-size: calc(64px * var(--space-scale));
+}
+.ui-avatar--rounded {
+  border-radius: var(--radius-lg);
+}
+.ui-avatar-image,
+.ui-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+.ui-avatar-image {
+  object-fit: cover;
+}
+.ui-avatar-fallback {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.ui-avatar-fallback > span {
+  font-size: calc(var(--avatar-size) * 0.33);
+}
+.ui-avatar-status {
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: 0;
+  width: 27%;
+  height: 27%;
+  border: 2px solid var(--surface);
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+.ui-avatar-status--online {
+  background: var(--success);
+}
+.ui-avatar-status--away {
+  background: var(--warning);
+}
+.ui-avatar-status--busy {
+  background: var(--error);
+}
+.ui-avatar-group {
+  display: flex;
+  align-items: center;
+  padding-inline-start: var(--space-2);
+}
+.ui-avatar-group > .ui-avatar {
+  margin-inline-start: calc(-1 * var(--space-2));
+  outline: 2px solid var(--surface);
+}
+.ui-avatar-overflow {
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+}

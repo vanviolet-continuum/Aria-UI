@@ -4,3 +4,5 @@ dist-preview
 .npm-cache
 .qa
 package-lock.json
+src/generated.ts
+src/generated/**

@@ -65,6 +65,8 @@ Nilai warna literal hanya berada dalam layer tema. Komponen memakai token semant
 
 ## Layout dan ukuran
 
+Tailwind v4 dapat memakai token runtime yang sama melalui `@templates/integrations/tailwind/theme.css`, atau entry lengkap `styles.css` pada folder tersebut. Bridge menyediakan warna, spacing, radius, shadow, dan 20 role tipografi. Lihat [integrasi](../integrations/readme.md) untuk opt-in, urutan layer/reset, serta batas override inline. Starter tetap memakai CSS biasa.
+
 ThemeConfig.typography menerima override per peran teks. Theme Studio menyediakan editor untuk 20 peran, termasuk ukuran, tone, weight, line height, letter spacing, dan transform. Provider melakukan merge per field; konfigurasi lama dilengkapi default. Semua pengaturan ikut penyimpanan serta ekspor/impor. Panduan dan contoh ada di [Typography](../ui/typography.md). Nilai headerHeight yang tersimpan adalah preferensi; tinggi header efektif dapat bertambah agar judul serta tombol tetap mendapat ruang.
 
 Tipografi dan blok konten memakai `block.tokens.css` untuk ukuran teks/heading, weight heading, line height, dan jarak bawah PageHeader. Ukuran visual terpisah dari level h1–h6. Pengaturan fontScale dan spacing tema langsung memengaruhi blok, termasuk Card, Toolbar, dan SettingsRow. Lihat [panduan komposisi](../ui/composition.md).

@@ -1,0 +1,70 @@
+.ui-alert {
+  --alert-color: var(--info);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: var(--border-width) solid color-mix(in srgb, var(--alert-color) 22%, var(--border));
+  border-radius: var(--radius-lg);
+  color: var(--alert-color);
+  background: color-mix(in srgb, var(--alert-color) 7%, var(--surface));
+}
+.ui-alert--success {
+  --alert-color: var(--success);
+}
+.ui-alert--warning {
+  --alert-color: var(--warning);
+}
+.ui-alert--error {
+  --alert-color: var(--error);
+}
+.ui-alert--outlined {
+  background: var(--surface);
+}
+.ui-alert-icon {
+  display: flex;
+  flex-shrink: 0;
+  padding-top: 0.1em;
+}
+.ui-alert-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  overflow-wrap: anywhere;
+}
+.ui-alert-content > p {
+  margin: 0;
+}
+.ui-alert-content > :not(:first-child) {
+  color: var(--text-secondary);
+}
+.ui-alert-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.ui-alert-dismiss {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  padding: var(--space-1);
+  color: inherit;
+  cursor: pointer;
+}
+.ui-alert-dismiss:hover {
+  background: color-mix(in srgb, var(--alert-color) 10%, transparent);
+}
+@media (max-width: 480px) {
+  .ui-alert {
+    flex-wrap: wrap;
+  }
+  .ui-alert-actions {
+    width: 100%;
+    order: 1;
+  }
+}

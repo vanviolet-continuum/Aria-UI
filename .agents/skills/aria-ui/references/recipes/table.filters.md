@@ -35,8 +35,8 @@ Definisi kolom lokal aplikasi dapat memakai `t` untuk header. Saat header berupa
 
 ## Filter lokal atau server
 
-`TableFilterDef<T>` mendefinisikan pilihan atau tanggal. `filterTableData(rows, definitions, values)` melakukan OR dalam field, AND antar-field, serta batas tanggal inklusif. Simpan filter/search di aplikasi dan berikan hasilnya ke tabel. Gunakan `resetKey` saat kriteria berubah agar halaman client kembali sesuai.
+`TableFilterDef<T>` mendefinisikan pilihan atau tanggal. `filterTableData(rows, definitions, values)` melakukan OR dalam field, AND antar-field, serta batas tanggal inklusif. State filter/search/sort/page/pageSize yang diterapkan berasal dari URL melalui useUrlState dan codec fitur; jangan menyimpannya hanya di state lokal. Gunakan `resetKey` untuk mode client bila diperlukan.
 
 Range tanggal memakai `RangeCalendar` dua bulan dan tanggal lokal. Popover filter memiliki satu pemilik scroll, dengan header/footer di luar area scroll tersebut. Gunakan Chip bawaan untuk filter aktif.
 
-Untuk API, gunakan kontrak `server` dan/atau `useServerTable` yang tersedia. Jangan melakukan sort/pagination client lagi pada satu halaman hasil server. Tangani loading, error/onRetry, empty state, dan totalItems dari sumber data yang benar. Lihat [panduan async](../../../../../templates/ui/advanced.md).
+Untuk API baru, gunakan TanStack Query dan kontrak server pada DataTable. Query key memuat scope dan seluruh parameter URL; jangan menumpuk cache useServerTable di atas Query. Jangan melakukan sort/pagination client lagi pada satu halaman hasil server. GET error tampil melalui ErrorState dengan ilustrasi pada area body yang sama dengan empty, tanpa toast. Sambungkan onRetry ke query.refetch. Lihat [query/cache](../query.cache.md), [search params](../search.params.md), dan [contoh runtime](../../../../../templates/integrations/readme.md).

@@ -33,6 +33,10 @@ export function Combobox({
   hasMore,
   onLoadMore,
   onSearchChange,
+  onBlur,
+  onOpenChange,
+  error,
+  onRetry,
   placeholder = 'Select an option',
   searchPlaceholder = 'Search options…',
   emptyMessage = 'No options found.',
@@ -74,32 +78,34 @@ export function Combobox({
     options.find((option) => option.value === value) ??
     (value ? labels.current.get(value) : undefined)
   const pending = loadOptions ? async.loading : loading
+  const failure = loadOptions ? async.error : error
+  const visibleOptions = pending || failure ? noOptions : filtered
   useEffect(() => {
     setActive((previous) => Math.max(0, Math.min(previous, filtered.length - 1)))
   }, [filtered.length])
+  const changeOpen = (next: boolean) => {
+    if (!next) onBlur?.()
+    onOpenChange?.(next)
+    setOpen(next)
+    setQuery('')
+    onSearchChange?.('')
+    setActive(
+      Math.max(
+        0,
+        source.findIndex((option) => option.value === value),
+      ),
+    )
+  }
   const choose = (option: ComboboxOption) => {
     if (option.disabled) return
     onOptionChange?.(option)
     labels.current.set(option.value, option)
     if (labels.current.size > 30) labels.current.delete(labels.current.keys().next().value!)
     onChange(clearable && option.value === value ? '' : option.value)
-    setOpen(false)
+    changeOpen(false)
   }
   return (
-    <Popover.Root
-      open={open}
-      onOpenChange={(next) => {
-        setOpen(next)
-        setQuery('')
-        onSearchChange?.('')
-        setActive(
-          Math.max(
-            0,
-            source.findIndex((option) => option.value === value),
-          ),
-        )
-      }}
-    >
+    <Popover.Root open={open} onOpenChange={changeOpen}>
       {name && <input type="hidden" name={name} value={value ?? ''} />}
       <Popover.Trigger asChild>
         <Text
@@ -157,13 +163,13 @@ export function Combobox({
               listId={listId}
               active={active}
               onActive={setActive}
-              options={filtered}
+              options={visibleOptions}
               onChoose={choose}
               placeholder={localize(searchPlaceholder)}
             />
           )}
           <ComboboxOptions
-            options={filtered}
+            options={visibleOptions}
             selected={value}
             active={active}
             onActive={setActive}
@@ -173,8 +179,8 @@ export function Combobox({
             loadingMore={loadOptions ? async.loadingMore : loadingMore}
             hasMore={loadOptions ? !!async.nextCursor : hasMore}
             onLoadMore={loadOptions ? async.loadMore : onLoadMore}
-            error={localize(loadOptions ? async.error : null)}
-            onRetry={async.retry}
+            error={failure}
+            onRetry={loadOptions ? async.retry : onRetry}
             emptyMessage={localize(emptyMessage)}
             focusable={!searchable}
           />

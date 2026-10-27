@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { SortState } from './types'
+import { normalizeApiErrorAsync, type ApiError } from '../../lib/api.error'
 
 export interface TablePageRequest {
   search: string
@@ -33,7 +34,7 @@ export function useServerTable<T>({
   const [sort, setSort] = useState<SortState>(initialSort)
   const [data, setData] = useState<TablePage<T>>({ rows: [], total: 0 })
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<ApiError | null>(null)
   const [retry, setRetry] = useState(0)
   const loader = useRef(loadPage)
   loader.current = loadPage
@@ -66,8 +67,9 @@ export function useServerTable<T>({
           setData(result)
           setLoading(false)
         } catch (error) {
+          const failure = await normalizeApiErrorAsync(error)
           if (!request.signal.aborted) {
-            setError(error instanceof Error ? error.message : 'Unable to load records.')
+            setError(failure)
             setLoading(false)
           }
         }

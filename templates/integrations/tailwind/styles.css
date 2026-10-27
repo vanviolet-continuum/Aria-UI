@@ -1,0 +1,5 @@
+/* Optional entry: install/configure Tailwind v4 in the consuming application. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss';
+@import '../../styles.css' layer(components);
+@import './theme.css';

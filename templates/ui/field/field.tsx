@@ -11,12 +11,22 @@ export interface FieldProps {
   label: string
   hint?: string
   error?: string
+  /** Backend messages are already display text and must not be translated. */
+  errorSource?: 'local' | 'api'
   required?: boolean
   children: ReactElement<{ id?: string; 'aria-describedby'?: string; 'aria-invalid'?: boolean }>
   className?: string
 }
 
-export function Field({ label, hint, error, required, children, className = '' }: FieldProps) {
+export function Field({
+  label,
+  hint,
+  error,
+  errorSource = 'local',
+  required,
+  children,
+  className = '',
+}: FieldProps) {
   const { text: localize } = useI18n()
 
   const generatedId = useId()
@@ -38,7 +48,7 @@ export function Field({ label, hint, error, required, children, className = '' }
       {message &&
         (error ? (
           <FieldError id={`${id}-message`} className="ui-field-error">
-            {localize(message)}
+            {errorSource === 'api' ? message : localize(message)}
           </FieldError>
         ) : (
           <FieldHint id={`${id}-message`} className="ui-field-hint">

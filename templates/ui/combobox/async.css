@@ -44,18 +44,6 @@
   font-size: var(--typography-caption-size);
   color: var(--typography-caption-color);
 }
-.combobox-error {
-  padding: calc(15px * var(--space-scale)) calc(10px * var(--space-scale));
-  text-align: center;
-  color: var(--error);
-  font-size: var(--typography-body-size);
-}
-.combobox-error > button {
-  color: var(--primary);
-  font-size: var(--typography-button-size);
-  display: block;
-  margin: calc(8px * var(--space-scale)) auto 0;
-}
 .combobox-trigger > .combobox-trigger-icons {
   display: flex;
   align-items: center;

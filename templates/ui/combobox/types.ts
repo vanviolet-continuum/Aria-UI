@@ -28,6 +28,11 @@ export interface ComboboxProps {
   hasMore?: boolean
   onLoadMore?: () => void
   onSearchChange?: (search: string) => void
+  onBlur?: () => void
+  onOpenChange?: (open: boolean) => void
+  /** Controlled GET error, rendered inline in the result area; never toasted. */
+  error?: unknown
+  onRetry?: () => unknown
   placeholder?: string
   searchPlaceholder?: string
   emptyMessage?: string

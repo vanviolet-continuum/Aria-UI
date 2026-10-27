@@ -8,7 +8,7 @@ Komponen dalam folder ini tidak bergantung pada router, context klinik, atau API
 2. Pasang dependensi runtime:
 
    ```bash
-   npm install react react-dom lucide-react clsx cmdk sonner react-number-format react-pdf@^10.5.0 i18next react-i18next @fontsource-variable/hanken-grotesk @radix-ui/react-dialog @radix-ui/react-popover @radix-ui/react-dropdown-menu @fullcalendar/react@^7 temporal-polyfill
+   npm install react react-dom lucide-react clsx cmdk sonner react-number-format react-pdf@^10.5.0 i18next react-i18next @fontsource-variable/hanken-grotesk @radix-ui/react-dialog @radix-ui/react-popover @radix-ui/react-dropdown-menu @radix-ui/react-slider @radix-ui/react-radio-group @radix-ui/react-tooltip @radix-ui/react-accordion @radix-ui/react-avatar @fullcalendar/react@^7 temporal-polyfill
    ```
 
 3. Import stylesheet sekali pada entry aplikasi:
@@ -28,6 +28,8 @@ Alias `@templates` ke pustaka dan `@/` ke source aplikasi sudah dikonfigurasi pa
 Unit test berada di `tests/template/`, terpisah dari folder portable. Proyek yang menyalin kit tidak perlu memasang Vitest.
 
 ## Komponen
+
+Untuk data API baru, gunakan [integrasi TanStack Query, URL state, form/Zod, dan error API](../integrations/readme.md). DataTable dan Combobox menerima error asli pada props `error`; keduanya memakai ErrorState dengan ilustrasi dan retry di area hasil/empty, tanpa toast GET. Error backend tidak diterjemahkan. Field menyediakan `errorSource="api"` untuk pesan field server.
 
 Seluruh teks UI memakai komponen atau adapter token tipografi bersama. `Heading`, `Text`, `Eyebrow`, `FieldLabel`, `FieldHint`, `FieldError`, `TextLink`, `CodeText`, `CodeBlock`, dan `MetricValue` memakai peran tema yang dapat dikonfigurasi. API dan konfigurasi lengkap tersedia di [Typography](./typography.md).
 
@@ -49,13 +51,15 @@ Seluruh teks UI memakai komponen atau adapter token tipografi bersama. `Heading`
 | Overlay    | `Drawer`, `DrawerFooter`, `ConfirmDialog`, `LoadingOverlay`                                                  |
 | Feedback   | `Toaster`, `toast`, `EmptyState`, `SearchEmptyState`, `NotFoundState`, SVG illustrations                     |
 
+Komponen tambahan: Slider, RangeSlider, RadioGroup/RadioGroupItem, MultiSelect, Dialog beserta part-nya, Tooltip/TooltipProvider, Accordion beserta part-nya, Alert, Progress, Avatar/AvatarGroup, dan Breadcrumb beserta part-nya. API, contoh controlled/uncontrolled, aksesibilitas, tema, dan custom tersedia di [komponen umum](./primitives.md).
+
 ## Fondasi layout
 
-Blok presentasional di atas fondasi layout mendukung props praktis maupun komposisi part terpisah. `Heading`, `Text`, dan `Eyebrow` menyatukan tipografi. `HeadingGroup`, `PageHeader`, dan `SectionHeader` menyediakan slot untuk judul, deskripsi, ikon, badge, navigasi, metadata, dan actions. `Card` menyediakan Header/Body/Footer; `Toolbar` menyediakan Group/Actions; `SettingsRow` menghubungkan label dan kontrol. Lihat [Reusable content blocks](./composition.md) untuk API, slotProps, contoh custom, dan import selektif. Semua tersedia di katalog Components.
+Blok presentasional di atas fondasi layout mendukung props praktis maupun komposisi part terpisah. `Heading`, `Text`, dan `Eyebrow` menyatukan tipografi. `HeadingGroup`, `PageHeader`, dan `SectionHeader` menyediakan slot untuk judul, deskripsi, ikon, badge, navigasi, metadata, dan actions. `Card` menyediakan Header/Body/Footer; `Toolbar` menyediakan Group/Actions; `SettingsRow` menghubungkan label dan kontrol. Lihat [Reusable content blocks](./composition.md) untuk API, slotProps, contoh custom, dan import selektif. Katalog interaktif akan ditambahkan pada preview ketika diminta.
 
 Gunakan `Stack` untuk susunan vertikal, `Inline` untuk baris yang dapat wrap, `Grid` untuk kolom responsive atau auto-fit, dan `Box` untuk surface. Default gap serta padding panel mengikuti `layoutGap`/`layoutPadding` pada tema; token spacing eksplisit tetap mengikuti `spaceScale`. `Container` default full width. Seluruh komponen tetap tanpa scroll container internal.
 
-API, skala ukuran, breakpoint, import selektif, dan contoh komposisi dijelaskan di [Layout foundations](./layout.md). Preview tersedia melalui folder masing-masing di halaman Components.
+API, skala ukuran, breakpoint, import selektif, dan contoh komposisi dijelaskan di [Layout foundations](./layout.md). Folder preview saat ini masih kosong.
 
 ## Menu dan popover
 

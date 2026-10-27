@@ -8,7 +8,6 @@ Gunakan `Box` sebagai elemen semantik/surface, `Stack` untuk susunan vertikal, `
 
 ```tsx
 import { Box, Grid, Inline, PageHeader, Stack } from '@templates/ui'
-
 ;<Box as="section" padding={{ base: 'md', md: 'lg' }} minWidth={0}>
   <Stack gap="lg">
     <PageHeader titleAs="h1" title={t('Products')} actions={pageActions} />

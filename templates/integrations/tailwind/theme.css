@@ -1,0 +1,285 @@
+/* Keep values live: ThemeProvider remains the source of light/dark, scale and colors. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-on-primary: var(--on-primary);
+  --color-secondary: var(--secondary);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-error: var(--error);
+  --color-error-soft: var(--error-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-violet: var(--violet);
+  --color-mint: var(--mint);
+  --color-surface: var(--surface);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-hover: var(--surface-hover);
+  --color-content: var(--text);
+  --color-content-secondary: var(--text-secondary);
+  --color-muted: var(--muted);
+  --color-outline: var(--border);
+
+  --spacing-aria-xs: var(--space-xs);
+  --spacing-aria-sm: var(--space-sm);
+  --spacing-aria-md: var(--space-md);
+  --spacing-aria-lg: var(--space-lg);
+  --spacing-aria-xl: var(--space-xl);
+  --spacing-aria-gap: var(--layout-gap);
+  --spacing-aria-padding: var(--layout-padding);
+  --radius-aria-sm: var(--radius-sm);
+  --radius-aria-md: var(--radius-md);
+  --radius-aria-lg: var(--radius-lg);
+  --radius-aria-xl: var(--radius-xl);
+  --shadow-aria-sm: var(--layout-shadow-sm);
+  --shadow-aria-md: var(--layout-shadow-md);
+  --shadow-aria-lg: var(--layout-shadow-lg);
+
+  --text-aria-display: var(--typography-display-size);
+  --text-aria-display--line-height: var(--typography-display-leading);
+  --text-aria-display--font-weight: var(--typography-display-weight);
+  --text-aria-display--letter-spacing: var(--typography-display-tracking);
+  --text-aria-page: var(--typography-page-size);
+  --text-aria-page--line-height: var(--typography-page-leading);
+  --text-aria-page--font-weight: var(--typography-page-weight);
+  --text-aria-page--letter-spacing: var(--typography-page-tracking);
+  --text-aria-section: var(--typography-section-size);
+  --text-aria-section--line-height: var(--typography-section-leading);
+  --text-aria-section--font-weight: var(--typography-section-weight);
+  --text-aria-section--letter-spacing: var(--typography-section-tracking);
+  --text-aria-card: var(--typography-card-size);
+  --text-aria-card--line-height: var(--typography-card-leading);
+  --text-aria-card--font-weight: var(--typography-card-weight);
+  --text-aria-card--letter-spacing: var(--typography-card-tracking);
+  --text-aria-dialog: var(--typography-dialog-size);
+  --text-aria-dialog--line-height: var(--typography-dialog-leading);
+  --text-aria-dialog--font-weight: var(--typography-dialog-weight);
+  --text-aria-dialog--letter-spacing: var(--typography-dialog-tracking);
+  --text-aria-body: var(--typography-body-size);
+  --text-aria-body--line-height: var(--typography-body-leading);
+  --text-aria-body--font-weight: var(--typography-body-weight);
+  --text-aria-body--letter-spacing: var(--typography-body-tracking);
+  --text-aria-description: var(--typography-description-size);
+  --text-aria-description--line-height: var(--typography-description-leading);
+  --text-aria-description--font-weight: var(--typography-description-weight);
+  --text-aria-description--letter-spacing: var(--typography-description-tracking);
+  --text-aria-label: var(--typography-label-size);
+  --text-aria-label--line-height: var(--typography-label-leading);
+  --text-aria-label--font-weight: var(--typography-label-weight);
+  --text-aria-label--letter-spacing: var(--typography-label-tracking);
+  --text-aria-caption: var(--typography-caption-size);
+  --text-aria-caption--line-height: var(--typography-caption-leading);
+  --text-aria-caption--font-weight: var(--typography-caption-weight);
+  --text-aria-caption--letter-spacing: var(--typography-caption-tracking);
+  --text-aria-helper: var(--typography-helper-size);
+  --text-aria-helper--line-height: var(--typography-helper-leading);
+  --text-aria-helper--font-weight: var(--typography-helper-weight);
+  --text-aria-helper--letter-spacing: var(--typography-helper-tracking);
+  --text-aria-error: var(--typography-error-size);
+  --text-aria-error--line-height: var(--typography-error-leading);
+  --text-aria-error--font-weight: var(--typography-error-weight);
+  --text-aria-error--letter-spacing: var(--typography-error-tracking);
+  --text-aria-button: var(--typography-button-size);
+  --text-aria-button--line-height: var(--typography-button-leading);
+  --text-aria-button--font-weight: var(--typography-button-weight);
+  --text-aria-button--letter-spacing: var(--typography-button-tracking);
+  --text-aria-input: var(--typography-input-size);
+  --text-aria-input--line-height: var(--typography-input-leading);
+  --text-aria-input--font-weight: var(--typography-input-weight);
+  --text-aria-input--letter-spacing: var(--typography-input-tracking);
+  --text-aria-table: var(--typography-table-size);
+  --text-aria-table--line-height: var(--typography-table-leading);
+  --text-aria-table--font-weight: var(--typography-table-weight);
+  --text-aria-table--letter-spacing: var(--typography-table-tracking);
+  --text-aria-menu: var(--typography-menu-size);
+  --text-aria-menu--line-height: var(--typography-menu-leading);
+  --text-aria-menu--font-weight: var(--typography-menu-weight);
+  --text-aria-menu--letter-spacing: var(--typography-menu-tracking);
+  --text-aria-navigation: var(--typography-navigation-size);
+  --text-aria-navigation--line-height: var(--typography-navigation-leading);
+  --text-aria-navigation--font-weight: var(--typography-navigation-weight);
+  --text-aria-navigation--letter-spacing: var(--typography-navigation-tracking);
+  --text-aria-eyebrow: var(--typography-eyebrow-size);
+  --text-aria-eyebrow--line-height: var(--typography-eyebrow-leading);
+  --text-aria-eyebrow--font-weight: var(--typography-eyebrow-weight);
+  --text-aria-eyebrow--letter-spacing: var(--typography-eyebrow-tracking);
+  --text-aria-link: var(--typography-link-size);
+  --text-aria-link--line-height: var(--typography-link-leading);
+  --text-aria-link--font-weight: var(--typography-link-weight);
+  --text-aria-link--letter-spacing: var(--typography-link-tracking);
+  --text-aria-code: var(--typography-code-size);
+  --text-aria-code--line-height: var(--typography-code-leading);
+  --text-aria-code--font-weight: var(--typography-code-weight);
+  --text-aria-code--letter-spacing: var(--typography-code-tracking);
+  --text-aria-metric: var(--typography-metric-size);
+  --text-aria-metric--line-height: var(--typography-metric-leading);
+  --text-aria-metric--font-weight: var(--typography-metric-weight);
+  --text-aria-metric--letter-spacing: var(--typography-metric-tracking);
+}
+
+/* Full typography roles, including semantic tone and text transform. */
+@utility type-aria-display {
+  font-size: var(--typography-display-size);
+  line-height: var(--typography-display-leading);
+  font-weight: var(--typography-display-weight);
+  letter-spacing: var(--typography-display-tracking);
+  text-transform: var(--typography-display-transform);
+  color: var(--typography-display-color);
+}
+@utility type-aria-page {
+  font-size: var(--typography-page-size);
+  line-height: var(--typography-page-leading);
+  font-weight: var(--typography-page-weight);
+  letter-spacing: var(--typography-page-tracking);
+  text-transform: var(--typography-page-transform);
+  color: var(--typography-page-color);
+}
+@utility type-aria-section {
+  font-size: var(--typography-section-size);
+  line-height: var(--typography-section-leading);
+  font-weight: var(--typography-section-weight);
+  letter-spacing: var(--typography-section-tracking);
+  text-transform: var(--typography-section-transform);
+  color: var(--typography-section-color);
+}
+@utility type-aria-card {
+  font-size: var(--typography-card-size);
+  line-height: var(--typography-card-leading);
+  font-weight: var(--typography-card-weight);
+  letter-spacing: var(--typography-card-tracking);
+  text-transform: var(--typography-card-transform);
+  color: var(--typography-card-color);
+}
+@utility type-aria-dialog {
+  font-size: var(--typography-dialog-size);
+  line-height: var(--typography-dialog-leading);
+  font-weight: var(--typography-dialog-weight);
+  letter-spacing: var(--typography-dialog-tracking);
+  text-transform: var(--typography-dialog-transform);
+  color: var(--typography-dialog-color);
+}
+@utility type-aria-body {
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-leading);
+  font-weight: var(--typography-body-weight);
+  letter-spacing: var(--typography-body-tracking);
+  text-transform: var(--typography-body-transform);
+  color: var(--typography-body-color);
+}
+@utility type-aria-description {
+  font-size: var(--typography-description-size);
+  line-height: var(--typography-description-leading);
+  font-weight: var(--typography-description-weight);
+  letter-spacing: var(--typography-description-tracking);
+  text-transform: var(--typography-description-transform);
+  color: var(--typography-description-color);
+}
+@utility type-aria-label {
+  font-size: var(--typography-label-size);
+  line-height: var(--typography-label-leading);
+  font-weight: var(--typography-label-weight);
+  letter-spacing: var(--typography-label-tracking);
+  text-transform: var(--typography-label-transform);
+  color: var(--typography-label-color);
+}
+@utility type-aria-caption {
+  font-size: var(--typography-caption-size);
+  line-height: var(--typography-caption-leading);
+  font-weight: var(--typography-caption-weight);
+  letter-spacing: var(--typography-caption-tracking);
+  text-transform: var(--typography-caption-transform);
+  color: var(--typography-caption-color);
+}
+@utility type-aria-helper {
+  font-size: var(--typography-helper-size);
+  line-height: var(--typography-helper-leading);
+  font-weight: var(--typography-helper-weight);
+  letter-spacing: var(--typography-helper-tracking);
+  text-transform: var(--typography-helper-transform);
+  color: var(--typography-helper-color);
+}
+@utility type-aria-error {
+  font-size: var(--typography-error-size);
+  line-height: var(--typography-error-leading);
+  font-weight: var(--typography-error-weight);
+  letter-spacing: var(--typography-error-tracking);
+  text-transform: var(--typography-error-transform);
+  color: var(--typography-error-color);
+}
+@utility type-aria-button {
+  font-size: var(--typography-button-size);
+  line-height: var(--typography-button-leading);
+  font-weight: var(--typography-button-weight);
+  letter-spacing: var(--typography-button-tracking);
+  text-transform: var(--typography-button-transform);
+  color: var(--typography-button-color);
+}
+@utility type-aria-input {
+  font-size: var(--typography-input-size);
+  line-height: var(--typography-input-leading);
+  font-weight: var(--typography-input-weight);
+  letter-spacing: var(--typography-input-tracking);
+  text-transform: var(--typography-input-transform);
+  color: var(--typography-input-color);
+}
+@utility type-aria-table {
+  font-size: var(--typography-table-size);
+  line-height: var(--typography-table-leading);
+  font-weight: var(--typography-table-weight);
+  letter-spacing: var(--typography-table-tracking);
+  text-transform: var(--typography-table-transform);
+  color: var(--typography-table-color);
+}
+@utility type-aria-menu {
+  font-size: var(--typography-menu-size);
+  line-height: var(--typography-menu-leading);
+  font-weight: var(--typography-menu-weight);
+  letter-spacing: var(--typography-menu-tracking);
+  text-transform: var(--typography-menu-transform);
+  color: var(--typography-menu-color);
+}
+@utility type-aria-navigation {
+  font-size: var(--typography-navigation-size);
+  line-height: var(--typography-navigation-leading);
+  font-weight: var(--typography-navigation-weight);
+  letter-spacing: var(--typography-navigation-tracking);
+  text-transform: var(--typography-navigation-transform);
+  color: var(--typography-navigation-color);
+}
+@utility type-aria-eyebrow {
+  font-size: var(--typography-eyebrow-size);
+  line-height: var(--typography-eyebrow-leading);
+  font-weight: var(--typography-eyebrow-weight);
+  letter-spacing: var(--typography-eyebrow-tracking);
+  text-transform: var(--typography-eyebrow-transform);
+  color: var(--typography-eyebrow-color);
+}
+@utility type-aria-link {
+  font-size: var(--typography-link-size);
+  line-height: var(--typography-link-leading);
+  font-weight: var(--typography-link-weight);
+  letter-spacing: var(--typography-link-tracking);
+  text-transform: var(--typography-link-transform);
+  color: var(--typography-link-color);
+}
+@utility type-aria-code {
+  font-size: var(--typography-code-size);
+  line-height: var(--typography-code-leading);
+  font-weight: var(--typography-code-weight);
+  letter-spacing: var(--typography-code-tracking);
+  text-transform: var(--typography-code-transform);
+  color: var(--typography-code-color);
+  font-family: var(--font-mono);
+}
+@utility type-aria-metric {
+  font-size: var(--typography-metric-size);
+  line-height: var(--typography-metric-leading);
+  font-weight: var(--typography-metric-weight);
+  letter-spacing: var(--typography-metric-tracking);
+  text-transform: var(--typography-metric-transform);
+  color: var(--typography-metric-color);
+}

@@ -1,7 +1,6 @@
 import { useI18n } from '../../i18n/use.i18n'
 import clsx from 'clsx'
 import { useMemo, useState, type ReactNode } from 'react'
-import { EmptyState } from '../empty.state/empty.state'
 import { TablePagination } from './table.pagination'
 import { TableHead } from './table.head'
 import { TableBody } from './table.body'
@@ -33,7 +32,7 @@ export interface DataTableProps<T> {
   server?: ServerTableState
   loading?: boolean
   loadingLabel?: string
-  error?: string | null
+  error?: unknown
   onRetry?: () => void
   emptyState?: ReactNode
   resetKey?: string
@@ -178,12 +177,12 @@ export function DataTable<T>({
             selection={selection}
             loading={loading}
             loadingLabel={localize(loadingLabel)}
-            error={localize(error)}
+            error={error}
+            emptyState={emptyState}
             onRetry={onRetry}
           />
         </table>
       </TableScrollArea>
-      {!loading && !error && !data.length && (emptyState ?? <EmptyState />)}
       {pagination && (
         <TablePagination
           page={server?.page ?? table.page}
@@ -192,7 +191,7 @@ export function DataTable<T>({
           onPageChange={server?.onPageChange ?? table.setPage}
           onPageSizeChange={server?.onPageSizeChange ?? table.setPageSize}
           itemLabel={localize(itemLabel)}
-          disabled={loading}
+          disabled={loading || !!error}
         />
       )}
     </div>

@@ -1,0 +1,93 @@
+.ui-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: var(--overlay);
+  backdrop-filter: blur(3px);
+  animation: fade-in calc(150ms * var(--motion-scale)) ease;
+}
+.ui-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 111;
+  width: min(500px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--layout-shadow-lg);
+  overflow: hidden;
+  outline: none;
+}
+.ui-dialog--sm {
+  width: min(380px, calc(100vw - 32px));
+}
+.ui-dialog--lg {
+  width: min(680px, calc(100vw - 32px));
+}
+.ui-dialog--xl {
+  width: min(920px, calc(100vw - 32px));
+}
+.ui-dialog-overlay.ui-dialog-layer--confirmation {
+  z-index: 140;
+}
+.ui-dialog.ui-dialog-layer--confirmation {
+  z-index: 141;
+}
+.ui-dialog-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border-bottom: var(--border-width) solid var(--border);
+}
+.ui-dialog-heading {
+  flex: 1;
+  min-width: 0;
+}
+.ui-dialog-title,
+.ui-dialog-description {
+  margin: 0;
+}
+.ui-dialog-description {
+  margin-top: var(--space-1);
+}
+.ui-dialog-close {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.ui-dialog-close:hover {
+  background: var(--surface-subtle);
+  color: var(--text);
+}
+.ui-dialog-body {
+  padding: var(--space-6);
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.ui-dialog-footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  border-top: var(--border-width) solid var(--border);
+}

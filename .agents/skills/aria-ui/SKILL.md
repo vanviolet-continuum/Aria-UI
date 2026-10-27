@@ -1,6 +1,6 @@
 ---
 name: aria-ui
-description: Buat atau ubah halaman, fitur CRUD, layout, tema, dan komponen React menggunakan Aria UI dalam repository ini. Gunakan saat pekerjaan perlu mengikuti komponen, token, struktur fitur, dan pola interaksi Aria UI; tidak untuk tugas umum yang tidak menyentuh aplikasi atau pustaka UI ini.
+description: Buat atau ubah fitur React dengan Aria UI, termasuk CRUD, generated API, TanStack Query/cache, filter URL, form/Zod, auth/session, draft guard, tema dan Tailwind. Gunakan untuk pekerjaan yang mengikuti komponen, struktur, kontrak data dan pola interaksi repository ini; tidak untuk tugas umum di luar Aria UI.
 ---
 
 # Mengembangkan dengan Aria UI
@@ -35,7 +35,24 @@ Untuk contoh permintaan "buat Products dengan tabel, tambah, ubah, dan detail dr
 
 ## Pertahankan batas penting
 
+Untuk fitur API, baca referensi generated API dan query/cache, lalu pilih referensi URL, error, mutation, form, atau Tailwind yang memang terkait:
+
+| Pekerjaan integrasi                                       | Referensi                                              |
+| --------------------------------------------------------- | ------------------------------------------------------ |
+| SDK hasil generator, DTO, signature, dan lokasi read-only | [Generated API](references/generated.api.md)           |
+| Query, cache, key, invalidation, dan persistence          | [Query/cache](references/query.cache.md)               |
+| Filter/pencarian/sort/pagination di URL                   | [Search params](references/search.params.md)           |
+| Pesan backend, transport, serta GET error inline          | [API error](references/api.errors.md)                  |
+| Overlay, submit, toast, dan update data setelah aksi      | [Lifecycle mutation](references/mutation.lifecycle.md) |
+| Login, logout, permission, atau pergantian workspace      | [Auth/session](references/auth.session.md)             |
+| Form dirty dan penutupan panel/navigasi                   | [Unsaved changes](references/unsaved.changes.md)       |
+| Styling utility dengan token tema yang sama               | [Tailwind](references/tailwind.md)                     |
+
 - `src/` dan `preview/` mengonsumsi `templates/`. Pustaka tidak mengimpor aplikasi, router aplikasi, atau data bisnis.
+- Generated SDK dibaca dan dipakai sesuai source aktual, tidak diedit, diformat, atau di-rename. Temukan output generator melalui konfigurasi proyek; lokasi tidak selalu src/generated.ts.
+- Fitur API baru menggunakan TanStack Query. Query key memuat semua parameter dan scope data yang memengaruhi hasil. Filter yang diterapkan, sort, pencarian, dan pagination mengikuti URL.
+- Gunakan server.run(formApi, operation) untuk submit API agar status submit tidak menjadi sukses ketika API gagal; error field masuk meta TanStack. Guard draft tersedia pada route, Drawer, dan Dialog.
+- GET error ditampilkan dengan ErrorState/ilustrasi pada area hasil tabel/combobox, tanpa toast. Pesan backend tetap mentah dan error API tetap reject. Mutation memakai satu pemilik feedback serta invalidation yang sesuai.
 - Saat ini starter hanya Beranda dan `preview/` kosong. Tambahkan demo atau fitur baru ketika diminta; jangan membangun ulang galeri sebagai bagian sampingan.
 - Gunakan komponen layout, tipografi, field, menu, dan blok konten yang tersedia. Tambahkan primitive reusable ketika ada kebutuhan yang belum ditangani oleh API atau komposisi saat ini.
 - Gunakan token tema dan variant semantik untuk tampilan bersama. Pertahankan `children`, props native, `className`, dan slot yang relevan saat memperluas komponen.

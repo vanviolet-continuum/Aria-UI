@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ComboboxOption, OptionsLoader, OptionsPage } from './types'
+import { normalizeApiErrorAsync, type ApiError } from '../../lib/api.error'
 
 interface State extends OptionsPage {
   loading: boolean
   loadingMore: boolean
-  error: string | null
+  error: ApiError | null
 }
 const empty: State = { options: [], loading: false, loadingMore: false, error: null }
 export function mergeOptions(previous: ComboboxOption[], next: ComboboxOption[]) {
@@ -55,10 +56,11 @@ export function useAsyncOptions(
           remember(key, page)
           setState({ ...page, loading: false, loadingMore: false, error: null })
         } catch (error) {
+          const failure = await normalizeApiErrorAsync(error)
           if (!request.signal.aborted && generation.current === version)
             setState({
               ...empty,
-              error: error instanceof Error ? error.message : 'Unable to load options.',
+              error: failure,
             })
         }
       },
@@ -89,11 +91,12 @@ export function useAsyncOptions(
       remember(key, merged)
       setState({ ...merged, loading: false, loadingMore: false, error: null })
     } catch (error) {
+      const failure = await normalizeApiErrorAsync(error)
       if (!request.signal.aborted && version === generation.current)
         setState((previous) => ({
           ...previous,
           loadingMore: false,
-          error: error instanceof Error ? error.message : 'Unable to load more.',
+          error: failure,
         }))
     } finally {
       if (version === generation.current) moreLock.current = false

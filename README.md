@@ -80,6 +80,10 @@ Lihat [tema](templates/theme/readme.md) dan [i18n](templates/i18n/readme.md).
 
 ## Bantuan AI
 
+Integrasi API tersedia melalui [panduan runtime](templates/integrations/readme.md): TanStack Query/cache, URL search state, normalisasi error API, mutation overlay/toast, TanStack Form/Zod, dan bridge tema Tailwind v4. QueryClient starter sudah dipasang; tidak ada endpoint atau SDK palsu. Metadata lokasi generated berada di `src/config/api.config.ts`, dan output generated tidak boleh diedit atau diformat.
+
+Error GET tabel/combobox tampil inline di area hasil dengan ilustrasi dan retry. Mutation memakai satu pengelola feedback. Pesan backend dipertahankan apa adanya. Tailwind tetap opsional; starter menggunakan stylesheet kit biasa.
+
 Baca [AGENTS.md](AGENTS.md) dan gunakan [skill aria-ui](.agents/skills/aria-ui/SKILL.md), misalnya:
 
 ```text

@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { LoadingIllustration } from '../illustrations/states/loading.illustration'
 import { SearchIllustration } from '../illustrations/states/search.illustration'
 import { Spinner } from '../loading.overlay/loading.overlay'
+import { ErrorState } from '../error.state/error.state'
 import type { ComboboxOption } from './types'
 import { useOptionalTheme } from '../../theme/theme.provider'
 import { controlMetrics } from '../../theme/control.metrics'
@@ -22,8 +23,8 @@ interface Props {
   loadingMore?: boolean
   hasMore?: boolean
   onLoadMore?: () => void
-  error?: string | null
-  onRetry: () => void
+  error?: unknown
+  onRetry?: () => unknown
   emptyMessage: string
   focusable?: boolean
 }
@@ -74,7 +75,7 @@ export function ComboboxOptions({
       list.current.scrollTop = top + height - list.current.clientHeight
   }, [active, offsets, heights, optionHeight])
   useEffect(() => {
-    if (!sentinel.current || !hasMore || loading || loadingMore || !onLoadMore) return
+    if (!sentinel.current || !hasMore || loading || loadingMore || error || !onLoadMore) return
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) onLoadMore()
@@ -83,7 +84,7 @@ export function ComboboxOptions({
     )
     observer.observe(sentinel.current)
     return () => observer.disconnect()
-  }, [hasMore, loading, loadingMore, onLoadMore])
+  }, [hasMore, loading, loadingMore, error, onLoadMore])
   return (
     <div
       ref={list}
@@ -137,7 +138,7 @@ export function ComboboxOptions({
           </Text>
         </div>
       )}
-      {!loading && (
+      {!loading && !error && (
         <div
           style={
             virtual ? { height: offsets[offsets.length - 1], position: 'relative' } : undefined
@@ -209,16 +210,7 @@ export function ComboboxOptions({
           </Text>
         </div>
       )}
-      {error && (
-        <div className="combobox-error" role="alert">
-          <Text as="span" variant="menu">
-            {localize(error)}
-          </Text>
-          <Text as="button" variant="menu" tone="inherit" type="button" onClick={onRetry}>
-            {tr('Try again')}
-          </Text>
-        </div>
-      )}
+      {!loading && !!error && <ErrorState error={error} onRetry={onRetry} compact />}
       {hasMore && !error && (
         <div ref={sentinel} className="combobox-more">
           {loadingMore ? (

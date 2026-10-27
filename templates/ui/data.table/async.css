@@ -12,6 +12,15 @@
   justify-content: center;
   gap: calc(10px * var(--space-scale));
 }
+.table-result-state {
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.table-result-state.ui-error-state {
+  flex-direction: column;
+}
 .table-body-loading strong {
   font-size: var(--typography-table-size);
   font-weight: var(--typography-table-weight);

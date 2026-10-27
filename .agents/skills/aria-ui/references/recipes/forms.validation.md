@@ -4,9 +4,12 @@ Baca [Field](../../../../../templates/ui/field/field.tsx), [CheckboxField](../..
 
 Gunakan satu komponen form untuk tambah/ubah dengan nilai awal, callback submit, dan status pending yang diberikan wrapper aplikasi. Pisahkan isi field dari shell halaman/drawer agar dapat dipakai pada keduanya.
 
+Integrasi tersedia melalui `@templates/integrations/tanstack.form`: useAppForm, bound TextField/TextareaField/ComboboxField/CheckboxField/SliderField/RangeSliderField/RadioGroupField/MultiSelectField, SubmitButton, useApiFormErrors, dan submitAriaForm. Schema Zod tetap berada di fitur. Gunakan validators onBlur/onSubmit dan parseFormValues untuk output transform/coercion sebelum DTO mapping. Contoh lengkap tersedia di [panduan runtime](../../../../../templates/integrations/readme.md).
+
+Gunakan serverError dan onServerErrorClear pada bound field untuk error API. Pesan source api diteruskan mentah ke Field errorSource api, sedangkan pesan Zod source local dapat diterjemahkan. Gunakan await server.run(formApi, operation) dalam onSubmit agar Zod/API errors masuk field meta dan rejection mempertahankan isSubmitSuccessful=false. Jangan catch lalu resolve ketika gagal. server.apply manual menerima formApi sebagai argumen ketiga dan tetap perlu rethrow FormSubmissionError. submitAriaForm mengonsumsi marker yang sudah ditampilkan, tanpa toast tambahan; jangan menghapus draft atau menutup form saat gagal. Baca [API error](../api.errors.md) dan [lifecycle mutation](../mutation.lifecycle.md).
+
 ```tsx
 import { CheckboxField, Field, Input, Stack } from '@templates/ui'
-
 ;<Stack gap="md">
   <Field label={t('Email')} required error={errors.email}>
     <Input
@@ -33,3 +36,5 @@ Seluruh area kartu/baris pilihan harus dapat diklik. Pakai `CheckboxField varian
 Combobox menyimpan nilai opsi, bukan label terjemahannya. Untuk pilihan pendek/sedikit atau pagination, `searchable={false}` dapat digunakan. Biarkan komponen mengatur tinggi opsi berdeskripsi dan tanpa deskripsi; jangan memaksa satu tinggi untuk keduanya.
 
 Gunakan date/time picker bawaan untuk nilai tanggal lokal. Untuk wizard, validasi langkah sebelum maju, pertahankan nilai ketika kembali, dan gunakan Stepper untuk tampilan progres; validasi dan operasi submit tetap milik aplikasi.
+
+Untuk draft dirty yang belum disimpan, baca [unsaved changes](../unsaved.changes.md); gunakan satu guard bagi penutupan drawer dan route. Reset baseline hanya setelah API sukses.

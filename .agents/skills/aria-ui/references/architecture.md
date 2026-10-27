@@ -25,6 +25,8 @@ Kedua aplikasi berdiri sendiri. Di dalam `templates/`, gunakan import relatif. B
 - Alias harus konsisten di [Vite](../../../../vite.config.ts) dan [TypeScript](../../../../tsconfig.app.json).
 - `src/providers.tsx` memasang router dan `TemplateProvider` sekali. Provider kit sudah memasang locale, tema, mutation overlay, dan toaster.
 - `src/main.tsx` menerapkan tema awal sebelum render dan mengimpor `@templates/styles.css` sekali.
+- `src/config/query.config.ts` membuat QueryClient sekali dan AriaQueryProvider berada di dalam TemplateProvider. Generated metadata ada di `src/config/api.config.ts`; operasi SDK dibungkus `src/api/client.ts`.
+- Adapter library opsional berada di `templates/integrations/`; entry UI core dan shell tidak mengimpor TanStack/Zod/router/Tailwind. Adapter react.router boleh mengintegrasikan library router tanpa mengimpor route aplikasi.
 
 Saat demo diminta kelak, berikan entry dan konfigurasi aplikasi demo sendiri. Jangan menambahkan import `preview` ke starter atau kit. Perintah demo belum tersedia selama folder tersebut kosong.
 

@@ -1,9 +1,9 @@
 import { Text } from '../text/text'
 import { useI18n } from '../../i18n/use.i18n'
-import { memo } from 'react'
+import { memo, type ReactNode } from 'react'
 import { LoadingIllustration } from '../illustrations/states/loading.illustration'
-import { SearchIllustration } from '../illustrations/states/search.illustration'
-import { Button } from '../button/button'
+import { EmptyState } from '../empty.state/empty.state'
+import { ErrorState } from '../error.state/error.state'
 import { CheckboxField } from '../checkbox/checkbox.field'
 import { getCellValue } from './use.data.table'
 import type { RowSelection } from './types'
@@ -17,7 +17,8 @@ interface Props<T> {
   selection?: RowSelection
   loading?: boolean
   loadingLabel?: string
-  error?: string | null
+  error?: unknown
+  emptyState?: ReactNode
   onRetry?: () => void
 }
 function Body<T>({
@@ -29,32 +30,32 @@ function Body<T>({
   loading,
   loadingLabel = 'Finding your records…',
   error,
+  emptyState,
   onRetry,
 }: Props<T>) {
   const { t: tr, text: localize } = useI18n()
 
   const selected = new Set(selection?.selectedIds ?? [])
-  if (loading || error)
+  if (loading || error || !rows.length)
     return (
       <tbody>
         <tr>
           <Text as="td" variant="table" colSpan={Math.max(1, layout.length + Number(!!selection))}>
-            <div className="table-body-loading" role={error ? 'alert' : 'status'}>
-              {error ? <SearchIllustration /> : <LoadingIllustration label={tr('')} size={88} />}
-              <Text as="strong" variant="label">
-                {error ?? loadingLabel}
-              </Text>
-              <Text as="small" variant="caption">
-                {error
-                  ? tr('Your search is saved. Give it another try.')
-                  : tr('A fresh view is on its way.')}
-              </Text>
-              {error && onRetry && (
-                <Button variant="outlined" size="sm" onClick={onRetry}>
-                  {tr('Try again')}
-                </Button>
-              )}
-            </div>
+            {loading ? (
+              <div className="table-body-loading" role="status">
+                <LoadingIllustration label={tr('')} size={88} />
+                <Text as="strong" variant="label">
+                  {localize(loadingLabel)}
+                </Text>
+                <Text as="small" variant="caption">
+                  {tr('A fresh view is on its way.')}
+                </Text>
+              </div>
+            ) : error ? (
+              <ErrorState error={error} onRetry={onRetry} className="table-result-state" />
+            ) : (
+              <div className="table-result-state">{emptyState ?? <EmptyState />}</div>
+            )}
           </Text>
         </tr>
       </tbody>

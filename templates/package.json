@@ -25,6 +25,11 @@
     "./theme": "./theme/index.ts",
     "./theme/studio": "./theme/studio/index.ts",
     "./hooks": "./hooks/index.ts",
+    "./lib": "./lib/index.ts",
+    "./lib/*": "./lib/*.ts",
+    "./integrations/*": "./integrations/*/index.ts",
+    "./integrations/tailwind/theme.css": "./integrations/tailwind/theme.css",
+    "./integrations/tailwind/styles.css": "./integrations/tailwind/styles.css",
     "./i18n": "./i18n/index.ts",
     "./providers": "./providers/index.ts",
     "./branding": "./branding/index.ts"

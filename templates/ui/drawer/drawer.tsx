@@ -7,10 +7,12 @@ import { X } from 'lucide-react'
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
 import { useDrawerDismiss, type OutsideClose } from './use.drawer.dismiss'
+import { useCloseGuard } from '../../hooks/use.close.guard'
 
 export interface DrawerProps {
   open: boolean
   onOpenChange: (open: boolean) => void
+  onBeforeClose?: () => boolean | Promise<boolean>
   title: string
   description?: string
   children: ReactNode
@@ -24,6 +26,7 @@ export interface DrawerProps {
 export function Drawer({
   open,
   onOpenChange,
+  onBeforeClose,
   title,
   description,
   children,
@@ -34,14 +37,15 @@ export function Drawer({
   outsideClose = 'double-click',
 }: DrawerProps) {
   const { t: tr, text: localize } = useI18n()
+  const requestChange = useCloseGuard(open, onOpenChange, onBeforeClose)
 
   const { onPointerDownOutside, reset } = useDrawerDismiss(
     open,
-    () => onOpenChange(false),
+    () => requestChange(false),
     outsideClose,
   )
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+    <Dialog.Root open={open} onOpenChange={requestChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="drawer-overlay" />
         <Dialog.Content
