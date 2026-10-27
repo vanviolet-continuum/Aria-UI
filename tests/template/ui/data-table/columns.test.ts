@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { getColumnLayout } from '../../../../src/template/ui/data-table/column-layout'
-import type { ColumnDef } from '../../../../src/template/ui/data-table/types'
+import { getColumnLayout } from '../../../../templates/ui/data.table/column.layout'
+import type { ColumnDef } from '../../../../templates/ui/data.table/types'
 
 const columns: ColumnDef<{ id: string }>[] = [
   { id: 'name', header: 'Name', width: 200, enableHiding: false },

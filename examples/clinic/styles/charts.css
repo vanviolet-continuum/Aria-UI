@@ -1,7 +1,0 @@
-.recharts-text {
-  font-family: var(--font-family);
-  font-size: calc(11px * var(--font-scale));
-}
-.recharts-tooltip-label {
-  color: var(--text);
-}

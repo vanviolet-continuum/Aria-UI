@@ -5,11 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "dev:examples": "vite --config examples/vite.config.ts",
     "build": "tsc -b && vite build",
-    "build:examples": "tsc -p examples/tsconfig.json && vite build --config examples/vite.config.ts",
     "preview": "vite preview --host 127.0.0.1",
-    "preview:examples": "vite preview --config examples/vite.config.ts",
     "test": "vitest run",
     "format": "prettier --write ."
   },

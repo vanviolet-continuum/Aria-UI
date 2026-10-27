@@ -2,9 +2,9 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { join, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { expect, it } from 'vitest'
-import { basePalettes } from '../../../src/template/theme/palettes'
+import { basePalettes } from '../../../templates/theme/palettes'
 
-const src = fileURLToPath(new URL('../../../src/template', import.meta.url))
+const src = fileURLToPath(new URL('../../../templates', import.meta.url))
 function files(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap((item) =>
     item.isDirectory() ? files(join(directory, item.name)) : [join(directory, item.name)],
@@ -15,7 +15,7 @@ it('keeps raw UI colors inside the theme layer', () => {
     .filter(
       (file) =>
         /\.(css|tsx?)$/.test(file) &&
-        !file.includes(`${join('template', 'theme')}`) &&
+        !file.includes(`${join('templates', 'theme')}`) &&
         !file.endsWith('.test.ts'),
     )
     .filter((file) =>

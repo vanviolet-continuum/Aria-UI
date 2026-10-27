@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { getCellValue, pageBounds } from '../../../../src/template/ui/data-table/use-data-table'
+import { getCellValue, pageBounds } from '../../../../templates/ui/data.table/use.data.table'
 
 describe('reusable table pagination', () => {
   it('keeps empty results on a valid first page', () => {

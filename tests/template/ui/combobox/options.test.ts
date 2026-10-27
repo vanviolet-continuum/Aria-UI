@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { mergeOptions } from '../../../../src/template/ui/combobox/use-async-options'
+import { mergeOptions } from '../../../../templates/ui/combobox/use.async.options'
 
 it('merges overlapping API pages while retaining option order and fresh labels', () => {
   expect(

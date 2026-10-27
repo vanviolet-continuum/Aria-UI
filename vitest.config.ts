@@ -3,5 +3,5 @@ import base from './vite.config'
 
 export default mergeConfig(
   base,
-  defineConfig({ test: { exclude: [...configDefaults.exclude, '.qa/**', 'dist-examples/**'] } }),
+  defineConfig({ test: { exclude: [...configDefaults.exclude, '.qa/**', 'dist-preview/**'] } }),
 )

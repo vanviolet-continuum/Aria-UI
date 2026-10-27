@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { abortableDelay, isAbortError } from '../../../src/template/lib/async'
+import { abortableDelay, isAbortError } from '../../../templates/lib/async'
 
 afterEach(() => vi.useRealTimers())
 describe('abortable async operations', () => {

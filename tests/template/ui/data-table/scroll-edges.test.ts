@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { scrollEdges } from '../../../../src/template/ui/data-table/use-scroll-edges'
+import { scrollEdges } from '../../../../templates/ui/data.table/use.scroll.edges'
 
 describe('pinned column edge indicators', () => {
   it('hides the shadow at each reached edge and shows both between edges', () => {

@@ -6,7 +6,7 @@ import {
   isDateDisabled,
   selectRange,
   toDateKey,
-} from '../../../../src/template/ui/calendar/date-utils'
+} from '../../../../templates/ui/calendar/date.utils'
 
 describe('calendar date values', () => {
   it('retains the local calendar date without a UTC conversion', () => {

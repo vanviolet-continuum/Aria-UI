@@ -3,7 +3,7 @@ import {
   flattenTree,
   treeFolderIds,
   type TreeNode,
-} from '../../../../src/template/ui/tree-view/tree-utils'
+} from '../../../../templates/ui/tree.view/tree.utils'
 
 const nodes: TreeNode[] = [
   {

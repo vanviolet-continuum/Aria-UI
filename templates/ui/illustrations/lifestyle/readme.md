@@ -1,0 +1,51 @@
+# Everyday life
+
+45 komponen. Impor dari `@templates/ui/illustrations/lifestyle` atau leaf module yang tercantum di bawah.
+
+| Komponen                     | File                                                                 |
+| ---------------------------- | -------------------------------------------------------------------- |
+| `ArmchairIllustration`       | [armchair.illustration.tsx](armchair.illustration.tsx)               |
+| `BackpackIllustration`       | [backpack.illustration.tsx](backpack.illustration.tsx)               |
+| `BathroomCaddyIllustration`  | [bathroom.caddy.illustration.tsx](bathroom.caddy.illustration.tsx)   |
+| `BathTowelsIllustration`     | [bath.towels.illustration.tsx](bath.towels.illustration.tsx)         |
+| `BathtubIllustration`        | [bathtub.illustration.tsx](bathtub.illustration.tsx)                 |
+| `BedsideTableIllustration`   | [bedside.table.illustration.tsx](bedside.table.illustration.tsx)     |
+| `CandleIllustration`         | [candle.illustration.tsx](candle.illustration.tsx)                   |
+| `CeramicVaseIllustration`    | [ceramic.vase.illustration.tsx](ceramic.vase.illustration.tsx)       |
+| `CleaningIllustration`       | [cleaning.illustration.tsx](cleaning.illustration.tsx)               |
+| `CoatRackIllustration`       | [coat.rack.illustration.tsx](coat.rack.illustration.tsx)             |
+| `DiningChairIllustration`    | [dining.chair.illustration.tsx](dining.chair.illustration.tsx)       |
+| `DiningTableIllustration`    | [dining.table.illustration.tsx](dining.table.illustration.tsx)       |
+| `DisplayCabinetIllustration` | [display.cabinet.illustration.tsx](display.cabinet.illustration.tsx) |
+| `DrawerUnitIllustration`     | [drawer.unit.illustration.tsx](drawer.unit.illustration.tsx)         |
+| `DresserIllustration`        | [dresser.illustration.tsx](dresser.illustration.tsx)                 |
+| `FloorLampIllustration`      | [floor.lamp.illustration.tsx](floor.lamp.illustration.tsx)           |
+| `HairCombIllustration`       | [hair.comb.illustration.tsx](hair.comb.illustration.tsx)             |
+| `HairDryerIllustration`      | [hair.dryer.illustration.tsx](hair.dryer.illustration.tsx)           |
+| `HomeIllustration`           | [home.illustration.tsx](home.illustration.tsx)                       |
+| `JewelryBoxIllustration`     | [jewelry.box.illustration.tsx](jewelry.box.illustration.tsx)         |
+| `KeyIllustration`            | [key.illustration.tsx](key.illustration.tsx)                         |
+| `LaundryBasketIllustration`  | [laundry.basket.illustration.tsx](laundry.basket.illustration.tsx)   |
+| `LaundryIllustration`        | [laundry.illustration.tsx](laundry.illustration.tsx)                 |
+| `MagazineRackIllustration`   | [magazine.rack.illustration.tsx](magazine.rack.illustration.tsx)     |
+| `PendantLampIllustration`    | [pendant.lamp.illustration.tsx](pendant.lamp.illustration.tsx)       |
+| `PetCatIllustration`         | [pet.cat.illustration.tsx](pet.cat.illustration.tsx)                 |
+| `PetDogIllustration`         | [pet.dog.illustration.tsx](pet.dog.illustration.tsx)                 |
+| `ShoeRackIllustration`       | [shoe.rack.illustration.tsx](shoe.rack.illustration.tsx)             |
+| `ShoesIllustration`          | [shoes.illustration.tsx](shoes.illustration.tsx)                     |
+| `ShoppingBagIllustration`    | [shopping.bag.illustration.tsx](shopping.bag.illustration.tsx)       |
+| `ShowerHeadIllustration`     | [shower.head.illustration.tsx](shower.head.illustration.tsx)         |
+| `SoapBarIllustration`        | [soap.bar.illustration.tsx](soap.bar.illustration.tsx)               |
+| `SoapDispenserIllustration`  | [soap.dispenser.illustration.tsx](soap.dispenser.illustration.tsx)   |
+| `SofaIllustration`           | [sofa.illustration.tsx](sofa.illustration.tsx)                       |
+| `StandingMirrorIllustration` | [standing.mirror.illustration.tsx](standing.mirror.illustration.tsx) |
+| `ToothbrushCupIllustration`  | [toothbrush.cup.illustration.tsx](toothbrush.cup.illustration.tsx)   |
+| `ToothpasteTubeIllustration` | [toothpaste.tube.illustration.tsx](toothpaste.tube.illustration.tsx) |
+| `UmbrellaIllustration`       | [umbrella.illustration.tsx](umbrella.illustration.tsx)               |
+| `UmbrellaStandIllustration`  | [umbrella.stand.illustration.tsx](umbrella.stand.illustration.tsx)   |
+| `WallClockIllustration`      | [wall.clock.illustration.tsx](wall.clock.illustration.tsx)           |
+| `WallShelfIllustration`      | [wall.shelf.illustration.tsx](wall.shelf.illustration.tsx)           |
+| `WashbasinIllustration`      | [washbasin.illustration.tsx](washbasin.illustration.tsx)             |
+| `WateringCanIllustration`    | [watering.can.illustration.tsx](watering.can.illustration.tsx)       |
+| `WoodenStoolIllustration`    | [wooden.stool.illustration.tsx](wooden.stool.illustration.tsx)       |
+| `WovenBasketIllustration`    | [woven.basket.illustration.tsx](woven.basket.illustration.tsx)       |

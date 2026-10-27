@@ -1,20 +1,16 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import {
-  contrastColor,
-  resolvePalette,
-  themeVariables,
-} from '../../../src/template/theme/apply-theme'
+import { contrastColor, resolvePalette, themeVariables } from '../../../templates/theme/apply.theme'
 import {
   isThemeConfig,
   readThemeConfig,
   serializeTheme,
   THEME_STORAGE_KEY,
-} from '../../../src/template/theme/config'
-import { defaultTheme } from '../../../src/template/theme/defaults'
-import { basePalettes } from '../../../src/template/theme/palettes'
-import { themePresets } from '../../../src/template/theme/presets'
-import { selectThemePreset } from '../../../src/template/theme/select-preset'
-import starterTheme from '../../../src/app/config/theme.config'
+} from '../../../templates/theme/config'
+import { defaultTheme } from '../../../templates/theme/defaults'
+import { basePalettes } from '../../../templates/theme/palettes'
+import { themePresets } from '../../../templates/theme/presets'
+import { selectThemePreset } from '../../../templates/theme/select.preset'
+import starterTheme from '../../../src/config/theme.config'
 afterEach(() => vi.unstubAllGlobals())
 
 describe('theme configuration', () => {

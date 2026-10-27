@@ -1,8 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import {
-  parallelProgress,
-  type ParallelTrack,
-} from '../../../src/template/ui/parallel-stepper/types'
+import { parallelProgress, type ParallelTrack } from '../../../templates/ui/parallel.stepper/types'
 
 const tracks: ParallelTrack[] = [
   { id: 'a', title: 'A', steps: [{ id: '1', title: 'First' }], completed: 1 },

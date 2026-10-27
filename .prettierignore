@@ -1,6 +1,6 @@
 node_modules
 dist
-dist-examples
+dist-preview
 .npm-cache
 .qa
 package-lock.json

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { acceptsFile, validateFiles } from '../../../../src/template/ui/file-upload/file-utils'
+import { acceptsFile, validateFiles } from '../../../../templates/ui/file.upload/file.utils'
 
 describe('file upload validation', () => {
   const image = new File(['image'], 'portrait.PNG', { type: 'image/png', lastModified: 1 })

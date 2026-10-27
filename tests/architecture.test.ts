@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const template = resolve(root, 'src/template')
-const app = resolve(root, 'src/app')
+const template = resolve(root, 'templates')
+const app = resolve(root, 'src')
 const extensions = ['', '.ts', '.tsx', '.css', '.json', '/index.ts', '/index.tsx']
 function files(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
@@ -43,7 +43,7 @@ describe('portable template boundaries', () => {
       }
     expect(violations).toEqual([])
   })
-  it('keeps the starter independent from example data, routes, and build plugins', () => {
+  it('keeps the starter independent from demo data, routes, and build plugins', () => {
     const content = [
       ...files(app).filter((file) => /\.(tsx?|css)$/.test(file)),
       resolve(root, 'vite.config.ts'),
@@ -52,20 +52,18 @@ describe('portable template boundaries', () => {
       .map((file) => readFileSync(file, 'utf8'))
       .join('\n')
     expect(content).not.toMatch(
-      /@examples|(?:from|import|@import)[^\n]*examples|demoApiPlugin|useWorkspace/,
+      /@preview|(?:from|import|@import)[^\n]*preview|demoApiPlugin|useWorkspace/,
     )
   })
   it('keeps layout components independent from any router or domain store', () => {
     const imports = files(resolve(template, 'layouts'))
       .filter((file) => /\.tsx?$/.test(file))
       .flatMap(references)
-    expect(imports.some((value) => /react-router|workspace|clinic|examples/.test(value))).toBe(
-      false,
-    )
+    expect(imports.some((value) => /react-router|workspace|clinic|preview/.test(value))).toBe(false)
   })
   it('provides one documented code and stylesheet entry for copying', () => {
     expect(existsSync(resolve(template, 'index.ts'))).toBe(true)
     expect(existsSync(resolve(template, 'styles.css'))).toBe(true)
-    expect(existsSync(resolve(template, 'README.md'))).toBe(true)
+    expect(existsSync(resolve(template, 'readme.md'))).toBe(true)
   })
 })

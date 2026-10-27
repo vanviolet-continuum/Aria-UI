@@ -3,9 +3,9 @@ import {
   createTemplateI18n,
   localeOf,
   supportedLanguages,
-} from '../../../src/template/i18n/create-i18n'
-import id from '../../../src/template/i18n/locales/id/ui.json'
-import en from '../../../src/template/i18n/locales/en/ui.json'
+} from '../../../templates/i18n/create.i18n'
+import id from '../../../templates/i18n/locales/id/ui.json'
+import en from '../../../templates/i18n/locales/en/ui.json'
 
 afterEach(() => vi.unstubAllGlobals())
 describe('portable i18n', () => {

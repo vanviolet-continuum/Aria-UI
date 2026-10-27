@@ -1,8 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import {
-  filterTableData,
-  type TableFilterDef,
-} from '../../../../src/template/ui/table-filter/types'
+import { filterTableData, type TableFilterDef } from '../../../../templates/ui/table.filter/types'
 
 const rows = [
   { status: 'active', role: 'admin', joined: '2026-01-01T12:00:00' },

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { evaluatePassword } from '../../../src/template/ui/password-input/password-strength'
+import { evaluatePassword } from '../../../templates/ui/password.input/password.strength'
 
 describe('password rule feedback', () => {
   it('never marks an empty password as meeting requirements', () => {

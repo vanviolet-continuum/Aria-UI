@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "paths": { "@/*": ["./src/*"] },
+    "paths": {
+      "@/*": ["./src/*"],
+      "@templates": ["./templates/index.ts"],
+      "@templates/*": ["./templates/*"]
+    },
     "target": "ES2022",
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
@@ -19,5 +23,5 @@
     "noUnusedParameters": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo"
   },
-  "include": ["src"]
+  "include": ["src", "templates"]
 }
