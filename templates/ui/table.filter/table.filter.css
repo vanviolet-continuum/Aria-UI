@@ -4,6 +4,17 @@
   flex-wrap: wrap;
   gap: calc(8px * var(--space-scale));
 }
+.table-filter-control {
+  flex: 0 0 auto;
+}
+.table-filter-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(8px * var(--space-scale));
+  min-width: 0;
+  max-width: 100%;
+}
 .popover.table-filter-popover {
   width: min(360px, calc(100vw - 24px));
   padding: 0;

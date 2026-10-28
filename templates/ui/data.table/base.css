@@ -2,7 +2,6 @@
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
-  scrollbar-color: var(--muted) transparent;
 }
 
 .data-table {

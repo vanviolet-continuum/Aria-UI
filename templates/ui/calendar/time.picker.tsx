@@ -1,7 +1,5 @@
 import { FieldLabel } from '../field.label/field.label'
-
 import { Heading } from '../heading/heading'
-
 import { Text } from '../text/text'
 import { PopoverContent } from '../popover/popover'
 import { useI18n } from '../../i18n/use.i18n'
@@ -87,7 +85,9 @@ export function TimePicker({
           </div>
           <div className="time-selectors" role="group" aria-label={tr('Select time')}>
             <div className="time-field">
-              <FieldLabel htmlFor={hourId}>{tr('Hour')}</FieldLabel>
+              <FieldLabel htmlFor={hourId} showRequirement={false}>
+                {tr('Hour')}
+              </FieldLabel>
               <Combobox
                 id={hourId}
                 size="sm"
@@ -102,7 +102,9 @@ export function TimePicker({
               :
             </Text>
             <div className="time-field">
-              <FieldLabel htmlFor={minuteId}>{tr('Minute')}</FieldLabel>
+              <FieldLabel htmlFor={minuteId} showRequirement={false}>
+                {tr('Minute')}
+              </FieldLabel>
               <Combobox
                 id={minuteId}
                 size="sm"

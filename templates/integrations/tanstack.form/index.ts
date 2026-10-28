@@ -1,4 +1,5 @@
 export { useAppForm, withForm, withFieldGroup } from './use.app.form'
+export { liveValidationLogic } from './live.validation.logic'
 export { useApiFormErrors } from './use.api.form.errors'
 export { useFieldContext, useFormContext, fieldContext, formContext } from './form.context'
 export { TextField, type TextFieldProps } from './text.field'

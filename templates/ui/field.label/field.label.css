@@ -1,0 +1,22 @@
+.aria-field-label .field-requirement {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: baseline;
+  margin-inline-start: var(--space-xs);
+  padding: calc(2px * var(--space-scale)) calc(5px * var(--space-scale));
+  border: var(--border-width, 1px) solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.85em;
+  font-weight: var(--typography-label-weight);
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  background: var(--surface-subtle);
+}
+.aria-field-label .field-requirement[data-required='true'] {
+  color: var(--error);
+  background: var(--error-soft);
+  border-color: color-mix(in srgb, var(--error) 18%, var(--border));
+}

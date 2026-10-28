@@ -65,6 +65,6 @@ Semua komponen memakai `size`, `tone`, `title`, `className`, dan `style`. Warna 
 
 Entry point hanya mengekspor modul ESM secara statis. Tidak ada daftar komponen, namespace dinamis, atau impor CSS di dalam barrel ilustrasi. Metadata `sideEffects` pada paket template mempertahankan CSS yang dipilih dan mengizinkan bundler menghapus modul kode yang tidak digunakan.
 
-Katalog galeri akan dibuat di aplikasi demo `preview/`; folder tersebut saat ini kosong. Pertahankan metadata dan registry seluruh gambar di aplikasi galeri, sementara komponen SVG tetap berada di kit. Jangan mengimpor registry seluruh aset ketika aplikasi hanya membutuhkan satu komponen.
+Katalog galeri tersedia di aplikasi demo `preview/` melalui `npm run demo`. Metadata dan registry seluruh gambar berada di aplikasi galeri; `npm run demo:catalog` memperbaruinya dari ekspor publik kategori. Komponen SVG tetap berada di kit. Jangan mengimpor registry seluruh aset ketika aplikasi hanya membutuhkan satu komponen.
 
 Dokumentasi koleksi lama tersimpan di `docs/`; jalur kode yang disarankan adalah kategori atau leaf module di atas.

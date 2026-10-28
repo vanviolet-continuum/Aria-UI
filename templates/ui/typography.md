@@ -82,6 +82,8 @@ Size tetap tersedia sebagai override visual; Heading mempunyai xs/sm/md/lg/xl/2x
 
 Field menghubungkan FieldLabel/FieldHint/FieldError, mempertahankan aria-describedby yang sudah ada, dan menandai input invalid ketika error diberikan. Jika memakai part secara langsung, berikan id/htmlFor/aria-describedby yang sesuai.
 
+FieldLabel menampilkan chip kecil Required/Wajib berwarna error ketika required true, atau Optional/Opsional untuk field lainnya. Chip menggantikan asterisk dan mengikuti bahasa aktif. Indikator kewajiban terpisah dari validasi; required tidak otomatis membuat input invalid. Field meneruskan aria-required dari required atau atribut kontrol yang sudah ada. showRequirement false tersedia pada Field dan FieldLabel untuk kontrol mekanis/nested yang sudah dijelaskan field induknya.
+
 CodeBlock wrap=true membungkus baris dan tidak membuat scroll vertikal internal. Wrap=false mengizinkan scroll horizontal untuk kode yang perlu mempertahankan baris. Kode ditampilkan sebagai teks, tidak dieksekusi.
 
 ## Penerapan di template

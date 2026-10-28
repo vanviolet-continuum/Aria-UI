@@ -20,7 +20,7 @@ export function ThemeColorField({
   const valid = /^#[0-9a-f]{6}$/i.test(draft)
   return (
     <div className="theme-color-field">
-      <FieldLabel as="label" variant="label" htmlFor={id}>
+      <FieldLabel as="label" variant="label" htmlFor={id} showRequirement={false}>
         {localize(label)}
       </FieldLabel>
       <div>

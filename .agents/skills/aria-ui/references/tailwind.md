@@ -4,6 +4,8 @@ Source: [token bridge](../../../../templates/integrations/tailwind/theme.css), [
 
 Tailwind adalah opt-in. Jangan menginstal, mengganti CSS entry, atau memigrasikan seluruh aplikasi hanya karena suatu halaman diberi className. Baca versi dan konfigurasi proyek konsumen ketika integrasi Tailwind memang diminta.
 
+Preview sudah memakai Tailwind v4 melalui [preview/src/styles.css](../../../../preview/src/styles.css). Gunakan entry itu untuk perubahan demo; jangan menyalin konfigurasi demo ke starter tanpa kebutuhan. Utility mengatur layout lokal; komponen teks/field/menu/blok Aria tetap menjadi pola awal agar perubahan tema konsisten.
+
 ## Tailwind v4
 
 Setelah aplikasi konsumen memasang/configure Tailwind v4, import `@templates/integrations/tailwind/styles.css` sekali sebagai pengganti import stylesheet kit biasa. Entry ini memuat Tailwind, kit pada layer components, dan @theme inline yang merujuk token runtime. Jangan mengimpor kit lengkap lagi di luar layer karena akan mengubah prioritas cascade.

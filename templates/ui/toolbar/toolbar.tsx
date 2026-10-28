@@ -61,9 +61,6 @@ export function ToolbarGroup<E extends ElementType = 'div'>({
     ),
   })
 }
-export function ToolbarActions<E extends ElementType = 'div'>({
-  className,
-  ...props
-}: ToolbarGroupProps<E>) {
-  return <ToolbarGroup {...props} className={clsx('aria-toolbar-actions', className)} />
+export function ToolbarActions<E extends ElementType = 'div'>(props: ToolbarGroupProps<E>) {
+  return <ToolbarGroup<E> {...props} className={clsx('aria-toolbar-actions', props.className)} />
 }

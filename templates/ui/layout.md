@@ -164,4 +164,4 @@ import '@templates/ui/layout.css'
 
 `layout.css` adalah stylesheet bersama yang kecil untuk seluruh fondasi. CSS tersebut memuat reset responsive, Box, lalu komponen turunannya; tidak perlu mengimpor ulang setiap file CSS layout. Fondasi tidak memakai inline style tag atau menyuntik CSS saat module diimpor.
 
-Contoh interaktif akan dibuat di aplikasi demo `preview/`, yang saat ini kosong.
+Contoh interaktif tersedia di aplikasi demo preview/.

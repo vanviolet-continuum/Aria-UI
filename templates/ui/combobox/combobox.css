@@ -39,7 +39,7 @@
 }
 
 .combobox-trigger[aria-invalid='true'] {
-  border-color: var(--border);
+  border-color: var(--error);
 }
 
 .combobox-popover {
@@ -87,7 +87,6 @@
   min-height: 0;
   overflow-x: hidden;
   overscroll-behavior: contain;
-  scrollbar-color: var(--border-strong) transparent;
 }
 .combobox-options:focus-visible {
   box-shadow: none;

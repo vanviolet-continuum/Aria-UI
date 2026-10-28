@@ -1,5 +1,5 @@
 import { useI18n } from '../../i18n/use.i18n'
-import { Drawer } from '../drawer/drawer'
+import { Dialog } from '../dialog/dialog'
 import { Command, type CommandProps } from './command'
 
 export interface CommandMenuProps extends CommandProps {
@@ -7,22 +7,22 @@ export interface CommandMenuProps extends CommandProps {
   onOpenChange: (open: boolean) => void
   title?: string
 }
-
 export function CommandMenu({
   open,
   onOpenChange,
   title = 'Where would you like to go?',
   ...props
 }: CommandMenuProps) {
-  const { t: tr, text: localize } = useI18n()
-
+  const { t, text } = useI18n()
   return (
-    <Drawer
+    <Dialog
       open={open}
       onOpenChange={onOpenChange}
-      title={localize(title)}
-      description={tr('Search pages, find records, or jump to an action.')}
-      className="command-drawer"
+      title={text(title)}
+      description={t('Search pages, find records, or jump to an action.')}
+      size="lg"
+      className="command-dialog"
+      bodyClassName="command-dialog-body"
     >
       <Command
         {...props}
@@ -32,8 +32,7 @@ export function CommandMenu({
           onOpenChange(false)
         }}
       />
-    </Drawer>
+    </Dialog>
   )
 }
-
 export { CommandMenu as Cmdk }

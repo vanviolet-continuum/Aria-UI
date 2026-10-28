@@ -1,6 +1,6 @@
 # Reusable UI Kit
 
-Komponen dalam folder ini tidak bergantung pada router, context klinik, atau API aplikasi. Semuanya memakai props, callback, dan tipe TypeScript. Dokumentasi interaktif akan dibuat di aplikasi demo `preview/`, yang saat ini kosong.
+Komponen dalam folder ini tidak bergantung pada router, context klinik, atau API aplikasi. Semuanya memakai props, callback, dan tipe TypeScript. Dokumentasi interaktif tersedia di aplikasi demo preview/; source komponen tetap menjadi acuan API.
 
 ## Dipakai di proyek lain
 
@@ -8,7 +8,7 @@ Komponen dalam folder ini tidak bergantung pada router, context klinik, atau API
 2. Pasang dependensi runtime:
 
    ```bash
-   npm install react react-dom lucide-react clsx cmdk sonner react-number-format react-pdf@^10.5.0 i18next react-i18next @fontsource-variable/hanken-grotesk @radix-ui/react-dialog @radix-ui/react-popover @radix-ui/react-dropdown-menu @radix-ui/react-slider @radix-ui/react-radio-group @radix-ui/react-tooltip @radix-ui/react-accordion @radix-ui/react-avatar @fullcalendar/react@^7 temporal-polyfill
+   npm install react react-dom lucide-react clsx cmdk sonner react-number-format react-pdf@^10.5.0 i18next react-i18next @fontsource-variable/hanken-grotesk @radix-ui/react-dialog @radix-ui/react-popover @radix-ui/react-dropdown-menu @radix-ui/react-slider @radix-ui/react-radio-group @radix-ui/react-tooltip @radix-ui/react-hover-card @radix-ui/react-accordion @radix-ui/react-avatar @fullcalendar/react@^7 temporal-polyfill recharts
    ```
 
 3. Import stylesheet sekali pada entry aplikasi:
@@ -26,6 +26,10 @@ Komponen dalam folder ini tidak bergantung pada router, context klinik, atau API
 Alias `@templates` ke pustaka dan `@/` ke source aplikasi sudah dikonfigurasi pada proyek ini. Di proyek lain, sesuaikan alias atau gunakan import relatif. Entry stylesheet sudah menyertakan base style yang dipakai komponen. Nilai warna/font dan konfigurasi berada di `templates/theme/`; `tokens.css` mengimpor palette dan token turunannya. Lihat [panduan tema](../theme/readme.md).
 
 Unit test berada di `tests/template/`, terpisah dari folder portable. Proyek yang menyalin kit tidak perlu memasang Vitest.
+
+## Default modul
+
+Ikuti [pola modul](./module.defaults.md) untuk tabel/filter ber-chip, satu menu aksi pinned kanan, form live, toast ber-description, Drawer dua klik dengan exit, serta header Cmdk/breadcrumb outlet. Acuan source hidup tersedia pada modul Users demo.
 
 ## Komponen
 
@@ -59,7 +63,7 @@ Blok presentasional di atas fondasi layout mendukung props praktis maupun kompos
 
 Gunakan `Stack` untuk susunan vertikal, `Inline` untuk baris yang dapat wrap, `Grid` untuk kolom responsive atau auto-fit, dan `Box` untuk surface. Default gap serta padding panel mengikuti `layoutGap`/`layoutPadding` pada tema; token spacing eksplisit tetap mengikuti `spaceScale`. `Container` default full width. Seluruh komponen tetap tanpa scroll container internal.
 
-API, skala ukuran, breakpoint, import selektif, dan contoh komposisi dijelaskan di [Layout foundations](./layout.md). Folder preview saat ini masih kosong.
+API, skala ukuran, breakpoint, import selektif, dan contoh komposisi dijelaskan di [Layout foundations](./layout.md). Folder preview berisi aplikasi demo Aria Workspace.
 
 ## Menu dan popover
 
@@ -160,7 +164,7 @@ const [email, setEmail] = useState('')
 />
 ```
 
-Combobox mendukung pencarian, keyboard, disabled options, empty result, dan field `name` untuk hidden form value. Gunakan `searchable={false}` untuk daftar pendek seperti jumlah baris tabel, serta `size="sm"` untuk trigger ringkas. Tanpa pencarian, navigasi panah, Home/End, Enter, dan pencarian lewat karakter tetap tersedia. Pada tema default, opsi tanpa deskripsi memakai tinggi 36px dan opsi dengan deskripsi 56px; keduanya menyesuaikan ukuran kontrol, font, dan spacing dari tema. Lebar panel mengikuti trigger dengan minimum yang cukup untuk isinya. Virtualisasi memakai offset sesuai tinggi tiap opsi. Validasi nilai wajib komponen composite dilakukan melalui state/form handler Anda.
+Combobox mendukung pencarian, keyboard, disabled options, empty result, dan field `name` untuk hidden form value. Search aktif secara default untuk pilihan fitur. Gunakan searchable false hanya untuk kontrol mekanis seperti jumlah baris tabel, kalender/waktu, atau kebutuhan berbeda yang diminta, serta `size="sm"` untuk trigger ringkas. Tanpa pencarian, navigasi panah, Home/End, Enter, dan pencarian lewat karakter tetap tersedia. Pada tema default, opsi tanpa deskripsi memakai tinggi 36px dan opsi dengan deskripsi 56px; keduanya menyesuaikan ukuran kontrol, font, dan spacing dari tema. Lebar panel mengikuti trigger dengan minimum yang cukup untuk isinya. Virtualisasi memakai offset sesuai tinggi tiap opsi. Validasi nilai wajib komponen composite dilakukan melalui state/form handler Anda.
 
 ## Drawer
 
@@ -304,10 +308,7 @@ Koleksi **605 ilustrasi SVG** tersedia sebagai komponen dalam kit. Galeri intera
 // Sekali pada root aplikasi.
 <Toaster />
 
-toast.success('Tersimpan')
-toast.promise(saveProject(), {
-  loading: 'Menyimpan…', success: 'Tersimpan', error: 'Gagal menyimpan',
-})
+toast.success('Tersimpan', { description: 'Perubahan proyek telah disimpan.' })
 
 <LoadingOverlay loading={isLoading} label="Memuat data…">
   <YourContent />
@@ -323,3 +324,11 @@ toast.promise(saveProject(), {
 Loading overlay dapat dibatasi pada container atau menggunakan `fullscreen`. Untuk konten awal gunakan `Skeleton`. Overlay dan tombol loading menyampaikan status melalui atribut aksesibilitas.
 
 Lihat [ADVANCED.md](./advanced.md) untuk async combobox/table, formatted inputs, upload, OTP, tree, stepper, FullCalendar, confirmation, mutation overlay, dan tema.
+
+DataTable menerima filters, filterValue, onFilterChange, search, toolbarActions dan onColumnVisibilityChange. Toolbar default memakai TableFilter dengan chip aktif yang dapat dihapus. createActionsColumn menghasilkan satu menu, terkunci kanan dengan width 72; kolom kind actions atau id actions juga memperoleh default posisi tersebut. defaultPin false/kind data/props eksplisit tersedia untuk kebutuhan yang diminta berbeda. Lihat [kontrak modul](module.defaults.md).
+
+Drawer menerima onAfterClose dan restoreFocus. Gunakan useDrawerPresence untuk mempertahankan payload dan mount selama exit. DetailView variant compact memakai ukuran identitas lebih ringkas untuk panel.
+
+Komposisi lanjutan: [Wizard](wizard/readme.md), [HoverCard](hover.card/readme.md), [AreaChart](chart/readme.md), dan [FullCalendar](full.calendar/readme.md). Semua menerima props/slot untuk custom dan tidak mengimpor data bisnis preview.
+
+[StatCard](stat.card/readme.md) menyediakan kartu count dengan ikon atau ilustrasi. PageHeader.artwork tersedia untuk SVG pada sisi kanan header. FieldLabel menggunakan chip Wajib/Opsional, dengan showRequirement false untuk override konteks.

@@ -13,10 +13,6 @@
   color: var(--typography-label-color);
 }
 
-.ui-field > label > span {
-  color: var(--error);
-}
-
 .ui-field-hint,
 .ui-field-error {
   font-size: var(--typography-error-size);

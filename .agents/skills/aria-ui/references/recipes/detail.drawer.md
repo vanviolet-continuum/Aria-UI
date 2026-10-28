@@ -1,19 +1,23 @@
-# Konten detail di halaman dan drawer
+# Detail halaman dan drawer
 
-Acuan: [Detail API](../../../../../templates/ui/detail/detail.tsx), [Drawer API](../../../../../templates/ui/drawer/drawer.tsx), dan [komposisi blok](../../../../../templates/ui/composition.md).
+Acuan API: [Detail](../../../../../templates/ui/detail/detail.tsx), [Drawer](../../../../../templates/ui/drawer/drawer.tsx), dan [useDrawerPresence](../../../../../templates/ui/drawer/use.drawer.presence.ts).
 
-Buat konten detail fitur sekali, lalu gunakan dalam wrapper halaman atau drawer. Wrapper bertanggung jawab atas route, pengambilan data, open/close, dan aksi bisnis.
+Konten detail dibuat sekali. Wrapper memiliki route/query, open/close, dan aksi bisnis. Contoh berikut hanya kontrak tampilan record kecil, bukan DTO backend:
 
 ```tsx
-import { DetailList, DetailSection, DetailView, Drawer } from '@templates/ui'
 import { useI18n } from '@templates/i18n'
+import { DetailList, DetailSection, DetailView, Drawer, useDrawerPresence } from '@templates/ui'
 
 type User = { id: string; name: string; email: string }
 
-function UserDetail({ user }: { user: User }) {
+function UserDetail({ user, compact = false }: { user: User; compact?: boolean }) {
   const { t } = useI18n()
   return (
-    <DetailView title={user.name} description={user.email}>
+    <DetailView
+      variant={compact ? 'compact' : 'default'}
+      title={user.name}
+      description={user.email}
+    >
       <DetailSection title={t('Contact')}>
         <DetailList items={[{ id: 'email', label: t('Email'), value: user.email }]} />
       </DetailSection>
@@ -21,15 +25,40 @@ function UserDetail({ user }: { user: User }) {
   )
 }
 
-;<Drawer open={open} onOpenChange={setOpen} title={user.name} size="lg">
-  <UserDetail user={user} />
-</Drawer>
+function UserDetailDrawer({ user, onClose }: { user: User | null; onClose: () => void }) {
+  const { t } = useI18n()
+  const panel = useDrawerPresence(user)
+  if (!panel.value) return null
+  return (
+    <Drawer
+      title={t('User details')}
+      size="lg"
+      open={panel.open}
+      onOpenChange={(open) => {
+        if (!open) onClose()
+      }}
+      onAfterClose={panel.onAfterClose}
+    >
+      <UserDetail user={panel.value} compact />
+    </Drawer>
+  )
+}
 ```
 
-Sesuaikan tipe User dengan kontrak fitur. Pada halaman, tempatkan UserDetail di surface/layout aplikasi yang diperlukan, tanpa menduplikasi daftar field.
+Koordinator selalu merender `<UserDetailDrawer user={selected} onClose={() => setSelected(null)} />`; jangan membungkusnya lagi dengan selected &&. Halaman memakai `<UserDetail user={record} />`; panel memakai compact. Untuk fitur API, query/payload dan not-found mengikuti kontrak fitur; jangan bergantung pada objek row yang sudah kedaluwarsa bila detail membutuhkan query sendiri.
 
-DetailView menerima ReactNode untuk title, description, avatar, badge, meta, actions, summary, dan aside. DetailSection mengelompokkan bagian, DetailList menyusun pasangan label/nilai, DetailStats untuk statistik, dan DetailTimeline untuk riwayat. Data bisnis tidak dimasukkan ke komponen kit.
+## Komposisi isi
 
-Drawer sudah mengelola focus trap, Escape, pemulihan fokus, portal, header/body/footer, dan kebijakan close. Default backdrop memakai dua klik; gunakan prop `outsideClose` jika alur membutuhkan perilaku lain. Berikan judul yang bermakna serta tombol dengan label aksesibel.
+DetailView menerima title, description, avatar, badge, meta, actions, summary, aside sebagai ReactNode. DetailSection mengelompokkan bagian, DetailList menyusun label/nilai, DetailStats untuk ringkasan, DetailTimeline untuk riwayat. Gunakan slot sesuai kebutuhan domain, bukan memaksa setiap detail memiliki semua bagian.
 
-Body Drawer menjadi pemilik scroll. Hindari height/overflow-auto tambahan pada seluruh konten detail di dalam body. Footer tetap berada di luar scroll; form dihubungkan dengan atribut form pada tombol footer bila perlu.
+Compact menyesuaikan identitas/spacing pada panel. Ikuti ukuran slot avatar dan jangan memaksakan style halaman besar ke dalam drawer.
+
+## Close, fokus, dan scroll
+
+Default close mengikuti [kontrak modul](../../../../../templates/ui/module.defaults.md): backdrop dua klik, toast pertama, serta guard dirty bila perlu. Drawer mengelola focus trap, Escape, portal, dan pemulihan fokus; jangan membuat close handler global pengganti.
+
+Pertahankan instance dan payload sampai onAfterClose melalui useDrawerPresence. Menghapus JSX segera saat selected null, atau memasang open selalu true lalu unmount, memutus exit. Saat perpindahan overlay, restoreFocus false pada panel sebelumnya dapat mencegah fokus direbut kembali. Hormati reduced motion.
+
+Hanya body Drawer yang scroll. Footer tetap di luar scroll; tombol submit di footer dapat terhubung ke form melalui atribut native form. Jangan menambah wrapper tinggi tetap/overflow-auto pada seluruh detail.
+
+Draft form memakai [unsaved changes](../unsaved.changes.md). Close X/Escape/Cancel juga melewati guard; reset baseline setelah sukses, bukan setelah request gagal. Contoh hidup: [Users coordinator](../../../../../preview/src/pages/workspace/users/root.tsx) dan [detail](../../../../../preview/src/pages/workspace/users/detail.tsx).

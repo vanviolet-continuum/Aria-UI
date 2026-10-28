@@ -2,7 +2,7 @@
 
 Tipografi sekarang memakai role tema melalui variant. `Heading` menyediakan display/page/section/card/dialog; `Text` menyediakan body/description/label/caption/helper dan role kontrol. Komponen FieldLabel/FieldHint/FieldError/TextLink/CodeText/CodeBlock/MetricValue tersedia untuk kebutuhan khusus. Panduan konfigurasi, prioritas override, dan contoh lengkap ada di [Typography](./typography.md). Ukuran pada tabel di bawah merupakan default awal yang dapat diubah melalui tema.
 
-Blok presentasional untuk halaman, card, form, dan drawer, dibangun di atas token layout/tema. Seluruhnya mandiri dari router, data fetching, dan state bisnis; tidak membuat scroll container internal. Dokumentasi interaktif akan dibuat di aplikasi demo `preview/`, yang saat ini kosong.
+Blok presentasional untuk halaman, card, form, dan drawer, dibangun di atas token layout/tema. Seluruhnya mandiri dari router, data fetching, dan state bisnis; tidak membuat scroll container internal. Dokumentasi interaktif tersedia di aplikasi demo preview/; source komponen tetap menjadi acuan API.
 
 ## Pemakaian praktis
 
@@ -193,3 +193,9 @@ import '@templates/ui/blocks.css'
 Stylesheet lengkap sudah memuat blocks.css. Untuk penggunaan selektif, blocks.css memuat fondasi layout dan style blok; layout.css tidak perlu diimpor lagi. Ekspor komponen/part adalah ESM statis, tanpa registry atau object namespace runtime. JavaScript yang tidak direferensikan dapat dibuang bundler, sedangkan CSS mengikuti stylesheet yang dipilih.
 
 FormSection dan DetailSection memakai SectionHeader yang sama. FormSection juga menerima title/description ReactNode, actions, leading, native props root, dan slotProps heading untuk kebutuhan custom.
+
+## Artwork dan kartu statistik
+
+PageHeader menerima artwork ReactNode sebagai SVG dekoratif pada sisi kanan. Aksi tambah daftar ditempatkan di CardHeader.actions, bukan mengisi slot artwork. actions tetap tersedia untuk kebutuhan custom. Di layar kecil artwork mengikuti ukuran responsif.
+
+Gunakan [StatCard](stat.card/readme.md) untuk angka/count dengan ikon semantik, keterangan, dan nilai dari token tipografi. Aplikasi memilih ikon; native props, children, className, dan slot visual tetap dapat digunakan.

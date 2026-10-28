@@ -1,0 +1,6 @@
+interface:
+  display_name: 'Project Memory'
+  short_description: 'Pilih dan rawat memory proyek yang relevan'
+  default_prompt: 'Gunakan $project-memory untuk membaca memory relevan bagi tugas ini dan menyimpan pengetahuan baru hanya jika layak.'
+policy:
+  allow_implicit_invocation: true

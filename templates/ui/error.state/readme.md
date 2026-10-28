@@ -4,7 +4,6 @@ Tampilan gagal GET dengan ilustrasi, pesan asli API, dan aksi retry pada area ha
 
 ```tsx
 import { ErrorState } from '@templates/ui/error.state'
-
 ;<ErrorState error={query.error} onRetry={() => query.refetch()} />
 ```
 

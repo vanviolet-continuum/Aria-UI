@@ -1,0 +1,64 @@
+.ui-stat-card {
+  container-type: inline-size;
+}
+.ui-stat-card > .aria-card-body {
+  padding: var(--space-lg);
+}
+.stat-card-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-width: 0;
+}
+.stat-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  min-width: 0;
+  flex: 1;
+}
+.stat-card-visual {
+  display: grid;
+  place-items: center;
+  width: calc(46px * var(--space-scale));
+  height: calc(46px * var(--space-scale));
+  flex: 0 0 auto;
+  border-radius: var(--radius-lg);
+  color: var(--stat-card-color);
+  background: color-mix(in srgb, var(--stat-card-color) 9%, var(--surface));
+  border: var(--border-width, 1px) solid color-mix(in srgb, var(--stat-card-color) 13%, transparent);
+}
+.stat-card-visual > svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+.stat-card-visual--illustration {
+  width: calc(72px * var(--space-scale));
+  height: calc(64px * var(--space-scale));
+  background: transparent;
+  border: 0;
+}
+@container (max-width: 240px) {
+  .ui-stat-card > .aria-card-body {
+    padding: var(--space-md);
+  }
+  .stat-card-layout {
+    display: block;
+    position: relative;
+  }
+  .stat-card-content > :first-child {
+    padding-inline-end: calc(40px * var(--space-scale));
+  }
+  .stat-card-visual {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    width: calc(30px * var(--space-scale));
+    height: calc(30px * var(--space-scale));
+  }
+  .stat-card-visual--illustration {
+    width: calc(38px * var(--space-scale));
+    height: calc(34px * var(--space-scale));
+  }
+}

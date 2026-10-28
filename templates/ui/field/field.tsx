@@ -1,5 +1,12 @@
 import { useI18n } from '../../i18n/use.i18n'
-import { useId, type HTMLAttributes, type ReactElement, type ReactNode, cloneElement } from 'react'
+import {
+  useId,
+  type AriaAttributes,
+  type HTMLAttributes,
+  type ReactElement,
+  type ReactNode,
+  cloneElement,
+} from 'react'
 import { SectionHeader } from '../section.header/section.header'
 import type { HeadingGroupSlotProps } from '../heading.group/heading.group.types'
 import { FieldLabel } from '../field.label/field.label'
@@ -14,7 +21,14 @@ export interface FieldProps {
   /** Backend messages are already display text and must not be translated. */
   errorSource?: 'local' | 'api'
   required?: boolean
-  children: ReactElement<{ id?: string; 'aria-describedby'?: string; 'aria-invalid'?: boolean }>
+  showRequirement?: boolean
+  children: ReactElement<{
+    id?: string
+    required?: boolean
+    'aria-required'?: AriaAttributes['aria-required']
+    'aria-describedby'?: string
+    'aria-invalid'?: boolean
+  }>
   className?: string
 }
 
@@ -24,6 +38,7 @@ export function Field({
   error,
   errorSource = 'local',
   required,
+  showRequirement,
   children,
   className = '',
 }: FieldProps) {
@@ -31,10 +46,14 @@ export function Field({
 
   const generatedId = useId()
   const id = children.props.id ?? generatedId
+  const isRequired =
+    required ??
+    children.props.required ??
+    (children.props['aria-required'] === true || children.props['aria-required'] === 'true')
   const message = error ?? hint
   return (
     <div className={`ui-field ${className}`}>
-      <FieldLabel htmlFor={id} required={required}>
+      <FieldLabel htmlFor={id} required={isRequired} showRequirement={showRequirement}>
         {localize(label)}
       </FieldLabel>
       {cloneElement(children, {
@@ -44,6 +63,7 @@ export function Field({
           message ? `${id}-message` : undefined,
         ),
         'aria-invalid': error ? true : children.props['aria-invalid'],
+        'aria-required': isRequired || undefined,
       })}
       {message &&
         (error ? (

@@ -1,6 +1,8 @@
 # Komponen lanjutan
 
-Implementasi general tersedia di `templates/ui/`. Contoh API ada dalam panduan ini. Aplikasi demo dan dokumentasi interaktif akan dibuat di `preview/`, yang saat ini sengaja kosong.
+Implementasi general tersedia di `templates/ui/`. Contoh API ada dalam panduan ini. Aplikasi demo dan dokumentasi interaktif berada di preview/, terpisah dari starter.
+
+Pola fitur secara default mengikuti [kontrak modul](module.defaults.md): filter ber-chip, satu menu aksi pinned kanan, form live dan Drawer ber-exit. Contoh local state di bawah merupakan contoh komponen terisolasi; modul aplikasi tetap mengendalikan parameter lewat URL.
 
 ## PDF viewer
 

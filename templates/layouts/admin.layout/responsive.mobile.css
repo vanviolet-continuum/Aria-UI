@@ -72,6 +72,9 @@
     justify-content: start;
     padding: calc(8px * var(--space-scale)) calc(10px * var(--space-scale));
   }
+  .sidebar--collapsed .sidebar-bottom {
+    display: flex;
+  }
 }
 
 @media (max-width: 650px) {

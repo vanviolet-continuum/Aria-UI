@@ -20,6 +20,7 @@ export interface DetailViewProps extends Omit<HTMLAttributes<HTMLDivElement>, 't
   actions?: ReactNode
   summary?: ReactNode
   aside?: ReactNode
+  variant?: 'default' | 'compact'
 }
 
 /** The same composition fits a full page, a card, or a drawer. */
@@ -33,6 +34,7 @@ export function DetailView({
   actions,
   summary,
   aside,
+  variant = 'default',
   children,
   className,
   ...props
@@ -40,7 +42,7 @@ export function DetailView({
   const { text: localize } = useI18n()
 
   return (
-    <div className={clsx('detail-view', className)} {...props}>
+    <div className={clsx('detail-view', `detail-view--${variant}`, className)} {...props}>
       <header className="detail-header">
         <div className="detail-header-main">
           {avatar && <div className="detail-avatar">{avatar}</div>}
@@ -51,7 +53,7 @@ export function DetailView({
               </Eyebrow>
             )}
             <div className="detail-title-row">
-              <Heading as="h2" variant="section">
+              <Heading as="h2" variant={variant === 'compact' ? 'card' : 'section'}>
                 {localize(title)}
               </Heading>
               {badge}

@@ -48,3 +48,11 @@ body:has(
   outline: none;
   box-shadow: none;
 }
+.outlet-breadcrumb {
+  padding: var(--space-5) var(--space-8) 0;
+}
+@media (max-width: 640px) {
+  .outlet-breadcrumb {
+    padding: var(--space-4) var(--space-4) 0;
+  }
+}

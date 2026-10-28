@@ -1,0 +1,22 @@
+/* Shared by the sidebar, page, table, drawers and floating panels. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb, var(--border-strong)) var(--scrollbar-track, transparent);
+}
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size, 5px);
+  height: var(--scrollbar-size, 5px);
+}
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track, transparent);
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb, var(--border-strong));
+  border-radius: var(--radius-full, 999px);
+}
+*::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}

@@ -24,7 +24,7 @@
   --fc-classic-today: color-mix(in srgb, var(--primary) 4%, var(--surface));
   border: var(--border-width, 1px) solid var(--border);
   border-radius: calc(10px * var(--radius-scale));
-  padding: calc(21px * var(--space-scale));
+  padding: var(--space-md);
   background: var(--surface);
   min-width: 0;
 }
@@ -32,6 +32,62 @@
 .ui-fullcalendar > div {
   font-family: inherit;
   font-size: var(--typography-body-size);
+}
+.calendar-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-xs) var(--space-xs) var(--space-lg);
+}
+.calendar-toolbar-navigation,
+.calendar-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+}
+.calendar-arrow-group {
+  display: flex;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+.calendar-event-button {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: calc(3px * var(--space-scale)) calc(5px * var(--space-scale));
+  text-align: start;
+  border-radius: var(--radius-sm);
+  line-height: 1.45;
+}
+.calendar-event-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.calendar-event-time {
+  flex-shrink: 0;
+  font-size: var(--typography-caption-size);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+}
+.calendar-event-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: var(--typography-label-weight);
+}
+.calendar-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 .ui-fullcalendar [role='heading'] {
   font-size: var(--typography-card-size);
@@ -85,14 +141,15 @@
   .ui-fullcalendar {
     padding: calc(13px * var(--space-scale)) calc(9px * var(--space-scale));
   }
-  .ui-fullcalendar > div > div:first-child {
-    flex-wrap: wrap;
-    gap: calc(12px * var(--space-scale));
+  .calendar-toolbar {
+    gap: var(--space-sm);
+    padding-bottom: var(--space-md);
   }
-  .ui-fullcalendar > div > div:first-child > div:has(> [role='heading']) {
-    order: -1;
+  .calendar-toolbar-navigation {
     width: 100%;
-    justify-content: center;
+  }
+  .calendar-toolbar-navigation .aria-heading {
+    flex: 1;
   }
   .ui-fullcalendar [role='heading'] {
     font-size: var(--typography-card-size);

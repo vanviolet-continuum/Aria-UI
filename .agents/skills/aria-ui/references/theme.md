@@ -29,4 +29,4 @@ Gunakan token `--surface`, `--text`, `--text-secondary`, `--muted`, `--border`, 
 
 Theme Studio masih tersedia sebagai komponen melalui `@templates/theme/studio`, tetapi belum dipasang sebagai menu/route starter. Tambahkan integrasinya hanya ketika diminta. Export target starter adalah `src/config/theme.config.ts` dengan `typeImport: '@templates/theme'`. Import file melalui UI mengubah preferensi runtime; download TypeScript digunakan untuk mengganti default source.
 
-Aplikasi demo kelak memakai config dan storage key sendiri agar preferensi demo tidak menjadi konfigurasi bisnis pengguna.
+Aplikasi demo memiliki [config tema](../../../../preview/src/config/theme.config.ts) dan storage key sendiri. Theme Studio demo berada di [catalog/theme](../../../../preview/src/pages/catalog/theme/root.tsx); preferensinya tidak mengganti default starter. Perubahan runtime/theme studio dan perubahan default source merupakan dua pekerjaan berbeda.

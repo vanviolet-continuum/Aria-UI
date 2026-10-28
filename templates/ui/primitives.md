@@ -158,3 +158,5 @@ Breadcrumb mengasumsikan item terakhir current bila current tidak diisi. renderL
 Adapter `@templates/integrations/tanstack.form` menyediakan SliderField, RangeSliderField, RadioGroupField, dan MultiSelectField. useAppForm mendaftarkannya bersama empat field awal. Untuk bundle yang hanya membutuhkan field tertentu, gunakan createFormHook + fieldContext/formContext dengan registrasi selektif. UI core tidak bergantung pada TanStack Form atau Zod.
 
 Ekspor komponen tetap ESM dan factory React diberi anotasi PURE. Aplikasi demo yang mengimpor seluruh katalog akan membawa seluruh katalog; entry kit tidak membuat registry semua komponen. CSS lengkap tetap mencakup seluruh stylesheet secara sengaja.
+
+Default modul yang mengikat komposisi tabel/form/header/panel dijelaskan pada [kontrak modul](module.defaults.md). Cmdk kini memakai Dialog terpusat; AdminLayout menyediakan trigger dan Ctrl/Cmd+K. Combobox fitur tetap searchable. Semua toast dari wrapper memiliki description, dengan fallback untuk pemanggilan lama.

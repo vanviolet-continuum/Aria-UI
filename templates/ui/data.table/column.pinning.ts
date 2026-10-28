@@ -1,6 +1,8 @@
 import type { ColumnDef, ColumnPinning } from './types'
+import { resolveColumnDefaults } from './column.defaults'
 
 export function getDefaultColumnPinning<T>(columns: ColumnDef<T>[]): ColumnPinning {
+  columns = resolveColumnDefaults(columns)
   return {
     left: columns.filter((column) => column.defaultPin === 'left').map((column) => column.id),
     right: columns.filter((column) => column.defaultPin === 'right').map((column) => column.id),
@@ -13,6 +15,7 @@ export function resolveColumnPinning<T>(
   pinning: ColumnPinning,
   pinable = false,
 ): ColumnPinning {
+  columns = resolveColumnDefaults(columns)
   const fixed = columns.filter((column) => column.defaultPin && !(column.pinable ?? pinable))
   const fixedIds = new Set(fixed.map((column) => column.id))
   const left = [

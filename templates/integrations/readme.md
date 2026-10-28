@@ -1,6 +1,6 @@
 # Integrasi API, data, form, dan styling
 
-Integrasi ini merupakan entry opsional. UI core tidak mengimpor TanStack, Zod, React Router, atau Tailwind. Starter memasang TanStack Query melalui `src/config/query.config.ts` dan `src/providers.tsx`; menu tetap Beranda dan `preview/` tetap kosong.
+Integrasi ini merupakan entry opsional. UI core tidak mengimpor TanStack, Zod, React Router, atau Tailwind. Starter memasang TanStack Query dan tetap hanya Beranda; preview/ menjalankan demo terpisah.
 
 | Entry                                         | API utama                                                                                                                                      |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -113,6 +113,7 @@ const save = useAppMutation({
   feedback: {
     label: t('Saving changes…'),
     successMessage: t('Changes saved'),
+    successDescription: t('The profile and workspace access have been updated.'),
     invalidates: [keys.lists()],
   },
 })
@@ -120,11 +121,13 @@ const save = useAppMutation({
 
 MutationActivity memakai overlay yang sudah dipasang TemplateProvider. Overlay mengikuti mutation yang sedang berjalan, termasuk invalidation yang ditunggu, dan mendukung beberapa operasi bersamaan. Mutation yang paused tidak memblokir layar. Background GET tidak mengaktifkan overlay. `feedback.overlay: false` untuk aksi yang memakai indikator lokal; `errorToast: false` hanya bila error ditangani penuh oleh tampilan pemiliknya.
 
-MutationCache menjadi pemilik toast dan awaited invalidation. Toast sukses diterbitkan setelah lifecycle selesai. useAppMutation mengisolasi exception callback UI melalui onCallbackError, sehingga kegagalan onSuccess/onSettled tidak mengubah write yang sudah berhasil menjadi API error. Callback UI dapat memakai context untuk memeriksa epoch sesi bila menjalankan pekerjaan async lanjutan; helper menjamin batas sebelum callback, bukan membatalkan efek yang sudah dimulai oleh kode pemanggil. Jangan menambahkan error toast pada HTTP interceptor, mutation callback, dan halaman sekaligus. Tanpa backend message, fallback dapat diterjemahkan. `runTask` lama tetap tersedia untuk operasi non-TanStack; jangan membungkus mutation/query dengan runTask karena ia mengembalikan TaskResult.
+MutationCache menjadi pemilik toast dan awaited invalidation. Semua toast memiliki description; showApiErrorToast memakai API text mentah pada description. Toast sukses diterbitkan setelah lifecycle selesai. useAppMutation mengisolasi exception callback UI melalui onCallbackError, sehingga kegagalan onSuccess/onSettled tidak mengubah write yang sudah berhasil menjadi API error. Callback UI dapat memakai context untuk memeriksa epoch sesi bila menjalankan pekerjaan async lanjutan; helper menjamin batas sebelum callback, bukan membatalkan efek yang sudah dimulai oleh kode pemanggil. Jangan menambahkan error toast pada HTTP interceptor, mutation callback, dan halaman sekaligus. Tanpa backend message, fallback dapat diterjemahkan. `runTask` lama tetap tersedia untuk operasi non-TanStack; jangan membungkus mutation/query dengan runTask karena ia mengembalikan TaskResult.
 
 Cache persistence opsional: panggil `createQueryPersistence(queryClient, { key: 'app:account:workspace' })` lalu gunakan AriaPersistQueryProvider dengan props client dan persistence sebagai pengganti provider biasa. Hanya query sukses dengan `meta: { persist: true }` yang disimpan, tanpa mutation. Helper menyesuaikan gcTime global dengan maxAge; override gcTime per-query harus tetap sesuai. `clearQuerySession` membatalkan query, membersihkan memory, dan menghapus snapshot storage saat logout/pergantian scope. Epoch sesi dinaikkan sebelum pembersihan async; hasil mutation sesi lama menjadi cancellation. Callback, invalidation, dan feedback lama dilewati. Gunakan useAppMutation untuk penjagaan callback; raw useMutation hanya mendapat kebijakan feedback cache. Buat konfigurasi persistence baru setelah epoch berubah; persister lama tidak dapat menulis ulang snapshot yang telah dibersihkan. getQuerySession(queryClient) menyediakan scope yang dapat dibagi dengan adapter auth.
 
 ## Form dan Zod
+
+useAppForm memakai liveValidationLogic secara default: aturan Standard Schema pada change/blur/submit diperbarui ketika input berubah, sementara custom callback tetap mengikuti event yang didaftarkan. Gunakan liveFormValidators(schema) dari integrasi zod agar satu channel onChange menangani ketikan dan submit tanpa menyisakan pesan blur/submit lama. validationLogic eksplisit tetap dapat mengubah kebijakan ini. Untuk native form, useZodValidation(schema, values) menyediakan errors/touch/validate/reset.
 
 Bound fields: TextField, TextareaField, ComboboxField, CheckboxField, SliderField, RangeSliderField, RadioGroupField, dan MultiSelectField. useAppForm mendaftarkan delapan field ini sebagai convenience. Untuk bundle selektif, gunakan createFormHook yang diekspor dengan fieldContext/formContext, komponen field yang diperlukan, dan SubmitButton. Schema/DTO mapping tetap berada di fitur.
 
@@ -132,7 +135,7 @@ Bound fields: TextField, TextareaField, ComboboxField, CheckboxField, SliderFiel
 const server = useApiFormErrors()
 const form = useAppForm({
   defaultValues: { email: '' },
-  validators: { onBlur: userSchema, onSubmit: userSchema },
+  validators: liveFormValidators(userSchema),
   onSubmit: async ({ value, formApi }) => {
     await server.run(formApi, async () => {
       const payload = await parseFormValues(userSchema, value)

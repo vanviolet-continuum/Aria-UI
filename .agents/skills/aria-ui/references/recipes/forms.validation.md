@@ -1,40 +1,98 @@
 # Form dan validasi
 
-Baca [Field](../../../../../templates/ui/field/field.tsx), [CheckboxField](../../../../../templates/ui/checkbox/checkbox.field.tsx), dan [Combobox props](../../../../../templates/ui/combobox/types.ts) untuk kontrak aktual.
+Acuan: [Field](../../../../../templates/ui/field/field.tsx), [bound fields](../../../../../templates/integrations/tanstack.form/index.ts), [integrasi runtime](../../../../../templates/integrations/readme.md). Nilai/schema/DTO milik fitur; field reusable bebas dari domain bisnis.
 
-Gunakan satu komponen form untuk tambah/ubah dengan nilai awal, callback submit, dan status pending yang diberikan wrapper aplikasi. Pisahkan isi field dari shell halaman/drawer agar dapat dipakai pada keduanya.
+## Pilih pemilik form
 
-Integrasi tersedia melalui `@templates/integrations/tanstack.form`: useAppForm, bound TextField/TextareaField/ComboboxField/CheckboxField/SliderField/RangeSliderField/RadioGroupField/MultiSelectField, SubmitButton, useApiFormErrors, dan submitAriaForm. Schema Zod tetap berada di fitur. Gunakan validators onBlur/onSubmit dan parseFormValues untuk output transform/coercion sebelum DTO mapping. Contoh lengkap tersedia di [panduan runtime](../../../../../templates/integrations/readme.md).
+- Form baru dengan integrasi API: useAppForm + liveFormValidators(schema), useApiFormErrors, dan useAppMutation.
+- Native controlled form yang sudah sesuai kebutuhan: useZodValidation(schema, values); tidak perlu dimigrasikan sekadar mengikuti contoh.
+- Tambah/ubah memakai field yang sama; wrapper menentukan nilai awal, operasi, dan arah setelah sukses.
 
-Gunakan serverError dan onServerErrorClear pada bound field untuk error API. Pesan source api diteruskan mentah ke Field errorSource api, sedangkan pesan Zod source local dapat diterjemahkan. Gunakan await server.run(formApi, operation) dalam onSubmit agar Zod/API errors masuk field meta dan rejection mempertahankan isSubmitSuccessful=false. Jangan catch lalu resolve ketika gagal. server.apply manual menerima formApi sebagai argumen ketiga dan tetap perlu rethrow FormSubmissionError. submitAriaForm mengonsumsi marker yang sudah ditampilkan, tanpa toast tambahan; jangan menghapus draft atau menutup form saat gagal. Baca [API error](../api.errors.md) dan [lifecycle mutation](../mutation.lifecycle.md).
+useAppForm memasang liveValidationLogic. liveFormValidators memakai satu channel onChange yang juga divalidasi saat submit, sehingga error blur/submit lama tidak tertinggal. Error muncul dari interaksi dan hilang ketika valid; jangan hanya clear pesan setiap onChange. Callback validator custom/async mengikuti event dan kebijakan debounce/abort fitur.
+
+## Contoh TanStack Form + Zod
+
+Contoh ini memperagakan kontrak form, bukan endpoint. onSave dihubungkan aplikasi ke mutateAsync dari useAppMutation; komponen ini tidak menambahkan toast/overlay sendiri.
 
 ```tsx
-import { CheckboxField, Field, Input, Stack } from '@templates/ui'
-;<Stack gap="md">
-  <Field label={t('Email')} required error={errors.email}>
-    <Input
-      type="email"
-      value={value.email}
-      onChange={(event) => onChange({ ...value, email: event.target.value })}
-    />
-  </Field>
-  <CheckboxField
-    variant="card"
-    label={t('Receive updates')}
-    checked={value.receiveUpdates}
-    onChange={(event) => onChange({ ...value, receiveUpdates: event.target.checked })}
-  />
-</Stack>
+import { z } from 'zod'
+import { useI18n } from '@templates/i18n'
+import { Alert } from '@templates/ui'
+import { useAppForm, useApiFormErrors, submitAriaForm } from '@templates/integrations/tanstack.form'
+import { liveFormValidators, parseFormValues } from '@templates/integrations/zod'
+
+const schema = z.object({ email: z.string().trim().email() })
+type Payload = z.output<typeof schema>
+
+function EmailForm({ onSave }: { onSave: (payload: Payload) => Promise<unknown> }) {
+  const { t } = useI18n()
+  const server = useApiFormErrors()
+  const form = useAppForm({
+    defaultValues: { email: '' },
+    validators: liveFormValidators(schema),
+    onSubmit: async ({ value, formApi }) => {
+      await server.run(formApi, async () => {
+        const payload = await parseFormValues(schema, value)
+        await onSave(payload)
+        formApi.reset(value)
+      })
+    },
+  })
+
+  return (
+    <form.AppForm>
+      <form
+        noValidate
+        onSubmit={(event) => {
+          event.preventDefault()
+          void submitAriaForm(form, event.currentTarget)
+        }}
+      >
+        {server.errors._form && (
+          <Alert severity="error" description={server.errors._form.message} />
+        )}
+        <form.AppField name="email">
+          {(field) => (
+            <field.TextField
+              label={t('Email')}
+              type="email"
+              required
+              serverError={server.errors.email}
+              onServerErrorClear={() => server.clear('email')}
+            />
+          )}
+        </form.AppField>
+        <form.SubmitButton>{t('Save')}</form.SubmitButton>
+      </form>
+    </form.AppForm>
+  )
+}
 ```
 
-`Field` menghubungkan label, hint/error, ID, dan aria-describedby. Berikan error pada field; jangan memakai warna saja untuk menandakan kesalahan. Prop `required` pada Field menampilkan penanda; validasi dan atribut required pada input tetap ditentukan sesuai alur form.
+Gunakan parseFormValues sebelum DTO mapping untuk output transform/coercion; jangan mengirim value mentah jika schema mengubahnya. Key copy UI/schema lokal ditambahkan pada locale ID/EN fitur. Untuk edit, nilai awal berasal dari record aktual dan baseline tidak direset setiap render/refetch saat draft dirty.
 
-Button default bertipe `button`; berikan `type="submit"` pada aksi simpan. Jika tombol berada di footer Drawer di luar form, hubungkan lewat `form="id-form"` native. Cegah submit berulang ketika pending dan pertahankan nilai input jika request gagal.
+Bound field: field.TextField, TextareaField, ComboboxField, CheckboxField, SliderField, RangeSliderField, RadioGroupField, MultiSelectField. Ekspor checkbox standalone adapter bernama CheckboxFormField; CheckboxField dari UI adalah kontrol native yang berbeda.
 
-Seluruh area kartu/baris pilihan harus dapat diklik. Pakai `CheckboxField variant="row" | "card"` dengan label/deskripsi dan native onChange; jangan menambahkan handler toggle parent yang menyebabkan toggle dua kali. Letakkan aksi link/tombol terpisah dari native label. Kontrol disabled tetap tidak dapat diubah.
+## Backend error dan status submit
 
-Combobox menyimpan nilai opsi, bukan label terjemahannya. Untuk pilihan pendek/sedikit atau pagination, `searchable={false}` dapat digunakan. Biarkan komponen mengatur tinggi opsi berdeskripsi dan tanpa deskripsi; jangan memaksa satu tinggi untuk keduanya.
+server.run(formApi, operation) memasukkan error backend ke field meta dan menjaga isSubmitSuccessful false saat gagal. Jangan catch lalu resolve, menutup panel pada finally, atau mereset draft pada onError. submitAriaForm mengonsumsi marker error yang sudah ditampilkan tanpa toast tambahan.
 
-Gunakan date/time picker bawaan untuk nilai tanggal lokal. Untuk wizard, validasi langkah sebelum maju, pertahankan nilai ketika kembali, dan gunakan Stepper untuk tampilan progres; validasi dan operasi submit tetap milik aplikasi.
+Bound field menerima serverError/onServerErrorClear dan meneruskan sumber api ke Field. Backend message tetap mentah; error lokal Zod dapat diterjemahkan. Mapping nama DTO/nested path ke field UI dilakukan fitur. Jika memakai server.apply manual, berikan formApi sesuai signature dan tetap rethrow FormSubmissionError; jangan mengganti kontrak submit sendiri.
 
-Untuk draft dirty yang belum disimpan, baca [unsaved changes](../unsaved.changes.md); gunakan satu guard bagi penutupan drawer dan route. Reset baseline hanya setelah API sukses.
+Mutation memiliki satu pemilik feedback. Callback UI setelah write sukses mengikuti [lifecycle mutation](../mutation.lifecycle.md); kegagalan callback bukan API gagal. Reset baseline lalu close/navigate setelah sukses. Draft dirty memakai [guard](../unsaved.changes.md).
+
+## Native controlled form
+
+useZodValidation mengembalikan errors, issues, isValid, touch, reset, validate. Panggil touch(field) saat nilai diubah dan validate() saat submit. Gunakan hasil parse yang sukses; jangan meneruskan nilai ketika validasi gagal. errors hanya menampilkan field tersentuh atau setelah submit, lalu diperbarui pada tiap perubahan.
+
+Contoh native hidup: [Users form](../../../../../preview/src/pages/workspace/users/form.tsx). Bentuk native ini bukan alasan melepas useApiFormErrors dari form API TanStack yang menggunakannya.
+
+## Field dan pilihan
+
+Field menghubungkan label, ID, hint/error, aria-describedby, serta requirement. required mengikuti schema, tidak bergantung pada nilai awal. FieldLabel memakai chip Required/Wajib atau Optional/Opsional; jangan menambah asterisk. Chip wajib berwarna danger terpisah dari invalid input. showRequirement false untuk kontrol teknis/nested yang sudah dijelaskan induk.
+
+Tombol kit default button; aksi simpan native diberi type submit. Jika footer Drawer di luar form, gunakan form="id-form". SubmitButton adapter sudah mengikuti pending/canSubmit.
+
+Combobox fitur tetap searchable, menyimpan nilai opsi stabil, dan menampilkan label terjemahan. Tinggi opsi dengan/tanpa deskripsi dikelola komponen. CheckboxField row/card membuat seluruh label/padding dapat dipilih; jangan membuat toggle ganda pada parent dan checkbox atau menaruh tombol interaktif di dalam label.
+
+Wizard memvalidasi langkah sebelum maju dan mempertahankan nilai ketika kembali. Wizard kit hanya presentasi; draft/schema/mutation tetap milik fitur.

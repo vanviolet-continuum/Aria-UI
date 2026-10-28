@@ -2,8 +2,9 @@ import { useI18n } from '../../i18n/use.i18n'
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useMediaQuery } from '../../hooks/use.media.query'
 import { Sidebar, type SidebarProps } from '../sidebar'
-import { AdminHeader } from '../header'
+import { AdminHeader, type AdminHeaderProps } from '../header'
 import { useOptionalTheme } from '../../theme/theme.provider'
+import { Breadcrumb } from '../../ui/breadcrumb/breadcrumb'
 
 export interface AdminLayoutProps extends Pick<
   SidebarProps,
@@ -15,6 +16,8 @@ export interface AdminLayoutProps extends Pick<
   sidebarFooter?: ReactNode
   routeKey?: string
   compact?: boolean
+  command?: AdminHeaderProps['command']
+  breadcrumb?: ReactNode
 }
 export function AdminLayout({
   title,
@@ -27,6 +30,8 @@ export function AdminLayout({
   sidebarFooter,
   routeKey,
   compact,
+  command,
+  breadcrumb,
 }: AdminLayoutProps) {
   const { text: localize } = useI18n()
 
@@ -38,6 +43,33 @@ export function AdminLayout({
   const preferredCollapsed = theme?.config.sidebarCollapsed ?? localCollapsed
   const collapsed = preferredCollapsed && !isMobile
   const close = useCallback(() => setMobileOpen(false), [])
+  const activeItem = navigation.flatMap((group) => group.items).find((item) => item.active)
+  const outletBreadcrumb =
+    breadcrumb === undefined ? (
+      <Breadcrumb
+        items={
+          activeItem
+            ? [{ label: brand.name, href: brand.href }, { label: localize(activeItem.label) }]
+            : [{ label: localize(title) }]
+        }
+        renderLink={(item) => (
+          <a
+            className="ui-breadcrumb-link"
+            href={item.href}
+            onClick={(event) => {
+              if (onNavigate && item.href) {
+                event.preventDefault()
+                onNavigate(item.href)
+              }
+            }}
+          >
+            {item.label}
+          </a>
+        )}
+      />
+    ) : (
+      breadcrumb
+    )
   useEffect(() => {
     setMobileOpen(false)
     main.current?.scrollTo({ top: 0 })
@@ -66,8 +98,23 @@ export function AdminLayout({
           title={localize(title)}
           onMenu={() => setMobileOpen(true)}
           actions={headerActions}
+          command={
+            command ?? {
+              items: navigation.flatMap((group) =>
+                group.items.map((item) => ({
+                  id: item.href,
+                  label: item.label,
+                  group: group.label,
+                  icon: item.icon,
+                  onSelect: () =>
+                    onNavigate ? onNavigate(item.href) : window.location.assign(item.href),
+                })),
+              ),
+            }
+          }
         />
         <main id="main-content" ref={main} tabIndex={-1}>
+          {outletBreadcrumb && <div className="outlet-breadcrumb">{outletBreadcrumb}</div>}
           {children}
         </main>
       </div>

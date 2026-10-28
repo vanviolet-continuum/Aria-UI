@@ -162,6 +162,22 @@
   min-width: 0;
   width: 100%;
 }
+.ui-data-table th[data-column-kind='actions'],
+.ui-data-table td[data-column-kind='actions'] {
+  padding-inline: var(--space-xs);
+}
+.table-actions-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.table-actions-content[data-align='left'] {
+  justify-content: flex-start;
+}
+.table-actions-content[data-align='right'] {
+  justify-content: flex-end;
+}
 .table-header-label {
   flex: 1 1 auto;
   min-width: 0;

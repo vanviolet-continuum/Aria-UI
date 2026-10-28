@@ -14,6 +14,6 @@ Ikon memiliki `size`, `strokeWidth`, `color`, `title`, native SVG props, dan ref
 
 Ilustrasi memakai `IllustrationProps` dengan `size`, `tone`, `title`, `className`, dan `style`. Pilih file berdasarkan kebutuhan visual, bukan nomor batch. Nama seperti `access.denied.illustration.tsx` mengikuti dot case. Gunakan frame/style bersama ketika membuat ilustrasi baru.
 
-Import bernama atau leaf module menjaga aset tidak terpakai dapat dibuang bundler. Barrel tetap berupa ekspor ESM. Data pencarian, deskripsi katalog, daftar kategori untuk navigasi, serializer download, dan registry seluruh aset merupakan milik galeri `preview/` ketika demo tersebut diminta. Jangan menghubungkan galeri itu ke `templates/index.ts` atau starter Beranda.
+Import bernama atau leaf module menjaga aset tidak terpakai dapat dibuang bundler; pertahankan factory PURE dan barrel ekspor ESM. Data pencarian, deskripsi, kelompok navigasi, serializer download, dan registry lengkap dimiliki `preview/src/catalog/` serta halaman `preview/src/pages/catalog/`. Jangan menghubungkan registry itu ke `templates/index.ts` atau starter Beranda. Generator registry demo berada di `preview/scripts/update.catalog.mjs`; ini berbeda dari SDK backend read-only.
 
 Untuk ilustrasi baru, ikuti gaya kelompok yang sudah ada dan gunakan token tema. Preferensi visual proyek saat ini adalah objek/non-people; buat people hanya jika diminta secara khusus.

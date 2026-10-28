@@ -6,8 +6,9 @@ import { EmptyState } from '../empty.state/empty.state'
 import { ErrorState } from '../error.state/error.state'
 import { CheckboxField } from '../checkbox/checkbox.field'
 import { getCellValue } from './use.data.table'
-import type { RowSelection } from './types'
+import type { ColumnDef, RowSelection } from './types'
 import type { ColumnLayout } from './column.layout'
+import { ActionMenu } from '../action.menu/action.menu'
 
 interface Props<T> {
   rows: T[]
@@ -20,6 +21,27 @@ interface Props<T> {
   error?: unknown
   emptyState?: ReactNode
   onRetry?: () => void
+}
+function renderCell<T>(column: ColumnDef<T>, row: T, index: number) {
+  const content = column.actions ? (
+    <ActionMenu
+      items={column.actions(row)}
+      label={
+        typeof column.actionLabel === 'function' ? column.actionLabel(row) : column.actionLabel
+      }
+    />
+  ) : column.cell ? (
+    column.cell(row, index)
+  ) : (
+    String(getCellValue(row, column.accessor) ?? '')
+  )
+  return column.kind === 'actions' ? (
+    <div className="table-actions-content" data-align={column.align}>
+      {content}
+    </div>
+  ) : (
+    content
+  )
 }
 function Body<T>({
   rows,
@@ -95,11 +117,10 @@ function Body<T>({
                 className={column.className}
                 style={style}
                 data-pin={pin}
+                data-column-kind={column.kind}
                 data-pin-edge={edge || undefined}
               >
-                {column.cell
-                  ? column.cell(row, index)
-                  : String(getCellValue(row, column.accessor) ?? '')}
+                {renderCell(column, row, index)}
               </Text>
             ))}
           </tr>

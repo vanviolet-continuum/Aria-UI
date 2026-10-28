@@ -19,3 +19,5 @@ runTask lama tetap berguna untuk tugas non-TanStack yang memang mengharapkan Tas
 useAppMutation membaca apiErrorOptions QueryClient pada normalisasi pertama. Exception onSuccess/onSettled UI dilaporkan melalui onCallbackError, sehingga tidak menjadi API error setelah server sukses. MutationCache menerbitkan toast pada status terminal setelah callback; GET refresh tetap memiliki error inline sendiri.
 
 Gunakan clearQuerySession saat akun/workspace berubah. Epoch menghalangi hasil/callback/feedback mutation lama; raw useMutation tidak memiliki batas callback yang disediakan useAppMutation. Baca [auth/session](auth.session.md). Untuk callback async panjang, panggil assertMutationSession(context) lagi setelah await sebelum efek UI berikutnya.
+
+Semua toast memakai description. Mutation feedback dapat mengisi successDescription; API error toast menampilkan pesan backend mentah dalam description dengan judul lokal. Import wrapper kit, bukan toast dari Sonner langsung.

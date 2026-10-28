@@ -39,7 +39,11 @@
   width: min(650px, calc(100vw - 24px));
 }
 .drawer[data-state='closed'] {
+  pointer-events: none;
   animation: drawer-slide-out calc(220ms * var(--motion-scale, 1)) cubic-bezier(0.4, 0, 1, 1) both;
+}
+.drawer-overlay[data-state='closed'] {
+  pointer-events: none;
 }
 .drawer-header {
   display: flex;

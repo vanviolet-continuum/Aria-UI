@@ -1,29 +1,27 @@
 # Pola fitur CRUD
 
-Baca [struktur file](../file.structure.md), kemudian pilih [tabel](table.filters.md), [form](forms.validation.md), dan [detail](detail.drawer.md) sesuai alur yang diminta.
+Mulai dari [default modul](module.defaults.md) dan [blueprint komposisi](../module.blueprints.md). Detail API dibaca dari source, bukan ditebak dari contoh.
 
-## Membagi tanggung jawab
+## Pilih target dan pecah sesuai alur
 
-Untuk fitur seperti Users atau Products, simpan seluruh komposisi bisnis di `src/pages/<fitur>/`:
+Starter: `src/pages/<fitur>/`. Demo: `preview/src/pages/<case>/<menu>/`. Kit menyediakan blok reusable; tidak memiliki entitas/API bisnis fitur.
 
-- `root.tsx`: koordinasi parent route dan state yang memang dibagi.
-- `list.tsx`: query/pencarian/filter, selection, kolom, serta aksi daftar.
-- `form.tsx`: field dan validasi bersama untuk tambah/ubah.
-- `add.tsx`: nilai awal, operasi create, dan arah setelah berhasil.
-- `update.tsx`: load record, nilai awal, operasi update, serta state tidak ditemukan.
-- `detail.tsx`: konten record yang dipakai halaman dan drawer.
-- `drawer.tsx`: open/close, judul panel, dan penempatan konten detail/form.
+Satu root.tsx cukup untuk koordinator sederhana. Pisahkan list/form/detail atau wrapper add/update/drawer hanya bila tanggung jawabnya sudah perlu dibagi. Tambah/ubah berbagi field; halaman/drawer berbagi isi detail. Jangan membuat semua file placeholder. Lihat [struktur file](../file.structure.md).
 
-Tambahkan tipe/service ketika dipakai. Untuk fitur kecil, gabungkan koordinasi sederhana dalam satu file; tidak perlu membuat lapisan service/store kosong. Gunakan ID record stabil pada route dan tabel, bukan index array.
+Gunakan ID stabil untuk row, route, selection, dan query detail. Jangan memakai index array sebagai identitas record.
 
 ## Data dan perubahan
 
-Ikuti kontrak API/service yang sudah dimiliki aplikasi. Pisahkan nilai form, DTO request, dan label tampilan bila bentuknya berbeda. Untuk demo yang diminta tanpa backend, tempatkan mock di area aplikasi demo dan jelaskan perilaku persistensinya; jangan menyisipkan mock bisnis ke kit.
+Ikuti kontrak aplikasi. Pisahkan nilai form, DTO request, dan label tampilan bila bentuknya berbeda. Untuk backend gunakan [alur API](../api.workflow.md): URL criteria → scoped Query → adapter SDK → UI states, lalu live form → useAppMutation → invalidation → reset/close.
 
-Gunakan useAppMutation untuk write API dengan feedback overlay/toast dan invalidation yang tepat. Tunggu mutateAsync berhasil sebelum menutup drawer atau navigasi. Bila gagal, pertahankan draft dan tampilkan field error API apa adanya melalui useApiFormErrors; MutationCache sudah menjadi pemilik toast. Jangan menumpuk runTask yang mengembalikan TaskResult pada query/mutation.
+Load list/detail/edit membedakan loading, gagal dengan retry, kosong, dan tidak ditemukan. Error GET tidak menjadi toast. Request gagal mempertahankan draft; field error API tampil mentah. Jangan menganggap request berhasil karena catch mengembalikan nilai normal.
 
-Pada load/edit sediakan state loading, gagal, dan record tidak ditemukan sesuai kebutuhan alur. Tambah/ubah berbagi isi form; halaman dan drawer berbagi isi detail. Pertahankan pencarian/filter yang relevan saat kembali ke daftar.
+Detail drawer mempertahankan payload saat exit; guard dirty memiliki satu pemilik. Aksi destructive memakai dialog konfirmasi yang bermakna bila data dapat hilang. Pertahankan konteks pencarian/filter saat kembali ke daftar.
 
-## Integrasi aplikasi
+Untuk demo tanpa backend, data ada pada provider aplikasi demo dan persistensinya dijelaskan. Jangan menambahkan mock bisnis ke templates atau menganggap store lokal sebagai pola cache produksi.
 
-Pasang route di `src/routes.tsx`, menu di `src/config/navigation.config.ts`, dan copy pada kedua locale aplikasi. Gunakan PageHeader, Toolbar, Card, Field, dan komponen tabel/detail sebelum membuat markup styling khusus yang berulang. Aplikasi starter saat ini hanya Beranda; buat fitur CRUD ketika pengguna memintanya.
+## Hubungkan aplikasi
+
+Route, navigasi, breadcrumb, dan locale mengikuti target. Pada preview, route di `preview/src/routes.tsx`, shell di `preview/src/layouts/admin/root.tsx`, menu di `preview/src/config/navigation.config.ts`. Seluruh halaman berada di pages/<case>/<menu>; tidak ada preview/features.
+
+Acuan [Users](../../../../../preview/src/pages/workspace/users/root.tsx) menunjukkan komposisi daftar/form/detail. Pelajari polanya tanpa mengimpor helper/store demo ke starter/kit. [Recipe tabel](table.filters.md), [form](forms.validation.md), dan [detail](detail.drawer.md) menjelaskan bagian masing-masing.

@@ -4,6 +4,7 @@ export interface MutationFeedback {
   overlay?: boolean
   label?: string
   successMessage?: string
+  successDescription?: string
   errorToast?: boolean
   invalidates?: readonly QueryKey[]
 }

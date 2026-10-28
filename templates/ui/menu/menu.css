@@ -26,7 +26,6 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
 }
 .ui-menu--sm {
   width: 210px;

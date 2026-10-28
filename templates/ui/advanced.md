@@ -94,11 +94,11 @@ Formatted input `onChange` menghasilkan **string numerik mentah**, misalnya `125
 <Stepper steps={steps} activeStep={step} onStepChange={setStep} />
 ```
 
-FileUpload menyediakan browse/dropzone, validasi, hapus, dan preview image. Komponen tidak melakukan request upload; kirim `File` melalui FormData pada handler aplikasi. Validasi server tetap diperlukan. Tree nodes berbentuk `{ id, label, children?, disabled?, icon? }`; navigasi menggunakan panah, Home/End, Enter/Space. Stepper mendukung horizontal/vertical dan `errorStep`; validasi dan submit dikelola halaman. Contoh lengkap ada di `/wizard`.
+FileUpload menyediakan browse/dropzone, validasi, hapus, dan preview image. Komponen tidak melakukan request upload; kirim `File` melalui FormData pada handler aplikasi. Validasi server tetap diperlukan. Tree nodes berbentuk `{ id, label, children?, disabled?, icon? }`; navigasi menggunakan panah, Home/End, Enter/Space. Stepper mendukung horizontal/vertical dan `errorStep`; validasi dan submit dikelola halaman. Contoh lengkap ada di preview/src/pages/learning/course.builder. Wizard menyediakan kerangka slot dan navigasi; aplikasi memiliki validasi dan submit.
 
 ## Calendar
 
-`Calendar` adalah date-grid kecil untuk picker. `FullCalendar` adalah event scheduler month/week/day. Wrapper FullCalendar dimuat secara lazy, menggunakan v7 `@fullcalendar/react` beserta subpath daygrid/timegrid/interaction dan classic theme. Tidak membutuhkan paket plugin v6 terpisah. Props: `events`, `onSelect`, `onEventClick`, `onEventMove`, `onError`, `initialView`, `initialDate`, `height`. `onEventMove` yang mengembalikan `false` atau reject otomatis membatalkan drag/resize. Tambahkan `onError` untuk pelaporan API error.
+`Calendar` adalah date-grid kecil untuk picker. `FullCalendar` adalah event scheduler month/week/day. Wrapper FullCalendar dimuat secara lazy, menggunakan v7 `@fullcalendar/react` beserta subpath daygrid/timegrid/interaction dan classic theme. Tidak membutuhkan paket plugin v6 terpisah. Props: `events`, `onSelect`, `onEventClick`, `onEventMove`, `onError`, `initialView`, `initialDate`, `height`. `onEventMove` yang mengembalikan `false` atau reject otomatis membatalkan drag/resize. Tambahkan `onError` untuk pelaporan API error. Toolbar Aria, renderEventPreview, view/date terkontrol, dan opsi weekends dijelaskan pada [panduan FullCalendar](full.calendar/readme.md).
 
 ## Confirmation & mutation overlay
 
@@ -112,7 +112,7 @@ FileUpload menyediakan browse/dropzone, validasi, hapus, dan preview image. Komp
 
 Konfirmasi delete muncul di tengah; form/detail tetap Drawer dari kanan. ConfirmDialog menunggu promise, menampilkan overlay lokal, menangani error, dan tetap terbuka jika callback mengembalikan `false`. Cancel mendapat fokus awal. Fullscreen overlay memiliki focus trap dan mencegah penutupan saat proses berjalan.
 
-Template menyediakan `MutationProvider` / `useMutationTask` di `templates/providers/mutation.provider.tsx`. Bungkus operasi dengan `runTask(label, () => apiCall())`, lalu periksa `result.success` sebelum menutup form/toast success. Provider boleh disalin atau diganti state manager proyek Anda. Semua create/update/delete contoh sudah memakainya.
+Untuk fitur API gunakan adapter TanStack Query/useAppMutation dengan satu pengelola overlay, toast ber-description, dan invalidation. Request tetap reject bila gagal; pesan API dipertahankan mentah. useApiFormErrors().run(formApi, operation) menjaga status submit dan field error. MutationProvider/runTask tersedia untuk task lokal non-Query; jangan membungkus query/mutation sehingga rejection berubah menjadi TaskResult.
 
 ## Empty states, SVG, dan theme
 

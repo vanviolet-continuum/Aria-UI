@@ -1,7 +1,5 @@
 import { Heading } from '../../ui/heading/heading'
-
 import { Text } from '../../ui/text/text'
-
 import { FieldLabel } from '../../ui/field.label/field.label'
 import { useI18n } from '../../i18n/use.i18n'
 import { useId } from 'react'
@@ -34,7 +32,7 @@ export function ThemeSlider({
   return (
     <div className="theme-slider">
       <div>
-        <FieldLabel as="label" variant="label" htmlFor={id}>
+        <FieldLabel as="label" variant="label" htmlFor={id} showRequirement={false}>
           {localize(label)}
         </FieldLabel>
         <Text as="output" variant="label" htmlFor={id}>

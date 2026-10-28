@@ -1,4 +1,5 @@
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Breadcrumb } from '@templates/ui/breadcrumb'
 import { AdminLayout } from '@templates/layouts/admin.layout'
 import { AriaLogo } from '@templates/branding'
 import { LanguageSwitcher, useI18n } from '@templates/i18n'
@@ -14,7 +15,7 @@ export function AdminRoot() {
 
   return (
     <AdminLayout
-      title={t(current?.label ?? 'Home')}
+      title={appConfig.name}
       brand={{ name: appConfig.name, href: appConfig.home, mark: <AriaLogo /> }}
       navigation={[
         {
@@ -28,6 +29,12 @@ export function AdminRoot() {
       ]}
       routeKey={pathname}
       onNavigate={navigate}
+      breadcrumb={
+        <Breadcrumb
+          items={[{ label: t(current?.label ?? 'Home'), href: pathname }]}
+          renderLink={(item) => <Link to={item.href ?? appConfig.home}>{item.label}</Link>}
+        />
+      }
       headerActions={
         <>
           <LanguageSwitcher />

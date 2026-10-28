@@ -1,36 +1,52 @@
 # Memilih dan memperluas komponen
 
-Gunakan tabel ini untuk menemukan komponen, lalu baca tipe props dan source target. Daftar ekspor aktual berada di [UI index](../../../../templates/ui/index.ts) dan [API UI](../../../../templates/ui/readme.md).
+Temukan simbol pada [UI index](../../../../templates/ui/index.ts), lalu baca tipe/source leaf. Tabel ini adalah peta pemilihan, bukan salinan semua prop.
 
-| Kebutuhan                   | Pilihan awal                                                                                          | Source/dokumentasi                                                                                              |
-| --------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Susunan, surface, jarak     | Box, Stack, Inline, Grid, GridItem, Container, Spacer, Divider                                        | [Layout](../../../../templates/ui/layout.md)                                                                    |
-| Judul dan teks              | Heading, Text, Eyebrow, FieldLabel, FieldHint, FieldError, TextLink, CodeText, CodeBlock, MetricValue | [Tipografi](../../../../templates/ui/typography.md)                                                             |
-| Pembuka halaman/section     | PageHeader, SectionHeader, HeadingGroup                                                               | [Komposisi](../../../../templates/ui/composition.md)                                                            |
-| Konten berkartu dan toolbar | Card dan part-nya, Toolbar dan part-nya                                                               | [Komposisi](../../../../templates/ui/composition.md)                                                            |
-| Baris pengaturan            | SettingsRow, SettingsRowContent, SettingsRowControl                                                   | [SettingsRow](../../../../templates/ui/settings.row/settings.row.tsx)                                           |
-| Input dan pilihan           | Field, FormSection, Input, Textarea, Combobox, CheckboxField, Switch                                  | [Field](../../../../templates/ui/field/field.tsx), [Combobox props](../../../../templates/ui/combobox/types.ts) |
-| Daftar data                 | DataTable, TableColumnMenu, TableFilter, SearchInput                                                  | [Tabel](../../../../templates/ui/data.table/data.table.tsx), [blok](../../../../templates/ui/blocks.md)         |
-| Aksi dan floating content   | Button, IconButton, Menu, Popover, PopoverContent                                                     | [Menu](../../../../templates/ui/menu/menu.tsx), [Popover](../../../../templates/ui/popover/popover.tsx)         |
-| Detail dan panel            | DetailView, DetailSection, DetailList, DetailStats, DetailTimeline, Drawer                            | [Detail](../../../../templates/ui/detail/detail.tsx), [Drawer](../../../../templates/ui/drawer/drawer.tsx)      |
-| Status dan feedback         | Badge, Chip, StatusBadge, EmptyState, LoadingOverlay, Skeleton, toast                                 | [UI API](../../../../templates/ui/readme.md)                                                                    |
-| Tanggal dan tahapan         | Calendar, RangeCalendar, DateRangePicker, Stepper, ParallelStepper                                    | [Blok lanjutan](../../../../templates/ui/blocks.md)                                                             |
-| Kontrol nilai/pilihan       | Slider, RangeSlider, RadioGroup, MultiSelect                                                          | [Komponen umum](../../../../templates/ui/primitives.md)                                                         |
-| Overlay dan penjelasan      | Dialog, Tooltip                                                                                       | [Komponen umum](../../../../templates/ui/primitives.md)                                                         |
-| Informasi dan navigasi      | Alert, Progress, Avatar, AvatarGroup, Accordion, Breadcrumb                                           | [Komponen umum](../../../../templates/ui/primitives.md)                                                         |
+| Kebutuhan                       | Pilihan awal                                                                      | Acuan                                                                                                              |
+| ------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Susunan dan jarak               | Box, Stack, Inline, Grid, GridItem, Container, Spacer, Divider                    | [Layout](../../../../templates/ui/layout.md)                                                                       |
+| Teks dan hierarki               | Heading, Text, Eyebrow, MetricValue, TextLink, CodeText, CodeBlock                | [Tipografi](../../../../templates/ui/typography.md)                                                                |
+| Pembuka halaman/bagian          | PageHeader, SectionHeader, HeadingGroup                                           | [Komposisi](../../../../templates/ui/composition.md)                                                               |
+| Surface/header/body/footer      | Card dan part-nya, Toolbar dan part-nya                                           | [Komposisi](../../../../templates/ui/composition.md)                                                               |
+| Count/metrik dengan visual      | StatCard                                                                          | [API](../../../../templates/ui/stat.card/readme.md)                                                                |
+| Tren numerik                    | AreaChart                                                                         | [Chart](../../../../templates/ui/chart)                                                                            |
+| Baris pengaturan                | SettingsRow, SettingsRowContent, SettingsRowControl                               | [Source](../../../../templates/ui/settings.row/settings.row.tsx)                                                   |
+| Field/pilihan                   | Field, Input, Textarea, Combobox, CheckboxField, Switch                           | [Field](../../../../templates/ui/field/field.tsx), [Combobox types](../../../../templates/ui/combobox/types.ts)    |
+| Kontrol nilai/pilihan banyak    | Slider, RangeSlider, RadioGroup, MultiSelect                                      | [Primitives](../../../../templates/ui/primitives.md)                                                               |
+| Daftar data dan kontrol         | DataTable, TableToolbar, TableColumnMenu                                          | [DataTable](../../../../templates/ui/data.table/data.table.tsx)                                                    |
+| Filter grup + chip              | TableFilter; TableFilterControl dan TableFilterChips untuk komposisi              | [Filter](../../../../templates/ui/table.filter/readme.md)                                                          |
+| Menu aksi/pilihan               | ActionMenu, Menu                                                                  | [ActionMenu](../../../../templates/ui/action.menu/action.menu.tsx), [Menu](../../../../templates/ui/menu/menu.tsx) |
+| Floating form/konten interaktif | Popover, PopoverContent                                                           | [Popover](../../../../templates/ui/popover/popover.tsx)                                                            |
+| Preview baca saat hover/focus   | HoverCard                                                                         | [API](../../../../templates/ui/hover.card/readme.md)                                                               |
+| Penjelasan pendek               | Tooltip                                                                           | [Primitives](../../../../templates/ui/primitives.md)                                                               |
+| Detail reusable                 | DetailView, DetailSection, DetailList, DetailStats, DetailTimeline                | [Source](../../../../templates/ui/detail/detail.tsx)                                                               |
+| Panel/dialog                    | Drawer + useDrawerPresence, Dialog, ConfirmDialog                                 | [Drawer](../../../../templates/ui/drawer/drawer.tsx), [primitives](../../../../templates/ui/primitives.md)         |
+| State/feedback                  | StatusBadge, Badge, Chip, EmptyState, ErrorState, Skeleton, LoadingOverlay, toast | [UI](../../../../templates/ui/readme.md)                                                                           |
+| Tanggal/waktu                   | Calendar, RangeCalendar, DateRangePicker, TimePicker                              | [Blok](../../../../templates/ui/blocks.md)                                                                         |
+| Agenda interaktif               | FullCalendar                                                                      | [API](../../../../templates/ui/full.calendar/readme.md)                                                            |
+| Alur bertahap                   | Wizard; Stepper/ParallelStepper untuk progres saja                                | [Wizard](../../../../templates/ui/wizard/readme.md)                                                                |
+| Navigasi dan informasi          | Cmdk, Breadcrumb, Tabs, Alert, Progress, Avatar, Accordion                        | [UI](../../../../templates/ui/readme.md)                                                                           |
 
-## Ruang custom
+## Memutuskan cara custom
 
-Integrasi opsional tersedia untuk [TanStack Query/cache, form/Zod, URL, dan Tailwind](../../../../templates/integrations/readme.md). ErrorState merupakan pilihan GET error pada area hasil/empty, dengan ilustrasi serta retry tanpa toast. Gunakan bound field adapter untuk form ber-Zod; UI core tetap bebas dari dependency integrasi tersebut.
+1. Mulai dari prop/variant/ukuran/slot yang sudah tersedia.
+2. Gunakan part dan children bila susunan shortcut kurang cocok. Contohnya CardHeader + CardBody + CardFooter untuk susunan custom.
+3. Buat wrapper fitur untuk data domain; jangan memasukkan field bisnis ke primitive kit.
+4. Perluas kontrak kit ketika kebutuhan reusable belum dapat dikomposisikan. Jaga default lama dan dokumentasikan prop baru.
 
-Mulai dari props yang sudah tersedia. Komponen layout dan blok umumnya menerima elemen semantik melalui `as`, native props, `className`, `style`, dan token ukuran. Header menerima ReactNode untuk judul/deskripsi/aksi serta `slotProps`; `children` dapat dipakai untuk komposisi lengkap. Card menyediakan part terpisah ketika shortcut props tidak cocok.
+Komponen layout mendukung semantik melalui as; header/blok menerima ReactNode dan slot yang didokumentasikan. Pastikan prop yang dibutuhkan memang ada pada komponen target. Native props, className, dan style tetap berguna untuk custom tanpa mengganti tema bersama.
 
-Jangan menambahkan prop yang hanya melayani satu data bisnis pada primitive umum. Susun wrapper di fitur untuk kebutuhan tersebut. Bila beberapa penggunaan memiliki kebutuhan struktural yang sama, perluas kontrak kit secara terarah dan pertahankan default serta native accessibility.
+## Pilihan yang sering keliru
 
-Gunakan `Menu` untuk daftar aksi/pilihan, dan `Popover` untuk konten form atau konten custom. Dropdown baru sebaiknya tetap memakai primitive yang menyediakan navigasi keyboard dan pengelolaan fokus.
+- Menu adalah daftar aksi/pilihan dengan navigasi keyboard; Popover untuk konten interaktif bebas. HoverCard untuk preview baca saja, bukan tempat tombol/form tersembunyi.
+- Drawer memiliki body scroll sendiri; jangan membungkus seluruh detail dengan overflow-auto lagi. PopoverContent scrollArea="content" tersedia saat komposit mengelola scroll isi.
+- CheckboxField membuat area label/kartu dapat diklik. Menu checkbox memakai interaksi item menu. Jangan memasang handler toggle parent dan checkbox sekaligus.
+- Wizard menyediakan presentasi, bukan validasi/persistence. FullCalendar menyediakan gesture/rendering; aplikasi tetap mengelola data dan hasil mutation.
+- StatCard menerima ikon/ilustrasi semantik; pilih sesuai metrik. PageHeader.artwork menerima SVG konteks halaman. Kit tidak menebak domain dari judul.
+- DataTable integrated toolbar sudah menyusun chip pada baris bawah search. Gunakan API tersebut sebelum menulis filter/pagination pengganti.
 
-RadioGroup variant card dan MultiSelect juga menangani klik seluruh area pilihan serta keyboard. Jangan menulis kontrol pilihan baru untuk kebutuhan yang sudah dipenuhi API ini.
+## Integrasi opsional
 
-Untuk checkbox di dalam area pilihan, gunakan `CheckboxField` sehingga seluruh label/kartu beserta padding dapat diklik. Untuk komponen menu, gunakan aksi seluruh item yang sudah tersedia; jangan menambahkan handler toggle kedua pada checkbox dan parent sekaligus.
+[Adapter](../../../../templates/integrations/readme.md) menyediakan TanStack Query/Form, Zod, URL, auth/session, dan bridge Tailwind. UI core tidak wajib mengimpor dependency itu.
 
-Ketika merevisi komponen dengan portal atau panel panjang, tentukan satu pemilik scroll. `PopoverContent scrollArea="content"` tersedia bagi komposit yang mengelola scroll pada isi; jangan memberi scroll independen pada panel luar dan list yang sama.
+Pada useAppForm, bound checkbox dipanggil `field.CheckboxField`; ekspor standalone bernama `CheckboxFormField`. Jangan menyamakan nama bound field dengan komponen UI CheckboxField native. Lihat [recipe form](recipes/forms.validation.md).

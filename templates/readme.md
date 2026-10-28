@@ -40,11 +40,11 @@ export function App() {
 - `assets/`, `branding/`, `styles/`: aset, logo, dan style bersama.
 - `index.ts`, `styles.css`: entry code dan stylesheet lengkap.
 
-Source starter berada di `src/` dan saat ini hanya Beranda. Folder `preview/` di root sengaja kosong; demo aplikasi dan galeri/dokumentasi interaktif akan dibuat di sana nanti. Dokumentasi API Markdown di dalam kit tetap tersedia.
+Source starter berada di `src/` dan saat ini hanya Beranda. Aplikasi demo di `preview/` menyediakan playground komponen, galeri ikon/ilustrasi, dan Theme Studio melalui `npm run demo`. Demo memiliki entry, konfigurasi, locale, dan storage sendiri. Dokumentasi API Markdown di dalam kit tetap tersedia.
 
 ## Integrasi aplikasi
 
-AdminLayout menerima brand, workspace, navigation, title, headerActions, sidebarFooter, children, routeKey, dan onNavigate. Aplikasi memasang adapter router sendiri; kit tidak membaca URL aplikasi. Konten utama memiliki scroll sendiri, sedangkan sidebar/header stabil.
+AdminLayout menerima brand, workspace, navigation, title, headerActions, sidebarFooter, children, routeKey, onNavigate, command dan breadcrumb. Cmdk berasal dari navigasi secara default dengan Ctrl/Cmd+K; breadcrumb berada di outlet, bukan header. Aplikasi memasang adapter router sendiri; kit tidak membaca URL aplikasi. Konten utama memiliki scroll sendiri, sedangkan sidebar/header stabil.
 
 Config aplikasi diberikan melalui props. Contoh starter:
 
@@ -62,7 +62,7 @@ Gunakan `initializeTheme(themeConfig)` sebelum render. Theme Studio dapat diimpo
 
 ## Komponen dan custom
 
-Komponen interaksi umum dijelaskan pada [Slider, Dialog, MultiSelect, dan komponen lain](ui/primitives.md). Gunakan [layout foundations](ui/layout.md), [tipografi](ui/typography.md), dan [blok komposisi](ui/composition.md). Props native, elemen semantik, children, slot, dan className menyediakan ruang custom. Warna dan ukuran bersama berasal dari tema.
+Komponen interaksi umum dijelaskan pada [Slider, Dialog, MultiSelect, dan komponen lain](ui/primitives.md). Default komposisi modul dijelaskan di [pola modul](ui/module.defaults.md), dengan source contoh yang hidup pada preview/src/pages/workspace/users. Gunakan [layout foundations](ui/layout.md), [tipografi](ui/typography.md), dan [blok komposisi](ui/composition.md). Props native, elemen semantik, children, slot, dan className menyediakan ruang custom. Warna dan ukuran bersama berasal dari tema.
 
 Panduan lain: [UI API](ui/readme.md), [advanced](ui/advanced.md), [tabel/PDF/workflow](ui/blocks.md), [tema](theme/readme.md), [i18n](i18n/readme.md), [ikon](icons/readme.md), dan [ilustrasi](ui/illustrations/readme.md).
 
@@ -73,3 +73,5 @@ Integrasi opsional berada di `integrations/`: TanStack Query/cache/persistence d
 File/folder source memakai dot case: `confirm.dialog/confirm.dialog.tsx`, `use.local.storage.ts`, dan `access.denied.illustration.tsx`. Nama komponen/props mengikuti React dan TypeScript.
 
 Paket menyediakan ekspor ESM, entry per komponen/aset, anotasi PURE pada factory, dan `sideEffects: ["**/*.css"]`. Pertahankan registry galeri di aplikasi demo, bukan entry kit. Import stylesheet lengkap membawa semua CSS; untuk CSS selektif, pilih `base.css` lalu stylesheet yang dibutuhkan.
+
+Scrollbar seluruh kit mengikuti tampilan sidebar melalui styles/scrollbar.css (diimpor base). Warna default memakai --border-strong dengan track transparan. Override CSS --scrollbar-thumb, --scrollbar-track, atau --scrollbar-size tersedia untuk kebutuhan tema; jangan memberi warna scrollbar lokal berbeda pada tabel/panel. Scrollbar yang sengaja disembunyikan, seperti sidebar collapsed dan tab horizontal, tetap mengikuti perilakunya.

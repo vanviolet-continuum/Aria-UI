@@ -44,6 +44,7 @@
 
 @import './data.table/compact.css';
 @import './data.table/columns.css';
+@import './data.table/toolbar.css';
 @import './table.filter/table.filter.css';
 @import './password.input/password.input.css';
 @import './parallel.stepper/parallel.stepper.css';
@@ -62,3 +63,7 @@
 @import './breadcrumb/breadcrumb.css';
 @import './dialog/dialog.css';
 @import './multi.select/multi.select.css';
+@import './hover.card/hover.card.css';
+@import './wizard/wizard.css';
+@import './field.label/field.label.css';
+@import './stat.card/stat.card.css';

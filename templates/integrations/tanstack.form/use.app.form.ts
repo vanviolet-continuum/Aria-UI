@@ -9,8 +9,9 @@ import { SliderField } from './slider.field'
 import { RangeSliderField } from './range.slider.field'
 import { RadioGroupField } from './radio.group.field'
 import { MultiSelectField } from './multi.select.field'
+import { liveValidationLogic } from './live.validation.logic'
 
-export const { useAppForm, withForm, withFieldGroup } = /* @__PURE__ */ createFormHook({
+const registered = /* @__PURE__ */ createFormHook({
   fieldContext,
   formContext,
   fieldComponents: {
@@ -25,3 +26,10 @@ export const { useAppForm, withForm, withFieldGroup } = /* @__PURE__ */ createFo
   },
   formComponents: { SubmitButton },
 })
+export const useAppForm: typeof registered.useAppForm = (options) =>
+  registered.useAppForm({
+    ...options,
+    validationLogic: options.validationLogic ?? liveValidationLogic,
+  })
+export const withForm = registered.withForm
+export const withFieldGroup = registered.withFieldGroup

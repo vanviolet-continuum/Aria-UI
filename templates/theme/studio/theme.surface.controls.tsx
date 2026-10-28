@@ -1,7 +1,5 @@
 import { FieldLabel } from '../../ui/field.label/field.label'
-
 import { Heading } from '../../ui/heading/heading'
-
 import { Text } from '../../ui/text/text'
 import { Combobox, Field, Switch } from '../../ui'
 import { useI18n } from '../../i18n/use.i18n'
@@ -89,7 +87,12 @@ export function ThemeSurfaceControls() {
           onChange={(value) => updateConfig({ motionScale: value / 100 })}
         />
       </div>
-      <FieldLabel as="label" variant="label" className="theme-preference-row">
+      <FieldLabel
+        as="label"
+        variant="label"
+        className="theme-preference-row"
+        showRequirement={false}
+      >
         <Text as="span" variant="label" tone="inherit">
           <Text as="strong" variant="label">
             {tr('Collapsed sidebar')}

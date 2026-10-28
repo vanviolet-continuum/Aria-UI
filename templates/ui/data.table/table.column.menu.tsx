@@ -5,6 +5,7 @@ import { Button } from '../button/button'
 import { CheckboxField } from '../checkbox/checkbox.field'
 import { Popover } from '../popover/popover'
 import type { ColumnDef, ColumnPinning, ColumnVisibility } from './types'
+import { resolveColumnDefaults } from './column.defaults'
 
 export interface TableColumnMenuProps<T> {
   columns: ColumnDef<T>[]
@@ -22,6 +23,7 @@ export function TableColumnMenu<T>({
   onVisibilityChange,
   onReset,
 }: TableColumnMenuProps<T>) {
+  columns = resolveColumnDefaults(columns)
   const { t: tr, text: localize } = useI18n()
   const visible = columns.filter(
     (column) => column.enableHiding === false || visibility[column.id] !== false,

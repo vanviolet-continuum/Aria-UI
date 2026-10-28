@@ -25,4 +25,11 @@ export function FullCalendar(props: FullCalendarProps) {
     </div>
   )
 }
-export type { FullCalendarProps, CalendarMove, CalendarSelection } from './types'
+export type {
+  FullCalendarProps,
+  CalendarMove,
+  CalendarSelection,
+  CalendarRange,
+  CalendarView,
+  CalendarEventPreview,
+} from './types'

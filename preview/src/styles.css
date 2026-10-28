@@ -1,0 +1,7 @@
+@import '../../templates/integrations/tailwind/styles.css';
+@source './';
+@layer components {
+  .app-shell #main-content {
+    background: var(--surface-subtle);
+  }
+}

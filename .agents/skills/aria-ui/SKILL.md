@@ -1,65 +1,61 @@
 ---
 name: aria-ui
-description: Buat atau ubah fitur React dengan Aria UI, termasuk CRUD, generated API, TanStack Query/cache, filter URL, form/Zod, auth/session, draft guard, tema dan Tailwind. Gunakan untuk pekerjaan yang mengikuti komponen, struktur, kontrak data dan pola interaksi repository ini; tidak untuk tugas umum di luar Aria UI.
+description: 'Bangun atau ubah fitur React memakai Aria UI di repository ini: modul CRUD, layout, form, tabel, drawer, tema, dan integrasi API. Gunakan untuk pekerjaan pada src, preview, atau templates yang mengikuti kontrak komponen dan pola Aria; tidak untuk frontend lain yang tidak memakai kit ini.'
 ---
 
 # Mengembangkan dengan Aria UI
 
-Bangun fitur dengan API komponen yang benar-benar tersedia, struktur yang konsisten, dan ruang custom melalui props atau komposisi.
+Hasilkan fitur yang mengikuti pola Aria dan kebutuhan pengguna. Default komponen menjaga konsistensi; props, slot, dan komposisi tetap memberi ruang custom.
 
-## Mulai dari tugas yang diminta
+## Mulai dari tugas
 
-1. Baca `AGENTS.md` yang berlaku dan tentukan target: aplikasi `src/`, pustaka `templates/`, atau demo `preview/`.
-2. Pilih referensi di bawah sesuai pekerjaan. Baca hanya referensi yang relevan.
-3. Temukan source komponen dan tipe props sebelum menggunakannya. Referensi menjelaskan keputusan dan pola; source serta dokumentasi komponen menjadi acuan API.
-4. Terapkan perubahan beserta route, navigasi, terjemahan, dan ekspor yang memang diperlukan oleh fitur itu.
-5. Ikuti batas validasi dari pengguna. Laporkan pekerjaan yang selesai dan pemeriksaan yang benar-benar dijalankan.
+1. Baca `AGENTS.md` yang berlaku. Tentukan pemilik perubahan: starter `src/`, demo `preview/src/`, atau kit portabel `templates/`. Pertahankan batas pekerjaan dan pilihan pengguna.
+2. Pilih acuan melalui [peta referensi source](references/reference.map.md). Untuk modul/CRUD, baca [kontrak default modul](references/recipes/module.defaults.md) sebelum menyusun halaman. Untuk perbaikan kecil, buka hanya referensi pemilik masalah.
+3. Temukan ekspor, tipe props, dan implementasi aktual dengan `rg`. Contoh hidup menunjukkan komposisi; jangan menebak prop, endpoint, atau DTO dari namanya.
+4. Implementasikan pada pemiliknya. Perbarui route, menu, locale, dan dokumentasi kontrak yang benar-benar terdampak. Default bersama diperbaiki di kit; kebutuhan satu fitur tetap di fitur.
+5. Gunakan [panduan penyelesaian](references/delivery.review.md) sesuai lingkup. Hormati permintaan tanpa test/build/QA dan laporkan hanya pemeriksaan yang dijalankan.
 
-## Pilih referensi
+Jika ada referensi visual dari pengguna, terapkan pada tugas itu. Jika tidak ada, mulai dari default dan source yang hidup; jangan mengganti pola modul secara sepihak.
 
-| Ketika tugas menyentuh                             | Baca                                                        |
-| -------------------------------------------------- | ----------------------------------------------------------- |
-| Batas aplikasi/pustaka, import, entry, atau bundle | [Arsitektur](references/architecture.md)                    |
-| Fitur, file, folder, route, atau navigasi baru     | [Struktur file](references/file.structure.md)               |
-| Pemilihan komponen dan cara custom                 | [Pemilihan komponen](references/component.selection.md)     |
-| Spacing, susunan responsif, judul, atau teks       | [Layout dan tipografi](references/layout.typography.md)     |
-| Warna, ukuran global, mode, atau konfigurasi tema  | [Tema](references/theme.md)                                 |
-| Copy UI, bahasa, tanggal, atau angka               | [Internasionalisasi](references/i18n.md)                    |
-| Ikon, ilustrasi, atau galeri aset                  | [Ikon dan ilustrasi](references/icons.illustrations.md)     |
-| Modul daftar/tambah/ubah/detail                    | [Pola CRUD](references/recipes/crud.md)                     |
-| Tabel, filter, pagination, atau pinning            | [Tabel dan filter](references/recipes/table.filters.md)     |
-| Input, checkbox, validasi, atau submit             | [Form dan validasi](references/recipes/forms.validation.md) |
-| Detail di halaman dan drawer                       | [Detail dan drawer](references/recipes/detail.drawer.md)    |
+## Pilih panduan pekerjaan
 
-Untuk contoh permintaan "buat Products dengan tabel, tambah, ubah, dan detail drawer", baca struktur file, CRUD, tabel, form, serta detail/drawer. Buka referensi tema hanya bila fitur memerlukan perubahan tema.
+| Pekerjaan                                  | Baca                                                                                                       |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| Batas aplikasi/kit, import, entry, bundle  | [Arsitektur](references/architecture.md)                                                                   |
+| File, folder, route, menu, locale baru     | [Struktur file](references/file.structure.md), [i18n](references/i18n.md)                                  |
+| Modul baru atau komposisi beberapa blok    | [Blueprint modul](references/module.blueprints.md), [CRUD](references/recipes/crud.md)                     |
+| Memilih komponen atau memperluas API       | [Pemilihan komponen](references/component.selection.md)                                                    |
+| Susunan responsif, judul, teks, scroll     | [Layout dan tipografi](references/layout.typography.md)                                                    |
+| Tabel, filter/chip, pagination, pinning    | [Tabel dan filter](references/recipes/table.filters.md)                                                    |
+| Input, Zod, validasi live, submit          | [Form dan validasi](references/recipes/forms.validation.md)                                                |
+| Detail halaman/panel, exit, draft          | [Detail dan drawer](references/recipes/detail.drawer.md), [unsaved changes](references/unsaved.changes.md) |
+| Demo, wizard, kalender, board, case bisnis | [Preview](references/preview.app.md), [peta source](references/reference.map.md)                           |
+| Tema, ukuran global, utility styling       | [Tema](references/theme.md), [Tailwind](references/tailwind.md)                                            |
+| Ikon, ilustrasi, registry galeri           | [Aset](references/icons.illustrations.md)                                                                  |
 
-## Pertahankan batas penting
+Untuk integrasi backend, mulai dari [alur API utuh](references/api.workflow.md) dan [generated API](references/generated.api.md), lalu buka hanya bagian terkait:
 
-Untuk fitur API, baca referensi generated API dan query/cache, lalu pilih referensi URL, error, mutation, form, atau Tailwind yang memang terkait:
+| Kebutuhan API                               | Acuan                                                  |
+| ------------------------------------------- | ------------------------------------------------------ |
+| Query key, cache, invalidation, persistence | [Query/cache](references/query.cache.md)               |
+| Search, filter, sort, pagination di URL     | [Search params](references/search.params.md)           |
+| Pesan backend, transport, GET error inline  | [API error](references/api.errors.md)                  |
+| Mutation, overlay, toast, callback          | [Lifecycle mutation](references/mutation.lifecycle.md) |
+| Login/logout, permission, workspace         | [Auth/session](references/auth.session.md)             |
 
-| Pekerjaan integrasi                                       | Referensi                                              |
-| --------------------------------------------------------- | ------------------------------------------------------ |
-| SDK hasil generator, DTO, signature, dan lokasi read-only | [Generated API](references/generated.api.md)           |
-| Query, cache, key, invalidation, dan persistence          | [Query/cache](references/query.cache.md)               |
-| Filter/pencarian/sort/pagination di URL                   | [Search params](references/search.params.md)           |
-| Pesan backend, transport, serta GET error inline          | [API error](references/api.errors.md)                  |
-| Overlay, submit, toast, dan update data setelah aksi      | [Lifecycle mutation](references/mutation.lifecycle.md) |
-| Login, logout, permission, atau pergantian workspace      | [Auth/session](references/auth.session.md)             |
-| Form dirty dan penutupan panel/navigasi                   | [Unsaved changes](references/unsaved.changes.md)       |
-| Styling utility dengan token tema yang sama               | [Tailwind](references/tailwind.md)                     |
+## Batas yang memengaruhi keputusan
 
-- `src/` dan `preview/` mengonsumsi `templates/`. Pustaka tidak mengimpor aplikasi, router aplikasi, atau data bisnis.
-- Generated SDK dibaca dan dipakai sesuai source aktual, tidak diedit, diformat, atau di-rename. Temukan output generator melalui konfigurasi proyek; lokasi tidak selalu src/generated.ts.
-- Fitur API baru menggunakan TanStack Query. Query key memuat semua parameter dan scope data yang memengaruhi hasil. Filter yang diterapkan, sort, pencarian, dan pagination mengikuti URL.
-- Gunakan server.run(formApi, operation) untuk submit API agar status submit tidak menjadi sukses ketika API gagal; error field masuk meta TanStack. Guard draft tersedia pada route, Drawer, dan Dialog.
-- GET error ditampilkan dengan ErrorState/ilustrasi pada area hasil tabel/combobox, tanpa toast. Pesan backend tetap mentah dan error API tetap reject. Mutation memakai satu pemilik feedback serta invalidation yang sesuai.
-- Saat ini starter hanya Beranda dan `preview/` kosong. Tambahkan demo atau fitur baru ketika diminta; jangan membangun ulang galeri sebagai bagian sampingan.
-- Gunakan komponen layout, tipografi, field, menu, dan blok konten yang tersedia. Tambahkan primitive reusable ketika ada kebutuhan yang belum ditangani oleh API atau komposisi saat ini.
-- Gunakan token tema dan variant semantik untuk tampilan bersama. Pertahankan `children`, props native, `className`, dan slot yang relevan saat memperluas komponen.
-- Gunakan satu pemilik scroll untuk setiap panel. Seluruh baris/kartu pilihan checkbox harus dapat diklik melalui `CheckboxField` atau pola interaksi komponen menu.
-- Gunakan ekspor ESM dan import bernama atau leaf module. Katalog seluruh aset merupakan tanggung jawab aplikasi demo.
-- File/folder source memakai dot case. Nama tooling standar seperti `AGENTS.md`, `SKILL.md`, `package.json`, dan folder skill mengikuti konvensi alatnya.
+- Ikuti kebutuhan eksplisit pengguna. Detail default visual/interaksi dimiliki satu [kontrak modul](references/recipes/module.defaults.md); jangan membuat kebijakan alternatif di fitur.
+- Source dan tipe ekspor adalah acuan API. Jika dokumentasi tertinggal, gunakan implementasi aktual dan perbarui bagian yang terdampak oleh tugas.
+- Kit tidak mengimpor aplikasi, router aplikasi, SDK generated, atau data bisnis. Helper/store/registry preview bukan dependency starter maupun kit. Starter tetap Beranda sampai ada permintaan fitur baru.
+- SDK generated read-only. Temukan lokasi dan signature aktual sebelum membuat adapter; perubahan kontrak dilakukan melalui generator/spesifikasi.
+- URL memiliki kriteria daftar; Query memiliki response backend. Key memuat semua parameter request dan scope. Jangan menambah cache daftar kedua atau memproses ulang satu halaman server sebagai dataset lengkap.
+- Error API tetap reject. GET error muncul inline dengan ilustrasi/retry; mutation memiliki satu pengelola feedback/cache. Pesan backend dipertahankan mentah; submit API memakai `useApiFormErrors().run`.
+- Gunakan komponen dan token yang ada sebelum membuat replika. Pertahankan semantik HTML, keyboard/fokus, satu pemilik scroll per panel, dot case, dan locale ID/EN.
+- Perluasan kit menjaga ekspor ESM/leaf, anotasi PURE, props native, `children`, `className`, dan slot yang relevan. Registry semua aset tetap milik demo.
 
-## Saat API atau contoh belum tersedia
+## Bila pola belum cocok
 
-Cari modul terkait dengan `rg` dan baca tipe props serta implementasinya. Pertahankan pola lokal yang masih sesuai dengan permintaan. Jika referensi tertinggal dari source, gunakan source aktual dan perbarui bagian referensi yang terdampak oleh perubahan tersebut. Buat keputusan implementasi rutin tanpa meminta izin ulang untuk pekerjaan yang sudah diotorisasi.
+Susun komponen terdekat dengan data domain terlebih dahulu. Buat primitive baru ketika komposisi/kontrak sekarang memang belum menampung kebutuhan reusable; jangan menambah library atau lapisan service kosong sekadar mengikuti blueprint.
+
+Jika backend belum tersedia, kerjakan UI yang dapat dibuat dan nyatakan kontrak yang masih diperlukan. Jangan mengarang endpoint, generated DTO, persistensi, atau keberhasilan request.

@@ -15,7 +15,7 @@ Codec menangani parameter miliknya saja. Hook mempertahankan parameter lain dan 
 
 Array memakai parameter berulang, misalnya `status=active&status=invited`; tanggal memakai YYYY-MM-DD lokal. Serializer mendukung primitive dan array datar. Untuk range, gunakan key from/to atau nama stabil per fitur. Hindari JSON kompleks di URL bila parameter sederhana cukup.
 
-Gunakan .catch(default) pada field schema agar satu nilai invalid dikoreksi tanpa membuang filter lain. Batasi page/pageSize, enum sort/order/status, serta format tanggal sesuai API. Bila keseluruhan schema gagal, codec kembali ke defaults valid. Nilai default/kosong dapat dihilangkan dari URL untuk hasil kanonis.
+Gunakan .catch(default) pada field schema agar satu nilai invalid dikoreksi tanpa membuang filter lain. Batasi page/pageSize, enum sort/order/status, serta format tanggal sesuai API. Bila keseluruhan schema gagal, codec kembali ke defaults valid. Nilai yang sama dengan default dapat dihilangkan untuk URL kanonis; kosong eksplisit yang berbeda dari default tetap ditulis sesuai aturan di bawah.
 
 Jangan memasukkan draft form, token autentikasi, atau seluruh response API ke search params. Peta URL adalah kontrak tampilan daftar, bukan penyimpanan seluruh aplikasi.
 

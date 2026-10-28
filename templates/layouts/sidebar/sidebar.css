@@ -108,20 +108,6 @@
   overscroll-behavior-y: contain;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
-}
-
-.sidebar-navigation::-webkit-scrollbar {
-  width: 5px;
-}
-
-.sidebar-navigation::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: var(--border-strong);
-}
-
-.sidebar-navigation::-webkit-scrollbar-button {
-  display: none;
 }
 
 .nav-group {
@@ -188,14 +174,21 @@
 }
 
 .sidebar-bottom {
-  padding: calc(19px * var(--space-scale)) calc(18px * var(--space-scale));
+  flex: 0 0 auto;
+  min-width: 0;
+  padding: var(--space-sm) var(--space-md);
+  border-top: var(--border-width, 1px) solid var(--border);
   display: flex;
   gap: calc(6px * var(--space-scale));
   align-items: center;
   color: var(--typography-navigation-color);
   font-size: var(--typography-navigation-size);
-  margin-top: calc(36px * var(--space-scale));
+  margin-top: 0;
   white-space: nowrap;
+}
+.sidebar-bottom > :only-child:not(svg) {
+  width: 100%;
+  min-width: 0;
 }
 
 .workspace-indicator {

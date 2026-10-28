@@ -1,42 +1,73 @@
 # Tabel dan filter
 
-Acuan aktual: [DataTable](../../../../../templates/ui/data.table/data.table.tsx), [tipe kolom](../../../../../templates/ui/data.table/types.ts), [hook kolom](../../../../../templates/ui/data.table/use.table.columns.ts), [filter](../../../../../templates/ui/table.filter/types.ts), dan [blok UI](../../../../../templates/ui/blocks.md).
+Baca [default modul](module.defaults.md). Acuan API: [DataTable](../../../../../templates/ui/data.table/data.table.tsx), [tipe](../../../../../templates/ui/data.table/types.ts), [default kolom](../../../../../templates/ui/data.table/column.defaults.ts), [TableFilter](../../../../../templates/ui/table.filter/readme.md).
+
+## Komposisi standar
+
+Gunakan props DataTable: filters, filterValue, onFilterChange, search, toolbarActions. Toolbar bawaan menempatkan kontrol pada baris atas dan chip aktif yang dapat dihapus pada baris penuh di bawah search. Jangan mengganti filter dengan deretan Combobox terpisah.
+
+TableToolbar tersedia jika layout memerlukan toolbar terpisah; saat itu sembunyikan/ganti toolbar DataTable secara eksplisit agar tidak ada dua pemilik kontrol. TableFilterControl dan TableFilterChips untuk komposisi custom, dengan value/onChange yang sama.
+
+Kolom berikut ditulis di komponen fitur yang memiliki t dan callback view:
 
 ```tsx
-import { DataTable, useTableColumns, type ColumnDef } from '@templates/ui'
-
-type Member = { id: string; name: string; email: string }
 const definitions: ColumnDef<Member>[] = [
   {
-    id: 'name', header: 'Name', accessor: 'name', sortable: true,
+    id: 'name', header: t('Name'), accessor: 'name', sortable: true,
     width: 240, enableHiding: false, defaultPin: 'left', pinable: false,
   },
-  { id: 'email', header: 'Email', accessor: 'email', sortable: true },
+  { id: 'email', header: t('Email'), accessor: 'email', sortable: true },
+  createActionsColumn<Member>(
+    row => [{ id: 'view', label: t('View details'), onSelect: () => view(row.id) }],
+    { header: t('Actions') },
+  ),
 ]
-
 const columns = useTableColumns({ columns: definitions })
 
-<DataTable data={rows} columns={definitions} getRowId={row => row.id}
-  pinable columnVisibility={columns.visibility}
-  columnPinning={columns.pinning} onColumnPinningChange={columns.setPinning} />
+<DataTable
+  data={rows}
+  columns={definitions}
+  getRowId={row => row.id}
+  pinable
+  columnVisibility={columns.visibility}
+  onColumnVisibilityChange={columns.setVisibility}
+  columnPinning={columns.pinning}
+  onColumnPinningChange={columns.setPinning}
+  filters={filterDefinitions}
+  filterValue={urlFilters}
+  onFilterChange={updateUrlFilters}
+  search={{ value: url.state.q, onChange: q => url.setState({ q }) }}
+  server={serverState}
+  loading={query.isPending}
+  error={query.error}
+  onRetry={() => { void query.refetch() }}
+/>
 ```
 
-Definisi kolom lokal aplikasi dapat memakai `t` untuk header. Saat header berupa JSX, isi `label` untuk nama aksesibel pada kontrol kolom.
+Impor DataTable, createActionsColumn, useTableColumns, type ColumnDef dari @templates/ui. Member, filterDefinitions, urlFilters, updateUrlFilters, serverState dan query milik fitur; definisikan dari kontrak/domain aktual. Untuk sumber lokal tanpa backend, gunakan mode client dan baca catatan URL di bawah.
 
-## Perilaku yang perlu dipertahankan
+## Lebar, pin, dan visibilitas
 
-- Tabel mengisi lebar container walaupun kolom sedikit. Biarkan DataTable mengelola colgroup, lebar fleksibel, sticky offset, dan scroll.
-- `pinable` pada tabel menjadi default tombol pin; override per kolom tersedia.
-- `defaultPin: 'left' | 'right'` adalah posisi awal. Bila efektif `pinable` false, posisi tersebut tetap terkunci dan tidak ada tombol pin.
-- Untuk controlled state, awali dengan `useTableColumns({ columns: definitions })` atau `getDefaultColumnPinning(definitions)`. Default kolom terkunci tetap diterapkan walaupun state controlled menghapusnya.
-- `enableHiding: false` adalah aturan visibilitas yang terpisah dari pinning. TableColumnMenu menampilkan kolom tersebut sebagai terkunci dan hanya mengatur visibilitas.
-- Aksi sort/pin berada di kanan header. Gunakan selection API dengan ID stabil; area sel checkbox sudah mencakup seluruh sel.
-- Pagination memakai TablePagination yang disediakan DataTable; jangan menambahkan pagination kedua untuk state yang sama.
+- Tabel mengisi lebar container. Biarkan kit mengatur colgroup, sticky offset, pagination, dan scroll; jangan menambah width kosong di sebelah aksi.
+- createActionsColumn/actions callback membuat satu menu. Defaultnya terkunci di kanan, selalu terlihat, center, width 72. View/Edit/Delete berada pada menu yang sama; bukan tombol View di samping menu.
+- pinable tabel adalah default tombol pin, dapat dioverride per kolom. defaultPin menentukan posisi awal. pinable false + defaultPin left/right tetap pinned dan tidak menyediakan tombol pin.
+- useTableColumns({ columns: definitions }) atau getDefaultColumnPinning mengawali controlled pinning dengan benar. Kit tetap mempertahankan kolom terkunci bila state controlled menghapusnya.
+- enableHiding false terpisah dari pinning. TableColumnMenu menampilkan kunci dan mengatur visibilitas, tanpa aksi pin.
+- Sort/pin berada di kanan header. Jika header JSX, isi label teks untuk kontrol kolom.
+- Override eksplisit mengikuti kontrak publik; align right saja tidak melakukan pin. kind data dapat menghindari inferensi kolom ber-ID actions.
 
-## Filter lokal atau server
+## State URL dan mode data
 
-`TableFilterDef<T>` mendefinisikan pilihan atau tanggal. `filterTableData(rows, definitions, values)` melakukan OR dalam field, AND antar-field, serta batas tanggal inklusif. State filter/search/sort/page/pageSize yang diterapkan berasal dari URL melalui useUrlState dan codec fitur; jangan menyimpannya hanya di state lokal. Gunakan `resetKey` untuk mode client bila diperlukan.
+Filter terapan, q, sort, page, pageSize dikendalikan codec + useUrlState. Jangan menyimpannya hanya pada useState. Search/filter berubah mereset page; pertahankan parameter lain serta Back/Forward. Lihat [search params](../search.params.md).
 
-Range tanggal memakai `RangeCalendar` dua bulan dan tanggal lokal. Popover filter memiliki satu pemilik scroll, dengan header/footer di luar area scroll tersebut. Gunakan Chip bawaan untuk filter aktif.
+TableFilterDef<T> memakai choice atau date. filterTableData menjalankan OR dalam satu field, AND antar-field, serta batas tanggal lokal inklusif. Mode client DataTable menerapkan filter internal. Search client yang diterapkan tetap harus difilter oleh aplikasi; props search adalah kontrol input, bukan fungsi pencarian otomatis. Jika memakai client state terisolasi, resetKey dapat mereset halaman saat dataset pencarian berubah.
 
-Untuk API baru, gunakan TanStack Query dan kontrak server pada DataTable. Query key memuat scope dan seluruh parameter URL; jangan menumpuk cache useServerTable di atas Query. Jangan melakukan sort/pagination client lagi pada satu halaman hasil server. GET error tampil melalui ErrorState dengan ilustrasi pada area body yang sama dengan empty, tanpa toast. Sambungkan onRetry ke query.refetch. Lihat [query/cache](../query.cache.md), [search params](../search.params.md), dan [contoh runtime](../../../../../templates/integrations/readme.md).
+Untuk backend gunakan server dengan page, pageSize, totalItems, onPageChange, onPageSizeChange, sort?, onSortChange?. Hubungkan ke URL dan Query. Jangan melakukan sort/filter/pagination client lagi pada satu halaman response atau menumpuk cache useServerTable di atas Query.
+
+GET error berada pada body yang sama dengan empty memakai ilustrasi/retry dan tanpa toast; error diberikan ke prop error, retry ke refetch. Jangan mengubah gagal load menjadi data kosong. TotalItems berasal dari backend, bukan panjang rows halaman.
+
+## Range, selection, scroll
+
+Filter tanggal memakai range lokal dan komponen bawaan yang menampilkan rentang dua bulan secara responsif. Jangan menggantinya dengan Calendar single-date. Popover memiliki satu pemilik scroll; header/footer berada di luar isi yang scroll.
+
+Selection memakai ID stabil. Seluruh sel/area checkbox dapat dipilih; bulk actions hanya bekerja atas selection yang sah. Kebijakan lintas halaman mengikuti produk/backend, bukan menebak bahwa semua data sudah ada di rows.

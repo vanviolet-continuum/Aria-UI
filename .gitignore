@@ -1,6 +1,7 @@
 node_modules/
 dist/
 dist-preview/
+preview/dist/
 *.local
 .DS_Store
 *.tsbuildinfo

@@ -73,6 +73,7 @@ export function TableHead<T>({
               className={column.className}
               style={style}
               data-pin={pin}
+              data-column-kind={column.kind}
               data-layout-index={index}
               data-pin-edge={edge || undefined}
               aria-sort={

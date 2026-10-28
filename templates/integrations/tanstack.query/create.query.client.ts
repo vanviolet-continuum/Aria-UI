@@ -82,7 +82,12 @@ export function createAriaQueryClient({
     void runMutationCallback(runtime, async () => {
       const feedback = mutationFeedback(mutation.meta)
       if (event.action.type === 'success') {
-        if (feedback.successMessage) toast.success(translate(feedback.successMessage))
+        if (feedback.successMessage)
+          toast.success(translate(feedback.successMessage), {
+            description: feedback.successDescription
+              ? translate(feedback.successDescription)
+              : undefined,
+          })
       } else if (writes.has(mutation)) {
         // A raw useMutation callback threw after the server write had succeeded.
         void runMutationCallback(runtime, () => {
